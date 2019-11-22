@@ -5,8 +5,8 @@
   "description": "",
   "dependencies": {
     "@material-ui/core": "^4.3.3",
-    "@nocode-toolkit/template": "^1.0.11",
-    "@nocode-toolkit/ui": "^1.0.11",
+    "@nocode-toolkit/template": "^1.0.12",
+    "@nocode-toolkit/ui": "^1.0.12",
     "@types/react": "^16.9.11",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -14,7 +14,9 @@
   },
   "scripts": {
     "build": "nocode-template build",
-    "develop": "nocode-template develop"
+    "develop": "nocode-template develop",
+    "preview": "nocode-template preview",
+    "publish": "nocode-template publish"
   },
   "author": "",
   "license": "ISC"
