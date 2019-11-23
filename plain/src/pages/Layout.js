@@ -11,30 +11,32 @@ const Layout = ({
   children,
 }) => {
   return (
-    <div className="layout-root">
+    <React.Fragment>
       <Header>
         <link rel="stylesheet" type="text/css" href="/css/index.css" />
       </Header>
-      <Suspense
-        Component={ NocodeTopbar }
-      />
-      <div className="layout-header">
-        Header
-      </div>
-      <div className="layout-main">
-        <div className="layout-sidebar">
-          <Tree
-            section="sidebar"
-          />
+      <div className="layout-root">
+        <Suspense
+          Component={ NocodeTopbar }
+        />
+        <div className="layout-header">
+          Header
         </div>
-        <div className="layout-content">
-          This is the children
+        <div className="layout-main">
+          <div className="layout-sidebar">
+            <Tree
+              section="sidebar"
+            />
+          </div>
+          <div className="layout-content">
+            This is the children
+          </div>
         </div>
       </div>
       <Suspense
         Component={ UIElements }
       />
-    </div>
+    </React.Fragment>
   )
 }
 
