@@ -8,15 +8,15 @@ import MenuIcon from '@material-ui/icons/Menu'
 import Divider from '@material-ui/core/Divider'
 
 import Suspense from '@nocode-toolkit/ui/components/system/Suspense'
-import Header from '@nocode-toolkit/ui/components/layout/Header'
+import Header from '@nocode-toolkit/ui/components/system/Header'
 import styles from '@nocode-toolkit/ui/styles/layout'
 
-import Tree from '@nocode-toolkit/ui/components/content/Tree'
+import Tree from '@nocode-toolkit/website-material-ui/components/content/Tree'
 import NavBar from '@nocode-toolkit/ui/components/content/NavBar'
 import Copyright from '@nocode-toolkit/ui/components/widgets/Copyright'
 import Logo from '@nocode-toolkit/ui/components/widgets/Logo'
 
-const NocodeTopbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/layout/NocodeTopbar'))
+const NocodeTopbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/system/NocodeTopbar'))
 const UIElements = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/system/UIElements'))
 
 const useStyles = makeStyles(styles)

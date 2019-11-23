@@ -1,7 +1,9 @@
 import React from 'react'
 import { hot } from 'react-hot-loader'
 
-import Root from '@nocode-toolkit/ui/root'
+import Router from '@nocode-toolkit/ui/Router'
+import Theme from '@nocode-toolkit/ui/Theme'
+
 import library from '@nocode-toolkit/ui/types/library'
 import googleDriveSchemas from '@nocode-toolkit/ui/types/drive/schemas'
 import localSchemas from '@nocode-toolkit/ui/types/local/schemas'
@@ -23,8 +25,9 @@ const templates = {
 
 const App = ({}) => {
   return (
-    <Root
+    <Router
       templates={ templates }
+      themeModule={ Theme }
     />
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import DocumentLayout from '@nocode-toolkit/ui/components/document/Layout'
 
 const DocumentPage = ({}) => {
   return (

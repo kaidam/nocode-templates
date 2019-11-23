@@ -978,7 +978,7 @@
     webpack-node-externals "^1.7.2"
     yargs "^15.0.1"
 
-"@nocode-toolkit/template@^1.0.20":
+"@nocode-toolkit/template@^1.0.21":
   version "1.0.21"
   resolved "https://registry.yarnpkg.com/@nocode-toolkit/template/-/template-1.0.21.tgz#0488f44173c77641d75fad39ed4473a01d584df2"
   integrity sha512-CpTVeBbAsONL/2CQErv8n4MMP8JxK0jJQWruJkb+nxASdT8d+bKPf3rbey1giWhiIL8URMIAchw26dgqSEHyWA==
@@ -995,7 +995,7 @@
     request "^2.88.0"
     yargs "^15.0.2"
 
-"@nocode-toolkit/ui@^1.0.20":
+"@nocode-toolkit/ui@^1.0.21":
   version "1.0.21"
   resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.21.tgz#a33101ab5cb8efebe45351689a9e33ccb5d84be6"
   integrity sha512-uv2auDtMVSuOimbSAsyQzeX8IkHOfxnb3JWNE1ZS/4wSEPqdeGoREtc3yyE+AVKUcgm/SPbUL5N3U8iQm8yWyQ==
