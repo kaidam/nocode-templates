@@ -1,4 +1,4 @@
-import Server from '@nocode-toolkit/ui/ServerMaterial'
+import Server from '@nocode-toolkit/website/server'
 import reducers from '@nocode-toolkit/ui/store/reducers'
 import App from './app'
 

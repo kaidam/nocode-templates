@@ -1,10 +1,10 @@
-import Server from '@nocode-toolkit/ui/ServerMaterial'
+import Render from '@nocode-toolkit/website/browser'
 import reducers from '@nocode-toolkit/ui/store/reducers'
 import App from './app'
 
-const server = Server({
+const render = Render({
   reducers,
   App,
 })
 
-export default server
+render()
