@@ -7,7 +7,7 @@ import Drawer from '@material-ui/core/Drawer'
 import MenuIcon from '@material-ui/icons/Menu'
 import Divider from '@material-ui/core/Divider'
 
-import Suspense from '@nocode-toolkit/ui/components/system/Suspense'
+import UILoader from '@nocode-toolkit/ui/components/system/UILoader'
 import Header from '@nocode-toolkit/ui/components/system/Header'
 import styles from '@nocode-toolkit/website-material-ui/styles/layout'
 
@@ -33,8 +33,7 @@ const Layout = ({
   return (
     <div className={ classes.root }>
       <Header />
-      <Suspense
-        coreEnabled
+      <UILoader
         Component={ NocodeTopbar }
       />
       <AppBar 
@@ -102,8 +101,7 @@ const Layout = ({
           </div>
         </main>
       </div>
-      <Suspense
-        coreEnabled
+      <UILoader
         Component={ UIElements }
       />
     </div>

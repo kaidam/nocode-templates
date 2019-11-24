@@ -1,6 +1,6 @@
 import React, { lazy } from 'react'
 
-import Suspense from '@nocode-toolkit/ui/components/system/Suspense'
+import UILoader from '@nocode-toolkit/ui/components/system/UILoader'
 import Header from '@nocode-toolkit/ui/components/system/Header'
 import Tree from '@nocode-toolkit/ui/components/content/Tree'
 import NavBar from '@nocode-toolkit/ui/components/content/NavBar'
@@ -19,8 +19,7 @@ const Layout = ({
         <link rel="stylesheet" type="text/css" href="/css/index.css" />
       </Header>
       <div className="layout-root">
-        <Suspense
-          coreEnabled
+        <UILoader
           Component={ NocodeTopbar }
         />
         <div className="layout-header">
@@ -57,8 +56,7 @@ const Layout = ({
           </div>
         </div>
       </div>
-      <Suspense
-        coreEnabled
+      <UILoader
         Component={ UIElements }
       />
     </React.Fragment>
