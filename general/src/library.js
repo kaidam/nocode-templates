@@ -1,6 +1,7 @@
 import library from '@nocode-toolkit/ui/types/library'
 import googleDriveSchemas from '@nocode-toolkit/ui/types/drive/schemas'
 import localSchemas from '@nocode-toolkit/ui/types/local/schemas'
+import unsplashSchemas from '@nocode-toolkit/ui/types/unsplash/schemas'
 import TitleCell from '@nocode-toolkit/website-material-ui/components/cells/Title'
 
 import LayoutDefault from './pages/Layout'
@@ -8,6 +9,7 @@ import PageDefault from './pages/Document'
 
 library.add(googleDriveSchemas)
 library.add(localSchemas)
+library.add(unsplashSchemas)
 
 const titleSchema = library.get('local.title')
 titleSchema.cellConfig.component = TitleCell
