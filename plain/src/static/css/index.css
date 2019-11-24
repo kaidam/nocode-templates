@@ -16,7 +16,7 @@ body, html, #_nocode_root {
   background-color: #e5e5e5;
 }
 
-.layout-main {
+.layout-container {
   height: 100%;
   flex-grow: 1;
   display: flex;
@@ -29,8 +29,31 @@ body, html, #_nocode_root {
   width: 300px;
 }
 
-.layout-content {
+.layout-main {
   height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-content {
+  padding: 20px;
   flex-grow: 1;
 }
 
+.layout-footer {
+  padding: 20px;
+  height: 60px;
+  background-color: #e5e5e5;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.layout-footer .copyright {
+  flex-grow: 0;
+}
+
+.layout-footer .navbar {
+  flex-grow: 1;
+}

@@ -9,10 +9,10 @@ import Divider from '@material-ui/core/Divider'
 
 import Suspense from '@nocode-toolkit/ui/components/system/Suspense'
 import Header from '@nocode-toolkit/ui/components/system/Header'
-import styles from '@nocode-toolkit/ui/styles/layout'
+import styles from '@nocode-toolkit/website-material-ui/styles/layout'
 
 import Tree from '@nocode-toolkit/website-material-ui/components/content/Tree'
-import NavBar from '@nocode-toolkit/ui/components/content/NavBar'
+import NavBar from '@nocode-toolkit/website-material-ui/components/content/NavBar'
 import Copyright from '@nocode-toolkit/ui/components/widgets/Copyright'
 import Logo from '@nocode-toolkit/ui/components/widgets/Logo'
 
@@ -87,11 +87,16 @@ const Layout = ({
             <Toolbar classes={{
               root: classes.toolbar,
             }}>
-              <NavBar
-                section="footer"
-              >
-                <Copyright />
-              </NavBar>
+              <div className={ classes.footerContainer }>
+                <div className={ classes.footerCopyright }>
+                  <Copyright />
+                </div>
+                <div className={ classes.footerNavBar }>
+                  <NavBar
+                    section="footer"
+                  />
+                </div>
+              </div>
             </Toolbar>
           </div>
         </main>
