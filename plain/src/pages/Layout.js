@@ -4,6 +4,7 @@ import Suspense from '@nocode-toolkit/ui/components/system/Suspense'
 import Header from '@nocode-toolkit/ui/components/system/Header'
 import Tree from '@nocode-toolkit/ui/components/content/Tree'
 import NavBar from '@nocode-toolkit/ui/components/content/NavBar'
+import Copyright from '@nocode-toolkit/ui/components/widgets/Copyright'
 
 const NocodeTopbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/system/NocodeTopbar'))
 const UIElements = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/system/UIElements'))
@@ -38,7 +39,7 @@ const Layout = ({
             </div>
             <div className="layout-footer">
               <div className="copyright">
-                Copyright Message
+                <Copyright />
               </div>
               <div className="navbar">
                 <NavBar

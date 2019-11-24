@@ -13,7 +13,7 @@ import styles from '@nocode-toolkit/website-material-ui/styles/layout'
 
 import Tree from '@nocode-toolkit/website-material-ui/components/content/Tree'
 import NavBar from '@nocode-toolkit/website-material-ui/components/content/NavBar'
-import Copyright from '@nocode-toolkit/ui/components/widgets/Copyright'
+import Copyright from '@nocode-toolkit/website-material-ui/components/widgets/Copyright'
 import Logo from '@nocode-toolkit/ui/components/widgets/Logo'
 
 const NocodeTopbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/system/NocodeTopbar'))
