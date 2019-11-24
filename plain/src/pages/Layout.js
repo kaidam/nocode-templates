@@ -41,7 +41,7 @@ const Layout = ({
           </div>
           <div className="layout-main">
             <div className="layout-content">
-              This is the children
+              { children }
             </div>
             <div className="layout-footer">
               <div className="copyright">

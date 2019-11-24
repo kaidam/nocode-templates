@@ -45,11 +45,22 @@ body, html, #_nocode_root {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .layout-content {
   padding: 20px;
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.document-container {
+  max-width: 860px;
+  -webkit-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.26); 
+  box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.26);
 }
 
 .layout-footer {
