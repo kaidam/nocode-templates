@@ -34,6 +34,7 @@ const Layout = ({
     <div className={ classes.root }>
       <Header />
       <Suspense
+        coreEnabled
         Component={ NocodeTopbar }
       />
       <AppBar 
@@ -102,6 +103,7 @@ const Layout = ({
         </main>
       </div>
       <Suspense
+        coreEnabled
         Component={ UIElements }
       />
     </div>

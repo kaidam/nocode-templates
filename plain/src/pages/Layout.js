@@ -20,6 +20,7 @@ const Layout = ({
       </Header>
       <div className="layout-root">
         <Suspense
+          coreEnabled
           Component={ NocodeTopbar }
         />
         <div className="layout-header">
@@ -57,6 +58,7 @@ const Layout = ({
         </div>
       </div>
       <Suspense
+        coreEnabled
         Component={ UIElements }
       />
     </React.Fragment>
