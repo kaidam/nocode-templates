@@ -5,6 +5,7 @@ import Header from '@nocode-toolkit/ui/components/system/Header'
 import Tree from '@nocode-toolkit/ui/components/content/Tree'
 import NavBar from '@nocode-toolkit/ui/components/content/NavBar'
 import Copyright from '@nocode-toolkit/ui/components/widgets/Copyright'
+import Logo from '@nocode-toolkit/ui/components/widgets/Logo'
 
 const NocodeTopbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/system/NocodeTopbar'))
 const UIElements = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/system/UIElements'))
@@ -22,10 +23,15 @@ const Layout = ({
           Component={ NocodeTopbar }
         />
         <div className="layout-header">
-          <NavBar
-            section="topbar"
-            withHome
-          />
+          <div className="layout-header-logo">
+            <Logo />
+          </div>
+          <div className="layout-header-navbar">
+            <NavBar
+              section="topbar"
+              withHome
+            />
+          </div>
         </div>
         <div className="layout-container">
           <div className="layout-sidebar">
