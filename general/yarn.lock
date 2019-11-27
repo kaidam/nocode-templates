@@ -941,10 +941,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.6"
 
-"@nocode-toolkit/builder@^1.0.25":
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/builder/-/builder-1.0.25.tgz#d0771d908586c53e9e3ef96b96a188583666079b"
-  integrity sha512-p4GFf8FxMGU0yGJscwF9Z8UoTWYRGLoeewr4LsCoAND5JelgQtG57RlCL9nxN+sUCoAICIGIOA++ESyx90jOyw==
+"@nocode-toolkit/builder@^1.0.28":
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/builder/-/builder-1.0.28.tgz#a71a16d4309209bedaa0206f9918aa91121fce95"
+  integrity sha512-q04rnTzxO1E/KQ10rUV+k/56651aGDmpq8g1pPlCqp/Mx0ypAvXjnwZ8iRXpOA4qWuJKEMiNfhGE0vSaF8BhsA==
   dependencies:
     "@babel/cli" "^7.2.3"
     "@babel/core" "^7.3.4"
@@ -978,12 +978,12 @@
     webpack-node-externals "^1.7.2"
     yargs "^15.0.1"
 
-"@nocode-toolkit/template@^1.0.25":
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/template/-/template-1.0.25.tgz#07f8c20a8cc5bc6c67f8aefaee96e644823ec66a"
-  integrity sha512-/pdF6R4PQP4rSv0LCjtqaPBvf8aC5mBaQ5p5MnyyaMgqkFxXPoscQhM+E81VGRF2XIM0vC3lMMnB5ZCgdq6BJQ==
+"@nocode-toolkit/template@^1.0.28":
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/template/-/template-1.0.28.tgz#2003e09345967371ca2eabf2ec1cd35e8c6a8d23"
+  integrity sha512-Woo0G30liW+5TAQ3OSeZeNclDlb7ugYqfiJQFjiEyDgLLqHXOVyscYDjYGL8vOwip37GlUmOpLLejkffnD9+nw==
   dependencies:
-    "@nocode-toolkit/builder" "^1.0.25"
+    "@nocode-toolkit/builder" "^1.0.28"
     archiver "^3.1.1"
     async "^3.1.0"
     axios "^0.19.0"
@@ -991,20 +991,19 @@
     chalk "^3.0.0"
     express "^4.16.4"
     express-static-gzip "^2.0.5"
-    http-proxy "^1.18.0"
     pino "^5.14.0"
     request "^2.88.0"
     yargs "^15.0.2"
 
-"@nocode-toolkit/ui@^1.0.25":
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.25.tgz#98153398eaecee9027dbe0b791650077a5d59378"
-  integrity sha512-4SSNL7rSP73CHJwnnAYDRDIZ32Lt19OdqOXFLo6GTLElQoWHQfvnt0B2BdMP+lF1r2YI3HXk4Ia2g8ezSxkLfg==
+"@nocode-toolkit/ui@^1.0.28":
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.28.tgz#ef4c396d5c506f1e18a00be58a55097f862f70dd"
+  integrity sha512-8GnQmAMxR2nihgwPWlpzWpKu9BWj1B6Syq7uwODGZONnuUwiuxYA2KxcY9inpetaYH2v+H/v7NoyGnMQ1KQmIw==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
-    "@nocode-toolkit/website" "^1.0.25"
-    "@nocode-toolkit/website-material-ui" "^1.0.25"
+    "@nocode-toolkit/website" "^1.0.28"
+    "@nocode-toolkit/website-material-ui" "^1.0.28"
     axios "0.19.0"
     bluebird "^3.5.4"
     classnames "^2.2.6"
@@ -1027,22 +1026,22 @@
     slate-react "^0.22.10"
     yup "^0.27.0"
 
-"@nocode-toolkit/website-material-ui@^1.0.25":
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website-material-ui/-/website-material-ui-1.0.25.tgz#6481028321349cfbdf4a4c49537295ee9196b6fe"
-  integrity sha512-YB+hL3A72yHvJI0H5jmp6kXfd59JtTMngofbCJDn408Ad7u1lCDd8Qf7P6vXdpERipgU87hfdNmTxGS/P5y9Fw==
+"@nocode-toolkit/website-material-ui@^1.0.28":
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website-material-ui/-/website-material-ui-1.0.28.tgz#566338d1540195a12ed1931a88ccf48f4a353efd"
+  integrity sha512-ZZweuNrtE0DTTIh1pWAWt3/jBH4phr3puTIJ+6Dn7b4qAX1da7mMiGuDv4GM/DqnYtnfleuH4NVT6L5wyDDrAQ==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
     "@material-ui/styles" "^4.4.1"
-    "@nocode-toolkit/website" "^1.0.25"
+    "@nocode-toolkit/website" "^1.0.28"
     classnames "^2.2.6"
     react "^16.8.6"
 
-"@nocode-toolkit/website@^1.0.25":
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website/-/website-1.0.25.tgz#bb3338180af3f020b0dcedf8c34fae6dcb1542d3"
-  integrity sha512-p9fTaSYgc6D0Z7UtkG1CFrqdY/1xWNl5sYvuHaFhM7r3i6Q/ERF2t23XVPUN1SYuWd/tDSyaxirv5jI0LSfNpA==
+"@nocode-toolkit/website@^1.0.28":
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website/-/website-1.0.28.tgz#fa61efeda0b4c1552cc3c1b694515fbf903e3033"
+  integrity sha512-4KVcsw1AE6o5fVzJyXfLxXMaBJUG7pDv97hhSMpNSPHuIjIcaiCftGOKEGlbh7A1u1z68VL2jV4hoJyTIfp7Lg==
   dependencies:
     "@hot-loader/react-dom" "^16.8.6"
     "@types/react" "^16.9.11"
@@ -3432,7 +3431,7 @@ http-proxy-middleware@0.19.1:
     lodash "^4.17.11"
     micromatch "^3.1.10"
 
-http-proxy@^1.17.0, http-proxy@^1.18.0:
+http-proxy@^1.17.0:
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/http-proxy/-/http-proxy-1.18.0.tgz#dbe55f63e75a347db7f3d99974f2692a314a6a3a"
   integrity sha512-84I2iJM/n1d4Hdgc6y2+qY5mDaz2PUVjlg9znE9byl+q0uC3DeByqBGReQu5tpLK0TAqTIXScRUV+dg7+bUPpQ==
