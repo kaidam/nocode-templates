@@ -4,8 +4,8 @@
   "private": true,
   "description": "",
   "dependencies": {
-    "@nocode-toolkit/template": "^1.0.24",
-    "@nocode-toolkit/ui": "^1.0.24",
+    "@nocode-toolkit/template": "^1.0.25",
+    "@nocode-toolkit/ui": "^1.0.25",
     "@types/react": "^16.9.11",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
