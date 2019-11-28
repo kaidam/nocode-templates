@@ -2,16 +2,16 @@ import React from 'react'
 import { hot } from 'react-hot-loader'
 
 import Router from '@nocode-toolkit/ui/Router'
-import Theme from '@nocode-toolkit/ui/ThemeMaterial'
+import ThemeMaterial from '@nocode-toolkit/ui/ThemeMaterial'
 
-import library from './library'
 import themeProcessor from './theme'
+import library from './library'
 
 const App = ({}) => {
   return (
     <Router
       templates={ library.templates }
-      themeModule={ Theme }
+      ThemeModule={ ThemeMaterial }
       themeProcessor={ themeProcessor }
     />
   )

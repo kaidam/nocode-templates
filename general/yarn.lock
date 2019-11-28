@@ -941,10 +941,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.6"
 
-"@nocode-toolkit/builder@^1.0.28":
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/builder/-/builder-1.0.28.tgz#a71a16d4309209bedaa0206f9918aa91121fce95"
-  integrity sha512-q04rnTzxO1E/KQ10rUV+k/56651aGDmpq8g1pPlCqp/Mx0ypAvXjnwZ8iRXpOA4qWuJKEMiNfhGE0vSaF8BhsA==
+"@nocode-toolkit/builder@^1.0.32":
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/builder/-/builder-1.0.32.tgz#b0e2feb8e465ec6903de0ec7e645a457e628895f"
+  integrity sha512-ngJhGdBvLaJk9o8cAkUjfHYpcmFxZJIORQ592tNw3cmU4La9LOxd4ZLwVJcH5ejOP588bUMLziD6L7IZJEZh8g==
   dependencies:
     "@babel/cli" "^7.2.3"
     "@babel/core" "^7.3.4"
@@ -978,12 +978,12 @@
     webpack-node-externals "^1.7.2"
     yargs "^15.0.1"
 
-"@nocode-toolkit/template@^1.0.28":
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/template/-/template-1.0.28.tgz#2003e09345967371ca2eabf2ec1cd35e8c6a8d23"
-  integrity sha512-Woo0G30liW+5TAQ3OSeZeNclDlb7ugYqfiJQFjiEyDgLLqHXOVyscYDjYGL8vOwip37GlUmOpLLejkffnD9+nw==
+"@nocode-toolkit/template@^1.0.32":
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/template/-/template-1.0.32.tgz#0a45d87d619520beccedb2e57ec77a48ce34aade"
+  integrity sha512-kveuXgAI48hJ4y/RwfYhjTSte0Ze1muC3I/CqKu0ssRHSyknmS0PcbcrV33jT+3MNdBYBKfHNM6sOxiHW0bb7A==
   dependencies:
-    "@nocode-toolkit/builder" "^1.0.28"
+    "@nocode-toolkit/builder" "^1.0.32"
     archiver "^3.1.1"
     async "^3.1.0"
     axios "^0.19.0"
@@ -995,18 +995,19 @@
     request "^2.88.0"
     yargs "^15.0.2"
 
-"@nocode-toolkit/ui@^1.0.28":
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.28.tgz#ef4c396d5c506f1e18a00be58a55097f862f70dd"
-  integrity sha512-8GnQmAMxR2nihgwPWlpzWpKu9BWj1B6Syq7uwODGZONnuUwiuxYA2KxcY9inpetaYH2v+H/v7NoyGnMQ1KQmIw==
+"@nocode-toolkit/ui@^1.0.32":
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.32.tgz#5d3b70003893179d1ec70bc07c2e2bce47b1fe96"
+  integrity sha512-yAQRm++Kl205wtPj3HOAJ1ol/tteVhih2B29zuxC6/mPLZmBo+WwwG4A7qx9P1IGw0G8zGNLNmQhzsWPQEMf3A==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
-    "@nocode-toolkit/website" "^1.0.28"
-    "@nocode-toolkit/website-material-ui" "^1.0.28"
+    "@nocode-toolkit/website" "^1.0.32"
+    "@nocode-toolkit/website-material-ui" "^1.0.32"
     axios "0.19.0"
     bluebird "^3.5.4"
     classnames "^2.2.6"
+    deepmerge "^4.2.2"
     dotty "^0.1.0"
     formik "2.0.4"
     immutable "^4.0.0-rc.12"
@@ -1026,22 +1027,23 @@
     slate-react "^0.22.10"
     yup "^0.27.0"
 
-"@nocode-toolkit/website-material-ui@^1.0.28":
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website-material-ui/-/website-material-ui-1.0.28.tgz#566338d1540195a12ed1931a88ccf48f4a353efd"
-  integrity sha512-ZZweuNrtE0DTTIh1pWAWt3/jBH4phr3puTIJ+6Dn7b4qAX1da7mMiGuDv4GM/DqnYtnfleuH4NVT6L5wyDDrAQ==
+"@nocode-toolkit/website-material-ui@^1.0.32":
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website-material-ui/-/website-material-ui-1.0.32.tgz#4c6b2de4b6c4862e1b2bc1c7b7d5df44cbd58b5c"
+  integrity sha512-r4eJUdz6DIQiiN/5F48DAeHTgFoU4gYhQLl1Mxuo2UpbPBWMgs2bF1bbSl+/sE9qYMtTJAepGyHjp/4gAdualw==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
     "@material-ui/styles" "^4.4.1"
-    "@nocode-toolkit/website" "^1.0.28"
+    "@nocode-toolkit/website" "^1.0.32"
     classnames "^2.2.6"
+    dotty "^0.1.0"
     react "^16.8.6"
 
-"@nocode-toolkit/website@^1.0.28":
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website/-/website-1.0.28.tgz#fa61efeda0b4c1552cc3c1b694515fbf903e3033"
-  integrity sha512-4KVcsw1AE6o5fVzJyXfLxXMaBJUG7pDv97hhSMpNSPHuIjIcaiCftGOKEGlbh7A1u1z68VL2jV4hoJyTIfp7Lg==
+"@nocode-toolkit/website@^1.0.32":
+  version "1.0.32"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website/-/website-1.0.32.tgz#1cc1bf0afaf951298e30c05ee5aa5c7173f052a5"
+  integrity sha512-QXi8tZAGiomNkMTuayplpI51KxOQ9kmk7EIYEq7+f58QOZN0KAIoJA9/vB05EpxE/GBhOXpm+Yqlt122S4nqfg==
   dependencies:
     "@hot-loader/react-dom" "^16.8.6"
     "@types/react" "^16.9.11"
@@ -2369,6 +2371,11 @@ deepmerge@^2.1.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.2.1.tgz#5d3ff22a01c00f645405a2fbc17d0778a1801170"
   integrity sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA==
+
+deepmerge@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
+  integrity sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==
 
 default-gateway@^4.2.0:
   version "4.2.0"

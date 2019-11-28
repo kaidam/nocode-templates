@@ -1,4 +1,4 @@
-import Render from '@nocode-toolkit/ui/Browser'
+import Render from '@nocode-toolkit/ui/browser'
 import reducers from '@nocode-toolkit/ui/store/reducers'
 import App from './app'
 
