@@ -5,9 +5,9 @@
   "description": "",
   "dependencies": {
     "@material-ui/core": "^4.3.3",
-    "@nocode-toolkit/template": "^1.0.32",
-    "@nocode-toolkit/ui": "^1.0.32",
-    "@nocode-toolkit/website-material-ui": "^1.0.32",
+    "@nocode-toolkit/template": "^1.0.33",
+    "@nocode-toolkit/ui": "^1.0.33",
+    "@nocode-toolkit/website-material-ui": "^1.0.33",
     "@types/react": "^16.9.11",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
