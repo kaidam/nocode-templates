@@ -942,10 +942,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.0"
 
-"@nocode-toolkit/builder@^1.0.33":
-  version "1.0.33"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/builder/-/builder-1.0.33.tgz#797ec9d90fd0e062b7e63c9adb1453387e5349ba"
-  integrity sha512-kEp4aHKkiudzMygxoqUY2ZbH8DLqdlIlF+IWssdl4nxUQXnYxM6SwpL5GLam+FHhcGGef6J9d6J7OJcPZUKqig==
+"@nocode-toolkit/builder@^1.0.35":
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/builder/-/builder-1.0.35.tgz#7c08ee9ef36aa14aa5e55b2c8e643aeb42ac95d3"
+  integrity sha512-7yWdqkZkBvEQ+LoWyBH8D5Bmfo2WxkhaQSJP69japFA+7VqDpCduKSIv29YfYvgvJufkBNQ7g2TemRZB8nnetA==
   dependencies:
     "@babel/cli" "^7.2.3"
     "@babel/core" "^7.3.4"
@@ -980,11 +980,11 @@
     yargs "^15.0.1"
 
 "@nocode-toolkit/template@^1.0.33":
-  version "1.0.33"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/template/-/template-1.0.33.tgz#9a64b5564c35183e70f9544a708e8c3e3f23a408"
-  integrity sha512-iMWpTXrKINx4yr1t5yrUQBW0KVLRchQ6GVgvjSWrOZTTk3JcGcmWwsCwoNbdoY7GnVDbpFDPOyCPiXzQo91STw==
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/template/-/template-1.0.35.tgz#ce2571ab845d5a8283ce0d81f7d4effd5c8b1c9a"
+  integrity sha512-r5MgTqX6xdZlt7UmgsgQDy/xom9bdEEfhC6A4k3PYW8xIUm/1jrqTQo51zpf/gb7TxZMDEkCOiaJsp4FPjRScg==
   dependencies:
-    "@nocode-toolkit/builder" "^1.0.33"
+    "@nocode-toolkit/builder" "^1.0.35"
     archiver "^3.1.1"
     async "^3.1.0"
     axios "^0.19.0"
@@ -997,14 +997,14 @@
     yargs "^15.0.2"
 
 "@nocode-toolkit/ui@^1.0.33":
-  version "1.0.34"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.34.tgz#71cd8bda2d6b187eaac31561ead399f200d8f4d8"
-  integrity sha512-vvMrClk6U6qC5uQ3T9deWg7DPtObAO7APV1sYmvdwWqZquNFe59GotDKpAXLVmF3DY7oW4bRPh/BiJ/tA0t8Zg==
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.35.tgz#7cc185625339114b89535513517a444f30061581"
+  integrity sha512-QVy5XKqk2WAuqrbVwn19hYoVzP/AUXN2rBQsxtgJVx3uXHsOhWByvoiSJ57h0OdNLSc40Y27xyfRuXwmQ7g6gg==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
-    "@nocode-toolkit/website" "^1.0.34"
-    "@nocode-toolkit/website-material-ui" "^1.0.34"
+    "@nocode-toolkit/website" "^1.0.35"
+    "@nocode-toolkit/website-material-ui" "^1.0.35"
     axios "0.19.0"
     bluebird "^3.5.4"
     classnames "^2.2.6"
@@ -1028,23 +1028,23 @@
     slate-react "^0.22.10"
     yup "^0.27.0"
 
-"@nocode-toolkit/website-material-ui@^1.0.33", "@nocode-toolkit/website-material-ui@^1.0.34":
-  version "1.0.34"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website-material-ui/-/website-material-ui-1.0.34.tgz#f375b6365663bb000eec1410cdca9a0dd9abda90"
-  integrity sha512-r3n4UOZJLjMdufGSXHjoAlYDNjCmo5Lhxvylb/xAWqC0VT5AdXhoUROylmuSg139b6j2gfXEbgKZTTf9nLwhSA==
+"@nocode-toolkit/website-material-ui@^1.0.33", "@nocode-toolkit/website-material-ui@^1.0.35":
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website-material-ui/-/website-material-ui-1.0.35.tgz#237c404a64a13b6c86f5552bc4c193577e503147"
+  integrity sha512-OVRy1xRAvyhIXkAMvwpgGDt4G/sNl3szszxOUwnG44oN5d8k8sztoOTdsV9ThTwpULU8wI/WySa/3+aaKC9hHA==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
     "@material-ui/styles" "^4.4.1"
-    "@nocode-toolkit/website" "^1.0.34"
+    "@nocode-toolkit/website" "^1.0.35"
     classnames "^2.2.6"
     dotty "^0.1.0"
     react "^16.8.6"
 
-"@nocode-toolkit/website@^1.0.34":
-  version "1.0.34"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website/-/website-1.0.34.tgz#681cb17458eed6dad37b84fbbbd5a40bbc4721d7"
-  integrity sha512-EarGMjG9UKqliRAEIVWeHscRHyxZJh7RdrF0KqWoPBB2cgY0RrvzfRNvV+lN3jy9K02ILuUsAXCnHXCUBlj4nA==
+"@nocode-toolkit/website@^1.0.35":
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website/-/website-1.0.35.tgz#763f36d6da14655eb421cb60b31b7027de67d211"
+  integrity sha512-OuZT+Z/y44a9uSTTeL7LXxpvPKAjwijyiKpF8Htk4TncxygLlsHkO4NSVWqLCihWQbypnP9y5L+4Noyw98AmVw==
   dependencies:
     "@hot-loader/react-dom" "^16.8.6"
     "@types/react" "^16.9.11"
@@ -1869,9 +1869,9 @@ camelcase@^5.0.0:
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
 caniuse-lite@^1.0.30001012:
-  version "1.0.30001013"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001013.tgz#da2440d4d266a17d40eb79bd19c0c8cc1d029c72"
-  integrity sha512-hOAXaWKuq/UVFgYawxIOdPdyMQdYcwOCDOjnZcKn7wCgFUrhP7smuNZjGLuJlPSgE6aRA4cRJ+bGSrhtEt7ZAg==
+  version "1.0.30001015"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001015.tgz#15a7ddf66aba786a71d99626bc8f2b91c6f0f5f0"
+  integrity sha512-/xL2AbW/XWHNu1gnIrO8UitBGoFthcsDgU9VLK1/dpsoxbaD5LscHozKze05R6WLsBvLhqv78dAPozMFQBYLbQ==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -2569,9 +2569,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.317:
-  version "1.3.321"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.321.tgz#913869f5ec85daabba0e75c9c314b4bf26cdb01e"
-  integrity sha512-jJy/BZK2s2eAjMPXVMSaCmo7/pSY2aKkfQ+LoAb5Wk39qAhyP9r8KU74c4qTgr9cD/lPUhJgReZxxqU0n5puog==
+  version "1.3.322"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.322.tgz#a6f7e1c79025c2b05838e8e344f6e89eb83213a8"
+  integrity sha512-Tc8JQEfGQ1MzfSzI/bTlSr7btJv/FFO7Yh6tanqVmIWOuNCu6/D1MilIEgLtmWqIrsv+o4IjpLAhgMBr/ncNAA==
 
 elliptic@^6.0.0:
   version "6.5.2"
@@ -4473,9 +4473,9 @@ node-pre-gyp@^0.12.0:
     tar "^4"
 
 node-releases@^1.1.41:
-  version "1.1.41"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.41.tgz#57674a82a37f812d18e3b26118aefaf53a00afed"
-  integrity sha512-+IctMa7wIs8Cfsa8iYzeaLTFwv5Y4r5jZud+4AnfymzeEXKBCavFX0KBgzVaPVqf0ywa6PrO8/b+bPqdwjGBSg==
+  version "1.1.42"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.42.tgz#a999f6a62f8746981f6da90627a8d2fc090bbad7"
+  integrity sha512-OQ/ESmUqGawI2PRX+XIRao44qWYBBfN54ImQYdWVTQqUckuejOg76ysSqDBK8NG3zwySRVnX36JwDQ6x+9GxzA==
   dependencies:
     semver "^6.3.0"
 
