@@ -997,14 +997,14 @@
     yargs "^15.0.2"
 
 "@nocode-toolkit/ui@^1.0.33":
-  version "1.0.33"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.33.tgz#7106eb288bda5a07f681239966b8780fd8af3341"
-  integrity sha512-43/Q2zAPerYPxc7IUyNUYhnlZpJziexlJv1DJR4zrQ3QvkuE4W+DrvQ4UrTw34NtbleZzC8+TFXqK92c8HHZYA==
+  version "1.0.34"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.34.tgz#71cd8bda2d6b187eaac31561ead399f200d8f4d8"
+  integrity sha512-vvMrClk6U6qC5uQ3T9deWg7DPtObAO7APV1sYmvdwWqZquNFe59GotDKpAXLVmF3DY7oW4bRPh/BiJ/tA0t8Zg==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
-    "@nocode-toolkit/website" "^1.0.33"
-    "@nocode-toolkit/website-material-ui" "^1.0.33"
+    "@nocode-toolkit/website" "^1.0.34"
+    "@nocode-toolkit/website-material-ui" "^1.0.34"
     axios "0.19.0"
     bluebird "^3.5.4"
     classnames "^2.2.6"
@@ -1028,23 +1028,23 @@
     slate-react "^0.22.10"
     yup "^0.27.0"
 
-"@nocode-toolkit/website-material-ui@^1.0.33":
-  version "1.0.33"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website-material-ui/-/website-material-ui-1.0.33.tgz#d9d82da6daf157c9eb947f67a4b3d0f7b909b30f"
-  integrity sha512-evOezBLvobBxHVqEnGx3az4JinODM8TZx17C3zntFJ274O2c9XGVLIAAR8DN3m15A3M9AKsBbffpjHTe2jE/pQ==
+"@nocode-toolkit/website-material-ui@^1.0.34":
+  version "1.0.34"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website-material-ui/-/website-material-ui-1.0.34.tgz#f375b6365663bb000eec1410cdca9a0dd9abda90"
+  integrity sha512-r3n4UOZJLjMdufGSXHjoAlYDNjCmo5Lhxvylb/xAWqC0VT5AdXhoUROylmuSg139b6j2gfXEbgKZTTf9nLwhSA==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
     "@material-ui/styles" "^4.4.1"
-    "@nocode-toolkit/website" "^1.0.33"
+    "@nocode-toolkit/website" "^1.0.34"
     classnames "^2.2.6"
     dotty "^0.1.0"
     react "^16.8.6"
 
-"@nocode-toolkit/website@^1.0.33":
-  version "1.0.33"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website/-/website-1.0.33.tgz#740523f00236f35dd76863cfb03b701959c0d337"
-  integrity sha512-eofQq2pAbiwHixWiECnu+V94jQ02VsxEyZSIZyEu0MX6AeK6NtIvsR4BnIPUMAMgnvuFk0+AjSPLuqOkmgN9HA==
+"@nocode-toolkit/website@^1.0.34":
+  version "1.0.34"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website/-/website-1.0.34.tgz#681cb17458eed6dad37b84fbbbd5a40bbc4721d7"
+  integrity sha512-EarGMjG9UKqliRAEIVWeHscRHyxZJh7RdrF0KqWoPBB2cgY0RrvzfRNvV+lN3jy9K02ILuUsAXCnHXCUBlj4nA==
   dependencies:
     "@hot-loader/react-dom" "^16.8.6"
     "@types/react" "^16.9.11"
