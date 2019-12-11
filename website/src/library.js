@@ -4,7 +4,7 @@ import localSchemas from '@nocode-toolkit/ui/types/local/schemas'
 import unsplashSchemas from '@nocode-toolkit/ui/types/unsplash/schemas'
 import TitleCell from '@nocode-toolkit/website-material-ui/components/cells/Title'
 
-import stripePlugin from '@nocode-toolkit/plugin-stripe/ui'
+import plugins from './plugins'
 
 import LayoutDefault from './pages/Layout'
 import PageDefault from './pages/Document'
@@ -12,8 +12,7 @@ import PageDefault from './pages/Document'
 library.add(googleDriveSchemas)
 library.add(localSchemas)
 library.add(unsplashSchemas)
-
-library.addPlugin(stripePlugin)
+library.addPlugin(plugins.stripe)
 
 const titleSchema = library.get('local.title')
 titleSchema.cellConfig.component = TitleCell
