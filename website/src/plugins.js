@@ -1,14 +1,9 @@
-import StripePlugin from '@nocode-toolkit/plugin-stripe/ui'
-import PaymentButton from '@nocode-toolkit/website-material-ui/components/cells/PaymentButton'
-
-const stripe = StripePlugin({
-  renderers: {
-    paymentButton: PaymentButton,
-  }
-})
+import StripePlugin from '@nocode-toolkit/plugin-stripe/ui/pluginMaterial'
+import ContactFormPlugin from '@nocode-toolkit/plugin-contactform/ui/pluginMaterial'
 
 const plugins = {
-  stripe,
+  stripe: StripePlugin(),
+  contactform: ContactFormPlugin(),
 }
 
 export default plugins

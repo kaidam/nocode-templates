@@ -13,6 +13,7 @@ library.add(googleDriveSchemas)
 library.add(localSchemas)
 library.add(unsplashSchemas)
 library.addPlugin(plugins.stripe)
+library.addPlugin(plugins.contactform)
 
 const titleSchema = library.get('local.title')
 titleSchema.cellConfig.component = TitleCell

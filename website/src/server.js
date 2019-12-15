@@ -7,6 +7,7 @@ import App from './app'
 const server = Server({
   reducers: mergeReducers({
     stripe: plugins.stripe.reducer,
+    contactform: plugins.contactform.reducer,
   }),
   App,
 })
