@@ -18,6 +18,47 @@ library.addPlugin(plugins.contactform)
 const titleSchema = library.get('local.title')
 titleSchema.cellConfig.component = TitleCell
 
+const settingsSchema = library.get('local.settings')
+settingsSchema.tabs.push({
+  id: 'layout',
+  title: 'Layout',
+  schema: [{
+    id: 'topbarHeight',
+    title: 'Top Bar Height',
+    helperText: 'The pixel height of the top bar',
+    inputProps: {
+      type: 'number',
+    },
+  },{
+    id: 'footerHeight',
+    title: 'Footer Height',
+    helperText: 'The pixel height of the footer',
+    inputProps: {
+      type: 'number',
+    },
+  },{
+    id: 'navigation',
+    title: 'Navigation Bars',
+    helperText: 'Choose which navigation bars are active',
+    component: 'multipleCheckbox',
+    options: [{
+      title: 'Left Hand Navigation',
+      value: 'left',
+    },{
+      title: 'Right Hand Navigation',
+      value: 'right',
+    }]
+  }],
+})
+settingsSchema.initialValues = Object.assign({}, settingsSchema.initialValues, {
+  topbarHeight: 80,
+  footerHeight: 80,
+  navigation: {
+    left: true,
+    right: false,
+  },
+})
+
 const templates = {
   layouts: {
     default: LayoutDefault,

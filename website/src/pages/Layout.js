@@ -1,4 +1,5 @@
 import React, { lazy, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -16,6 +17,8 @@ import NavBar from '@nocode-toolkit/website-material-ui/components/content/NavBa
 import Copyright from '@nocode-toolkit/website-material-ui/components/widgets/Copyright'
 import Logo from '@nocode-toolkit/website-material-ui/components/widgets/Logo'
 
+import selectors from '@nocode-toolkit/ui/store/selectors'
+
 const NocodeTopbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/system/NocodeTopbar'))
 const UIElements = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/system/UIElements'))
 
@@ -30,6 +33,19 @@ const Layout = ({
   const openDrawer = () => setDrawerOpen(true)
   const closeDrawer = () => setDrawerOpen(false)
 
+  const showUI = useSelector(selectors.ui.showUI)
+  const settingsItem = useSelector(selectors.ui.settings)
+
+  const settings = settingsItem && settingsItem.data ?
+    settingsItem.data :
+    {}
+
+  const navigationSettings = settings.navigation || {}
+
+  const navbarClassname = showUI ?
+    classes.largeDrawer :
+    classes.smallDrawer
+
   return (
     <div className={ classes.root }>
       <Header />
@@ -41,7 +57,7 @@ const Layout = ({
         className={ classes.appBar }
       >
         <Toolbar classes={{
-          root: classes.toolbar,
+          root: classes.headerToolbar,
         }}>
           <IconButton 
             className={ classes.smallNav }
@@ -72,12 +88,16 @@ const Layout = ({
         </Toolbar>
       </AppBar>
       <div className={ classes.main }>
-        <div className={ [classes.drawer, classes.largeNav].join(' ') }>
-          <Tree
-            section="sidebar"
-            onClick={ closeDrawer }
-          />
-        </div>
+        {
+          navigationSettings.left && (
+            <div className={ [classes.drawer, navbarClassname, classes.largeNav].join(' ') }>
+              <Tree
+                section="sidebar"
+                onClick={ closeDrawer }
+              />
+            </div>
+          )
+        }
         <main className={ classes.content }>
           <div className={ classes.contentChildren }>
             { children }
@@ -85,7 +105,7 @@ const Layout = ({
           <Divider />
           <div className={ classes.footer }>
             <Toolbar classes={{
-              root: classes.toolbar,
+              root: classes.footerToolbar,
             }}>
               <div className={ classes.footerContainer }>
                 <div className={ classes.footerCopyright }>
@@ -100,6 +120,16 @@ const Layout = ({
             </Toolbar>
           </div>
         </main>
+        {
+          navigationSettings.right && (
+            <div className={ [classes.drawer, navbarClassname, classes.largeNav].join(' ') }>
+              <Tree
+                section="rightbar"
+                onClick={ closeDrawer }
+              />
+            </div>
+          )
+        }
       </div>
       <UILoader
         Component={ UIElements }

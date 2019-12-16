@@ -7,7 +7,8 @@ const themeProcessor = ({
       logoHeight: 60,
       topbarHeight: 80,
       footerHeight: 80,
-      drawerWidth: config.showUI ? 360 : 240,
+      drawerWidthSmall: 240,
+      drawerWidthLarge: 360,
       smallScreenBreakpoint: 'sm',
       largeScreenBreakpoint: 'md',
     }
@@ -18,6 +19,12 @@ const themeProcessor = ({
         main: settings.color.color
       }
     }
+  }
+  if(settings.topbarHeight) {
+    updates.layout.topbarHeight = settings.topbarHeight
+  }
+  if(settings.footerHeight) {
+    updates.layout.footerHeight = settings.footerHeight
   }
   return updates
 }
