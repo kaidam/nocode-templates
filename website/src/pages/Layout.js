@@ -10,7 +10,6 @@ import Divider from '@material-ui/core/Divider'
 
 import UILoader from '@nocode-toolkit/ui/components/system/UILoader'
 import Header from '@nocode-toolkit/ui/components/system/Header'
-import styles from '@nocode-toolkit/website-material-ui/styles/layout'
 
 import Tree from '@nocode-toolkit/website-material-ui/components/content/Tree'
 import NavBar from '@nocode-toolkit/website-material-ui/components/content/NavBar'
@@ -18,6 +17,8 @@ import Copyright from '@nocode-toolkit/website-material-ui/components/widgets/Co
 import Logo from '@nocode-toolkit/website-material-ui/components/widgets/Logo'
 
 import selectors from '@nocode-toolkit/ui/store/selectors'
+
+import styles from '../styles/layout'
 
 const NocodeTopbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/system/NocodeTopbar'))
 const UIElements = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/system/UIElements'))
@@ -27,11 +28,14 @@ const useStyles = makeStyles(styles)
 const Layout = ({
   children,
 }) => {
-  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [leftDrawerOpen, setLeftDrawerOpen] = useState(false)
+  const [rightDrawerOpen, setRightDrawerOpen] = useState(false)
   const classes = useStyles()
 
-  const openDrawer = () => setDrawerOpen(true)
-  const closeDrawer = () => setDrawerOpen(false)
+  const openLeftDrawer = () => setLeftDrawerOpen(true)
+  const closeLeftDrawer = () => setLeftDrawerOpen(false)
+  const openRightDrawer = () => setRightDrawerOpen(true)
+  const closeRightDrawer = () => setRightDrawerOpen(false)
 
   const showUI = useSelector(selectors.ui.showUI)
   const settingsItem = useSelector(selectors.ui.settings)
@@ -59,32 +63,76 @@ const Layout = ({
         <Toolbar classes={{
           root: classes.headerToolbar,
         }}>
-          <IconButton 
-            className={ classes.smallNav }
-            aria-label="Menu"
-            onClick={ openDrawer }
-          >
-            <MenuIcon className={ classes.smallNavButton } />
-          </IconButton>
-          <Drawer 
-            open={ drawerOpen }
-            onClose={ closeDrawer }
-            className={ classes.smallNav }
-          >
-            <div className={ [classes.drawer, classes.smallNav].join(' ') }>
-              <Tree
-                section="sidebar"
-                onClick={ closeDrawer }
-              />
-            </div>
-          </Drawer>
+          {
+            navigationSettings.left && (
+              <React.Fragment>
+                <IconButton 
+                  className={ classes.smallNav }
+                  aria-label="Menu"
+                  onClick={ openLeftDrawer }
+                >
+                  <MenuIcon className={ classes.smallNavButton } />
+                </IconButton>
+                <Drawer 
+                  open={ leftDrawerOpen }
+                  onClose={ closeLeftDrawer }
+                  className={ classes.smallNav }
+                >
+                  <div className={ [classes.drawer, navbarClassname, classes.smallNav].join(' ') }>
+                    <Tree
+                      section="sidebar"
+                      onClick={ closeLeftDrawer }
+                    />
+                  </div>
+                </Drawer>
+              </React.Fragment> 
+            )
+          }
           <div className={ classes.appBarTitle }>
-            <Logo />
+            <Logo 
+              classes={{
+                title: classes.logoTitle,
+              }}
+            />
           </div>
           <NavBar
             section="topbar"
             withHome
+            classes={{
+              navItem: classes.navItem,
+              navActive: classes.navActive,
+              navItemLarge: classes.navItemLarge,
+              navItemSmall: classes.navItemSmall,
+              inactiveEditorContainer: classes.inactiveEditorContainer,
+              smallNavButton: classes.smallNavButton,
+            }}
           />
+          {
+            navigationSettings.right && (
+              <React.Fragment>
+                <IconButton 
+                  className={ classes.smallNav }
+                  aria-label="Menu"
+                  onClick={ openRightDrawer }
+                >
+                  <MenuIcon className={ classes.smallNavButton } />
+                </IconButton>
+                <Drawer 
+                  open={ rightDrawerOpen }
+                  onClose={ closeRightDrawer }
+                  className={ classes.smallNav }
+                  anchor="right"
+                >
+                  <div className={ [classes.drawer, navbarClassname, classes.smallNav].join(' ') }>
+                    <Tree
+                      section="rightbar"
+                      onClick={ closeRightDrawer }
+                    />
+                  </div>
+                </Drawer>
+              </React.Fragment> 
+            )
+          }
         </Toolbar>
       </AppBar>
       <div className={ classes.main }>
@@ -93,7 +141,7 @@ const Layout = ({
             <div className={ [classes.drawer, navbarClassname, classes.largeNav].join(' ') }>
               <Tree
                 section="sidebar"
-                onClick={ closeDrawer }
+                onClick={ closeLeftDrawer }
               />
             </div>
           )
@@ -114,6 +162,14 @@ const Layout = ({
                 <div className={ classes.footerNavBar }>
                   <NavBar
                     section="footer"
+                    classes={{
+                      navItem: classes.footerNavItem,
+                      navActive: classes.navActive,
+                      navItemLarge: classes.navItemLarge,
+                      navItemSmall: classes.navItemSmall,
+                      inactiveEditorContainer: classes.inactiveEditorContainer,
+                      smallNavButton: classes.footerSmallNavButton,
+                    }}
                   />
                 </div>
               </div>
@@ -125,7 +181,7 @@ const Layout = ({
             <div className={ [classes.drawer, navbarClassname, classes.largeNav].join(' ') }>
               <Tree
                 section="rightbar"
-                onClick={ closeDrawer }
+                onClick={ closeLeftDrawer }
               />
             </div>
           )
