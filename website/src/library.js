@@ -14,6 +14,7 @@ library.add(localSchemas)
 library.add(unsplashSchemas)
 library.addPlugin(plugins.stripe)
 library.addPlugin(plugins.contactform)
+library.addPlugin(plugins.sociallinks)
 
 const titleSchema = library.get('local.title')
 titleSchema.cellConfig.component = TitleCell
