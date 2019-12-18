@@ -11,8 +11,8 @@ import Divider from '@material-ui/core/Divider'
 import UILoader from '@nocode-toolkit/ui/components/system/UILoader'
 import Header from '@nocode-toolkit/ui/components/system/Header'
 
-import Tree from '@nocode-toolkit/website-material-ui/components/content/Tree'
-import NavBar from '@nocode-toolkit/website-material-ui/components/content/NavBar'
+import Tree from '@nocode-toolkit/website-material-ui/components/content/Tree/Tree'
+import NavBar from '@nocode-toolkit/website-material-ui/components/content/NavBar/NavBar'
 import Copyright from '@nocode-toolkit/website-material-ui/components/widgets/Copyright'
 import Logo from '@nocode-toolkit/website-material-ui/components/widgets/Logo'
 
@@ -81,6 +81,7 @@ const Layout = ({
                   <div className={ [classes.drawer, navbarClassname, classes.smallNav].join(' ') }>
                     <Tree
                       section="sidebar"
+                      uppercase
                       onClick={ closeLeftDrawer }
                     />
                   </div>
@@ -98,14 +99,6 @@ const Layout = ({
           <NavBar
             section="topbar"
             withHome
-            classes={{
-              navItem: classes.navItem,
-              navActive: classes.navActive,
-              navItemLarge: classes.navItemLarge,
-              navItemSmall: classes.navItemSmall,
-              inactiveEditorContainer: classes.inactiveEditorContainer,
-              smallNavButton: classes.smallNavButton,
-            }}
           />
           {
             navigationSettings.right && (
@@ -126,6 +119,7 @@ const Layout = ({
                   <div className={ [classes.drawer, navbarClassname, classes.smallNav].join(' ') }>
                     <Tree
                       section="rightbar"
+                      uppercase
                       onClick={ closeRightDrawer }
                     />
                   </div>
@@ -141,6 +135,7 @@ const Layout = ({
             <div className={ [classes.drawer, navbarClassname, classes.largeNav].join(' ') }>
               <Tree
                 section="sidebar"
+                uppercase
                 onClick={ closeLeftDrawer }
               />
             </div>
@@ -162,14 +157,7 @@ const Layout = ({
                 <div className={ classes.footerNavBar }>
                   <NavBar
                     section="footer"
-                    classes={{
-                      navItem: classes.footerNavItem,
-                      navActive: classes.navActive,
-                      navItemLarge: classes.navItemLarge,
-                      navItemSmall: classes.navItemSmall,
-                      inactiveEditorContainer: classes.inactiveEditorContainer,
-                      smallNavButton: classes.footerSmallNavButton,
-                    }}
+                    contrast
                   />
                 </div>
               </div>
@@ -181,6 +169,7 @@ const Layout = ({
             <div className={ [classes.drawer, navbarClassname, classes.largeNav].join(' ') }>
               <Tree
                 section="rightbar"
+                uppercase
                 onClick={ closeLeftDrawer }
               />
             </div>
