@@ -1,11 +1,8 @@
-import React, { lazy, useState } from 'react'
+import React, { lazy } from 'react'
+import classNames from 'classnames'
 import { useSelector } from 'react-redux'
-import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
-import Drawer from '@material-ui/core/Drawer'
-import MenuIcon from '@material-ui/icons/Menu'
 import Divider from '@material-ui/core/Divider'
 
 import UILoader from '@nocode-toolkit/ui/components/system/UILoader'
@@ -19,24 +16,15 @@ import NavDrawer from '@nocode-toolkit/website-material-ui/components/widgets/Na
 
 import selectors from '@nocode-toolkit/ui/store/selectors'
 
-import styles from '../styles/layout'
+import useStyles from '../styles/layout'
 
 const NocodeTopbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/system/NocodeTopbar'))
 const UIElements = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-toolkit/ui/components/system/UIElements'))
 
-const useStyles = makeStyles(styles)
-
 const Layout = ({
   children,
 }) => {
-  const [leftDrawerOpen, setLeftDrawerOpen] = useState(false)
-  const [rightDrawerOpen, setRightDrawerOpen] = useState(false)
   const classes = useStyles()
-
-  const openLeftDrawer = () => setLeftDrawerOpen(true)
-  const closeLeftDrawer = () => setLeftDrawerOpen(false)
-  const openRightDrawer = () => setRightDrawerOpen(true)
-  const closeRightDrawer = () => setRightDrawerOpen(false)
 
   const showUI = useSelector(selectors.ui.showUI)
   const settingsItem = useSelector(selectors.ui.settings)
@@ -47,9 +35,12 @@ const Layout = ({
 
   const navigationSettings = settings.navigation || {}
 
-  const navbarClassname = showUI ?
-    classes.largeDrawer :
-    classes.smallDrawer
+  const navbarClassname = classNames({
+    [classes.drawer]: true,
+    [classes.largeScreen]: true,
+    [classes.largeDrawer]: showUI,
+    [classes.smallDrawer]: !showUI,
+  })
 
   return (
     <div className={ classes.root }>
@@ -59,7 +50,7 @@ const Layout = ({
       />
       <AppBar 
         position="static" 
-        className={ classes.appBar }
+        className={ classes.appbar }
       >
         <Toolbar classes={{
           root: classes.headerToolbar,
@@ -99,11 +90,10 @@ const Layout = ({
       <div className={ classes.main }>
         {
           navigationSettings.left && (
-            <div className={ [classes.drawer, navbarClassname, classes.largeNav].join(' ') }>
+            <div className={ navbarClassname }>
               <Tree
                 section="sidebar"
                 uppercase
-                onClick={ closeLeftDrawer }
               />
             </div>
           )
@@ -133,11 +123,10 @@ const Layout = ({
         </main>
         {
           navigationSettings.right && (
-            <div className={ [classes.drawer, navbarClassname, classes.largeNav].join(' ') }>
+            <div className={ navbarClassname }>
               <Tree
                 section="rightbar"
-                uppercase
-                onClick={ closeLeftDrawer }
+                uppercase 
               />
             </div>
           )
