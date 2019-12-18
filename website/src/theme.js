@@ -4,7 +4,6 @@ const themeProcessor = ({
 }) => {
   const updates = {
     layout: {
-      logoHeight: 60,
       topbarHeight: 80,
       footerHeight: 80,
       drawerWidthSmall: 240,

@@ -15,6 +15,7 @@ import Tree from '@nocode-toolkit/website-material-ui/components/content/Tree/Tr
 import NavBar from '@nocode-toolkit/website-material-ui/components/content/NavBar/NavBar'
 import Copyright from '@nocode-toolkit/website-material-ui/components/widgets/Copyright'
 import Logo from '@nocode-toolkit/website-material-ui/components/widgets/Logo'
+import NavDrawer from '@nocode-toolkit/website-material-ui/components/widgets/NavDrawer'
 
 import selectors from '@nocode-toolkit/ui/store/selectors'
 
@@ -65,28 +66,11 @@ const Layout = ({
         }}>
           {
             navigationSettings.left && (
-              <React.Fragment>
-                <IconButton 
-                  className={ classes.smallNav }
-                  aria-label="Menu"
-                  onClick={ openLeftDrawer }
-                >
-                  <MenuIcon className={ classes.smallNavButton } />
-                </IconButton>
-                <Drawer 
-                  open={ leftDrawerOpen }
-                  onClose={ closeLeftDrawer }
-                  className={ classes.smallNav }
-                >
-                  <div className={ [classes.drawer, navbarClassname, classes.smallNav].join(' ') }>
-                    <Tree
-                      section="sidebar"
-                      uppercase
-                      onClick={ closeLeftDrawer }
-                    />
-                  </div>
-                </Drawer>
-              </React.Fragment> 
+              <NavDrawer
+                Component={ Tree }
+                section="sidebar"
+                uppercase
+              />
             )
           }
           <div className={ classes.appBarTitle }>
@@ -102,29 +86,12 @@ const Layout = ({
           />
           {
             navigationSettings.right && (
-              <React.Fragment>
-                <IconButton 
-                  className={ classes.smallNav }
-                  aria-label="Menu"
-                  onClick={ openRightDrawer }
-                >
-                  <MenuIcon className={ classes.smallNavButton } />
-                </IconButton>
-                <Drawer 
-                  open={ rightDrawerOpen }
-                  onClose={ closeRightDrawer }
-                  className={ classes.smallNav }
-                  anchor="right"
-                >
-                  <div className={ [classes.drawer, navbarClassname, classes.smallNav].join(' ') }>
-                    <Tree
-                      section="rightbar"
-                      uppercase
-                      onClick={ closeRightDrawer }
-                    />
-                  </div>
-                </Drawer>
-              </React.Fragment> 
+              <NavDrawer
+                Component={ Tree }
+                section="rightbar"
+                anchor="right"
+                uppercase
+              />
             )
           }
         </Toolbar>
