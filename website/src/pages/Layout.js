@@ -34,6 +34,10 @@ const Layout = ({
     {}
 
   const navigationSettings = settings.navigation || {}
+  const hasLeftNavigation = typeof(navigationSettings.left) == 'boolean' ?
+    navigationSettings.left :
+    true
+  const hasRightNavigation = navigationSettings.right
 
   const navbarClassname = classNames({
     [classes.drawer]: true,
@@ -56,7 +60,7 @@ const Layout = ({
           root: classes.headerToolbar,
         }}>
           {
-            navigationSettings.left && (
+            hasLeftNavigation && (
               <NavDrawer
                 Component={ Tree }
                 section="sidebar"
@@ -76,7 +80,7 @@ const Layout = ({
             withHome
           />
           {
-            navigationSettings.right && (
+            hasRightNavigation && (
               <NavDrawer
                 Component={ Tree }
                 section="rightbar"
@@ -89,7 +93,7 @@ const Layout = ({
       </AppBar>
       <div className={ classes.main }>
         {
-          navigationSettings.left && (
+          hasLeftNavigation && (
             <div className={ navbarClassname }>
               <Tree
                 section="sidebar"
@@ -122,7 +126,7 @@ const Layout = ({
           </div>
         </main>
         {
-          navigationSettings.right && (
+          hasRightNavigation && (
             <div className={ navbarClassname }>
               <Tree
                 section="rightbar"
