@@ -69,11 +69,7 @@ const Layout = ({
             )
           }
           <div className={ classes.appBarTitle }>
-            <Logo 
-              classes={{
-                title: classes.logoTitle,
-              }}
-            />
+            <Logo />
           </div>
           <NavBar
             section="topbar"
