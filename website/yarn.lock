@@ -979,12 +979,12 @@
     webpack-node-externals "^1.7.2"
     yargs "^15.0.1"
 
-"@nocode-toolkit/plugin-contactform@^1.0.49":
-  version "1.0.49"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/plugin-contactform/-/plugin-contactform-1.0.49.tgz#68cbb4ac11d05f8028388ce296bb59933c9c244f"
-  integrity sha512-G/IILffocoCHN9Spdls4aBUVsiHO/iVbifl+LeSA2sU9LfbobGokCEakts5WCWHnz6JPjq5ZBVPRUyPQXFxv/Q==
+"@nocode-toolkit/plugin-contactform@^1.0.50":
+  version "1.0.50"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/plugin-contactform/-/plugin-contactform-1.0.50.tgz#e9bb3a4787aa7fb88d2f2877cb7168672e242181"
+  integrity sha512-Qd6xcIqkMMqeUvBt5BnxlY4yhQXOnE3rYl+s6p8XY9JuX/Dn63oiASq6QwDKUGKi8ld9G5lHGHkGgm4jFLfumA==
   dependencies:
-    "@nocode-toolkit/ui" "^1.0.49"
+    "@nocode-toolkit/ui" "^1.0.50"
     "@nocode-toolkit/website" "^1.0.47"
     body-parser "^1.19.0"
     express "^4.17.1"
@@ -996,23 +996,23 @@
     redux "^4.0.4"
     request "^2.88.0"
 
-"@nocode-toolkit/plugin-sociallinks@^1.0.49":
-  version "1.0.49"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/plugin-sociallinks/-/plugin-sociallinks-1.0.49.tgz#6cf2205ed58cffdac728908d9b53e77a1fcb43fa"
-  integrity sha512-O+D+OboYddb8ViY+DnCGjGSLqDV7xYen1ZZGylplRB/TmIDu7fS++Uc0V4pzU+53nFpl5vgnaRIGjzr1udALDQ==
+"@nocode-toolkit/plugin-sociallinks@^1.0.50":
+  version "1.0.50"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/plugin-sociallinks/-/plugin-sociallinks-1.0.50.tgz#6981b0af42a89e6e73db85a1c589ed89f2dc091b"
+  integrity sha512-w5V2hygPaUN2KuoY0u6Bi44aXo5slUPvO5B889oqmlKMU3AW03eoFHzbFQa/SMGDtqha3v3Ij4CTzVPfCUhrYw==
   dependencies:
-    "@nocode-toolkit/ui" "^1.0.49"
+    "@nocode-toolkit/ui" "^1.0.50"
     "@nocode-toolkit/website" "^1.0.47"
     react "^16.8.6"
     react-redux "^7.0.1"
     redux "^4.0.4"
 
-"@nocode-toolkit/plugin-stripe@^1.0.49":
-  version "1.0.49"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/plugin-stripe/-/plugin-stripe-1.0.49.tgz#b74c9f45a0074e5a825c5f8d706b461e35c09fba"
-  integrity sha512-voLmwteZR3ICQAjH+iGNm7754Vg6viXiPrsPdT0XnQWBV1sn0Uam9CDPQZv4C/3Fck07GTmqhnzSohne4CBGgA==
+"@nocode-toolkit/plugin-stripe@^1.0.50":
+  version "1.0.50"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/plugin-stripe/-/plugin-stripe-1.0.50.tgz#e32aaa98142a5088f5e74528e6d3fbc079ced5b7"
+  integrity sha512-oco9cEmDiW0SZhAHfq+MFw0E8QYn8c5tcJnzXxpRu17aueh1NGCDNuLX1qbdBYX+IGr3sxz+SaKZVmC3QVWebQ==
   dependencies:
-    "@nocode-toolkit/ui" "^1.0.49"
+    "@nocode-toolkit/ui" "^1.0.50"
     "@nocode-toolkit/website" "^1.0.47"
     body-parser "^1.19.0"
     express "^4.17.1"
@@ -1042,15 +1042,15 @@
     request "^2.88.0"
     yargs "^15.0.2"
 
-"@nocode-toolkit/ui@^1.0.49":
-  version "1.0.49"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.49.tgz#008e479c8f8f9f587d88135ea5ab799365559daa"
-  integrity sha512-wp1ITwBh/mV3VHb6NpL19c+8RNM/fDIkJHQdtmu1c9zqKTR1HOf3vv0XDYZ+wb2SkKozpVrrK7uijdsqIyug9w==
+"@nocode-toolkit/ui@^1.0.50":
+  version "1.0.50"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.50.tgz#13cce7a0fd43ca86b6c71687e22fcf69d5a7e683"
+  integrity sha512-zVFLaVVyTfnJdoPYEsueRWcz6ESHOTnymIx1HH5i2FrUxGV7LVosF5sYYKdsfWcWg0/RUdyRmN9EkCOlKEOXWw==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
     "@nocode-toolkit/website" "^1.0.47"
-    "@nocode-toolkit/website-material-ui" "^1.0.49"
+    "@nocode-toolkit/website-material-ui" "^1.0.50"
     axios "0.19.0"
     bluebird "^3.5.4"
     classnames "^2.2.6"
@@ -1074,10 +1074,10 @@
     uuid "^3.3.3"
     yup "^0.27.0"
 
-"@nocode-toolkit/website-material-ui@^1.0.49":
-  version "1.0.49"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website-material-ui/-/website-material-ui-1.0.49.tgz#f85f1950911c162b4eb0bfd2fe57833f9dafe39a"
-  integrity sha512-8G0U5PqXd8tbLs8AnUv8ls/GhAJOkBH1nx24aNG5XPAmf5VdqOWjqZule6O8PkmKTRqM7uXr0skHDtIAxffF3A==
+"@nocode-toolkit/website-material-ui@^1.0.50":
+  version "1.0.50"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website-material-ui/-/website-material-ui-1.0.50.tgz#a437e1cd7e84160d15d777b8472361411acf4986"
+  integrity sha512-scCJVQ9ovEBcL1xLVVU4UBC/CfPsPluDpXhG07ZuiFRZFHTDiWD1Orj2PZDh0tppHH71vrESwDkd0T9I+yih3A==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
