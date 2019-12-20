@@ -1,23 +1,44 @@
 import library from '@nocode-toolkit/ui/types/library'
-import googleDriveSchemas from '@nocode-toolkit/ui/types/drive/schemas'
-import localSchemas from '@nocode-toolkit/ui/types/local/schemas'
-import unsplashSchemas from '@nocode-toolkit/ui/types/unsplash/schemas'
-import TitleCell from '@nocode-toolkit/website-material-ui/components/cells/Title'
 
-import plugins from './plugins'
+/*
+
+  the schemas we want - i.e. what kind of content can be added to this website
+
+*/
+import localSchemas from '@nocode-toolkit/ui/types/local/schemas'
+import googleDriveSchemas from '@nocode-toolkit/ui/types/drive/schemas'
+import unsplashSchemas from '@nocode-toolkit/ui/types/unsplash/schemas'
+
+/*
+
+  the plugins we want to be available
+
+*/
+import StripePlugin from '@nocode-toolkit/plugin-stripe/ui/pluginMaterial'
+import ContactFormPlugin from '@nocode-toolkit/plugin-contactform/ui/pluginMaterial'
+import SocialLinksPlugin from '@nocode-toolkit/plugin-sociallinks/ui/plugin'
+
+import MaterialLibrary from '@nocode-toolkit/website-material-ui/library'
 
 import LayoutDefault from './pages/Layout'
 import PageDefault from './pages/Document'
 
-library.add(googleDriveSchemas)
+
+const plugins = {
+  stripe: StripePlugin(),
+  contactform: ContactFormPlugin(),
+  sociallinks: SocialLinksPlugin(),
+}
+
 library.add(localSchemas)
+library.add(googleDriveSchemas)
 library.add(unsplashSchemas)
+
 library.addPlugin(plugins.stripe)
 library.addPlugin(plugins.contactform)
 library.addPlugin(plugins.sociallinks)
 
-const titleSchema = library.get('local.title')
-titleSchema.cellConfig.component = TitleCell
+MaterialLibrary(library)
 
 library.addTab('local.settings', {
   id: 'layout',
@@ -72,5 +93,6 @@ const templates = {
 
 export default {
   library,
+  plugins,
   templates,
 }
