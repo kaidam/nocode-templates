@@ -22,21 +22,24 @@ titleSchema.cellConfig.component = TitleCell
 library.addTab('local.settings', {
   id: 'layout',
   title: 'Layout',
-  schema: [{
-    id: 'topbarHeight',
-    title: 'Top Bar Height',
-    helperText: 'The pixel height of the top bar',
-    inputProps: {
-      type: 'number',
-    },
-  },{
-    id: 'footerHeight',
-    title: 'Footer Height',
-    helperText: 'The pixel height of the footer',
-    inputProps: {
-      type: 'number',
-    },
-  },{
+  schema: [
+    [
+      {
+        id: 'topbarHeight',
+        title: 'Top Bar Height',
+        helperText: 'The pixel height of the top bar',
+        inputProps: {
+          type: 'number',
+        },
+      },{
+        id: 'footerHeight',
+        title: 'Footer Height',
+        helperText: 'The pixel height of the footer',
+        inputProps: {
+          type: 'number',
+        },
+      }
+    ],{
     id: 'navigation',
     title: 'Navigation Bars',
     helperText: 'Choose which navigation bars are active',

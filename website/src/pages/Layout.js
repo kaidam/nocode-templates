@@ -33,11 +33,18 @@ const Layout = ({
     settingsItem.data :
     {}
 
-  const navigationSettings = settings.navigation || {}
-  const hasLeftNavigation = typeof(navigationSettings.left) == 'boolean' ?
-    navigationSettings.left :
-    true
-  const hasRightNavigation = navigationSettings.right
+  let hasLeftNavigation = false
+  let hasRightNavigation = false
+
+  const navigationSettings = settings.navigation
+
+  if(!navigationSettings) {
+    hasLeftNavigation = true
+  }
+  else {
+    hasLeftNavigation = navigationSettings.left === true
+    hasRightNavigation = navigationSettings.right === true
+  }
 
   const navbarClassname = classNames({
     [classes.drawer]: true,
