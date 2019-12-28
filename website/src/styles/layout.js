@@ -107,7 +107,7 @@ const styles = makeStyles(theme => {
     footer: {
       width: '100%',
       color: theme.palette.common.white,
-      //height: [`${theme.layout.footerHeight}px`, '!important'],
+      minHeight: [`${theme.layout.footerHeight}px`, '!important'],
       backgroundColor: theme.palette.primary.main,
     },
 
