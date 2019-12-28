@@ -122,6 +122,8 @@ const Layout = ({
                   <NavBar
                     section="footer"
                     contrast
+                    vertical
+                    align="right"
                   />
                 </div>
               </div>

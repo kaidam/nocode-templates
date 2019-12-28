@@ -28,7 +28,7 @@ const styles = makeStyles(theme => {
       height: [`${theme.layout.topbarHeight}px`, '!important'],
     },
     footerToolbar: {
-      height: [`${theme.layout.footerHeight}px`, '!important'],
+      //height: [`${theme.layout.footerHeight}px`, '!important'],
     },
     appBarTitle: {
       display: 'flex',
@@ -107,7 +107,7 @@ const styles = makeStyles(theme => {
     footer: {
       width: '100%',
       color: theme.palette.common.white,
-      height: [`${theme.layout.footerHeight}px`, '!important'],
+      //height: [`${theme.layout.footerHeight}px`, '!important'],
       backgroundColor: theme.palette.primary.main,
     },
 
