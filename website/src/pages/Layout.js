@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React, { lazy, useRef, useEffect } from 'react'
 import classNames from 'classnames'
 import { useSelector } from 'react-redux'
 import AppBar from '@material-ui/core/AppBar'
@@ -26,8 +26,11 @@ const Layout = ({
 }) => {
   const classes = useStyles()
 
+  const contentRef = useRef(null)
+
   const showUI = useSelector(selectors.ui.showUI)
   const settingsItem = useSelector(selectors.ui.settings)
+  const route = useSelector(selectors.router.route)
 
   const settings = settingsItem && settingsItem.data ?
     settingsItem.data :
@@ -52,6 +55,10 @@ const Layout = ({
     [classes.largeDrawer]: showUI,
     [classes.smallDrawer]: !showUI,
   })
+
+  useEffect(() => {
+    contentRef.current.scrollTop = 0
+  }, [route])
 
   return (
     <div className={ classes.root }>
@@ -105,7 +112,7 @@ const Layout = ({
             </div>
           )
         }
-        <main className={ classes.content }>
+        <main className={ classes.content } ref={ contentRef }>
           <div className={ classes.contentChildren }>
             { children }
           </div>
