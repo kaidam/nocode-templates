@@ -30,9 +30,9 @@ const plugins = {
   sociallinks: SocialLinksPlugin(),
 }
 
-library.add(localSchemas)
 library.add(googleDriveSchemas)
 library.add(unsplashSchemas)
+library.add(localSchemas)
 
 library.addPlugin(plugins.stripe)
 library.addPlugin(plugins.contactform)
