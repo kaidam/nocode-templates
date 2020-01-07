@@ -20,7 +20,8 @@
     "template:build": "nocode-template build",
     "template:develop": "nocode-template develop",
     "template:preview": "nocode-template preview",
-    "template:publish": "nocode-template publish"
+    "template:publish": "nocode-template publish",
+    "template:link": "yarn link @nocode-toolkit/ui && yarn link @nocode-toolkit/website-material-ui && yarn link @nocode-toolkit/template"
   },
   "author": "",
   "license": "ISC"
