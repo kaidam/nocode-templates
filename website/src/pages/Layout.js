@@ -13,6 +13,7 @@ import NavBar from '@nocode-toolkit/website-material-ui/components/content/NavBa
 import Copyright from '@nocode-toolkit/website-material-ui/components/widgets/Copyright'
 import Logo from '@nocode-toolkit/website-material-ui/components/widgets/Logo'
 import NavDrawer from '@nocode-toolkit/website-material-ui/components/widgets/NavDrawer'
+import Snackbar from '@nocode-toolkit/ui/components/system/Snackbar'
 
 import selectors from '@nocode-toolkit/ui/store/selectors'
 
@@ -148,6 +149,11 @@ const Layout = ({
           )
         }
       </div>
+      {
+        !showUI && (
+          <Snackbar />
+        )
+      }
       <UILoader
         Component={ UIElements }
       />
