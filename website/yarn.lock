@@ -979,13 +979,12 @@
     webpack-node-externals "^1.7.2"
     yargs "^15.0.1"
 
-"@nocode-toolkit/plugin-contactform@^1.0.59":
-  version "1.0.59"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/plugin-contactform/-/plugin-contactform-1.0.59.tgz#84cfaf912f4a243779adeeac3faafbc5686f64d3"
-  integrity sha512-aMSkXjhGPK5PWlaGsIkwyj5lAJDGjN01Hrvf9wtxVZOkNSQeMD/4/a6j+zqOxbT7OgMFmieDsEWTX4uc1QSsqw==
+"@nocode-toolkit/plugin-contactform@^1.0.60":
+  version "1.0.60"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/plugin-contactform/-/plugin-contactform-1.0.60.tgz#b17aa3d76dadc590446b85aa3600d5f8d379ce53"
+  integrity sha512-yAnrg4ykREgkDlOMbu+zNvKK75dJsuetTAbwYL0FWDpq7eYLU0jrQA1HXWGM3EpJDxAQOrVfb+rKhEha3FuJLg==
   dependencies:
-    "@nocode-toolkit/ui" "^1.0.59"
-    "@nocode-toolkit/website" "^1.0.49"
+    "@nocode-toolkit/website" "^1.0.50"
     body-parser "^1.19.0"
     express "^4.17.1"
     jsonwebtoken "^8.5.1"
@@ -996,24 +995,19 @@
     redux "^4.0.4"
     request "^2.88.0"
 
-"@nocode-toolkit/plugin-sociallinks@^1.0.59":
-  version "1.0.59"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/plugin-sociallinks/-/plugin-sociallinks-1.0.59.tgz#cd605cc46fb49295b12311cd538dcaed2dead862"
-  integrity sha512-Fb/CIPE4euncJHfl49zuOfzj9590qCnTXmA4g4wrxTrKJ3U4JpzlYY91R1khzRBKhf38ItbGR3Wuk1HCrZ00KQ==
+"@nocode-toolkit/plugin-sociallinks@^1.0.60":
+  version "1.0.60"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/plugin-sociallinks/-/plugin-sociallinks-1.0.60.tgz#bcf1795596945a474ca8ddd14e5c899a3bce360d"
+  integrity sha512-VdnrLx7agLD2y4zglSTVkd16eh8c/Msv1Lwj19gPXF5mVslbXoXVQcBQw2Am7ZHtc1p5yukUeKGxP6ch6W/6ng==
   dependencies:
-    "@nocode-toolkit/ui" "^1.0.59"
-    "@nocode-toolkit/website" "^1.0.49"
     react "^16.8.6"
-    react-redux "^7.0.1"
-    redux "^4.0.4"
 
-"@nocode-toolkit/plugin-stripe@^1.0.59":
-  version "1.0.59"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/plugin-stripe/-/plugin-stripe-1.0.59.tgz#fd30f45d6e07abef31d4ec172ec1657ea8e86875"
-  integrity sha512-/xIJZ9+my+aaJMzou/VnHo+N4iW0bbvNte+V6ImWjNllIutyXZx+EjP1H2b2jVrwE2AG2aY1F/EIb+GKLFSYPA==
+"@nocode-toolkit/plugin-stripe@^1.0.60":
+  version "1.0.60"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/plugin-stripe/-/plugin-stripe-1.0.60.tgz#0166d8687c2af9440514d89b6e2fc4d3087ee4d5"
+  integrity sha512-YnDRpHWPrTEAPTihBPgf0PeJrRmm7/kg9Jk0oMtwSbMOX5zVHLYNisspMLtjtMgy005SG6s3Jd0W7eEUJ9pUYQ==
   dependencies:
-    "@nocode-toolkit/ui" "^1.0.59"
-    "@nocode-toolkit/website" "^1.0.49"
+    "@nocode-toolkit/website" "^1.0.50"
     body-parser "^1.19.0"
     express "^4.17.1"
     jsonwebtoken "^8.5.1"
@@ -1042,15 +1036,15 @@
     request "^2.88.0"
     yargs "^15.0.2"
 
-"@nocode-toolkit/ui@^1.0.59":
-  version "1.0.59"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.59.tgz#c9f416b2f351d811ac196813d7475dce7e8144f1"
-  integrity sha512-JyyfsPW8cRbSR336NekdT4S51Rkf7wAPQMvjI9/LkfriTFAippB0nwGPRGVvUhYF6eclqqpDvP+DgidF1mKNdA==
+"@nocode-toolkit/ui@^1.0.60":
+  version "1.0.60"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.60.tgz#716e2f48bad9986c13c15623caf3035013b0fd84"
+  integrity sha512-oAIneSLeC5a8mMCr/W8HDDDeewzrpuw+Sa1zERAWtCMLJbsTVCblZC2b9Dqo5ApRz+kPM23gop3QvcOeiQo8AA==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
-    "@nocode-toolkit/website" "^1.0.49"
-    "@nocode-toolkit/website-material-ui" "^1.0.54"
+    "@nocode-toolkit/website" "^1.0.50"
+    "@nocode-toolkit/website-material-ui" "^1.0.55"
     axios "0.19.0"
     bluebird "^3.5.4"
     classnames "^2.2.6"
@@ -1074,23 +1068,24 @@
     uuid "^3.3.3"
     yup "^0.27.0"
 
-"@nocode-toolkit/website-material-ui@^1.0.54":
-  version "1.0.54"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website-material-ui/-/website-material-ui-1.0.54.tgz#fd107b7c3f20a8575206de622295cdc9dce3809b"
-  integrity sha512-wKQAnilXGJA/qncMlV/tYyTOc5OEyZeeyD2JBcZx6Wi2p2dsbk9AU+hd0kV9rRz0dxeNC7VTFAAsQo9j2CCUqw==
+"@nocode-toolkit/website-material-ui@^1.0.55":
+  version "1.0.55"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website-material-ui/-/website-material-ui-1.0.55.tgz#bf7f54d9beb7863a03cb57748b9bff0dd271291c"
+  integrity sha512-++925u2SMuEBRHBRAFjKoUcZxZtW6hKsQmKIsaPY16qGW18lPFChFCMYb/cwIyvKjnTaz7uUnSU7+SXHmghDkw==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
     "@material-ui/styles" "^4.4.1"
-    "@nocode-toolkit/website" "^1.0.49"
+    "@nocode-toolkit/website" "^1.0.50"
     classnames "^2.2.6"
     dotty "^0.1.0"
     react "^16.8.6"
+    react-redux "^7.0.1"
 
-"@nocode-toolkit/website@^1.0.49":
-  version "1.0.49"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website/-/website-1.0.49.tgz#8ce56a9eba57eff83ea98659b4efcf5341772f80"
-  integrity sha512-yDENkUSWCxmAscM5IY/Z8I5xW6fuU/462qMFqQZJzG9zRkEjiN4Glgxo64IRez+19kCVN5UAmItL9LnbretF6A==
+"@nocode-toolkit/website@^1.0.50":
+  version "1.0.50"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/website/-/website-1.0.50.tgz#54ad032dd1f434130098a5844b76e5538f5b1ff2"
+  integrity sha512-jjXnwHj/9sWKDmzSBysporxrbE47JBmnJl4txdGv5BoVdB+MLu0c5/kAVybkprmz1RXfTc1XgKCrt+C8tb4XGw==
   dependencies:
     "@hot-loader/react-dom" "^16.8.6"
     "@types/react" "^16.9.11"
