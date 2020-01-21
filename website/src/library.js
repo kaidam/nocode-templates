@@ -82,6 +82,21 @@ library.addTab('local.settings', {
   },
 })
 
+library.addTemplate('documentation_page', {
+  name: 'Documentation page',
+  layout: [[{
+    component: 'title',
+    source: 'title',
+    editor: 'external',
+  }],[{
+    component: 'html',
+    source: 'external',
+    editor: 'external',
+    index: 0,
+    mainDocumentContent: true,
+  }]]
+})
+
 const templates = {
   layouts: {
     default: LayoutDefault,

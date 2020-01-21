@@ -79,7 +79,6 @@ const Layout = ({
               <NavDrawer
                 Component={ Tree }
                 section="sidebar"
-                uppercase
               />
             )
           }
@@ -96,7 +95,6 @@ const Layout = ({
                 Component={ Tree }
                 section="rightbar"
                 anchor="right"
-                uppercase
               />
             )
           }
@@ -108,7 +106,6 @@ const Layout = ({
             <div className={ navbarClassname }>
               <Tree
                 section="sidebar"
-                uppercase
               />
             </div>
           )
@@ -143,7 +140,6 @@ const Layout = ({
             <div className={ navbarClassname }>
               <Tree
                 section="rightbar"
-                uppercase 
               />
             </div>
           )
