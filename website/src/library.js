@@ -60,23 +60,43 @@ library.addTab('local.settings', {
           type: 'number',
         },
       }
-    ],{
-    id: 'navigation',
-    title: 'Navigation Bars',
-    helperText: 'Choose which navigation bars are active',
-    component: 'multipleCheckbox',
-    options: [{
-      title: 'Left Hand Navigation',
-      value: 'left',
-    },{
-      title: 'Right Hand Navigation',
-      value: 'right',
-    }]
-  }],
+    ],[
+      {
+        id: 'navigation',
+        title: 'Navigation Bars',
+        helperText: 'Choose which navigation bars are active',
+        component: 'multipleCheckbox',
+        options: [{
+          title: 'Left Hand Navigation',
+          value: 'left',
+        },{
+          title: 'Right Hand Navigation',
+          value: 'right',
+        }]
+      },
+      {
+        id: 'search',
+        title: 'Search Bars',
+        helperText: 'Choose which search bars are active',
+        component: 'multipleCheckbox',
+        options: [{
+          title: 'Left Hand Search',
+          value: 'left',
+        },{
+          title: 'Right Hand Search',
+          value: 'right',
+        }]
+      }
+    ],
+  ]
 }, {
   topbarHeight: 80,
   footerHeight: 80,
   navigation: {
+    left: true,
+    right: false,
+  },
+  search: {
     left: true,
     right: false,
   },

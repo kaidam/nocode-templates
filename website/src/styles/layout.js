@@ -125,6 +125,10 @@ const styles = makeStyles(theme => {
     footerNavBar: {
       flexGrow: 1,
     },
+
+    searchHolder: {
+      padding: theme.spacing(1),
+    },
   }
 })
 

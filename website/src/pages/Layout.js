@@ -7,6 +7,7 @@ import Divider from '@material-ui/core/Divider'
 
 import UILoader from '@nocode-toolkit/ui/components/system/UILoader'
 import Header from '@nocode-toolkit/ui/components/system/Header'
+import Search from '@nocode-toolkit/ui/components/cells/Search'
 
 import Tree from '@nocode-toolkit/website-material-ui/components/content/Tree/Tree'
 import NavBar from '@nocode-toolkit/website-material-ui/components/content/NavBar/NavBar'
@@ -39,8 +40,11 @@ const Layout = ({
 
   let hasLeftNavigation = false
   let hasRightNavigation = false
+  let hasLeftSearch = false
+  let hasRightSearch = false
 
   const navigationSettings = settings.navigation
+  const searchSettings = settings.search
 
   if(!navigationSettings) {
     hasLeftNavigation = true
@@ -48,6 +52,14 @@ const Layout = ({
   else {
     hasLeftNavigation = navigationSettings.left === true
     hasRightNavigation = navigationSettings.right === true
+  }
+
+  if(!searchSettings) {
+    hasLeftSearch = true
+  }
+  else {
+    hasLeftSearch = searchSettings.left === true
+    hasRightSearch = searchSettings.right === true
   }
 
   const navbarClassname = classNames({
@@ -106,6 +118,13 @@ const Layout = ({
             <div className={ navbarClassname }>
               <Tree
                 section="sidebar"
+                contentTop={ 
+                  hasLeftSearch ? (
+                    <div className={ classes.searchHolder }>
+                      <Search />
+                    </div>
+                  ) : null
+                }
               />
             </div>
           )
@@ -140,6 +159,13 @@ const Layout = ({
             <div className={ navbarClassname }>
               <Tree
                 section="rightbar"
+                contentTop={ 
+                  hasRightSearch ? (
+                    <div className={ classes.searchHolder }>
+                      <Search />
+                    </div>
+                  ) : null
+                }
               />
             </div>
           )
