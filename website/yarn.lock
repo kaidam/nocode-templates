@@ -1100,9 +1100,9 @@
     yargs "^15.0.2"
 
 "@nocode-toolkit/ui@^1.0.60":
-  version "1.0.81"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.81.tgz#636736df8a9ad0dbc5b45ff2fd8913e04ef71025"
-  integrity sha512-EBb37NfBOOosAfbQL8BDme+6+V8/cug09IIjRncC91j7YCfrJ03hGAQm/L+A+uyyGYujJ6B6VyM7Ee5Sq3jQJA==
+  version "1.0.82"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.82.tgz#fc9ea432c2c7110b143983c9f48bbf7f1838e8c3"
+  integrity sha512-r7QfoeLcvmm+uZd56PmLxdbPI6y59FRCtUzswhay7RKCfi/a8xqCubWTls+iHIUfPe04WaAEGEoYNakls5Dxkg==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
@@ -3613,9 +3613,9 @@ immer@5.0.0:
   integrity sha512-G7gRqKbi9NE025XVyqyTV98dxUOtdKvu/P1QRaVZfA55aEcXgjbxPdm+TlWdcSMNPKijlaHNz61DGPyelouRlA==
 
 immer@^5.0.0:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/immer/-/immer-5.3.2.tgz#e3a1c9f3550f925278fd86b8d2d644f7d5e9561b"
-  integrity sha512-wPWsSV0fv8iT7QQVs3rxBDWTbi5pHrVgnQv/McMfaRGJTLfQ3jFMEr08UibqS8hM17KCQXcjjYYzQzYe5e7BIA==
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/immer/-/immer-5.3.4.tgz#84edcfc0033e0db076a986fa9cdf28d035e97a67"
+  integrity sha512-2SmrJY1MviStaIM+nGWGQVrSxICx5QnzrgtDQgIv0vAka9urVnOR4ZGNFFXo04cnZUqQ2T1W7MjHVTVJoYujFg==
 
 immutable@^4.0.0-rc.12:
   version "4.0.0-rc.12"
