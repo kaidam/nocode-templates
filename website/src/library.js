@@ -44,59 +44,33 @@ library.addTab('local.settings', {
   id: 'layout',
   title: 'Layout',
   schema: [
-    [
-      {
-        id: 'topbarHeight',
-        title: 'Top Bar Height',
-        helperText: 'The pixel height of the top bar',
-        inputProps: {
-          type: 'number',
-        },
-      },{
-        id: 'footerHeight',
-        title: 'Footer Height',
-        helperText: 'The pixel height of the footer',
-        inputProps: {
-          type: 'number',
-        },
-      }
-    ],[
-      {
-        id: 'navigation',
-        title: 'Navigation Bars',
-        helperText: 'Choose which navigation bars are active',
-        component: 'multipleCheckbox',
-        options: [{
-          title: 'Left Hand Navigation',
-          value: 'left',
-        },{
-          title: 'Right Hand Navigation',
-          value: 'right',
-        }]
+
+    {
+      id: 'topbarHeight',
+      title: 'Top Bar Height',
+      helperText: 'The pixel height of the top bar',
+      inputProps: {
+        type: 'number',
       },
-      {
-        id: 'search',
-        title: 'Search Bars',
-        helperText: 'Choose which search bars are active',
-        component: 'multipleCheckbox',
-        options: [{
-          title: 'Left Hand Search',
-          value: 'left',
-        },{
-          title: 'Right Hand Search',
-          value: 'right',
-        }]
-      }
-    ],
+    },
+
+    {
+      id: 'navigation',
+      title: 'Navigation Bars',
+      helperText: 'Choose which navigation bars are active',
+      component: 'multipleCheckbox',
+      options: [{
+        title: 'Left Hand Navigation',
+        value: 'left',
+      },{
+        title: 'Right Hand Navigation',
+        value: 'right',
+      }]
+    }
   ]
 }, {
   topbarHeight: 80,
-  footerHeight: 80,
   navigation: {
-    left: true,
-    right: false,
-  },
-  search: {
     left: true,
     right: false,
   },

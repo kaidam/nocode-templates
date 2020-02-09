@@ -22,9 +22,6 @@ const themeProcessor = ({
   if(settings.topbarHeight) {
     updates.layout.topbarHeight = settings.topbarHeight
   }
-  if(settings.footerHeight) {
-    updates.layout.footerHeight = settings.footerHeight
-  }
   return updates
 }
 

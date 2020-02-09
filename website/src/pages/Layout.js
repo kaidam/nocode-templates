@@ -34,11 +34,8 @@ const Layout = ({
 
   let hasLeftNavigation = false
   let hasRightNavigation = false
-  let hasLeftSearch = false
-  let hasRightSearch = false
 
   const navigationSettings = settings.navigation
-  const searchSettings = settings.search
 
   if(!navigationSettings) {
     hasLeftNavigation = true
@@ -46,14 +43,6 @@ const Layout = ({
   else {
     hasLeftNavigation = navigationSettings.left === true
     hasRightNavigation = navigationSettings.right === true
-  }
-
-  if(!searchSettings) {
-    hasLeftSearch = true
-  }
-  else {
-    hasLeftSearch = searchSettings.left === true
-    hasRightSearch = searchSettings.right === true
   }
 
   const navbarClassname = classNames({
@@ -109,13 +98,6 @@ const Layout = ({
               <div className={ navbarClassname }>
                 <Tree
                   section="sidebar"
-                  contentTop={ 
-                    hasLeftSearch ? (
-                      <div className={ classes.searchHolder }>
-                        <Search />
-                      </div>
-                    ) : null
-                  }
                 />
               </div>
             )
@@ -150,13 +132,6 @@ const Layout = ({
               <div className={ navbarClassname }>
                 <Tree
                   section="rightbar"
-                  contentTop={ 
-                    hasRightSearch ? (
-                      <div className={ classes.searchHolder }>
-                        <Search />
-                      </div>
-                    ) : null
-                  }
                 />
               </div>
             )
