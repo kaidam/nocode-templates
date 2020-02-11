@@ -1100,9 +1100,9 @@
     yargs "^15.0.2"
 
 "@nocode-toolkit/ui@^1.0.60":
-  version "1.0.89"
-  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.89.tgz#51964343a47932ee2bc92d2207982ddfb2226353"
-  integrity sha512-CSYUyKamwZffIHA31/T8PEepF0rBwE+rZ0suHLty893BZR06YzU/I58HTPqm98aE2aBAxm9pZTJHWQlePqPwBw==
+  version "1.0.90"
+  resolved "https://registry.yarnpkg.com/@nocode-toolkit/ui/-/ui-1.0.90.tgz#46d29f10ea17d969a6508ae948f8cc56be4b713c"
+  integrity sha512-Kyh7t4jo5VHWZ8uUuSwhf8gE33bfFKi2PR+GtNHHBd1IPt7TpONZCEI+xAmXW24l0v7lhvTWSkcOf0B6VR27VA==
   dependencies:
     "@material-ui/core" "^4.3.3"
     "@material-ui/icons" "^4.2.1"
