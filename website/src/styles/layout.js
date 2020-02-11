@@ -46,6 +46,7 @@ const styles = makeStyles(theme => {
 
     drawer: {
       height: '100%',
+      borderLeft: '1px solid rgba(0, 0, 0, 0.12)',
       borderRight: '1px solid rgba(0, 0, 0, 0.12)',
       backgroundColor: theme.palette.background.paper,
     },
