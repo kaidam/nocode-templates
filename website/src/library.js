@@ -23,6 +23,16 @@ import MaterialLibrary from '@nocode-toolkit/website-material-ui/library'
 import LayoutDefault from './pages/Layout'
 import PageDefault from './pages/Document'
 
+const SECTIONS = [
+  'sidebar',
+  'rightbar',
+  'topbar',
+  'footer',
+]
+
+SECTIONS.forEach(section => {
+  library.addSection(section)
+})
 
 const plugins = {
   stripe: StripePlugin(),
