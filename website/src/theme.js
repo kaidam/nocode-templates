@@ -22,6 +22,10 @@ const themeProcessor = ({
   if(settings.topbarHeight) {
     updates.layout.topbarHeight = settings.topbarHeight
   }
+  if(settings.sidebarWidth) {
+    updates.layout.drawerWidthSmall = settings.sidebarWidth
+    updates.layout.drawerWidthLarge = settings.sidebarWidth + 120
+  }
   return updates
 }
 
