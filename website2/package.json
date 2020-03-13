@@ -30,6 +30,7 @@
     "template:preview": "nocode-template preview",
     "template:publish": "nocode-template publish",
     "template:link": "yarn link @nocode-toolkit/frontend && yarn link @nocode-toolkit/template",
+    "template:link:plugins": "yarn link @nocode-toolkit/plugin-stripe && yarn link @nocode-toolkit/plugin-contactform && yarn link @nocode-toolkit/plugin-sociallinks",
     "template:upgrade": "yarn upgrade @nocode-toolkit/frontend @nocode-toolkit/template"
   },
   "author": "",

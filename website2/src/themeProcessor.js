@@ -1,5 +1,6 @@
 const themeProcessor = ({
   config,
+  route,
   settings,
 }) => {
   const updates = {
