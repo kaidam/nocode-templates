@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react'
+import classnames from 'classnames'
 import { useSelector } from 'react-redux'
 
 import AppBar from '@material-ui/core/AppBar'
@@ -6,7 +7,11 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Divider from '@material-ui/core/Divider'
 
 import AppLayout from '@nocode-toolkit/frontend/components/system/Layout'
-import templateSelectors from '@nocode-toolkit/frontend/store/selectors/template'
+import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
+import settingsSelectors from '@nocode-toolkit/frontend/store/selectors/settings'
+import routerSelectors from '@nocode-toolkit/frontend/store/selectors/router'
+
+import Tree from '../components/Tree'
 
 import useStyles from '../styles/layout'
 
@@ -16,14 +21,20 @@ const Layout = ({
   const classes = useStyles()
   const contentRef = useRef(null)
 
-  const {
-    showUI,
-    settings,
-    route,
-  } = useSelector(templateSelectors.core)
+  const showUI = useSelector(systemSelectors.showUI)
+  const settings = useSelector(settingsSelectors.settings)
+  const route = useSelector(routerSelectors.route)
+  
+  const navigationSettings = settings.navigation || {}
+  let hasLeftNavigation = navigationSettings.left === true
+  let hasRightNavigation = navigationSettings.right === true
 
-  let hasLeftNavigation = false
-  let hasRightNavigation = false
+  const navbarClassname = classnames({
+    [classes.drawer]: true,
+    [classes.largeScreen]: true,
+    [classes.largeDrawer]: showUI,
+    [classes.smallDrawer]: !showUI,
+  })
 
   useEffect(() => {
     contentRef.current.scrollTop = 0
@@ -71,9 +82,9 @@ const Layout = ({
           {
             hasLeftNavigation && (
               <div className={ navbarClassname }>
-                {/* <Tree
+                <Tree
                   section="sidebar"
-                /> */}
+                />
               </div>
             )
           }

@@ -1,4 +1,9 @@
+import Promise from 'bluebird'
 import library from '@nocode-toolkit/frontend/library'
+
+import systemActions from '@nocode-toolkit/frontend/store/modules/system'
+import uiActions from '@nocode-toolkit/frontend/store/modules/ui'
+import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
 
 // import {
 //   LAYOUT_CELLS,
@@ -34,12 +39,7 @@ const SECTIONS = [
   'footer',
 ]
 
-library.sections = [
-  'sidebar',
-  'rightbar',
-  'topbar',
-  'footer',
-]
+library.sections = SECTIONS
 
 library.plugins = [
   StripePlugin(),
@@ -47,158 +47,35 @@ library.plugins = [
   SocialLinksPlugin(),
 ]
 
-// library.add(googleDriveSchemas)
-// library.add(unsplashSchemas)
-// library.add(localSchemas)
+/*
 
-// library.addPlugin(plugins.stripe)
-// library.addPlugin(plugins.contactform)
-// library.addPlugin(plugins.sociallinks)
+  we auto initialise the drive folders for them here
 
-// MaterialLibrary(library)
+*/
+library.initialise = () => async (dispatch, getState) => {
+  const website = systemSelectors.website(getState())
 
-// library.addTab('local.settings', {
-//   id: 'layout',
-//   title: 'Layout',
-//   schema: [
+  const ret = {}
 
-//     [
-//       {
-//         id: 'topbarHeight',
-//         title: 'Top Bar Height',
-//         helperText: 'The pixel height of the top bar',
-//         inputProps: {
-//           type: 'number',
-//         },
-//       },
-//       {
-//         id: 'sidebarWidth',
-//         title: 'Side Bar Width',
-//         helperText: 'The pixel width of the side bars',
-//         inputProps: {
-//           type: 'number',
-//         },
-//       },
-//     ],
+  if(website.meta.autoFoldersEnsure && !website.meta.autoFoldersCreated) {
+    dispatch(uiActions.setLoading({
+      message: 'Setting up your website for the first time...',
+    }))
 
-//     {
-//       id: 'navigation',
-//       title: 'Navigation Bars',
-//       helperText: 'Choose which navigation bars are active',
-//       component: 'multipleCheckbox',
-//       row: true,
-//       options: [{
-//         title: 'Left Hand Navigation',
-//         value: 'left',
-//       },{
-//         title: 'Right Hand Navigation',
-//         value: 'right',
-//       }]
-//     },
+    await dispatch(systemActions.ensureSectionFolders({
+      driver: 'drive',
+      sections: SECTIONS,
+    }))
+    
+    await dispatch(systemActions.updateWebsiteMeta({
+      autoFoldersCreated: true,
+    }))
 
-//     [
-//       {
-//         id: 'breadcrumbs',
-//         title: 'Breadcrumbs',
-//         helperText: 'Include links to parent folders above the document',
-//         component: 'radio',
-//         row: true,
-//         options: [{
-//           title: 'Enable',
-//           value: 'yes',
-//         },{
-//           title: 'Disable',
-//           value: 'no',
-//         }]
-//       },
-//       {
-//         id: 'backNextButtons',
-//         title: 'Back / Next Buttons',
-//         helperText: 'Include back & next buttons to the previous and next pages',
-//         component: 'radio',
-//         row: true,
-//         options: [{
-//           title: 'Enable',
-//           value: 'yes',
-//         },{
-//           title: 'Disable',
-//           value: 'no',
-//         }]
-//       },
-//     ],[
-//       {
-//         id: 'documentTitle',
-//         title: 'Document Title',
-//         helperText: 'Include the name of the Google document as the page title',
-//         component: 'radio',
-//         row: true,
-//         options: [{
-//           title: 'Enable',
-//           value: 'yes',
-//         },{
-//           title: 'Disable',
-//           value: 'no',
-//         }]
-//       },
-//       {
-//         id: 'documentInfo',
-//         title: 'Document Info',
-//         helperText: 'Include the author and date of when the document was created',
-//         component: 'radio',
-//         row: true,
-//         options: [{
-//           title: 'Enable',
-//           value: 'yes',
-//         },{
-//           title: 'Disable',
-//           value: 'no',
-//         }]
-//       },
-//     ],[
-//       {
-//         id: 'folderPages',
-//         title: 'Folder Pages',
-//         helperText: 'Render a page for folders with links to their contents',
-//         component: 'radio',
-//         row: true,
-//         options: [{
-//           title: 'Enable',
-//           value: 'yes',
-//         },{
-//           title: 'Disable',
-//           value: 'no',
-//         }]
-//       },
-//       {
-//         id: 'imageDropshadow',
-//         title: 'Image Drop Shadow',
-//         helperText: 'Apply a drop shadow to any images in a google document',
-//         component: 'radio',
-//         row: true,
-//         options: [{
-//           title: 'Enable',
-//           value: 'yes',
-//         },{
-//           title: 'Disable',
-//           value: 'no',
-//         }]
-//       },
-//     ]
-//   ]
-// }, {
-//   topbarHeight: 80,
-//   sidebarWidth: 240,
-//   breadcrumbs: 'yes',
-//   documentTitle: 'yes',
-//   documentInfo: 'yes',
-//   backNextButtons: 'yes',
-//   folderPages: 'yes',
-//   imageDropshadow: 'no',
-//   navigation: {
-//     left: true,
-//     right: false,
-//   },
-// })
+    ret.reload = true
+  }
+  
+  return ret
+}
 
 library.templates = {
   layouts: {
@@ -388,6 +265,161 @@ library.settings = {
     ]
   }],
 }
+
+// library.add(googleDriveSchemas)
+// library.add(unsplashSchemas)
+// library.add(localSchemas)
+
+// library.addPlugin(plugins.stripe)
+// library.addPlugin(plugins.contactform)
+// library.addPlugin(plugins.sociallinks)
+
+// MaterialLibrary(library)
+
+// library.addTab('local.settings', {
+//   id: 'layout',
+//   title: 'Layout',
+//   schema: [
+
+//     [
+//       {
+//         id: 'topbarHeight',
+//         title: 'Top Bar Height',
+//         helperText: 'The pixel height of the top bar',
+//         inputProps: {
+//           type: 'number',
+//         },
+//       },
+//       {
+//         id: 'sidebarWidth',
+//         title: 'Side Bar Width',
+//         helperText: 'The pixel width of the side bars',
+//         inputProps: {
+//           type: 'number',
+//         },
+//       },
+//     ],
+
+//     {
+//       id: 'navigation',
+//       title: 'Navigation Bars',
+//       helperText: 'Choose which navigation bars are active',
+//       component: 'multipleCheckbox',
+//       row: true,
+//       options: [{
+//         title: 'Left Hand Navigation',
+//         value: 'left',
+//       },{
+//         title: 'Right Hand Navigation',
+//         value: 'right',
+//       }]
+//     },
+
+//     [
+//       {
+//         id: 'breadcrumbs',
+//         title: 'Breadcrumbs',
+//         helperText: 'Include links to parent folders above the document',
+//         component: 'radio',
+//         row: true,
+//         options: [{
+//           title: 'Enable',
+//           value: 'yes',
+//         },{
+//           title: 'Disable',
+//           value: 'no',
+//         }]
+//       },
+//       {
+//         id: 'backNextButtons',
+//         title: 'Back / Next Buttons',
+//         helperText: 'Include back & next buttons to the previous and next pages',
+//         component: 'radio',
+//         row: true,
+//         options: [{
+//           title: 'Enable',
+//           value: 'yes',
+//         },{
+//           title: 'Disable',
+//           value: 'no',
+//         }]
+//       },
+//     ],[
+//       {
+//         id: 'documentTitle',
+//         title: 'Document Title',
+//         helperText: 'Include the name of the Google document as the page title',
+//         component: 'radio',
+//         row: true,
+//         options: [{
+//           title: 'Enable',
+//           value: 'yes',
+//         },{
+//           title: 'Disable',
+//           value: 'no',
+//         }]
+//       },
+//       {
+//         id: 'documentInfo',
+//         title: 'Document Info',
+//         helperText: 'Include the author and date of when the document was created',
+//         component: 'radio',
+//         row: true,
+//         options: [{
+//           title: 'Enable',
+//           value: 'yes',
+//         },{
+//           title: 'Disable',
+//           value: 'no',
+//         }]
+//       },
+//     ],[
+//       {
+//         id: 'folderPages',
+//         title: 'Folder Pages',
+//         helperText: 'Render a page for folders with links to their contents',
+//         component: 'radio',
+//         row: true,
+//         options: [{
+//           title: 'Enable',
+//           value: 'yes',
+//         },{
+//           title: 'Disable',
+//           value: 'no',
+//         }]
+//       },
+//       {
+//         id: 'imageDropshadow',
+//         title: 'Image Drop Shadow',
+//         helperText: 'Apply a drop shadow to any images in a google document',
+//         component: 'radio',
+//         row: true,
+//         options: [{
+//           title: 'Enable',
+//           value: 'yes',
+//         },{
+//           title: 'Disable',
+//           value: 'no',
+//         }]
+//       },
+//     ]
+//   ]
+// }, {
+//   topbarHeight: 80,
+//   sidebarWidth: 240,
+//   breadcrumbs: 'yes',
+//   documentTitle: 'yes',
+//   documentInfo: 'yes',
+//   backNextButtons: 'yes',
+//   folderPages: 'yes',
+//   imageDropshadow: 'no',
+//   navigation: {
+//     left: true,
+//     right: false,
+//   },
+// })
+
+
 
 // library.addHandler('documentLayout', ({
 //   layout,
