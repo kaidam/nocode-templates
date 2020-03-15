@@ -1,6 +1,13 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
+
+import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
+import settingsSelectors from '@nocode-toolkit/frontend/store/selectors/settings'
+import useSectionTree from '@nocode-toolkit/frontend/components/hooks/useSectionTree'
+
+import List from '@material-ui/core/List'
+import TreeItem from './TreeItem'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -72,16 +79,48 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Tree = ({
-  
+  section,
 }) => {
   const classes = useStyles()
+  const showUI = useSelector(systemSelectors.showUI)
+  const settings = useSelector(settingsSelectors.settings)
+
+  // folder pages means we treat folders as routes
+  // if this is false, then clicking
+  // on a folder just toggles it
+  // if this is true - clicking on the folder itself
+  // will open the folder route
+  const folderPages = settings.folderPages === 'yes'
+
+  const {
+    tree,
+    list,
+    onToggleFolder,
+  } = useSectionTree({
+    section,
+  })
   
   return (
     <div
       className={ classes.root }
     >
       <div className={ classes.content }>
-        TREE
+        <List
+          className={ classes.list }
+        >
+          {
+            list.map((item, i) => {
+              return (
+                <TreeItem
+                  key={ i }
+                  item={ item }
+                  folderPages={ folderPages }
+                  onToggleFolder={ onToggleFolder }
+                />
+              )
+            })
+          }
+        </List> 
       </div>
     </div>
   )
