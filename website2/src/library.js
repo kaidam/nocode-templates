@@ -90,9 +90,7 @@ library.forms = {
   'drive.folder': {
     initialValues: {
       name: '',
-      annotation: {
-        sorting: {},
-      },
+      sorting: '',
     },
     schema: [{
       id: 'name',
@@ -105,10 +103,12 @@ library.forms = {
         ],
       }
     },{
-      id: 'annotation.sorting',
+      id: 'sorting',
       title: 'Sorting',
       helperText: 'How are children items sorted inside this folder?',
     }],
+    getData: ({name}) => ({name,mimeType:'folder'}),
+    getAnnotation: ({sorting}) => ({sorting}),
   },
   'drive.document': {
     initialValues: {
@@ -125,6 +125,7 @@ library.forms = {
         ],
       }
     }],
+    getData: (data) => ({...data,mimeType:'document'}),
   }
 }
 

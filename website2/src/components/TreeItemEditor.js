@@ -30,7 +30,7 @@ const TreeItemEditor = ({
   const classes = useStyles()
 
   const actions = Actions(useDispatch(), {
-    onAddNode: contentActions.addNode,
+    onAdd: contentActions.createRemoteContent,
   })
 
   const getButton = useCallback((onClick) => {
@@ -55,8 +55,8 @@ const TreeItemEditor = ({
         title: 'Folder',
         icon: icons.folder,
         secondaryIcon: icons.drive,
-        handler: () => actions.onAddNode({
-          location: `item:${item.id}`,
+        handler: () => actions.onAdd({
+          parentId: item.id,
           driver: 'drive',
           form: 'drive.folder',
         })
@@ -64,8 +64,8 @@ const TreeItemEditor = ({
         title: 'Document',
         icon: icons.docs,
         secondaryIcon: icons.drive,
-        handler: () => actions.onAddNode({
-          location: `item:${item.id}`,
+        handler: () => actions.onAdd({
+          parentId: item.id,
           driver: 'drive',
           form: 'drive.document',
         })
