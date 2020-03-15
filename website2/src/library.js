@@ -86,6 +86,48 @@ library.templates = {
   },
 }
 
+library.forms = {
+  'drive.folder': {
+    initialValues: {
+      name: '',
+      annotation: {
+        sorting: {},
+      },
+    },
+    schema: [{
+      id: 'name',
+      title: 'Name',
+      helperText: 'Enter the name of the folder',
+      validate: {
+        type: 'string',
+        methods: [
+          ['required', 'The name is required'],
+        ],
+      }
+    },{
+      id: 'annotation.sorting',
+      title: 'Sorting',
+      helperText: 'How are children items sorted inside this folder?',
+    }],
+  },
+  'drive.document': {
+    initialValues: {
+      name: '',
+    },
+    schema: [{
+      id: 'name',
+      title: 'Name',
+      helperText: 'Enter the name of the document',
+      validate: {
+        type: 'string',
+        methods: [
+          ['required', 'The name is required'],
+        ],
+      }
+    }],
+  }
+}
+
 library.settings = {
   initialValues: {
     title: 'Website Title',

@@ -1,38 +1,32 @@
-import React, { useCallback } from 'react'
+import React, { lazy, useCallback } from 'react'
 import classnames from 'classnames'
 import { makeStyles } from '@material-ui/core/styles'
-import { useSelector } from 'react-redux'
 
-import Collapse from '@material-ui/core/Collapse'
-import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 
+import Suspense from '@nocode-toolkit/frontend/components/system/Suspense'
 import Link from '@nocode-toolkit/frontend/components/widgets/Link'
-
-import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
-import contentSelectors from '@nocode-toolkit/frontend/store/selectors/content'
-import useSectionTree from '@nocode-toolkit/frontend/components/hooks/useSectionTree'
-
 import icons from '@nocode-toolkit/frontend/icons'
+
+const TreeItemEditor = lazy(() => import(/* webpackChunkName: "ui" */ './TreeItemEditor'))
 
 const ExpandMoreIcon = icons.expandMore
 const ExpandLessIcon = icons.expandLess
 
 const useStyles = makeStyles(theme => ({
-  menuItem: {
-    paddingLeft: theme.spacing(0.4), 
+  menuItem: ({depth}) => ({
+    paddingLeft: theme.spacing(depth * 2), 
     paddingRight: theme.spacing(1),
     marginLeft: theme.spacing(0.2),
     marginTop: theme.spacing(0.2),
     marginBottom: theme.spacing(0.2),
     cursor: 'pointer',
     color: theme.palette.grey[600],
-  },
-  itemText: ({depth}) => ({
-    marginLeft: theme.spacing(depth * 2),
   }),
+  itemText: {
+    marginLeft: theme.spacing(1),
+  },
   active: {
     color: theme.palette.primary.main,
     fontWeight: 'bold',
@@ -83,6 +77,12 @@ const TreeItem = ({
       selected={ item.currentPage }
       onClick={ onClickItem }
     >
+      <Suspense
+        Component={ TreeItemEditor }
+        props={{
+          item,
+        }}
+      />
       <ListItemText
         className={ classes.itemText }
         classes={{

@@ -80,6 +80,7 @@ const useStyles = makeStyles(theme => ({
 
 const Tree = ({
   section,
+  ...props
 }) => {
   const classes = useStyles()
   const showUI = useSelector(systemSelectors.showUI)
@@ -93,13 +94,13 @@ const Tree = ({
   const folderPages = settings.folderPages === 'yes'
 
   const {
+    onToggleFolder,
     tree,
     list,
-    onToggleFolder,
   } = useSectionTree({
     section,
   })
-  
+
   return (
     <div
       className={ classes.root }
