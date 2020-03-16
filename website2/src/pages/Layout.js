@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import classnames from 'classnames'
 import { useSelector } from 'react-redux'
 
+import Hidden from '@material-ui/core/Hidden'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Divider from '@material-ui/core/Divider'
@@ -10,6 +11,8 @@ import AppLayout from '@nocode-toolkit/frontend/components/system/Layout'
 import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
 import settingsSelectors from '@nocode-toolkit/frontend/store/selectors/settings'
 import routerSelectors from '@nocode-toolkit/frontend/store/selectors/router'
+
+import NavDrawer from '@nocode-toolkit/frontend/components/widgets/NavDrawer'
 
 import Tree from '../components/Tree'
 
@@ -53,12 +56,14 @@ const Layout = ({
             root: classes.headerToolbar,
           }}>
             {
-              // hasLeftNavigation && (
-              //   <NavDrawer
-              //     Component={ Tree }
-              //     section="sidebar"
-              //   />
-              // )
+              hasLeftNavigation && (
+                <Hidden mdUp>
+                  <NavDrawer
+                    Component={ Tree }
+                    section="sidebar"
+                  />
+                </Hidden>
+              )
             }
             <div className={ classes.appBarTitle }>
               {/* <Logo /> */}LOGO
@@ -81,11 +86,13 @@ const Layout = ({
         <div className={ classes.main }>
           {
             hasLeftNavigation && (
-              <div className={ navbarClassname }>
-                <Tree
-                  section="sidebar"
-                />
-              </div>
+              <Hidden smDown>
+                <div className={ navbarClassname }>
+                  <Tree
+                    section="sidebar"
+                  />
+                </div>
+              </Hidden>
             )
           }
           <main className={ classes.content } ref={ contentRef }>

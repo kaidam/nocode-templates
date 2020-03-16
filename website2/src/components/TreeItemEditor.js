@@ -11,6 +11,8 @@ import contentActions from '@nocode-toolkit/frontend/store/modules/content'
 
 import icons from '@nocode-toolkit/frontend/icons'
 
+import driveUtils from '@nocode-toolkit/frontend/utils/drive'
+
 const MoreVertIcon = icons.moreVert
 
 const useStyles = makeStyles(theme => ({
@@ -30,7 +32,8 @@ const TreeItemEditor = ({
   const classes = useStyles()
 
   const actions = Actions(useDispatch(), {
-    onAdd: contentActions.createRemoteContent,
+    onCreateRemoteContent: contentActions.createRemoteContent,
+    onEditRemoteContent: contentActions.editRemoteContent,
   })
 
   const getButton = useCallback((onClick) => {
@@ -45,32 +48,66 @@ const TreeItemEditor = ({
     )
   }, [
     classes,
+    item,
   ])
 
   const getEditorItems = useCallback(() => {
-    return [{
-      title: 'Add',
-      icon: icons.add,
-      items: [{
-        title: 'Folder',
-        icon: icons.folder,
-        secondaryIcon: icons.drive,
-        handler: () => actions.onAdd({
-          parentId: item.id,
-          driver: 'drive',
-          form: 'drive.folder',
-        })
-      },{
-        title: 'Document',
-        icon: icons.docs,
-        secondaryIcon: icons.drive,
-        handler: () => actions.onAdd({
-          parentId: item.id,
-          driver: 'drive',
-          form: 'drive.document',
-        })
-      }],
-    }]
+    const node = item.node
+    if(node.driver == 'drive') {
+      const openUrl = driveUtils.getItemUrl(node)
+      if(node.type == 'folder') {
+        return [{
+          title: 'Add',
+          icon: icons.add,
+          items: [{
+            title: 'Folder',
+            icon: icons.folder,
+            secondaryIcon: icons.drive,
+            handler: () => actions.onCreateRemoteContent({
+              title: 'Create Folder',
+              driver: 'drive',
+              form: 'drive.folder',
+              parentId: item.id,
+            })
+          },{
+            title: 'Document',
+            icon: icons.docs,
+            secondaryIcon: icons.drive,
+            handler: () => actions.onCreateRemoteContent({
+              title: 'Create Document',
+              driver: 'drive',
+              form: 'drive.document',
+              parentId: item.id,
+            })
+          }],
+        }, {
+          title: 'Edit',
+          icon: icons.edit,
+          handler: () => actions.onEditRemoteContent({
+            title: `Edit ${node.type.replace(/^\w/, st => st.toUpperCase())}`,
+            driver: 'drive',
+            form: `drive.${node.type}`,
+            id: item.id,
+          })
+        }, {
+          title: 'Open in Drive',
+          icon: icons.open,
+          secondaryIcon: icons.drive,
+          url: openUrl,
+        }]
+      }
+      else {
+        return [{
+          title: 'Edit',
+          icon: icons.edit,
+          secondaryIcon: icons.drive,
+          url: openUrl,
+        }]
+      }
+    }
+    else {
+      return []
+    }
   }, [
     item,
   ])

@@ -80,10 +80,9 @@ const useStyles = makeStyles(theme => ({
 
 const Tree = ({
   section,
-  ...props
+  onClick,
 }) => {
   const classes = useStyles()
-  const showUI = useSelector(systemSelectors.showUI)
   const settings = useSelector(settingsSelectors.settings)
 
   // folder pages means we treat folders as routes
@@ -93,9 +92,16 @@ const Tree = ({
   // will open the folder route
   const folderPages = settings.folderPages === 'yes'
 
+  const onItemClick = useCallback(() => {
+    if(!folderPages) return
+    onClick()
+  }, [
+    folderPages,
+    onClick,
+  ])
+
   const {
     onToggleFolder,
-    tree,
     list,
   } = useSectionTree({
     section,
@@ -117,6 +123,7 @@ const Tree = ({
                   item={ item }
                   folderPages={ folderPages }
                   onToggleFolder={ onToggleFolder }
+                  onClick={ onClick }
                 />
               )
             })

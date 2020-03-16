@@ -31,12 +31,16 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.main,
     fontWeight: 'bold',
   },
+  link: {
+    textDecoration: 'none',
+  },
 }))
 
 const TreeItem = ({
   item,
   folderPages,
   onToggleFolder,
+  onClick,
 }) => {
 
   const {
@@ -64,10 +68,14 @@ const TreeItem = ({
     if(node.type == 'folder' && !folderPages) {
       onToggleFolder(node.id)  
     }
+    else if(onClick) {
+      onClick()
+    }
   }, [
     node,
     folderPages,
     onToggleFolder,
+    onClick,
   ])
 
   const renderedItem = (
@@ -109,6 +117,7 @@ const TreeItem = ({
     return (
       <Link
         url={ item.node.url }
+        className={ classes.link }
       >
         { renderedItem }
       </Link>
@@ -119,6 +128,7 @@ const TreeItem = ({
       <Link
         path={ item.route.path }
         name={ item.route.name }
+        className={ classes.link }
       >
         { renderedItem }
       </Link>
