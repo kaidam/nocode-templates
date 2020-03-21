@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React, { lazy, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
 
@@ -35,6 +35,7 @@ const Tree = ({
   const showUI = useSelector(systemSelectors.showUI)
   const settings = useSelector(settingsSelectors.settings)
   const folderPages = settings.folderPages === 'yes'
+  const containerRef = useRef()
 
   return (
     <div
@@ -52,11 +53,15 @@ const Tree = ({
           </div>
         )
       }
-      <div className={ classes.content }>
+      <div
+        className={ classes.content }
+        ref={ containerRef }
+      >
         <SystemTree
           section={ section }
           folderPages={ folderPages }
           ItemEditorComponent={ TreeItemEditor }
+          containerRef={ containerRef }
           onClick={ onClick }
         />
       </div>
