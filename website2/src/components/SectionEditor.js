@@ -19,7 +19,7 @@ const AddIcon = icons.add
 
 const useStyles = makeStyles(theme => ({
   root: {
-    borderBottom: '1px solid #e5e5e5',
+    borderBottom: '1px solid #cccccc',
   },
   menuItem: {
     paddingLeft: theme.spacing(0), 
