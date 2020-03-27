@@ -34,6 +34,23 @@ const TreeItemEditor = ({
 
   const getEditorItems = useCallback(() => {
     const node = item.node
+
+    const removeItem = {
+      title: 'Remove',
+      icon: icons.clear,
+      items: [{
+        title: 'Delete',
+        icon: icons.delete,
+        help: 'Delete this item from Google drive',
+        handler: () => {},
+      }, {
+        title: 'Hide',
+        icon: icons.hide,
+        help: 'Hide this item but don\'t delete it from Google drive',
+        handler: () => {},
+      }]
+    }
+    
     if(node.driver == 'drive') {
       const openUrl = driveUtils.getItemUrl(node)
       if(node.type == 'folder') {
@@ -70,7 +87,9 @@ const TreeItemEditor = ({
             form: `drive.${node.type}`,
             id: item.id,
           })
-        }, {
+        }, 
+        removeItem,
+        {
           title: 'Open in Drive',
           icon: icons.open,
           secondaryIcon: icons.drive,
@@ -83,7 +102,7 @@ const TreeItemEditor = ({
           icon: icons.edit,
           secondaryIcon: icons.drive,
           url: openUrl,
-        }]
+        }, removeItem]
       }
     }
     else {
