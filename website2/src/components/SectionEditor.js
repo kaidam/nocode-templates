@@ -13,6 +13,7 @@ import useSection from '@nocode-toolkit/frontend/components/hooks/useSection'
 
 import MenuButton from '@nocode-toolkit/frontend/components/widgets/MenuButton'
 import icons from '@nocode-toolkit/frontend/icons'
+import driveUtils from '@nocode-toolkit/frontend/utils/drive'
 
 const MoreVertIcon = icons.moreVert
 const AddIcon = icons.add
@@ -32,10 +33,11 @@ const useStyles = makeStyles(theme => ({
   },
   itemText: {
     marginLeft: theme.spacing(1),
+    color: theme.palette.primary.main,
   },
-  itemText: {
-    marginLeft: theme.spacing(1),
-  },
+  itemTextTypography: {
+    fontWeight: 'bold',
+  }
 }))
 
 const SectionEditor = ({
@@ -113,11 +115,25 @@ const SectionEditor = ({
         title: 'Add',
         icon: icons.add,
         items: getAddItems(),
-      }
-    ]
+      },
+
+      ghostFolder ? {
+        title: 'Open in Drive',
+        icon: icons.open,
+        secondaryIcon: icons.drive,
+        url: driveUtils.getItemUrl(ghostFolder),
+      } : null
+    ].filter(i => i)
   }, [
     ghostFolder,
     getAddItems,
+  ])
+
+  const clickFolderName = useCallback(() => {
+    if(!ghostFolder) return
+    window.open(driveUtils.getItemUrl(ghostFolder))
+  }, [
+    ghostFolder,
   ])
 
   return (
@@ -134,7 +150,11 @@ const SectionEditor = ({
           />
           <ListItemText
             className={ classes.itemText }
+            classes={{
+              primary: classes.itemTextTypography,
+            }}
             primary={ ghostFolder ? ghostFolder.name : '' }
+            onClick={ clickFolderName }
           />
           <MenuButton
             header={ ghostFolder ? `${ghostFolder.name} : Add` : '' }
