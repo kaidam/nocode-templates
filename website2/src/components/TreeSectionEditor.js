@@ -55,7 +55,7 @@ const SectionEditor = ({
 
   const actions = Actions(useDispatch(), {
     onCreateRemoteContent: contentActions.createRemoteContent,
-    onEditRemoteContent: contentActions.editRemoteContent,
+    onEditSection: contentActions.editSection,
   })
 
   const getSettingsButton = useCallback((onClick) => {
@@ -117,12 +117,22 @@ const SectionEditor = ({
         items: getAddItems(),
       },
 
+      {
+        title: 'Edit',
+        icon: icons.edit,
+        handler: () => actions.onEditSection({
+          title: `Edit Section`,
+          form: `section`,
+          id: section,
+        })
+      },
+
       ghostFolder ? {
         title: 'Open in Drive',
         icon: icons.open,
         secondaryIcon: icons.drive,
         url: driveUtils.getItemUrl(ghostFolder),
-      } : null
+      } : null,
     ].filter(i => i)
   }, [
     ghostFolder,

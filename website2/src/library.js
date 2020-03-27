@@ -89,6 +89,19 @@ library.templates = {
 const valueInjector = (inject = {}) => (values = {}) => Object.assign({}, values, inject)
 
 library.forms = {
+  'section': {
+    initialValues: {
+      annotation: {
+        sorting: {},
+      },
+    },
+    schema: [{
+      id: 'annotation.sorting',
+      title: 'Sorting',
+      helperText: 'How are children items sorted inside this folder?',
+      component: 'sorting',
+    }]
+  },
   'drive.folder': {
     initialValues: {
       name: '',
@@ -97,22 +110,30 @@ library.forms = {
       },
     },
     processFormValues: valueInjector({mimeType: 'folder'}),
-    schema: [{
-      id: 'name',
-      title: 'Name',
-      helperText: 'Enter the name of the folder',
-      validate: {
-        type: 'string',
-        methods: [
-          ['required', 'The name is required'],
-        ],
-      }
+    tabs: [{
+      id: 'main',
+      title: 'Details',
+      schema: [{
+        id: 'name',
+        title: 'Name',
+        helperText: 'Enter the name of the folder',
+        validate: {
+          type: 'string',
+          methods: [
+            ['required', 'The name is required'],
+          ],
+        }
+      }],
     },{
-      id: 'annotation.sorting',
-      title: 'Sorting',
-      helperText: 'How are children items sorted inside this folder?',
-      component: 'sorting',
-    }],
+      id: 'contents',
+      title: 'Contents',
+      schema: [{
+        id: 'annotation.sorting',
+        title: 'Sorting',
+        helperText: 'How are children items sorted inside this folder?',
+        component: 'sorting',
+      }],
+    }]
   },
   'drive.document': {
     initialValues: {

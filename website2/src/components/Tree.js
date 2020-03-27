@@ -9,7 +9,7 @@ import Suspense from '@nocode-toolkit/frontend/components/system/Suspense'
 import SystemTree from '@nocode-toolkit/frontend/components/tree/Tree'
 
 const TreeItemEditor = lazy(() => import(/* webpackChunkName: "ui" */ './TreeItemEditor'))
-const SectionEditor = lazy(() => import(/* webpackChunkName: "ui" */ './SectionEditor'))
+const TreeSectionEditor = lazy(() => import(/* webpackChunkName: "ui" */ './TreeSectionEditor'))
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,7 +45,7 @@ const Tree = ({
         showUI && (
           <div className={ classes.header }>
             <Suspense
-              Component={ SectionEditor }
+              Component={ TreeSectionEditor }
               props={{
                 section,
               }}
