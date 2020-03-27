@@ -125,8 +125,8 @@ library.forms = {
         }
       }],
     },{
-      id: 'contents',
-      title: 'Contents',
+      id: 'settings',
+      title: 'Settings',
       schema: [{
         id: 'annotation.sorting',
         title: 'Sorting',
