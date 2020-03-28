@@ -17,6 +17,7 @@ import driveUtils from '@nocode-toolkit/frontend/utils/drive'
 
 const MoreVertIcon = icons.moreVert
 const AddIcon = icons.add
+const LinkIcon = icons.link
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -55,6 +56,7 @@ const SectionEditor = ({
 
   const actions = Actions(useDispatch(), {
     onCreateRemoteContent: contentActions.createRemoteContent,
+    onCreateLocalContent: contentActions.createLocalContent,
     onEditSection: contentActions.editSection,
   })
 
@@ -84,6 +86,17 @@ const SectionEditor = ({
   }, [])
 
   const getAddItems = useCallback(() => {
+
+    const linkItem = {
+      title: 'Link',
+      icon: LinkIcon,
+      handler: () => actions.onCreateLocalContent({
+        title: 'Create Link',
+        form: 'link',
+        location: `section:${section}`,
+      })
+    }
+
     return ghostFolder ? [{
       title: 'Folder',
       icon: icons.folder,
@@ -104,7 +117,7 @@ const SectionEditor = ({
         form: 'drive.document',
         parentId: ghostFolder.id,
       })
-    }] : []
+    }, linkItem] : [linkItem]
   }, [
     ghostFolder,
   ])

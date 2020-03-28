@@ -163,7 +163,36 @@ library.forms = {
         ],
       }
     }],
-  }
+  },
+  'link': {
+    initialValues: {
+      name: '',
+      url: '',
+      noRoute: true,
+    },
+    schema: [{
+      id: 'name',
+      title: 'Name',
+      helperText: 'Enter the name of the link',
+      validate: {
+        type: 'string',
+        methods: [
+          ['required', 'The name is required'],
+        ],
+      }
+    }, {
+      id: 'url',
+      title: 'URL',
+      helperText: 'Enter the url of the link',
+      validate: {
+        type: 'string',
+        methods: [
+          ['required', 'The url is required'],
+          ['url', 'Must be a valid url - e.g. http://google.com'],
+        ],
+      }
+    }],
+  },
 }
 
 library.settings = {

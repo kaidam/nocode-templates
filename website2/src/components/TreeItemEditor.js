@@ -19,6 +19,7 @@ const TreeItemEditor = ({
   const actions = Actions(useDispatch(), {
     onCreateRemoteContent: contentActions.createRemoteContent,
     onEditRemoteContent: contentActions.editRemoteContent,
+    onEditLocalContent: contentActions.editLocalContent,
     onDeleteRemoteContent: contentActions.deleteRemoteContent,
     onHideContent: contentActions.hideContent,
   })
@@ -59,7 +60,7 @@ const TreeItemEditor = ({
         }),
       }]
     }
-    
+
     if(node.driver == 'drive') {
       const openUrl = driveUtils.getItemUrl(node)
       if(node.type == 'folder') {
@@ -115,7 +116,17 @@ const TreeItemEditor = ({
       }
     }
     else {
-      return []
+      return [{
+        title: 'Edit',
+        icon: icons.edit,
+        handler: () => actions.onEditLocalContent({
+          title: `Edit ${node.type.replace(/^\w/, st => st.toUpperCase())}`,
+          driver: node.driver,
+          form: node.type,
+          id: item.id,
+          location: node.location,
+        })
+      }]
     }
   }, [
     item,
