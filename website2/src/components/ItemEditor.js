@@ -15,6 +15,7 @@ const MoreVertIcon = icons.moreVert
 const ItemEditor = ({
   node,
   buttonClassname,
+  onClick,
 }) => {
 
   const actions = Actions(useDispatch(), {
@@ -142,6 +143,7 @@ const ItemEditor = ({
       header={ node.name }
       getButton={ getButton }
       getItems={ getEditorItems }
+      onClick={ onClick }
     />
   )
 }

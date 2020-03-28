@@ -69,24 +69,30 @@ const Layout = ({
             <div className={ classes.appBarTitle }>
               LOGO
             </div>
-            <NavBar
-              section="topbar"
-              withHome
-            />
-
-            {/* <NavBar
-              section="topbar"
-              withHome
-            /> */}
-            {/* {
+            <Hidden smDown>
+              <NavBar
+                section="topbar"
+                withHome
+              />
+            </Hidden>
+            <Hidden mdUp>
+              <NavBar
+                small
+                section="topbar"
+                withHome
+              />
+            </Hidden>
+            {
               hasRightNavigation && (
-                <NavDrawer
-                  Component={ Tree }
-                  section="rightbar"
-                  anchor="right"
-                />
+                <Hidden mdUp>
+                  <NavDrawer
+                    Component={ Tree }
+                    section="rightbar"
+                    anchor="right"
+                  />
+                </Hidden>
               )
-            } */}
+            }
           </Toolbar>
         </AppBar>
         <div className={ classes.main }>
@@ -115,11 +121,21 @@ const Layout = ({
                     {/* <Copyright /> */}
                   </div>
                   <div className={ classes.footerNavBar }>
-                    <NavBar
-                      section="footer"
-                      contrast
-                      align="right"
-                    />
+                    <Hidden smDown>
+                      <NavBar
+                        section="footer"
+                        contrast
+                        align="right"
+                      />
+                    </Hidden>
+                    <Hidden mdUp>
+                      <NavBar
+                        small
+                        section="footer"
+                        contrast
+                        align="right"
+                      />
+                    </Hidden>
                   </div>
                 </div>
               </Toolbar>

@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const NavBar = ({
+  small,
   section,
   contrast,
   vertical,
@@ -48,6 +49,7 @@ const NavBar = ({
         <SystemNavBar
           section={ section }
           ItemEditorComponent={ ItemEditor }
+          small={ small }
           contrast={ contrast }
           vertical={ vertical }
           align={ align }
