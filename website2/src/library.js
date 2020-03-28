@@ -95,12 +95,24 @@ library.forms = {
         sorting: {},
       },
     },
-    schema: [{
-      id: 'annotation.sorting',
-      title: 'Sorting',
-      helperText: 'How are children items sorted inside this folder?',
-      component: 'sorting',
-    }]
+    tabs: [{
+      id: 'settings',
+      title: 'Settings',
+      schema: [{
+        id: 'annotation.sorting',
+        title: 'Sorting',
+        helperText: 'How are children items sorted inside this folder?',
+        component: 'sorting',
+      }],
+    }, {
+      id: 'hidden',
+      title: 'Hidden Items',
+      schema: [{
+        title: 'Hidden Items',
+        helperText: 'Manage the hidden items in this section',
+        component: 'hiddenItems',
+      }],
+    }],
   },
   'drive.folder': {
     initialValues: {
