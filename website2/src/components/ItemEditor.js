@@ -23,6 +23,7 @@ const ItemEditor = ({
     onEditRemoteContent: contentActions.editRemoteContent,
     onEditLocalContent: contentActions.editLocalContent,
     onDeleteRemoteContent: contentActions.deleteRemoteContent,
+    onDeleteLocalContent: contentActions.deleteLocalContent,
     onHideContent: contentActions.hideContent,
   })
 
@@ -44,30 +45,31 @@ const ItemEditor = ({
   ])
 
   const getEditorItems = useCallback(() => {
-    const removeItem = {
-      title: 'Remove',
-      icon: icons.clear,
-      items: [{
-        title: 'Hide',
-        icon: icons.hide,
-        help: 'Hide this item but don\'t delete it from Google drive',
-        handler: () => actions.onHideContent({
-          id: node.id,
-          name: node.name,
-        }),
-      }, {
-        title: 'Delete',
-        icon: icons.delete,
-        help: 'Delete this item from Google drive',
-        handler: () => actions.onDeleteRemoteContent({
-          id: node.id,
-          driver: node.driver,
-          name: node.name,
-        }),
-      }]
-    }
-
     if(node.driver == 'drive') {
+
+      const removeItem = {
+        title: 'Remove',
+        icon: icons.clear,
+        items: [{
+          title: 'Hide',
+          icon: icons.hide,
+          help: 'Hide this item but don\'t delete it from Google drive',
+          handler: () => actions.onHideContent({
+            id: node.id,
+            name: node.name,
+          }),
+        }, {
+          title: 'Delete',
+          icon: icons.delete,
+          help: 'Delete this item from Google drive',
+          handler: () => actions.onDeleteRemoteContent({
+            id: node.id,
+            driver: node.driver,
+            name: node.name,
+          }),
+        }]
+      }
+
       const openUrl = driveUtils.getItemUrl(node)
       if(node.type == 'folder') {
         return [{
@@ -132,6 +134,13 @@ const ItemEditor = ({
           id: node.id,
           location: node.location,
         })
+      }, {
+        title: 'Delete',
+        icon: icons.delete,
+        handler: () => actions.onDeleteLocalContent({
+          id: node.id,
+          name: node.name,
+        }),
       }]
     }
   }, [
