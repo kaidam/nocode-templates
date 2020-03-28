@@ -6,7 +6,6 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 
 import MenuButton from '@nocode-toolkit/frontend/components/widgets/MenuButton'
-import driveUtils from '@nocode-toolkit/frontend/utils/drive'
 
 import withSectionEditor from '../hooks/withSectionEditor'
 
@@ -22,8 +21,12 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(0.2),
     cursor: 'pointer',
     color: theme.palette.grey[600],
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   itemText: {
+    flexGrow: 1,
     marginLeft: theme.spacing(1),
     color: theme.palette.primary.main,
   },
@@ -47,10 +50,18 @@ const TreeSectionEditor = ({
     section,
   })
 
-  const clickFolderName = useCallback(() => {
-    if(!ghostFolder) return
-    window.open(driveUtils.getItemUrl(ghostFolder))
+  const getTitleSettingsButton = useCallback((onClick) => {
+    return (
+      <ListItemText
+        classes={{
+          primary: classes.itemTextTypography,
+        }}
+        primary={ ghostFolder ? ghostFolder.name : '' }
+        onClick={ onClick }
+      />
+    )
   }, [
+    classes,
     ghostFolder,
   ])
 
@@ -66,13 +77,11 @@ const TreeSectionEditor = ({
             getButton={ getSettingsButton }
             getItems={ getSettingsItems }
           />
-          <ListItemText
+          <MenuButton
             className={ classes.itemText }
-            classes={{
-              primary: classes.itemTextTypography,
-            }}
-            primary={ ghostFolder ? ghostFolder.name : '' }
-            onClick={ clickFolderName }
+            header={ ghostFolder ? ghostFolder.name : '' }
+            getButton={ getTitleSettingsButton }
+            getItems={ getSettingsItems }
           />
           <MenuButton
             header={ ghostFolder ? `${ghostFolder.name} : Add` : '' }

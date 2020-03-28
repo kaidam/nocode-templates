@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
 
 const NavbarSectionEditor = ({
   section,
+  contrast,
 }) => {
   const classes = useStyles()
 
@@ -25,6 +26,7 @@ const NavbarSectionEditor = ({
     getSettingsItems,
   } = withSectionEditor({
     section,
+    contrast,
   })
 
   return (
@@ -33,11 +35,6 @@ const NavbarSectionEditor = ({
         header={ ghostFolder ? ghostFolder.name : '' }
         getButton={ getSettingsButton }
         getItems={ getSettingsItems }
-      />
-      <MenuButton
-        header={ ghostFolder ? `${ghostFolder.name} : Add` : '' }
-        getButton={ getAddButton }
-        getItems={ getAddItems }
       />
     </div>
   )

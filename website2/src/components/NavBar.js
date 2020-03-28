@@ -63,6 +63,7 @@ const NavBar = ({
               Component={ NavbarSectionEditor }
               props={{
                 section,
+                contrast,
               }}
             />
           </div>

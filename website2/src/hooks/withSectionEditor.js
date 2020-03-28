@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
+import { makeStyles } from '@material-ui/core/styles'
 
 import IconButton from '@material-ui/core/IconButton'
 import Actions from '@nocode-toolkit/frontend/utils/actions'
@@ -10,12 +11,21 @@ import useSection from '@nocode-toolkit/frontend/components/hooks/useSection'
 import icons from '@nocode-toolkit/frontend/icons'
 import driveUtils from '@nocode-toolkit/frontend/utils/drive'
 
-const MoreVertIcon = icons.moreVert
+const SettingsIcon = icons.settings
 const AddIcon = icons.add
 const LinkIcon = icons.link
 
+const useStyles = makeStyles(theme => ({
+  settingsIcon: ({contrast} = {}) => ({
+    color: contrast ?
+      theme.palette.primary.contrastText :
+      theme.palette.primary.main,
+  }),
+}))
+
 const withSectionEditor = ({
   section,
+  contrast,
 }) => {
   const {
     node,
@@ -23,6 +33,10 @@ const withSectionEditor = ({
     ghostFolder,
   } = useSection({
     section,
+  })
+
+  const classes = useStyles({
+    contrast,
   })
 
   const actions = Actions(useDispatch(), {
@@ -51,10 +65,15 @@ const withSectionEditor = ({
         size="small"
         onClick={ onClick }
       >
-        <MoreVertIcon fontSize="inherit" />
+        <SettingsIcon
+          fontSize="inherit"
+          className={ classes.settingsIcon }
+        />
       </IconButton>
     )
-  }, [])
+  }, [
+    classes,
+  ])
 
   const getAddItems = useCallback(() => {
 
