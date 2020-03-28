@@ -15,6 +15,7 @@ import routerSelectors from '@nocode-toolkit/frontend/store/selectors/router'
 import NavDrawer from '@nocode-toolkit/frontend/components/widgets/NavDrawer'
 
 import Tree from '../components/Tree'
+import NavBar from '../components/NavBar'
 
 import useStyles from '../styles/layout'
 
@@ -66,8 +67,13 @@ const Layout = ({
               )
             }
             <div className={ classes.appBarTitle }>
-              {/* <Logo /> */}LOGO
+              LOGO
             </div>
+            <NavBar
+              section="topbar"
+              withHome
+            />
+
             {/* <NavBar
               section="topbar"
               withHome
@@ -109,12 +115,11 @@ const Layout = ({
                     {/* <Copyright /> */}
                   </div>
                   <div className={ classes.footerNavBar }>
-                    {/* <NavBar
+                    <NavBar
                       section="footer"
                       contrast
-                      vertical
                       align="right"
-                    /> */}
+                    />
                   </div>
                 </div>
               </Toolbar>
@@ -122,11 +127,13 @@ const Layout = ({
           </main>
           {
             hasRightNavigation && (
-              <div className={ navbarClassname }>
-                {/* <Tree
-                  section="rightbar"
-                /> */}
-              </div>
+              <Hidden smDown>
+                <div className={ navbarClassname }>
+                  <Tree
+                    section="rightbar"
+                  />
+                </div>
+              </Hidden>
             )
           }
         </div>

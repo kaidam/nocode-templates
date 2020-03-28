@@ -1,23 +1,14 @@
 import React, { useCallback } from 'react'
-import { useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import IconButton from '@material-ui/core/IconButton'
-import Actions from '@nocode-toolkit/frontend/utils/actions'
-import contentActions from '@nocode-toolkit/frontend/store/modules/content'
-
-import useSection from '@nocode-toolkit/frontend/components/hooks/useSection'
 
 import MenuButton from '@nocode-toolkit/frontend/components/widgets/MenuButton'
-import icons from '@nocode-toolkit/frontend/icons'
 import driveUtils from '@nocode-toolkit/frontend/utils/drive'
 
-const MoreVertIcon = icons.moreVert
-const AddIcon = icons.add
-const LinkIcon = icons.link
+import withSectionEditor from '../hooks/withSectionEditor'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,116 +32,20 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const SectionEditor = ({
+const TreeSectionEditor = ({
   section,
-  onClick,
 }) => {
   const classes = useStyles()
+
   const {
-    node,
-    annotation,
     ghostFolder,
-  } = useSection({
+    getAddButton,
+    getSettingsButton,
+    getAddItems,
+    getSettingsItems,
+  } = withSectionEditor({
     section,
   })
-
-  const actions = Actions(useDispatch(), {
-    onCreateRemoteContent: contentActions.createRemoteContent,
-    onCreateLocalContent: contentActions.createLocalContent,
-    onEditSection: contentActions.editSection,
-  })
-
-  const getSettingsButton = useCallback((onClick) => {
-    return (
-      <IconButton
-        size="small"
-        onClick={ onClick }
-      >
-        <MoreVertIcon fontSize="inherit" />
-      </IconButton>
-    )
-  }, [])
-
-  const getAddButton = useCallback((onClick) => {
-    return (
-      <IconButton
-        size="small"
-        onClick={ onClick }
-      >
-        <AddIcon
-          fontSize="inherit"
-          color="secondary"
-        />
-      </IconButton>
-    )
-  }, [])
-
-  const getAddItems = useCallback(() => {
-
-    const linkItem = {
-      title: 'Link',
-      icon: LinkIcon,
-      handler: () => actions.onCreateLocalContent({
-        title: 'Create Link',
-        form: 'link',
-        location: `section:${section}`,
-      })
-    }
-
-    return ghostFolder ? [{
-      title: 'Folder',
-      icon: icons.folder,
-      secondaryIcon: icons.drive,
-      handler: () => actions.onCreateRemoteContent({
-        title: 'Create Folder',
-        driver: 'drive',
-        form: 'drive.folder',
-        parentId: ghostFolder.id,
-      })
-    },{
-      title: 'Document',
-      icon: icons.docs,
-      secondaryIcon: icons.drive,
-      handler: () => actions.onCreateRemoteContent({
-        title: 'Create Document',
-        driver: 'drive',
-        form: 'drive.document',
-        parentId: ghostFolder.id,
-      })
-    }, linkItem] : [linkItem]
-  }, [
-    ghostFolder,
-  ])
-  
-  const getSettingsItems = useCallback(() => {
-    return [
-      {
-        title: 'Add',
-        icon: icons.add,
-        items: getAddItems(),
-      },
-
-      {
-        title: 'Edit',
-        icon: icons.edit,
-        handler: () => actions.onEditSection({
-          title: `Edit Section`,
-          form: `section`,
-          id: section,
-        })
-      },
-
-      ghostFolder ? {
-        title: 'Open in Drive',
-        icon: icons.open,
-        secondaryIcon: icons.drive,
-        url: driveUtils.getItemUrl(ghostFolder),
-      } : null,
-    ].filter(i => i)
-  }, [
-    ghostFolder,
-    getAddItems,
-  ])
 
   const clickFolderName = useCallback(() => {
     if(!ghostFolder) return
@@ -190,4 +85,4 @@ const SectionEditor = ({
   )
 }
 
-export default SectionEditor
+export default TreeSectionEditor

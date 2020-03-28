@@ -2,50 +2,63 @@ import React, { lazy, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
 
-import settingsSelectors from '@nocode-toolkit/frontend/store/selectors/settings'
 import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
 
 import Suspense from '@nocode-toolkit/frontend/components/system/Suspense'
-import SystemTree from '@nocode-toolkit/frontend/components/tree/Tree'
+import SystemNavBar from '@nocode-toolkit/frontend/components/navbar/NavBar'
 
 const ItemEditor = lazy(() => import(/* webpackChunkName: "ui" */ './ItemEditor'))
-const TreeSectionEditor = lazy(() => import(/* webpackChunkName: "ui" */ './TreeSectionEditor'))
+const NavbarSectionEditor = lazy(() => import(/* webpackChunkName: "ui" */ './NavbarSectionEditor'))
 
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
     display: 'flex',
-    flexDirection: 'column',
-  },
-  header: {
-    flexGrow: 0,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
   content: {
     overflowY: 'auto',
     overflowX: 'hidden',
     flexGrow: 1,
   },
+  editor: {
+    flexGrow: 0,
+  },
 }))
 
-const Tree = ({
+const NavBar = ({
   section,
+  contrast,
+  vertical,
+  align,
   onClick,
 }) => {
   const classes = useStyles()
   const showUI = useSelector(systemSelectors.showUI)
-  const settings = useSelector(settingsSelectors.settings)
-  const folderPages = settings.folderPages === 'yes'
-  const containerRef = useRef()
-
+  
   return (
     <div
       className={ classes.root }
     >
+      <div
+        className={ classes.content }
+      >
+        <SystemNavBar
+          section={ section }
+          ItemEditorComponent={ ItemEditor }
+          contrast={ contrast }
+          vertical={ vertical }
+          align={ align }
+          onClick={ onClick }
+        />
+      </div>
       {
         showUI && (
-          <div className={ classes.header }>
+          <div className={ classes.editor }>
             <Suspense
-              Component={ TreeSectionEditor }
+              Component={ NavbarSectionEditor }
               props={{
                 section,
               }}
@@ -53,20 +66,8 @@ const Tree = ({
           </div>
         )
       }
-      <div
-        className={ classes.content }
-        ref={ containerRef }
-      >
-        <SystemTree
-          section={ section }
-          folderPages={ folderPages }
-          ItemEditorComponent={ ItemEditor }
-          containerRef={ containerRef }
-          onClick={ onClick }
-        />
-      </div>
     </div>
   )
 }
 
-export default Tree
+export default NavBar

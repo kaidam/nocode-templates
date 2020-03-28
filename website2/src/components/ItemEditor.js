@@ -12,8 +12,9 @@ import driveUtils from '@nocode-toolkit/frontend/utils/drive'
 
 const MoreVertIcon = icons.moreVert
 
-const TreeItemEditor = ({
-  item,
+const ItemEditor = ({
+  node,
+  buttonClassname,
 }) => {
 
   const actions = Actions(useDispatch(), {
@@ -28,16 +29,20 @@ const TreeItemEditor = ({
     return (
       <IconButton
         size="small"
+        className={ buttonClassname }
         onClick={ onClick }
       >
-        <MoreVertIcon fontSize="inherit" />
+        <MoreVertIcon
+          fontSize="inherit"
+          className="navbar-ui-icon"
+        />
       </IconButton>
     )
-  }, [])
+  }, [
+    buttonClassname,
+  ])
 
   const getEditorItems = useCallback(() => {
-    const node = item.node
-
     const removeItem = {
       title: 'Remove',
       icon: icons.clear,
@@ -75,7 +80,7 @@ const TreeItemEditor = ({
               title: 'Create Folder',
               driver: 'drive',
               form: 'drive.folder',
-              parentId: item.id,
+              parentId: node.id,
             })
           },{
             title: 'Document',
@@ -85,7 +90,7 @@ const TreeItemEditor = ({
               title: 'Create Document',
               driver: 'drive',
               form: 'drive.document',
-              parentId: item.id,
+              parentId: node.id,
             })
           }],
         }, {
@@ -95,7 +100,7 @@ const TreeItemEditor = ({
             title: `Edit ${node.type.replace(/^\w/, st => st.toUpperCase())}`,
             driver: 'drive',
             form: `drive.${node.type}`,
-            id: item.id,
+            id: node.id,
           })
         }, {
           title: 'Open in Drive',
@@ -123,22 +128,22 @@ const TreeItemEditor = ({
           title: `Edit ${node.type.replace(/^\w/, st => st.toUpperCase())}`,
           driver: node.driver,
           form: node.type,
-          id: item.id,
+          id: node.id,
           location: node.location,
         })
       }]
     }
   }, [
-    item,
+    node,
   ])
 
   return (
     <MenuButton
-      header={ item.node.name }
+      header={ node.name }
       getButton={ getButton }
       getItems={ getEditorItems }
     />
   )
 }
 
-export default TreeItemEditor
+export default ItemEditor

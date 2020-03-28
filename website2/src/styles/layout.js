@@ -13,6 +13,7 @@ const styles = makeStyles(theme => {
     },
     root: {
       height: '100%',
+      overflowX: 'hidden',
     },
     appbar: {
       position: 'relative',
@@ -39,6 +40,7 @@ const styles = makeStyles(theme => {
       flexDirection: 'row',
       alignItems: 'center',
       flexGrow: 1,
+      color: theme.palette.primary.main,
     },
     logoTitle: {
       color: theme.palette.primary.main,
@@ -124,11 +126,11 @@ const styles = makeStyles(theme => {
     },
 
     footerCopyright: {
-      flexGrow: 0,
+      flexGrow: 1,
     },
 
     footerNavBar: {
-      flexGrow: 1,
+      flexGrow: 0,
     },
 
     searchHolder: {
