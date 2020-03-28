@@ -53,8 +53,8 @@ const TreeItemEditor = ({
         icon: icons.delete,
         help: 'Delete this item from Google drive',
         handler: () => actions.onDeleteRemoteContent({
-          driver: node.driver,
           id: node.id,
+          driver: node.driver,
           name: node.name,
         }),
       }]
@@ -96,14 +96,14 @@ const TreeItemEditor = ({
             form: `drive.${node.type}`,
             id: item.id,
           })
-        }, 
-        removeItem,
-        {
+        }, {
           title: 'Open in Drive',
           icon: icons.open,
           secondaryIcon: icons.drive,
           url: openUrl,
-        }]
+        }, 
+        removeItem,
+        ]
       }
       else {
         return [{
