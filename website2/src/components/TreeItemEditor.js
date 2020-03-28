@@ -41,19 +41,19 @@ const TreeItemEditor = ({
       title: 'Remove',
       icon: icons.clear,
       items: [{
+        title: 'Hide',
+        icon: icons.hide,
+        help: 'Hide this item but don\'t delete it from Google drive',
+        handler: () => actions.onHideContent({
+          id: node.id,
+          name: node.name,
+        }),
+      }, {
         title: 'Delete',
         icon: icons.delete,
         help: 'Delete this item from Google drive',
         handler: () => actions.onDeleteRemoteContent({
           driver: node.driver,
-          id: node.id,
-          name: node.name,
-        }),
-      }, {
-        title: 'Hide',
-        icon: icons.hide,
-        help: 'Hide this item but don\'t delete it from Google drive',
-        handler: () => actions.onHideContent({
           id: node.id,
           name: node.name,
         }),
