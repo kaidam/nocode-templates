@@ -43,7 +43,8 @@ const withSectionEditor = ({
     onCreateRemoteContent: contentActions.createRemoteContent,
     onCreateLocalContent: contentActions.createLocalContent,
     onEditSection: contentActions.editSection,
-    onChangeSectionFolder: contentActions.changeSectionFolder,
+    onChangeSectionFolder: contentActions.editSectionFolder,
+    onResetSectionFolder: contentActions.resetSectionFolder,
   })
 
   const getAddButton = useCallback((onClick) => {
@@ -154,7 +155,7 @@ const withSectionEditor = ({
             title: 'Reset Drive Folder',
             icon: icons.refresh,
             secondaryIcon: icons.drive,
-            handler: () => actions.onChangeSectionFolder({
+            handler: () => actions.onResetSectionFolder({
               id: section,
             })
           }
