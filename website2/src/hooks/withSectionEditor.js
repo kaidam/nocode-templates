@@ -43,6 +43,7 @@ const withSectionEditor = ({
     onCreateRemoteContent: contentActions.createRemoteContent,
     onCreateLocalContent: contentActions.createLocalContent,
     onEditSection: contentActions.editSection,
+    onChangeSectionFolder: contentActions.changeSectionFolder,
   })
 
   const getAddButton = useCallback((onClick) => {
@@ -115,13 +116,13 @@ const withSectionEditor = ({
   const getSettingsItems = useCallback(() => {
     return [
       {
-        title: 'Add',
+        title: 'Add Content',
         icon: icons.add,
         items: getAddItems(),
       },
 
       {
-        title: 'Edit',
+        title: 'Edit Section',
         icon: icons.edit,
         handler: () => actions.onEditSection({
           title: `Edit Section`,
@@ -131,11 +132,35 @@ const withSectionEditor = ({
       },
 
       ghostFolder ? {
-        title: 'Open in Drive',
-        icon: icons.open,
+        title: 'Drive Folder Settings',
+        icon: icons.settings,
         secondaryIcon: icons.drive,
-        url: driveUtils.getItemUrl(ghostFolder),
+        items: [
+          {
+            title: 'Open in Drive',
+            icon: icons.open,
+            secondaryIcon: icons.drive,
+            url: driveUtils.getItemUrl(ghostFolder),
+          },
+          {
+            title: 'Change Drive Folder',
+            icon: icons.search,
+            secondaryIcon: icons.drive,
+            handler: () => actions.onChangeSectionFolder({
+              id: section,
+            })
+          },
+          {
+            title: 'Reset Drive Folder',
+            icon: icons.refresh,
+            secondaryIcon: icons.drive,
+            handler: () => actions.onChangeSectionFolder({
+              id: section,
+            })
+          }
+        ]
       } : null,
+
     ].filter(i => i)
   }, [
     ghostFolder,
