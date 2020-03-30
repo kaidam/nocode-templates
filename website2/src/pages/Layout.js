@@ -125,6 +125,7 @@ const Layout = ({
                       <NavBar
                         section="footer"
                         contrast
+                        vertical
                         align="right"
                       />
                     </Hidden>
@@ -133,6 +134,7 @@ const Layout = ({
                         small
                         section="footer"
                         contrast
+                        vertical
                         align="right"
                       />
                     </Hidden>

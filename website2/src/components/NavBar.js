@@ -11,21 +11,35 @@ const ItemEditor = lazy(() => import(/* webpackChunkName: "ui" */ './ItemEditor'
 const NavbarSectionEditor = lazy(() => import(/* webpackChunkName: "ui" */ './NavbarSectionEditor'))
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  root: ({
+    vertical,
+  }) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  content: {
+    alignItems: vertical ?
+      'flex-start' :
+      'center',
+  }),
+  content: ({
+    vertical,
+  }) => ({
     overflowY: 'auto',
     overflowX: 'hidden',
     flexGrow: 1,
-  },
-  editor: {
+    padding: vertical ?
+      theme.spacing(2) :
+      0,
+  }),
+  editor: ({
+    vertical,
+  }) => ({
     flexGrow: 0,
-  },
+    paddingTop: vertical ?
+      theme.spacing(2) :
+      0,
+  }),
 }))
 
 const NavBar = ({
@@ -37,7 +51,10 @@ const NavBar = ({
   withHome,
   onClick,
 }) => {
-  const classes = useStyles()
+  const classes = useStyles({
+    vertical,
+    align,
+  })
   const showUI = useSelector(systemSelectors.showUI)
   
   return (
