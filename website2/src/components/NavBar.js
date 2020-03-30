@@ -34,6 +34,7 @@ const NavBar = ({
   contrast,
   vertical,
   align,
+  withHome,
   onClick,
 }) => {
   const classes = useStyles()
@@ -53,6 +54,7 @@ const NavBar = ({
           contrast={ contrast }
           vertical={ vertical }
           align={ align }
+          withHome={ withHome }
           onClick={ onClick }
         />
       </div>
