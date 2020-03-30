@@ -25,6 +25,8 @@ const ItemEditor = ({
     onDeleteRemoteContent: contentActions.deleteRemoteContent,
     onDeleteLocalContent: contentActions.deleteLocalContent,
     onHideContent: contentActions.hideContent,
+    onChangeHomepage: contentActions.changeHomepage,
+    onResetHomepage: contentActions.resetHomepage,
   })
 
   const getButton = useCallback((onClick) => {
@@ -115,12 +117,28 @@ const ItemEditor = ({
         ]
       }
       else {
-        return [{
-          title: 'Edit',
-          icon: icons.edit,
-          secondaryIcon: icons.drive,
-          url: openUrl,
-        }, removeItem]
+        return [
+          {
+            title: 'Edit',
+            icon: icons.edit,
+            secondaryIcon: icons.drive,
+            url: openUrl,
+          }, 
+          node.isHome ? 
+            {
+              title: 'Change Homepage',
+              icon: icons.search,
+              secondaryIcon: icons.drive,
+              handler: actions.onChangeHomepage,
+            } : removeItem,
+          node.defaultDocumentId != node.id ? 
+            {
+              title: 'Reset Homepage',
+              icon: icons.reset,
+              secondaryIcon: icons.drive,
+              handler: actions.onResetHomepage,
+            } : null
+        ].filter(i => i)
       }
     }
     else {
