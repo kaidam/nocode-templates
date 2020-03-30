@@ -62,9 +62,27 @@ library.initialise = () => async (dispatch, getState) => {
       message: 'Setting up your website for the first time...',
     }))
 
-    await dispatch(systemActions.ensureSectionFolders({
+    const sectionResources = SECTIONS
+      .map(section => {
+        return {
+          id: section,
+          type: 'folder',
+          location: `section:${section}`,
+          data: {
+            ghost: true,
+            linked: true,
+          },
+        }
+      })
+      .concat([{
+        id: 'home',
+        type: 'document',
+        location: 'singleton:home'
+      }])
+
+    await dispatch(systemActions.ensureSectionResources({
       driver: 'drive',
-      sections: SECTIONS,
+      resources: sectionResources,
     }))
     
     await dispatch(systemActions.updateWebsiteMeta({
