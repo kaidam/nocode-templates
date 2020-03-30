@@ -31,9 +31,12 @@ const withSectionEditor = ({
     node,
     annotation,
     ghostFolder,
+    defaultFolderId,
   } = useSection({
     section,
   })
+
+  const isDefaultFolder = ghostFolder && ghostFolder.id == defaultFolderId
 
   const classes = useStyles({
     contrast,
@@ -133,7 +136,7 @@ const withSectionEditor = ({
       },
 
       ghostFolder ? {
-        title: 'Drive Folder Settings',
+        title: 'Folder Settings',
         icon: icons.settings,
         secondaryIcon: icons.drive,
         items: [
@@ -151,7 +154,7 @@ const withSectionEditor = ({
               id: section,
             })
           },
-          {
+          isDefaultFolder ? null : {
             title: 'Reset Drive Folder',
             icon: icons.refresh,
             secondaryIcon: icons.drive,
@@ -159,12 +162,13 @@ const withSectionEditor = ({
               id: section,
             })
           }
-        ]
+        ].filter(i => i)
       } : null,
 
     ].filter(i => i)
   }, [
     ghostFolder,
+    isDefaultFolder,
     getAddItems,
   ])
 
