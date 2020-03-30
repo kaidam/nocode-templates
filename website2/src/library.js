@@ -216,7 +216,7 @@ library.forms = {
 library.settings = {
   initialValues: {
     title: 'Website Title',
-    test: 'hello',
+    logo: null,
     copyright_message: '&copy; &year; My Company Name',
     description: '',
     keywords: '',
@@ -246,6 +246,11 @@ library.settings = {
       id: 'title',
       title: 'Title',
       helperText: 'Enter the title for your website',
+    }, {
+      id: 'logo',
+      title: 'Logo',
+      helperText: 'Upload an image for your logo',
+      component: 'image',
     }, {
       id: 'copyright_message',
       title: 'Copyright Message',
