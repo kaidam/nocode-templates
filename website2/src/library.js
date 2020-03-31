@@ -23,9 +23,8 @@ import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
 //   the plugins we want to be available
 
 // */
-import StripePlugin from '@nocode-toolkit/plugin-stripe/ui/pluginMaterial'
-import ContactFormPlugin from '@nocode-toolkit/plugin-contactform/ui/pluginMaterial'
-import SocialLinksPlugin from '@nocode-toolkit/plugin-sociallinks/ui/plugin'
+import StripePlugin from '@nocode-toolkit/plugin-stripe/ui'
+import ContactFormPlugin from '@nocode-toolkit/plugin-contactform/ui'
 
 // import MaterialLibrary from '@nocode-toolkit/website-material-ui/library'
 
@@ -44,7 +43,6 @@ library.sections = SECTIONS
 library.plugins = [
   StripePlugin(),
   ContactFormPlugin(),
-  SocialLinksPlugin(),
 ]
 
 /*
@@ -399,6 +397,8 @@ library.settings = {
   }],
 }
 
+export default library
+
 // library.add(googleDriveSchemas)
 // library.add(unsplashSchemas)
 // library.add(localSchemas)
@@ -572,4 +572,3 @@ library.settings = {
 //   return rows
 // })
 
-export default library

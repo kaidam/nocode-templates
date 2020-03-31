@@ -172,6 +172,18 @@ const withSectionEditor = ({
     getAddItems,
   ])
 
+  const getAddWidgets = useCallback(() => {
+    return [
+      {
+        title: 'Test',
+        icon: icons.add,
+        handler: () => {}
+      },
+    ]
+  }, [
+    
+  ])
+
   return {
     node,
     annotation,
@@ -179,6 +191,7 @@ const withSectionEditor = ({
     getAddButton,
     getSettingsButton,
     getAddItems,
+    getAddWidgets,
     getSettingsItems,
   }
 }
