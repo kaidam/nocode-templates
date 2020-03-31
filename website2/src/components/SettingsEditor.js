@@ -10,7 +10,6 @@ import settingsActions from '@nocode-toolkit/frontend/store/modules/settings'
 const EditIcon = icons.edit
 
 const SettingsEditor = ({
-  contrast,
   classNames = {},
 }) => {
 
@@ -24,7 +23,11 @@ const SettingsEditor = ({
     <IconButton
       size="small"
       className={ classNames.button }
-      onClick={ () => actions.onOpenSettings() }
+      onClick={ (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        actions.onOpenSettings() 
+      }}
     >
       <EditIcon
         fontSize="inherit"

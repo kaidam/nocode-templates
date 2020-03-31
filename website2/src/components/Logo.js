@@ -1,13 +1,9 @@
 import React, { lazy } from 'react'
 import { useSelector } from 'react-redux'
-
 import { makeStyles } from '@material-ui/core/styles'
-
 import Typography from '@material-ui/core/Typography'
 import Link from '@nocode-toolkit/frontend/components/widgets/Link'
 import Suspense from '@nocode-toolkit/frontend/components/system/Suspense'
-
-import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
 import settingsSelectors from '@nocode-toolkit/frontend/store/selectors/settings'
 
 const SettingsEditor = lazy(() => import(/* webpackChunkName: "ui" */ './SettingsEditor'))

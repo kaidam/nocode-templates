@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     overflowX: 'hidden',
     flexGrow: 1,
     padding: vertical ?
-      theme.spacing(2) :
+      theme.spacing(1) :
       0,
   }),
   editor: ({

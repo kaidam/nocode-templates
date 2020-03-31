@@ -121,7 +121,7 @@ const styles = makeStyles(theme => {
     footerContainer: {
       display: 'flex',
       flexDirection: 'row',
-      alignItems: 'center',
+      alignItems: 'flex-start',
       width: '100%',
     },
 

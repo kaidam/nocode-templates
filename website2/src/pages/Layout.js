@@ -15,6 +15,7 @@ import routerSelectors from '@nocode-toolkit/frontend/store/selectors/router'
 import NavDrawer from '@nocode-toolkit/frontend/components/widgets/NavDrawer'
 
 import Logo from '../components/Logo'
+import Copyright from '../components/Copyright'
 import Tree from '../components/Tree'
 import NavBar from '../components/NavBar'
 
@@ -119,7 +120,7 @@ const Layout = ({
               }}>
                 <div className={ classes.footerContainer }>
                   <div className={ classes.footerCopyright }>
-                    {/* <Copyright /> */}
+                    <Copyright />
                   </div>
                   <div className={ classes.footerNavBar }>
                     <Hidden smDown>
