@@ -251,6 +251,7 @@ library.settings = {
       title: 'Logo',
       helperText: 'Upload an image for your logo',
       component: 'image',
+      providers: ['local', 'google'],
     }, {
       id: 'copyright_message',
       title: 'Copyright Message',
