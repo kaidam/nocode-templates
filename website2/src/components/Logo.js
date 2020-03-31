@@ -24,20 +24,20 @@ const useStyles = makeStyles(theme => {
       alignItems: 'center',
     },
     logoText: {
-      paddingLeft: '4px',
       color: theme.palette.primary.main,
       whiteSpace: 'nowrap',
     },
     logoImage: {
-      height: `${theme.layout.topbarHeight-40}px`,
-      marginRight: theme.spacing(2),
+      height: `${theme.layout.topbarHeight * 0.7}px`,
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
     },
     editButton: {
-      marginRight: theme.spacing(2),
+      
     },
-    logoEditButton: {
-      marginLeft: theme.spacing(2),
-    },
+    editIcon: {
+      color: theme.palette.primary.main,
+    }
   }
 })
 
@@ -55,6 +55,12 @@ const Logo = ({
       <div className={ classes.container }>
         <Suspense
           Component={ SettingsEditor }
+          props={{
+            classNames: {
+              button: classes.editButton,
+              icon: classes.editIcon,
+            }
+          }}
         />
         {
           settings.logo && settings.logo.url && (

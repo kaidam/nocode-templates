@@ -12,11 +12,12 @@ import withSectionEditor from '../hooks/withSectionEditor'
 const useStyles = makeStyles(theme => ({
   root: {
     borderBottom: '1px solid #cccccc',
+    paddingLeft: theme.spacing(1), 
+    paddingRight: theme.spacing(1),
   },
   menuItem: {
     paddingLeft: theme.spacing(0), 
     paddingRight: theme.spacing(1),
-    marginLeft: theme.spacing(0.2),
     marginTop: theme.spacing(0.2),
     marginBottom: theme.spacing(0.2),
     cursor: 'pointer',
