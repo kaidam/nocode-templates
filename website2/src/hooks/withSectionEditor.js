@@ -5,11 +5,14 @@ import { makeStyles } from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton'
 import Actions from '@nocode-toolkit/frontend/utils/actions'
 import contentActions from '@nocode-toolkit/frontend/store/modules/content'
+import layoutActions from '@nocode-toolkit/frontend/store/modules/layout'
 
 import useSection from '@nocode-toolkit/frontend/components/hooks/useSection'
 
 import icons from '@nocode-toolkit/frontend/icons'
 import driveUtils from '@nocode-toolkit/frontend/utils/drive'
+
+import withAddWidgets from './withAddWidgets'
 
 const SettingsIcon = icons.settings
 const AddIcon = icons.add
@@ -48,7 +51,18 @@ const withSectionEditor = ({
     onEditSection: contentActions.editSection,
     onChangeSectionFolder: contentActions.editSectionFolder,
     onResetSectionFolder: contentActions.resetSectionFolder,
+    onInsertRow: layoutActions.insertRow,
   })
+
+  const onAddWidget = useCallback((form) => {
+    actions.onInsertRow({
+      content_id: `section:${section}`,
+      layout_id: 'widgets',
+      form,
+    })
+  }, [
+    section,
+  ])
 
   const getAddButton = useCallback((onClick) => {
     return (
@@ -172,18 +186,10 @@ const withSectionEditor = ({
     getAddItems,
   ])
 
-  const getAddWidgets = useCallback(() => {
-    return [
-      {
-        title: 'Test',
-        icon: icons.add,
-        handler: () => {}
-      },
-    ]
-  }, [
-    
-  ])
-
+  const getAddWidgets = withAddWidgets({
+    onSelect: onAddWidget,
+  })
+  
   return {
     node,
     annotation,

@@ -45,7 +45,7 @@ const Tree = ({
   const sectionData = useSelector(state => sectionSelector(state, section))
   if(!sectionData) return
   const annotation = sectionData.annotation || {}
-  const layout = annotation.layout
+  const widgets = annotation.widgets
 
   return (
     <div

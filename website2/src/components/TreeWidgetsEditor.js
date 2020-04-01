@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
 import List from '@material-ui/core/List'
@@ -15,8 +15,8 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(1), 
   },
   list: {
-    paddingTop: 0,
-    paddingBottom: 0,
+    paddingTop: theme.spacing(0.5),
+    paddingBottom: theme.spacing(0.5),
   },
   menuItem: {
     paddingLeft: theme.spacing(4), 
