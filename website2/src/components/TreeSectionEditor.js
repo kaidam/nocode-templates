@@ -11,6 +11,7 @@ import withSectionEditor from '../hooks/withSectionEditor'
 
 const useStyles = makeStyles(theme => ({
   root: {
+    borderTop: '1px solid #cccccc',
     borderBottom: '1px solid #cccccc',
     paddingLeft: theme.spacing(1), 
   },

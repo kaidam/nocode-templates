@@ -8,6 +8,7 @@ import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
 
 import Suspense from '@nocode-toolkit/frontend/components/system/Suspense'
 import SystemTree from '@nocode-toolkit/frontend/components/tree/Tree'
+import Layout from '@nocode-toolkit/frontend/components/layout/Render'
 
 const ItemEditor = lazy(() => import(/* webpackChunkName: "ui" */ './ItemEditor'))
 const TreeSectionEditor = lazy(() => import(/* webpackChunkName: "ui" */ './TreeSectionEditor'))
@@ -18,6 +19,8 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    overflowY: 'auto',
+    overflowX: 'hidden',
   },
   header: {
     flexGrow: 0,
@@ -26,8 +29,6 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 0,
   },
   content: {
-    overflowY: 'auto',
-    overflowX: 'hidden',
     flexGrow: 1,
   },
 }))
@@ -63,6 +64,9 @@ const Tree = ({
           </div>
         )
       }
+      <Layout
+        data={ widgets }
+      />
       {
         showUI && (
           <div className={ classes.header }>

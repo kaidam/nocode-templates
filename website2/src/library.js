@@ -8,6 +8,7 @@ import StripePlugin from '@nocode-toolkit/plugin-stripe/ui'
 import ContactFormPlugin from '@nocode-toolkit/plugin-contactform/ui'
 
 import ImageWidget from '@nocode-toolkit/frontend/widgets/image'
+import VideoWidget from '@nocode-toolkit/frontend/widgets/video'
 import SocialLinksWidget from '@nocode-toolkit/frontend/widgets/social_links'
 
 import LayoutDefault from './pages/Layout'
@@ -30,6 +31,7 @@ library.plugins = [
 library.widgets = [
   ImageWidget(),
   SocialLinksWidget(),
+  VideoWidget(),
 ]
 
 library.templates = {

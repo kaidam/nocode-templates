@@ -18,6 +18,11 @@ const withAddWidgets = ({
         handler: () => onSelect('image'),
       },
       {
+        title: 'Youtube Video',
+        icon: icons.video,
+        handler: () => onSelect('video'),
+      },
+      {
         title: 'Social Links',
         icon: icons.people,
         handler: () => onSelect('social_links'),
