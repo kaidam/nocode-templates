@@ -5,6 +5,7 @@ import Actions from '@nocode-toolkit/frontend/utils/actions'
 import layoutActions from '@nocode-toolkit/frontend/store/modules/layout'
 
 import settingsSelectors from '@nocode-toolkit/frontend/store/selectors/settings'
+import nocodeSelectors from '@nocode-toolkit/frontend/store/selectors/nocode'
 
 import icons from '@nocode-toolkit/frontend/icons'
 
@@ -18,6 +19,9 @@ const withLayoutEditor = ({
   })
 
   const forms = useSelector(settingsSelectors.forms)
+  const annotations = useSelector(nocodeSelectors.annotations)
+  const annotation = annotations[content_id] || {}
+  const data = annotation[layout_id]
 
   const onAddWidget = useCallback((form, rowIndex = -1) => {
     actions.onLayoutAdd({
@@ -72,6 +76,7 @@ const withLayoutEditor = ({
   ])
 
   return {
+    data,
     getAddMenu,
     onDeleteCell,
   }

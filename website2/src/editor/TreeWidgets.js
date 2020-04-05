@@ -14,10 +14,12 @@ import withLayoutEditor from '../hooks/withLayoutEditor'
 const AddIcon = icons.add
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    borderBottom: '1px solid #cccccc',
+  root: ({
+    hasItems,
+  }) => ({
+    borderBottom: hasItems ? '1px solid #cccccc' : 'none',
     paddingLeft: theme.spacing(1), 
-  },
+  }),
   list: {
     paddingTop: theme.spacing(0.5),
     paddingBottom: theme.spacing(0.5),
@@ -47,13 +49,18 @@ const TreeWidgetsEditor = ({
   content_id,
   layout_id,
 }) => {
-  const classes = useStyles()
-
   const {
+    data,
     getAddMenu,
   } = withLayoutEditor({
     content_id,
     layout_id
+  })
+
+  const hasItems = data && data.length > 0 ? true : false
+
+  const classes = useStyles({
+    hasItems: data && data.length > 0 ? true : false,
   })
 
   const getAddButton = useCallback((onClick) => {

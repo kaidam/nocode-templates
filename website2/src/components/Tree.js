@@ -43,11 +43,6 @@ const Tree = ({
   const settings = useSelector(settingsSelectors.settings)
   const folderPages = settings.folderPages === 'yes'
   const containerRef = useRef()
-  const sectionSelector = useMemo(contentSelectors.section, [])
-  const sectionData = useSelector(state => sectionSelector(state, section))
-  if(!sectionData) return
-  const annotation = sectionData.annotation || {}
-  const widgets = annotation.widgets
 
   const layoutProps = {
     content_id: `section:${section}`,
