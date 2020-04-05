@@ -8,11 +8,12 @@ import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
 
 import Suspense from '@nocode-toolkit/frontend/components/system/Suspense'
 import SystemTree from '@nocode-toolkit/frontend/components/tree/Tree'
-import Layout from '@nocode-toolkit/frontend/components/layout/Render'
+import Layout from '@nocode-toolkit/frontend/components/layout/Layout'
 
-const ItemEditor = lazy(() => import(/* webpackChunkName: "ui" */ './ItemEditor'))
-const TreeSectionEditor = lazy(() => import(/* webpackChunkName: "ui" */ './TreeSectionEditor'))
-const TreeWidgetsEditor = lazy(() => import(/* webpackChunkName: "ui" */ './TreeWidgetsEditor'))
+const ItemEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Item'))
+const TreeEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Tree'))
+const TreeWidgetsEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/TreeWidgets'))
+const LayoutEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Layout'))
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -48,6 +49,11 @@ const Tree = ({
   const annotation = sectionData.annotation || {}
   const widgets = annotation.widgets
 
+  const layoutProps = {
+    content_id: `section:${section}`,
+    layout_id: 'widgets',
+  }
+
   return (
     <div
       className={ classes.root }
@@ -57,21 +63,26 @@ const Tree = ({
           <div className={ classes.header }>
             <Suspense
               Component={ TreeWidgetsEditor }
-              props={{
-                section,
-              }}
+              props={ layoutProps }
             />
           </div>
         )
       }
-      <Layout
-        data={ widgets }
-      />
+      {
+        showUI ? (
+          <Suspense
+            Component={ LayoutEditor }
+            props={ layoutProps }
+          />
+        ) : (
+          <Layout { ...layoutProps } />
+        )
+      }
       {
         showUI && (
           <div className={ classes.header }>
             <Suspense
-              Component={ TreeSectionEditor }
+              Component={ TreeEditor }
               props={{
                 section,
               }}

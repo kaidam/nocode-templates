@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
+import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 
 import MenuButton from '@nocode-toolkit/frontend/components/widgets/MenuButton'
+import icons from '@nocode-toolkit/frontend/icons'
 
-import withSectionEditor from '../hooks/withSectionEditor'
+import withLayoutEditor from '../hooks/withLayoutEditor'
+
+const AddIcon = icons.add
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,16 +44,31 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const TreeWidgetsEditor = ({
-  section,
+  content_id,
+  layout_id,
 }) => {
   const classes = useStyles()
 
   const {
-    getAddButton,
-    getAddWidgets,
-  } = withSectionEditor({
-    section,
+    getAddMenu,
+  } = withLayoutEditor({
+    content_id,
+    layout_id
   })
+
+  const getAddButton = useCallback((onClick) => {
+    return (
+      <IconButton
+        size="small"
+        onClick={ onClick }
+      >
+        <AddIcon
+          fontSize="inherit"
+          color="secondary"
+        />
+      </IconButton>
+    )
+  }, [])
 
   return (
     <div className={ classes.root }>
@@ -69,7 +88,7 @@ const TreeWidgetsEditor = ({
           <MenuButton
             header="widgets : Add"
             getButton={ getAddButton }
-            getItems={ getAddWidgets }
+            getItems={ getAddMenu }
           />
         </ListItem>
       </List>

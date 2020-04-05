@@ -1,34 +1,17 @@
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 
-import IconButton from '@material-ui/core/IconButton'
 import Actions from '@nocode-toolkit/frontend/utils/actions'
 import contentActions from '@nocode-toolkit/frontend/store/modules/content'
-import layoutActions from '@nocode-toolkit/frontend/store/modules/layout'
 
 import useSection from '@nocode-toolkit/frontend/components/hooks/useSection'
 
 import icons from '@nocode-toolkit/frontend/icons'
 import driveUtils from '@nocode-toolkit/frontend/utils/drive'
 
-import withAddWidgets from './withAddWidgets'
-
-const SettingsIcon = icons.settings
-const AddIcon = icons.add
-const LinkIcon = icons.link
-
-const useStyles = makeStyles(theme => ({
-  settingsIcon: ({contrast} = {}) => ({
-    color: contrast ?
-      theme.palette.primary.contrastText :
-      theme.palette.primary.main,
-  }),
-}))
-
 const withSectionEditor = ({
   section,
-  contrast,
 }) => {
   const {
     node,
@@ -41,64 +24,19 @@ const withSectionEditor = ({
 
   const isDefaultFolder = ghostFolder && ghostFolder.id == defaultFolderId
 
-  const classes = useStyles({
-    contrast,
-  })
-
   const actions = Actions(useDispatch(), {
     onCreateRemoteContent: contentActions.createRemoteContent,
     onCreateLocalContent: contentActions.createLocalContent,
     onEditSection: contentActions.editSection,
     onChangeSectionFolder: contentActions.editSectionFolder,
     onResetSectionFolder: contentActions.resetSectionFolder,
-    onInsertRow: layoutActions.insertRow,
   })
-
-  const onAddWidget = useCallback((form) => {
-    actions.onInsertRow({
-      content_id: `section:${section}`,
-      layout_id: 'widgets',
-      form,
-    })
-  }, [
-    section,
-  ])
-
-  const getAddButton = useCallback((onClick) => {
-    return (
-      <IconButton
-        size="small"
-        onClick={ onClick }
-      >
-        <AddIcon
-          fontSize="inherit"
-          color="secondary"
-        />
-      </IconButton>
-    )
-  }, [])
-
-  const getSettingsButton = useCallback((onClick) => {
-    return (
-      <IconButton
-        size="small"
-        onClick={ onClick }
-      >
-        <SettingsIcon
-          fontSize="inherit"
-          className={ classes.settingsIcon }
-        />
-      </IconButton>
-    )
-  }, [
-    classes,
-  ])
 
   const getAddItems = useCallback(() => {
 
     const linkItem = {
       title: 'Link',
-      icon: LinkIcon,
+      icon: icons.link,
       handler: () => actions.onCreateLocalContent({
         title: 'Create Link',
         form: 'link',
@@ -185,19 +123,12 @@ const withSectionEditor = ({
     isDefaultFolder,
     getAddItems,
   ])
-
-  const getAddWidgets = withAddWidgets({
-    onSelect: onAddWidget,
-  })
   
   return {
     node,
     annotation,
     ghostFolder,
-    getAddButton,
-    getSettingsButton,
     getAddItems,
-    getAddWidgets,
     getSettingsItems,
   }
 }

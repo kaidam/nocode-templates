@@ -6,7 +6,7 @@ import Link from '@nocode-toolkit/frontend/components/widgets/Link'
 import Suspense from '@nocode-toolkit/frontend/components/system/Suspense'
 import settingsSelectors from '@nocode-toolkit/frontend/store/selectors/settings'
 
-const SettingsEditor = lazy(() => import(/* webpackChunkName: "ui" */ './SettingsEditor'))
+const SettingsEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Settings'))
 
 const useStyles = makeStyles(theme => {  
   return {

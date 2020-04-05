@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import classnames from 'classnames'
 import IconButton from '@material-ui/core/IconButton'
 import icons from '@nocode-toolkit/frontend/icons'
+import eventUtils from '@nocode-toolkit/frontend/utils/events'
 
 import Actions from '@nocode-toolkit/frontend/utils/actions'
 import settingsActions from '@nocode-toolkit/frontend/store/modules/settings'
@@ -24,8 +25,7 @@ const SettingsEditor = ({
       size="small"
       className={ classNames.button }
       onClick={ (e) => {
-        e.preventDefault()
-        e.stopPropagation()
+        eventUtils.cancelEvent(e)
         actions.onOpenSettings() 
       }}
     >

@@ -1,13 +1,18 @@
 import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
+import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 
 import MenuButton from '@nocode-toolkit/frontend/components/widgets/MenuButton'
+import icons from '@nocode-toolkit/frontend/icons'
 
 import withSectionEditor from '../hooks/withSectionEditor'
+
+const SettingsIcon = icons.settings
+const AddIcon = icons.add
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,7 +38,10 @@ const useStyles = makeStyles(theme => ({
   },
   itemTextTypography: {
     fontWeight: 'bold',
-  }
+  },
+  settingsIcon: {
+    color: theme.palette.primary.main,
+  },
 }))
 
 const TreeSectionEditor = ({
@@ -43,8 +51,6 @@ const TreeSectionEditor = ({
 
   const {
     ghostFolder,
-    getAddButton,
-    getSettingsButton,
     getAddItems,
     getSettingsItems,
   } = withSectionEditor({
@@ -65,6 +71,38 @@ const TreeSectionEditor = ({
     classes,
     ghostFolder,
   ])
+
+  const getAddButton = useCallback((onClick) => {
+    return (
+      <IconButton
+        size="small"
+        onClick={ onClick }
+      >
+        <AddIcon
+          fontSize="inherit"
+          color="secondary"
+        />
+      </IconButton>
+    )
+  }, [])
+
+
+  const getSettingsButton = useCallback((onClick) => {
+    return (
+      <IconButton
+        size="small"
+        onClick={ onClick }
+      >
+        <SettingsIcon
+          fontSize="inherit"
+          className={ classes.settingsIcon }
+        />
+      </IconButton>
+    )
+  }, [
+    classes,
+  ])
+
 
   return (
     <div className={ classes.root }>

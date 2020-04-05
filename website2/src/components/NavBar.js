@@ -7,8 +7,8 @@ import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
 import Suspense from '@nocode-toolkit/frontend/components/system/Suspense'
 import SystemNavBar from '@nocode-toolkit/frontend/components/navbar/NavBar'
 
-const ItemEditor = lazy(() => import(/* webpackChunkName: "ui" */ './ItemEditor'))
-const NavbarSectionEditor = lazy(() => import(/* webpackChunkName: "ui" */ './NavbarSectionEditor'))
+const ItemEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Item'))
+const NavbarEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Navbar'))
 
 const useStyles = makeStyles(theme => ({
   root: ({
@@ -79,7 +79,7 @@ const NavBar = ({
         showUI && (
           <div className={ classes.editor }>
             <Suspense
-              Component={ NavbarSectionEditor }
+              Component={ NavbarEditor }
               props={{
                 section,
                 contrast,
