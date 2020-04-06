@@ -11,6 +11,8 @@ import ImageWidget from '@nocode-toolkit/frontend/widgets/image'
 import VideoWidget from '@nocode-toolkit/frontend/widgets/video'
 import SocialLinksWidget from '@nocode-toolkit/frontend/widgets/social_links'
 
+import defaultForms from '@nocode-toolkit/frontend/forms'
+
 import LayoutDefault from './pages/Layout'
 import PageDefault from './pages/Document'
 
@@ -43,162 +45,7 @@ library.templates = {
   },
 }
 
-/*
-
-  we auto initialise the drive folders for them here
-
-*/
-library.initialise = () => async (dispatch, getState) => {
-  const website = systemSelectors.website(getState())
-
-  const ret = {}
-
-  if(website.meta.autoFoldersEnsure && !website.meta.autoFoldersCreated) {
-    dispatch(uiActions.setLoading({
-      message: 'Setting up your website for the first time...',
-    }))
-
-    const sectionResources = SECTIONS
-      .map(section => {
-        return {
-          id: section,
-          type: 'folder',
-          location: `section:${section}`,
-          data: {
-            ghost: true,
-            linked: true,
-          },
-        }
-      })
-      .concat([{
-        id: 'home',
-        type: 'document',
-        location: 'singleton:home'
-      }])
-
-    await dispatch(systemActions.ensureSectionResources({
-      driver: 'drive',
-      resources: sectionResources,
-    }))
-    
-    await dispatch(systemActions.updateWebsiteMeta({
-      autoFoldersCreated: true,
-    }))
-
-    ret.reload = true
-  }
-  
-  return ret
-}
-
-const valueInjector = (inject = {}) => (values = {}) => Object.assign({}, values, inject)
-
-library.forms = {
-  'section': {
-    initialValues: {
-      annotation: {
-        sorting: {},
-      },
-    },
-    tabs: [{
-      id: 'settings',
-      title: 'Settings',
-      schema: [{
-        id: 'annotation.sorting',
-        title: 'Sorting',
-        helperText: 'How are children items sorted inside this folder?',
-        component: 'sorting',
-      }],
-    }, {
-      id: 'hidden',
-      title: 'Hidden Items',
-      schema: [{
-        title: 'Hidden Items',
-        helperText: 'Manage the hidden items in this section',
-        component: 'hiddenItems',
-      }],
-    }],
-  },
-  'drive.folder': {
-    initialValues: {
-      name: '',
-      annotation: {
-        sorting: {},
-      },
-    },
-    processFormValues: valueInjector({mimeType: 'folder'}),
-    tabs: [{
-      id: 'main',
-      title: 'Details',
-      schema: [{
-        id: 'name',
-        title: 'Name',
-        helperText: 'Enter the name of the folder',
-        validate: {
-          type: 'string',
-          methods: [
-            ['required', 'The name is required'],
-          ],
-        }
-      }],
-    },{
-      id: 'settings',
-      title: 'Settings',
-      schema: [{
-        id: 'annotation.sorting',
-        title: 'Sorting',
-        helperText: 'How are children items sorted inside this folder?',
-        component: 'sorting',
-      }],
-    }]
-  },
-  'drive.document': {
-    initialValues: {
-      name: '',
-    },
-    processFormValues: valueInjector({mimeType: 'document'}),
-    schema: [{
-      id: 'name',
-      title: 'Name',
-      helperText: 'Enter the name of the document',
-      validate: {
-        type: 'string',
-        methods: [
-          ['required', 'The name is required'],
-        ],
-      }
-    }],
-  },
-  'link': {
-    initialValues: {
-      name: '',
-      url: '',
-      noRoute: true,
-    },
-    schema: [{
-      id: 'name',
-      title: 'Name',
-      helperText: 'Enter the name of the link',
-      validate: {
-        type: 'string',
-        methods: [
-          ['required', 'The name is required'],
-        ],
-      }
-    }, {
-      id: 'url',
-      title: 'URL',
-      helperText: 'Enter the url of the link',
-      validate: {
-        type: 'string',
-        methods: [
-          ['required', 'The url is required'],
-          ['url', 'Must be a valid url - e.g. http://google.com'],
-        ],
-      }
-    }],
-  },
-}
+library.forms = defaultForms
 
 library.settings = {
   initialValues: {
@@ -384,6 +231,54 @@ library.settings = {
       ]
     ]
   }],
+}
+
+/*
+
+  we auto initialise the drive folders for them here
+
+*/
+library.initialise = () => async (dispatch, getState) => {
+  const website = systemSelectors.website(getState())
+
+  const ret = {}
+
+  if(website.meta.autoFoldersEnsure && !website.meta.autoFoldersCreated) {
+    dispatch(uiActions.setLoading({
+      message: 'Setting up your website for the first time...',
+    }))
+
+    const sectionResources = SECTIONS
+      .map(section => {
+        return {
+          id: section,
+          type: 'folder',
+          location: `section:${section}`,
+          data: {
+            ghost: true,
+            linked: true,
+          },
+        }
+      })
+      .concat([{
+        id: 'home',
+        type: 'document',
+        location: 'singleton:home'
+      }])
+
+    await dispatch(systemActions.ensureSectionResources({
+      driver: 'drive',
+      resources: sectionResources,
+    }))
+    
+    await dispatch(systemActions.updateWebsiteMeta({
+      autoFoldersCreated: true,
+    }))
+
+    ret.reload = true
+  }
+  
+  return ret
 }
 
 export default library

@@ -11,7 +11,6 @@ const LayoutEditor = ({
 
   const {
     getAddMenu,
-    onDeleteCell,
   } = withLayoutEditor({
     content_id,
     layout_id
@@ -22,7 +21,6 @@ const LayoutEditor = ({
       content_id={ content_id }
       layout_id={ layout_id }
       getAddMenu={ getAddMenu }
-      onDeleteCell={ onDeleteCell }
     />
   )
 }

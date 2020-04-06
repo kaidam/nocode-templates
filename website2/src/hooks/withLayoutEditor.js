@@ -15,7 +15,6 @@ const withLayoutEditor = ({
 }) => {
   const actions = Actions(useDispatch(), {
     onLayoutAdd: layoutActions.add,
-    onLayoutDelete: layoutActions.delete,
   })
 
   const forms = useSelector(settingsSelectors.forms)
@@ -29,18 +28,6 @@ const withLayoutEditor = ({
       layout_id,
       form,
       rowIndex,
-    })
-  }, [
-    content_id,
-    layout_id,
-  ])
-
-  const onDeleteCell = useCallback(({rowIndex, cellIndex}) => {
-    actions.onLayoutDelete({
-      content_id,
-      layout_id,
-      rowIndex,
-      cellIndex,
     })
   }, [
     content_id,
@@ -78,7 +65,6 @@ const withLayoutEditor = ({
   return {
     data,
     getAddMenu,
-    onDeleteCell,
   }
   
 }
