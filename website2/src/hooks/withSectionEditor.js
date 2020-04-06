@@ -45,7 +45,7 @@ const withSectionEditor = ({
     }
 
     return ghostFolder ? [{
-      title: 'Folder',
+      title: 'Google Folder',
       icon: icons.folder,
       secondaryIcon: icons.drive,
       handler: () => actions.onCreateRemoteContent({
@@ -55,7 +55,7 @@ const withSectionEditor = ({
         parentId: ghostFolder.id,
       })
     },{
-      title: 'Document',
+      title: 'Google Document',
       icon: icons.docs,
       secondaryIcon: icons.drive,
       handler: () => actions.onCreateRemoteContent({

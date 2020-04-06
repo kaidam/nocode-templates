@@ -1,9 +1,23 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
-const DocumentPage = ({}) => {
+import contentSelectors from '@nocode-toolkit/frontend/store/selectors/content'
+
+import Body from '@nocode-toolkit/frontend/components/document/Body'
+
+const DocumentPage = ({
+
+} = {}) => {
+  const {
+    node,
+    html,
+  } = useSelector(contentSelectors.document)
   return (
     <div className="document-container">
-      this is a document
+      <Body
+        node={ node }
+        html={ html }
+      />
     </div>
   )
 }

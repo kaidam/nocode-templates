@@ -52,7 +52,7 @@ const withItemEditor = ({
           title: 'Add',
           icon: icons.add,
           items: [{
-            title: 'Folder',
+            title: 'Google Folder',
             icon: icons.folder,
             secondaryIcon: icons.drive,
             handler: () => actions.onCreateRemoteContent({
@@ -62,7 +62,7 @@ const withItemEditor = ({
               parentId: node.id,
             })
           },{
-            title: 'Document',
+            title: 'Google Document',
             icon: icons.docs,
             secondaryIcon: icons.drive,
             handler: () => actions.onCreateRemoteContent({
