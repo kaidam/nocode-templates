@@ -1,9 +1,8 @@
-import React, { lazy, useRef, useMemo } from 'react'
+import React, { lazy, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
 
 import settingsSelectors from '@nocode-toolkit/frontend/store/selectors/settings'
-import contentSelectors from '@nocode-toolkit/frontend/store/selectors/content'
 import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
 
 import Suspense from '@nocode-toolkit/frontend/components/system/Suspense'
