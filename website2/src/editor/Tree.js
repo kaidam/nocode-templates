@@ -58,19 +58,22 @@ const TreeSectionEditor = ({
     section,
   })
 
+  const ghostFolderTitle = (ghostFolder ? ghostFolder.name : '')
+    .replace(/^(\w)/, (st) => st.toUpperCase())
+
   const getTitleSettingsButton = useCallback((onClick) => {
     return (
       <ListItemText
         classes={{
           primary: classes.itemTextTypography,
         }}
-        primary={ ghostFolder ? ghostFolder.name : '' }
+        primary={ ghostFolderTitle }
         onClick={ onClick }
       />
     )
   }, [
     classes,
-    ghostFolder,
+    ghostFolderTitle,
   ])
 
   const getAddButton = useCallback((onClick) => {
@@ -104,7 +107,6 @@ const TreeSectionEditor = ({
     classes,
   ])
 
-
   return (
     <div className={ classes.root }>
       <List>
@@ -113,18 +115,18 @@ const TreeSectionEditor = ({
           className={ classes.menuItem }
         >
           <MenuButton
-            header={ ghostFolder ? ghostFolder.name : '' }
+            header={ ghostFolderTitle }
             getButton={ getSettingsButton }
             getItems={ getSettingsItems }
           />
           <MenuButton
             className={ classes.itemText }
-            header={ ghostFolder ? ghostFolder.name : '' }
+            header={ ghostFolderTitle }
             getButton={ getTitleSettingsButton }
             getItems={ getSettingsItems }
           />
           <MenuButton
-            header={ ghostFolder ? `${ghostFolder.name} : Add` : '' }
+            header={ ghostFolder ? `${ghostFolderTitle} : Add` : '' }
             getButton={ getAddButton }
             getItems={ getAddItems }
           />

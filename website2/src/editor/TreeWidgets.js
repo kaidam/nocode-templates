@@ -91,10 +91,10 @@ const TreeWidgetsEditor = ({
             classes={{
               primary: classes.itemTextTypography,
             }}
-            primary={ 'widgets' }
+            primary={ 'Widgets' }
           />
           <MenuButton
-            header="widgets : Add"
+            header="Widgets : Add"
             getButton={ getAddButton }
             getItems={ getAddMenu }
           />

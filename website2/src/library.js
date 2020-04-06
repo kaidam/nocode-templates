@@ -10,6 +10,11 @@ import ContactFormPlugin from '@nocode-toolkit/plugin-contactform/ui'
 import ImageWidget from '@nocode-toolkit/frontend/widgets/image'
 import VideoWidget from '@nocode-toolkit/frontend/widgets/video'
 import SocialLinksWidget from '@nocode-toolkit/frontend/widgets/social_links'
+import RichTextWidget from '@nocode-toolkit/frontend/widgets/richtext'
+import HeadingWidget from '@nocode-toolkit/frontend/widgets/heading'
+import SearchWidget from '@nocode-toolkit/frontend/widgets/search'
+import HTMLWidget from '@nocode-toolkit/frontend/widgets/html'
+import SnippetWidget from '@nocode-toolkit/frontend/widgets/snippet'
 
 import defaultForms from '@nocode-toolkit/frontend/forms'
 
@@ -34,6 +39,11 @@ library.widgets = [
   ImageWidget(),
   SocialLinksWidget(),
   VideoWidget(),
+  RichTextWidget(),
+  HeadingWidget(),
+  SearchWidget(),
+  HTMLWidget(),
+  SnippetWidget(),
 ]
 
 library.templates = {

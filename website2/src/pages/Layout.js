@@ -50,6 +50,9 @@ const Layout = ({
     <div className={ classes.root }>
       <AppLayout
         material
+        head={(
+          <link rel="stylesheet" href="./css/index.css" />
+        )}
       >
         <AppBar 
           position="static" 
