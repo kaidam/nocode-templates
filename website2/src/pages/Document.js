@@ -12,6 +12,7 @@ const DocumentPage = ({
     node,
     html,
   } = useSelector(contentSelectors.document)
+  if(!node) return null
   return (
     <div className="document-container">
       <Body
