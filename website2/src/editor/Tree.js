@@ -18,7 +18,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     borderTop: '1px solid #cccccc',
     borderBottom: '1px solid #cccccc',
-    paddingLeft: theme.spacing(1), 
+    paddingLeft: theme.spacing(1),
+    backgroundColor: theme.palette.grey[100],
   },
   menuItem: {
     paddingLeft: theme.spacing(0), 

@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
   }) => ({
     borderBottom: hasItems ? '1px solid #cccccc' : 'none',
     paddingLeft: theme.spacing(1), 
+    backgroundColor: theme.palette.grey[100],
   }),
   list: {
     paddingTop: theme.spacing(0.5),
