@@ -9,16 +9,14 @@ import ListItemText from '@material-ui/core/ListItemText'
 import MenuButton from '@nocode-toolkit/frontend/components/widgets/MenuButton'
 import icons from '@nocode-toolkit/frontend/icons'
 
-import withSectionEditor from '../hooks/withSectionEditor'
+import withDocumentEditor from '../hooks/withDocumentEditor'
 
 const SettingsIcon = icons.settings
 const AddIcon = icons.add
 
 const useStyles = makeStyles(theme => ({
   root: {
-    borderTop: '1px solid #cccccc',
-    borderBottom: '1px solid #cccccc',
-    paddingLeft: theme.spacing(1),
+    border: '1px solid #cccccc',
     backgroundColor: theme.palette.grey[100],
   },
   list: {
@@ -26,8 +24,8 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(0),
   },
   menuItem: {
-    paddingLeft: theme.spacing(0), 
-    paddingRight: theme.spacing(1),
+    paddingLeft: theme.spacing(0.2), 
+    paddingRight: theme.spacing(0.2),
     marginTop: theme.spacing(0.2),
     marginBottom: theme.spacing(0.2),
     cursor: 'pointer',
@@ -49,20 +47,18 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const TreeSectionEditor = ({
-  section,
+const DocumentEditor = ({
+  node,
 }) => {
   const classes = useStyles()
 
   const {
-    ghostFolder,
-    getAddItems,
     getSettingsItems,
-  } = withSectionEditor({
-    section,
+  } = withDocumentEditor({
+    node,
   })
 
-  const ghostFolderTitle = (ghostFolder ? ghostFolder.name : '')
+  const documentTitle = node.name
     .replace(/^(\w)/, (st) => st.toUpperCase())
 
   const getTitleSettingsButton = useCallback((onClick) => {
@@ -71,13 +67,13 @@ const TreeSectionEditor = ({
         classes={{
           primary: classes.itemTextTypography,
         }}
-        primary={ ghostFolderTitle }
+        primary={ documentTitle }
         onClick={ onClick }
       />
     )
   }, [
     classes,
-    ghostFolderTitle,
+    documentTitle,
   ])
 
   const getAddButton = useCallback((onClick) => {
@@ -93,7 +89,6 @@ const TreeSectionEditor = ({
       </IconButton>
     )
   }, [])
-
 
   const getSettingsButton = useCallback((onClick) => {
     return (
@@ -119,20 +114,20 @@ const TreeSectionEditor = ({
           className={ classes.menuItem }
         >
           <MenuButton
-            header={ ghostFolderTitle }
+            header={ documentTitle }
             getButton={ getSettingsButton }
             getItems={ getSettingsItems }
           />
           <MenuButton
             className={ classes.itemText }
-            header={ ghostFolderTitle }
+            header={ documentTitle }
             getButton={ getTitleSettingsButton }
             getItems={ getSettingsItems }
           />
           <MenuButton
-            header={ ghostFolder ? `${ghostFolderTitle} : Add` : '' }
+            header={ `${documentTitle} : Add` }
             getButton={ getAddButton }
-            getItems={ getAddItems }
+            getItems={ () => [] }
           />
         </ListItem>
       </List>
@@ -140,4 +135,4 @@ const TreeSectionEditor = ({
   )
 }
 
-export default TreeSectionEditor
+export default DocumentEditor

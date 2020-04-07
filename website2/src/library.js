@@ -3,6 +3,7 @@ import library from '@nocode-toolkit/frontend/library'
 import systemActions from '@nocode-toolkit/frontend/store/modules/system'
 import uiActions from '@nocode-toolkit/frontend/store/modules/ui'
 import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
+import settingsSelectors from '@nocode-toolkit/frontend/store/selectors/settings'
 
 import StripePlugin from '@nocode-toolkit/plugin-stripe/ui'
 import ContactFormPlugin from '@nocode-toolkit/plugin-contactform/ui'
@@ -27,6 +28,93 @@ const SECTIONS = [
   'topbar',
   'footer',
 ]
+
+const DOCUMENT_SETTINGS_DEFAULT_VALUES = {
+  breadcrumbs: 'yes',
+  documentTitle: 'yes',
+  documentInfo: 'yes',
+  backNextButtons: 'yes',
+  imageDropshadow: 'no',
+}
+
+const getDocumentSettingsSchema = (prefix = '') => {
+  return [
+    [
+      {
+        id: prefix + 'breadcrumbs',
+        title: 'Breadcrumbs',
+        helperText: 'Include links to parent folders above the document',
+        component: 'radio',
+        row: true,
+        options: [{
+          title: 'Enable',
+          value: 'yes',
+        },{
+          title: 'Disable',
+          value: 'no',
+        }]
+      },
+      {
+        id: prefix + 'backNextButtons',
+        title: 'Back / Next Buttons',
+        helperText: 'Include back & next buttons to the previous and next pages',
+        component: 'radio',
+        row: true,
+        options: [{
+          title: 'Enable',
+          value: 'yes',
+        },{
+          title: 'Disable',
+          value: 'no',
+        }]
+      },
+    ],[
+      {
+        id: prefix + 'documentTitle',
+        title: 'Document Title',
+        helperText: 'Include the name of the Google document as the page title',
+        component: 'radio',
+        row: true,
+        options: [{
+          title: 'Enable',
+          value: 'yes',
+        },{
+          title: 'Disable',
+          value: 'no',
+        }]
+      },
+      {
+        id: prefix + 'documentInfo',
+        title: 'Document Info',
+        helperText: 'Include the author and date of when the document was created',
+        component: 'radio',
+        row: true,
+        options: [{
+          title: 'Enable',
+          value: 'yes',
+        },{
+          title: 'Disable',
+          value: 'no',
+        }]
+      },
+    ],[
+      {
+        id: prefix + 'imageDropshadow',
+        title: 'Image Drop Shadow',
+        helperText: 'Apply a drop shadow to any images in a google document',
+        component: 'radio',
+        row: true,
+        options: [{
+          title: 'Enable',
+          value: 'yes',
+        },{
+          title: 'Disable',
+          value: 'no',
+        }]
+      },
+    ]
+  ]
+}
 
 library.sections = SECTIONS
 
@@ -55,10 +143,85 @@ library.templates = {
   },
 }
 
-library.forms = defaultForms
+const baseDocumentSettingsFields = [
+  'breadcrumbs',
+  'backNextButtons',
+  'documentTitle',
+  'documentInfo',
+  'imageDropshadow',
+]
+
+library.forms = Object.assign({}, defaultForms, {
+  documentSettings: {
+    id: 'documentSettings',
+    title: 'Settings',
+    initialValues: {
+      annotation: Object.assign({}, DOCUMENT_SETTINGS_DEFAULT_VALUES, {
+        useDefaults: 'inherit',
+      }),
+    },
+    handlers: {
+      isDisabled: ({
+        name,
+        values,
+      }) => {
+        if(name == 'annotation.useDefaults') return false
+        const useDefaults = values.annotation.useDefaults
+        return useDefaults == 'inherit'
+      },
+      getValue: ({
+        name,
+        values,
+        value,
+        context,
+      }) => {
+        if(name == 'annotation.useDefaults') return value
+        const useDefaults = values.annotation.useDefaults
+        if(useDefaults == 'inherit') {
+          const key = name.split('.')[1]
+          return context.settings[key]
+        } else {
+          return value
+        }
+      },
+    },
+    processFormValues: (values, context) => {
+      const {
+        useDefaults,
+      } = values.annotation
+      if(useDefaults == 'inherit') {
+        const newAnnotation = Object.assign({}, values.annotation)
+        baseDocumentSettingsFields.forEach(field => delete(newAnnotation[field]))
+        return Object.assign({}, values, {
+          annotation: newAnnotation,
+        })
+      }
+      return values
+    },
+    contextSelector: (state) => {
+      return {
+        settings: settingsSelectors.settings(state),
+      }
+    },
+    schema: [{
+      id: 'annotation.useDefaults',
+      title: 'Use Website Settings',
+      helperText: 'Inherit the following values from the website settings',
+      component: 'radio',
+      row: true,
+      options: [{
+        title: 'Inherit',
+        value: 'inherit',
+      }, {
+        title: 'Override',
+        value: 'override',
+      }]
+    }].concat(getDocumentSettingsSchema(`annotation.`))
+  }
+})
 
 library.settings = {
-  initialValues: {
+  initialValues: Object.assign({
     title: 'Website Title',
     logo: null,
     copyright_message: '&copy; &year; My Company Name',
@@ -67,17 +230,12 @@ library.settings = {
     color: {color: "#3f51b5"},
     topbarHeight: 80,
     sidebarWidth: 240,
-    breadcrumbs: 'yes',
-    documentTitle: 'yes',
-    documentInfo: 'yes',
-    backNextButtons: 'yes',
     folderPages: 'yes',
-    imageDropshadow: 'no',
     navigation: {
       left: true,
       right: false,
     },
-  },
+  }, DOCUMENT_SETTINGS_DEFAULT_VALUES),
   tabs: [{
     id: 'main',
     title: 'Website',
@@ -150,96 +308,27 @@ library.settings = {
           value: 'right',
         }]
       },
-  
-      [
-        {
-          id: 'breadcrumbs',
-          title: 'Breadcrumbs',
-          helperText: 'Include links to parent folders above the document',
-          component: 'radio',
-          row: true,
-          options: [{
-            title: 'Enable',
-            value: 'yes',
-          },{
-            title: 'Disable',
-            value: 'no',
-          }]
-        },
-        {
-          id: 'backNextButtons',
-          title: 'Back / Next Buttons',
-          helperText: 'Include back & next buttons to the previous and next pages',
-          component: 'radio',
-          row: true,
-          options: [{
-            title: 'Enable',
-            value: 'yes',
-          },{
-            title: 'Disable',
-            value: 'no',
-          }]
-        },
-      ],[
-        {
-          id: 'documentTitle',
-          title: 'Document Title',
-          helperText: 'Include the name of the Google document as the page title',
-          component: 'radio',
-          row: true,
-          options: [{
-            title: 'Enable',
-            value: 'yes',
-          },{
-            title: 'Disable',
-            value: 'no',
-          }]
-        },
-        {
-          id: 'documentInfo',
-          title: 'Document Info',
-          helperText: 'Include the author and date of when the document was created',
-          component: 'radio',
-          row: true,
-          options: [{
-            title: 'Enable',
-            value: 'yes',
-          },{
-            title: 'Disable',
-            value: 'no',
-          }]
-        },
-      ],[
-        {
-          id: 'folderPages',
-          title: 'Folder Pages',
-          helperText: 'Render a page for folders with links to their contents',
-          component: 'radio',
-          row: true,
-          options: [{
-            title: 'Enable',
-            value: 'yes',
-          },{
-            title: 'Disable',
-            value: 'no',
-          }]
-        },
-        {
-          id: 'imageDropshadow',
-          title: 'Image Drop Shadow',
-          helperText: 'Apply a drop shadow to any images in a google document',
-          component: 'radio',
-          row: true,
-          options: [{
-            title: 'Enable',
-            value: 'yes',
-          },{
-            title: 'Disable',
-            value: 'no',
-          }]
-        },
-      ]
+
+      {
+        id: 'folderPages',
+        title: 'Folder Pages',
+        helperText: 'Render a page for folders with links to their contents',
+        component: 'radio',
+        row: true,
+        options: [{
+          title: 'Enable',
+          value: 'yes',
+        },{
+          title: 'Disable',
+          value: 'no',
+        }]
+      },
+
     ]
+  }, {
+    id: 'document',
+    title: 'Document',
+    schema: getDocumentSettingsSchema(),
   }],
 }
 

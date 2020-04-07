@@ -22,8 +22,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.grey[100],
   }),
   list: {
-    paddingTop: theme.spacing(0.5),
-    paddingBottom: theme.spacing(0.5),
+    paddingTop: theme.spacing(0),
+    paddingBottom: theme.spacing(0),
   },
   menuItem: {
     paddingLeft: theme.spacing(4), 
