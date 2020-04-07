@@ -8,6 +8,9 @@ import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
 
 import Suspense from '@nocode-toolkit/frontend/components/system/Suspense'
 import Title from '@nocode-toolkit/frontend/components/document/Title'
+import BreadCrumbs from '@nocode-toolkit/frontend/components/document/BreadCrumbs'
+import Info from '@nocode-toolkit/frontend/components/document/Info'
+import BackNextButtons from '@nocode-toolkit/frontend/components/document/BackNextButtons'
 import Body from '@nocode-toolkit/frontend/components/document/Body'
 import Layout from '@nocode-toolkit/frontend/components/layout/Layout'
 
@@ -18,6 +21,12 @@ const useStyles = makeStyles(theme => ({
   cell: {
     padding: theme.spacing(0.5),
   },
+  editorTop: {
+    marginBottom: theme.spacing(1),
+  },
+  editorBottom: {
+    marginTop: theme.spacing(1),
+  }
 }))
 
 const DocumentPage = ({
@@ -28,6 +37,7 @@ const DocumentPage = ({
   const settings = useSelector(settingsSelectors.settings)
   const {
     node,
+    route,
     annotation,
     html,
   } = useSelector(contentSelectors.document)
@@ -39,6 +49,7 @@ const DocumentPage = ({
   }, [
     settings,
     annotation,
+    route,
   ])
 
   const topLayoutId = 'topLayout'
@@ -56,9 +67,29 @@ const DocumentPage = ({
   return (
     <div className="document-container">
       {
-        activeWidgets.documentTitle && (
+        activeWidgets.breadcrumbs == 'yes' && (
+          <div className={ classes.cell }>
+            <BreadCrumbs
+              node={ node }
+            />
+          </div>
+          
+        )
+      }
+      {
+        activeWidgets.documentTitle == 'yes' && (
           <div className={ classes.cell }>
             <Title
+              node={ node }
+            />
+          </div>
+          
+        )
+      }
+      {
+        activeWidgets.documentInfo == 'yes' && (
+          <div className={ classes.cell }>
+            <Info
               node={ node }
             />
           </div>
@@ -71,6 +102,7 @@ const DocumentPage = ({
           node: node,
           annotation: annotation,
           layout_id: topLayoutId,
+          className: classes.editorTop,
         }}
       />
       {
@@ -95,6 +127,7 @@ const DocumentPage = ({
           node: node,
           annotation: annotation,
           layout_id: bottomLayoutId,
+          className: classes.editorBottom,
         }}
       />
       {
@@ -105,6 +138,16 @@ const DocumentPage = ({
           />
         ) : (
           <Layout { ...bottomLayoutProps } />
+        )
+      }
+      {
+        activeWidgets.backNextButtons == 'yes' && (
+          <div className={ classes.cell }>
+            <BackNextButtons
+              node={ node }
+            />
+          </div>
+          
         )
       }
     </div>

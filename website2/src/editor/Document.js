@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import classnames from 'classnames'
 
 import Tooltip from '@material-ui/core/Tooltip'
 import IconButton from '@material-ui/core/IconButton'
@@ -21,6 +22,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'flex-start',
     padding: theme.spacing(0.5),
+    backgroundColor: theme.palette.grey[200],
   },
   icon: {
     paddingRight: theme.spacing(1),
@@ -31,6 +33,7 @@ const DocumentEditor = ({
   node,
   annotation,
   layout_id,
+  className,
 }) => {
   const classes = useStyles()
 
@@ -64,8 +67,10 @@ const DocumentEditor = ({
     )
   }, [])
 
+  const rootClassname = classnames(classes.root, className)
+
   return (
-    <div className={ classes.root }>
+    <div className={ rootClassname }>
       <div className={ classes.icon }>
         <Tooltip title="Settings" placement="top">
           <IconButton
