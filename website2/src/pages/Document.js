@@ -17,6 +17,7 @@ import Layout from '@nocode-toolkit/frontend/components/layout/Layout'
 import driveUtils from '@nocode-toolkit/frontend/utils/drive'
 
 const DocumentEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Document'))
+const DefaultFolder = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/DefaultFolder'))
 const LayoutEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Layout'))
 
 const useStyles = makeStyles(theme => ({
@@ -129,6 +130,7 @@ const DocumentPage = ({
           driveUtils.isFolder(node) ? (
             <Folder
               node={ node }
+              DefaultFolder={ DefaultFolder }
             />
           ) : (
             <Body

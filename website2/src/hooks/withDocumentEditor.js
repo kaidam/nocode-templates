@@ -9,7 +9,7 @@ import withLayoutEditor from './withLayoutEditor'
 
 const withDocumentEditor = ({
   node,
-  layout_id,
+  layout_id = 'none',
 }) => {
 
   const actions = Actions(useDispatch(), {
@@ -97,6 +97,7 @@ const withDocumentEditor = ({
   return {
     node,
     getAddItems,
+    getAddContentItems,
     onOpenSettings,
     onOpenItem,
     onEditItem,
