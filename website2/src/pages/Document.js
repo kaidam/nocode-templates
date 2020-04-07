@@ -29,13 +29,23 @@ const useStyles = makeStyles(theme => ({
   },
   editorBottom: {
     marginTop: theme.spacing(1),
+  },
+  bodyContainer: ({withDropshadow}) => {
+    if(!withDropshadow) return {}
+    return {
+      '& .nocode-document-image-container': {
+        boxShadow: '10px 10px 10px 0px rgba(0,0,0,0.1)',
+      },
+      // '& .nocode-document-image': {
+      //   border: '1px solid #999',
+      // },
+    }
   }
 }))
 
 const DocumentPage = ({
 
 } = {}) => {
-  const classes = useStyles()
   const showUI = useSelector(systemSelectors.showUI)
   const settings = useSelector(settingsSelectors.settings)
   const {
@@ -61,6 +71,10 @@ const DocumentPage = ({
     node,
     route,
   ])
+
+  const classes = useStyles({
+    withDropshadow: activeWidgets.imageDropshadow == 'yes'
+  })
 
   const topLayoutId = 'topLayout'
   const bottomLayoutId = 'bottomLayout'
@@ -133,10 +147,12 @@ const DocumentPage = ({
               DefaultFolder={ DefaultFolder }
             />
           ) : (
-            <Body
-              node={ node }
-              html={ html }
-            />
+            <div className={ classes.bodyContainer }>
+              <Body
+                node={ node }
+                html={ html }
+              />
+            </div>
           )
         }
         
