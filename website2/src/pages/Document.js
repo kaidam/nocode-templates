@@ -12,7 +12,9 @@ import BreadCrumbs from '@nocode-toolkit/frontend/components/document/BreadCrumb
 import Info from '@nocode-toolkit/frontend/components/document/Info'
 import BackNextButtons from '@nocode-toolkit/frontend/components/document/BackNextButtons'
 import Body from '@nocode-toolkit/frontend/components/document/Body'
+import Folder from '@nocode-toolkit/frontend/components/document/Folder'
 import Layout from '@nocode-toolkit/frontend/components/layout/Layout'
+import driveUtils from '@nocode-toolkit/frontend/utils/drive'
 
 const DocumentEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Document'))
 const LayoutEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Layout'))
@@ -43,12 +45,19 @@ const DocumentPage = ({
   } = useSelector(contentSelectors.document)
 
   const activeWidgets = useMemo(() => {
-    return !annotation.useDefaults || annotation.useDefaults == 'inherit' ?
+    const values =  !annotation.useDefaults || annotation.useDefaults == 'inherit' ?
       settings :
       annotation
+    const retValues = Object.assign({}, values)
+    // we don't have documentInfo for folder pages
+    if(driveUtils.isFolder(node)) {
+      retValues.documentInfo = 'no'
+    }
+    return retValues
   }, [
     settings,
     annotation,
+    node,
     route,
   ])
 
@@ -116,10 +125,19 @@ const DocumentPage = ({
         )
       }
       <div className={ classes.cell }>
-        <Body
-          node={ node }
-          html={ html }
-        />
+        {
+          driveUtils.isFolder(node) ? (
+            <Folder
+              node={ node }
+            />
+          ) : (
+            <Body
+              node={ node }
+              html={ html }
+            />
+          )
+        }
+        
       </div>
       <Suspense
         Component={ DocumentEditor }

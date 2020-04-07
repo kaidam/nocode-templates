@@ -7,13 +7,16 @@ import IconButton from '@material-ui/core/IconButton'
 
 import MenuButton from '@nocode-toolkit/frontend/components/widgets/MenuButton'
 import icons from '@nocode-toolkit/frontend/icons'
+import driveUtils from '@nocode-toolkit/frontend/utils/drive'
 
 import withDocumentEditor from '../hooks/withDocumentEditor'
 import withLayoutEditor from '../hooks/withLayoutEditor'
 
+
 const SettingsIcon = icons.settings
 const AddIcon = icons.add
 const EditIcon = icons.edit
+const OpenIcon = icons.open
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -85,15 +88,31 @@ const DocumentEditor = ({
         </Tooltip>
       </div>
       <div className={ classes.icon }>
-        <Tooltip title="Edit Google Document" placement="top">
+        <Tooltip
+          title={
+            driveUtils.isFolder(node) ?
+              "Open Google Folder" :
+              "Edit Google Document"
+          }
+          placement="top">
           <IconButton
             size="small"
             onClick={ onEditDocument }
           >
-            <EditIcon
-              fontSize="inherit"
-              color="primary"
-            />
+            {
+              driveUtils.isFolder(node) ? (
+                <OpenIcon
+                  fontSize="inherit"
+                  color="primary"
+                />
+              ) : (
+                <EditIcon
+                  fontSize="inherit"
+                  color="primary"
+                />
+              )
+            }
+            
           </IconButton>
         </Tooltip>
       </div>
