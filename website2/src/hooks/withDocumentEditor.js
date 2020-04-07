@@ -19,25 +19,19 @@ const withDocumentEditor = ({
     onEditNode: contentActions.editNode,
   })
 
-  const getSettingsItems = useCallback(() => {
-    return [
-      {
-        title: 'Settings',
-        icon: icons.settings,
-        handler: () => actions.onEditNode({
-          title: `Edit Item`,
-          form: `documentSettings`,
-          id: node.id,
-        })
-      },
-    ].filter(i => i)
+  const onOpenSettings = useCallback(() => {
+    actions.onEditNode({
+      title: `Edit Item`,
+      form: `documentSettings`,
+      id: node.id,
+    })
   }, [
     node,
   ])
 
   return {
     node,
-    getSettingsItems,
+    onOpenSettings,
   }
 }
 
