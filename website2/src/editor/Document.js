@@ -10,8 +10,6 @@ import icons from '@nocode-toolkit/frontend/icons'
 import driveUtils from '@nocode-toolkit/frontend/utils/drive'
 
 import withDocumentEditor from '../hooks/withDocumentEditor'
-import withLayoutEditor from '../hooks/withLayoutEditor'
-
 
 const SettingsIcon = icons.settings
 const AddIcon = icons.add
@@ -41,16 +39,12 @@ const DocumentEditor = ({
   const classes = useStyles()
 
   const {
+    getAddItems,
     onOpenSettings,
-    onEditDocument,
+    onOpenItem,
+    onEditItem,
   } = withDocumentEditor({
     node,
-  })
-
-  const {
-    getAddMenu,
-  } = withLayoutEditor({
-    content_id: node.id,
     layout_id,
   })
 
@@ -87,6 +81,23 @@ const DocumentEditor = ({
           </IconButton>
         </Tooltip>
       </div>
+      {
+        driveUtils.isFolder(node) && (
+          <div className={ classes.icon }>
+            <Tooltip title="Edit" placement="top">
+              <IconButton
+                size="small"
+                onClick={ onEditItem }
+              >
+                <EditIcon
+                  fontSize="inherit"
+                  color="primary"
+                />
+              </IconButton>
+            </Tooltip>
+          </div>
+        )
+      }
       <div className={ classes.icon }>
         <Tooltip
           title={
@@ -97,7 +108,7 @@ const DocumentEditor = ({
           placement="top">
           <IconButton
             size="small"
-            onClick={ onEditDocument }
+            onClick={ onOpenItem }
           >
             {
               driveUtils.isFolder(node) ? (
@@ -112,7 +123,6 @@ const DocumentEditor = ({
                 />
               )
             }
-            
           </IconButton>
         </Tooltip>
       </div>
@@ -120,7 +130,7 @@ const DocumentEditor = ({
         <MenuButton
           noHeader
           getButton={ getAddButton }
-          getItems={ getAddMenu }
+          getItems={ getAddItems }
         />
       </div>
     </div>

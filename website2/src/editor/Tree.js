@@ -28,8 +28,8 @@ const useStyles = makeStyles(theme => ({
   menuItem: {
     paddingLeft: theme.spacing(0), 
     paddingRight: theme.spacing(1),
-    marginTop: theme.spacing(0.2),
-    marginBottom: theme.spacing(0.2),
+    //marginTop: theme.spacing(0.2),
+    //marginBottom: theme.spacing(0.2),
     cursor: 'pointer',
     color: theme.palette.grey[600],
     display: 'flex',
