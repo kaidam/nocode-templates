@@ -12,6 +12,7 @@ import withLayoutEditor from '../hooks/withLayoutEditor'
 
 const SettingsIcon = icons.settings
 const AddIcon = icons.add
+const EditIcon = icons.edit
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,9 +22,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-start',
     padding: theme.spacing(0.5),
   },
-  settingsIcon: {
-    color: theme.palette.primary.main,
-  },
+  icon: {
+    paddingRight: theme.spacing(1),
+  }
 }))
 
 const DocumentEditor = ({
@@ -35,6 +36,7 @@ const DocumentEditor = ({
 
   const {
     onOpenSettings,
+    onEditDocument,
   } = withDocumentEditor({
     node,
   })
@@ -64,22 +66,39 @@ const DocumentEditor = ({
 
   return (
     <div className={ classes.root }>
-      <Tooltip title="Settings" placement="top">
-        <IconButton
-          size="small"
-          onClick={ onOpenSettings }
-        >
-          <SettingsIcon
-            fontSize="inherit"
-            className={ classes.settingsIcon }
-          />
-        </IconButton>
-      </Tooltip>
-      <MenuButton
-        noHeader
-        getButton={ getAddButton }
-        getItems={ getAddMenu }
-      />
+      <div className={ classes.icon }>
+        <Tooltip title="Settings" placement="top">
+          <IconButton
+            size="small"
+            onClick={ onOpenSettings }
+          >
+            <SettingsIcon
+              fontSize="inherit"
+              color="primary"
+            />
+          </IconButton>
+        </Tooltip>
+      </div>
+      <div className={ classes.icon }>
+        <Tooltip title="Edit Google Document" placement="top">
+          <IconButton
+            size="small"
+            onClick={ onEditDocument }
+          >
+            <EditIcon
+              fontSize="inherit"
+              color="primary"
+            />
+          </IconButton>
+        </Tooltip>
+      </div>
+      <div className={ classes.icon }>
+        <MenuButton
+          noHeader
+          getButton={ getAddButton }
+          getItems={ getAddMenu }
+        />
+      </div>
     </div>
   )
 }
