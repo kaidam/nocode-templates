@@ -105,10 +105,14 @@ const styles = makeStyles(theme => {
     },
 
     contentChildren: {
-      maxWidth: '960px',
-      margin: '0 auto',
+      maxWidth: '816px',
+      margin: '5px auto',
       minHeight: `calc(100% - ${theme.layout.footerHeight}px - 1px)`,
-      padding: theme.spacing(3),
+      paddingTop: theme.spacing(2),
+      paddingBottom: theme.spacing(2),
+      paddingLeft: '96px',
+      paddingRight: '96px',
+      letterSpacing: '0px'
     },
 
     footer: {
