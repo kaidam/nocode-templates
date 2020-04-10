@@ -6,21 +6,22 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 
-import MenuButton from '@nocode-toolkit/frontend/components/widgets/MenuButton'
-import icons from '@nocode-toolkit/frontend/icons'
+import MenuButton from '@nocode-works/template/components/widgets/MenuButton'
+import icons from '@nocode-works/template/icons'
 
-import withSectionEditor from '../hooks/withSectionEditor'
+import withLayoutEditor from '../hooks/withLayoutEditor'
 
-const SettingsIcon = icons.settings
 const AddIcon = icons.add
+const WidgetIcon = icons.widget
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    borderTop: '1px solid #cccccc',
-    borderBottom: '1px solid #cccccc',
-    paddingLeft: theme.spacing(1),
+  root: ({
+    hasItems,
+  }) => ({
+    borderBottom: hasItems ? '1px solid #cccccc' : 'none',
+    paddingLeft: theme.spacing(1), 
     backgroundColor: theme.palette.grey[100],
-  },
+  }),
   list: {
     paddingTop: theme.spacing(0),
     paddingBottom: theme.spacing(0),
@@ -38,33 +39,30 @@ const useStyles = makeStyles(theme => ({
   },
   itemText: {
     flexGrow: 1,
-    marginTop: '2px',
     marginLeft: theme.spacing(1),
+    marginTop: '2px',
     color: theme.palette.primary.main,
   },
   itemTextTypography: {
-    fontWeight: 'bold',
-  },
-  settingsIcon: {
-    color: theme.palette.primary.main,
-  },
+    
+  }
 }))
 
-const TreeSectionEditor = ({
-  section,
+const TreeWidgetsEditor = ({
+  content_id,
+  layout_id,
 }) => {
-  const classes = useStyles()
-
   const {
-    ghostFolder,
-    getAddItems,
-    getSettingsItems,
-  } = withSectionEditor({
-    section,
+    data,
+    getAddMenu,
+  } = withLayoutEditor({
+    content_id,
+    layout_id
   })
 
-  const ghostFolderTitle = (ghostFolder ? ghostFolder.name : '')
-    .replace(/^(\w)/, (st) => st.toUpperCase())
+  const classes = useStyles({
+    hasItems: data && data.length > 0 ? true : false,
+  })
 
   const getTitleSettingsButton = useCallback((onClick) => {
     return (
@@ -72,14 +70,25 @@ const TreeSectionEditor = ({
         classes={{
           primary: classes.itemTextTypography,
         }}
-        primary={ ghostFolderTitle }
+        primary="Widgets"
         onClick={ onClick }
       />
     )
-  }, [
-    classes,
-    ghostFolderTitle,
-  ])
+  }, [])
+
+  const getWidgetButton = useCallback((onClick) => {
+    return (
+      <IconButton
+        size="small"
+        onClick={ onClick }
+      >
+        <WidgetIcon
+          fontSize="inherit"
+          color="primary"
+        />
+      </IconButton>
+    )
+  }, [])
 
   const getAddButton = useCallback((onClick) => {
     return (
@@ -95,45 +104,30 @@ const TreeSectionEditor = ({
     )
   }, [])
 
-
-  const getSettingsButton = useCallback((onClick) => {
-    return (
-      <IconButton
-        size="small"
-        onClick={ onClick }
-      >
-        <SettingsIcon
-          fontSize="inherit"
-          className={ classes.settingsIcon }
-        />
-      </IconButton>
-    )
-  }, [
-    classes,
-  ])
-
   return (
     <div className={ classes.root }>
-      <List className={ classes.list }>
+      <List
+        className={ classes.list }
+      >
         <ListItem
           dense
           className={ classes.menuItem }
         >
           <MenuButton
-            header={ ghostFolderTitle }
-            getButton={ getSettingsButton }
-            getItems={ getSettingsItems }
+            header="Widgets : Add"
+            getButton={ getWidgetButton }
+            getItems={ getAddMenu }
           />
           <MenuButton
             className={ classes.itemText }
-            header={ ghostFolderTitle }
+            header="Widgets : Add"
             getButton={ getTitleSettingsButton }
-            getItems={ getSettingsItems }
+            getItems={ getAddMenu }
           />
           <MenuButton
-            header={ ghostFolder ? `${ghostFolderTitle} : Add` : '' }
+            header="Widgets : Add"
             getButton={ getAddButton }
-            getItems={ getAddItems }
+            getItems={ getAddMenu }
           />
         </ListItem>
       </List>
@@ -141,4 +135,4 @@ const TreeSectionEditor = ({
   )
 }
 
-export default TreeSectionEditor
+export default TreeWidgetsEditor

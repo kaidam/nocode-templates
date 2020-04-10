@@ -1,13 +1,13 @@
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import Actions from '@nocode-toolkit/frontend/utils/actions'
-import layoutActions from '@nocode-toolkit/frontend/store/modules/layout'
+import Actions from '@nocode-works/template/utils/actions'
+import layoutActions from '@nocode-works/template/store/modules/layout'
 
-import settingsSelectors from '@nocode-toolkit/frontend/store/selectors/settings'
-import nocodeSelectors from '@nocode-toolkit/frontend/store/selectors/nocode'
+import settingsSelectors from '@nocode-works/template/store/selectors/settings'
+import nocodeSelectors from '@nocode-works/template/store/selectors/nocode'
 
-import icons from '@nocode-toolkit/frontend/icons'
+import icons from '@nocode-works/template/icons'
 
 const withLayoutEditor = ({
   content_id,

@@ -1,6 +1,6 @@
 import React from 'react'
-import CoreDefaultFolder from '@nocode-toolkit/frontend/components/document/DefaultFolder'
-import withMenuButton from '@nocode-toolkit/frontend/components/hooks/withMenuButton'
+import CoreDefaultFolder from '@nocode-works/template/components/document/DefaultFolder'
+import withMenuButton from '@nocode-works/template/components/hooks/withMenuButton'
 import withDocumentEditor from '../hooks/withDocumentEditor'
 
 const DefaultFolder = ({

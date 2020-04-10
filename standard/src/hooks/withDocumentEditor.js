@@ -1,9 +1,9 @@
 import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
-import Actions from '@nocode-toolkit/frontend/utils/actions'
-import contentActions from '@nocode-toolkit/frontend/store/modules/content'
-import driveUtils from '@nocode-toolkit/frontend/utils/drive'
-import icons from '@nocode-toolkit/frontend/icons'
+import Actions from '@nocode-works/template/utils/actions'
+import contentActions from '@nocode-works/template/store/modules/content'
+import driveUtils from '@nocode-works/template/utils/drive'
+import icons from '@nocode-works/template/icons'
 
 import withLayoutEditor from './withLayoutEditor'
 

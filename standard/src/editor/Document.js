@@ -5,9 +5,9 @@ import classnames from 'classnames'
 import Tooltip from '@material-ui/core/Tooltip'
 import IconButton from '@material-ui/core/IconButton'
 
-import MenuButton from '@nocode-toolkit/frontend/components/widgets/MenuButton'
-import icons from '@nocode-toolkit/frontend/icons'
-import driveUtils from '@nocode-toolkit/frontend/utils/drive'
+import MenuButton from '@nocode-works/template/components/widgets/MenuButton'
+import icons from '@nocode-works/template/icons'
+import driveUtils from '@nocode-works/template/utils/drive'
 
 import withDocumentEditor from '../hooks/withDocumentEditor'
 

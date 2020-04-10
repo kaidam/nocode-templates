@@ -1,4 +1,4 @@
-import Server from '@nocode-toolkit/frontend/server/material'
+import Server from '@nocode-works/template/server/material'
 
 //import library from './library'
 import App from './app'

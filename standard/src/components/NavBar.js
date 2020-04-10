@@ -2,10 +2,10 @@ import React, { lazy, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
 
-import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
+import systemSelectors from '@nocode-works/template/store/selectors/system'
 
-import Suspense from '@nocode-toolkit/frontend/components/system/Suspense'
-import SystemNavBar from '@nocode-toolkit/frontend/components/navbar/NavBar'
+import Suspense from '@nocode-works/template/components/system/Suspense'
+import SystemNavBar from '@nocode-works/template/components/navbar/NavBar'
 
 const ItemEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Item'))
 const NavbarEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Navbar'))

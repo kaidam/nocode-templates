@@ -7,12 +7,12 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Divider from '@material-ui/core/Divider'
 
-import AppLayout from '@nocode-toolkit/frontend/components/system/Layout'
-import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
-import settingsSelectors from '@nocode-toolkit/frontend/store/selectors/settings'
-import routerSelectors from '@nocode-toolkit/frontend/store/selectors/router'
+import AppLayout from '@nocode-works/template/components/system/Layout'
+import systemSelectors from '@nocode-works/template/store/selectors/system'
+import settingsSelectors from '@nocode-works/template/store/selectors/settings'
+import routerSelectors from '@nocode-works/template/store/selectors/router'
 
-import NavDrawer from '@nocode-toolkit/frontend/components/widgets/NavDrawer'
+import NavDrawer from '@nocode-works/template/components/widgets/NavDrawer'
 
 import Logo from '../components/Logo'
 import Copyright from '../components/Copyright'

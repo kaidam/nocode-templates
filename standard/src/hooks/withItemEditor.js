@@ -1,10 +1,10 @@
 import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 
-import Actions from '@nocode-toolkit/frontend/utils/actions'
-import contentActions from '@nocode-toolkit/frontend/store/modules/content'
-import icons from '@nocode-toolkit/frontend/icons'
-import driveUtils from '@nocode-toolkit/frontend/utils/drive'
+import Actions from '@nocode-works/template/utils/actions'
+import contentActions from '@nocode-works/template/store/modules/content'
+import icons from '@nocode-works/template/icons'
+import driveUtils from '@nocode-works/template/utils/drive'
 
 const withItemEditor = ({
   node,

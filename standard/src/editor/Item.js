@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react'
 import IconButton from '@material-ui/core/IconButton'
-import MenuButton from '@nocode-toolkit/frontend/components/widgets/MenuButton'
+import MenuButton from '@nocode-works/template/components/widgets/MenuButton'
 
-import icons from '@nocode-toolkit/frontend/icons'
+import icons from '@nocode-works/template/icons'
 import withItemEditor from '../hooks/withItemEditor'
 
 const MoreVertIcon = icons.moreVert

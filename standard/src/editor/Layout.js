@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 
-import Layout from '@nocode-toolkit/frontend/components/layout/Layout'
+import Layout from '@nocode-works/template/components/layout/Layout'
 
 import withLayoutEditor from '../hooks/withLayoutEditor'
 

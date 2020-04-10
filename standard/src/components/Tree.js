@@ -2,12 +2,12 @@ import React, { lazy, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
 
-import settingsSelectors from '@nocode-toolkit/frontend/store/selectors/settings'
-import systemSelectors from '@nocode-toolkit/frontend/store/selectors/system'
+import settingsSelectors from '@nocode-works/template/store/selectors/settings'
+import systemSelectors from '@nocode-works/template/store/selectors/system'
 
-import Suspense from '@nocode-toolkit/frontend/components/system/Suspense'
-import SystemTree from '@nocode-toolkit/frontend/components/tree/Tree'
-import Layout from '@nocode-toolkit/frontend/components/layout/Layout'
+import Suspense from '@nocode-works/template/components/system/Suspense'
+import SystemTree from '@nocode-works/template/components/tree/Tree'
+import Layout from '@nocode-works/template/components/layout/Layout'
 
 const ItemEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Item'))
 const TreeEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Tree'))
