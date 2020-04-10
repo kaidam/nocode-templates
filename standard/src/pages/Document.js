@@ -34,11 +34,12 @@ const useStyles = makeStyles(theme => ({
     if(!withDropshadow) return {}
     return {
       '& .nocode-document-image-container': {
-        boxShadow: '10px 10px 10px 0px rgba(0,0,0,0.1)',
+        boxShadow: '0px 5px 12px 0px rgba(0,0,0,0.2)',
       },
-      // '& .nocode-document-image': {
-      //   border: '1px solid #999',
-      // },
+      '& .nocode-document-image': {
+        border: '1px solid #dcdcdc',
+        display: 'block',
+      },
     }
   }
 }))
