@@ -36,9 +36,10 @@ const useStyles = makeStyles(theme => ({
       '& .nocode-document-image-container': {
         boxShadow: '10px 10px 10px 0px rgba(0,0,0,0.1)',
       },
-      // '& .nocode-document-image': {
-      //   border: '1px solid #999',
-      // },
+      '& .nocode-document-image': {
+        border: '1px solid #dcdcdc',
+        display: 'block',
+      },
     }
   }
 }))

@@ -100,8 +100,8 @@ const getDocumentSettingsSchema = (prefix = '') => {
     ],[
       {
         id: prefix + 'imageDropshadow',
-        title: 'Image Drop Shadow',
-        helperText: 'Apply a drop shadow to any images in a google document',
+        title: 'Image Drop Shadow & Border',
+        helperText: 'Apply a drop shadow and border to any images in a google document',
         component: 'radio',
         row: true,
         options: [{
