@@ -38,6 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
   itemText: {
     flexGrow: 1,
+    marginTop: '2px',
     marginLeft: theme.spacing(1),
     color: theme.palette.primary.main,
   },

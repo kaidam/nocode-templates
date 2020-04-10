@@ -40,6 +40,7 @@ const useStyles = makeStyles(theme => ({
   itemText: {
     flexGrow: 1,
     marginLeft: theme.spacing(1),
+    marginTop: '2px',
     color: theme.palette.primary.main,
   },
   itemTextTypography: {
@@ -66,6 +67,9 @@ const TreeWidgetsEditor = ({
   const getTitleSettingsButton = useCallback((onClick) => {
     return (
       <ListItemText
+        classes={{
+          primary: classes.itemTextTypography,
+        }}
         primary="Widgets"
         onClick={ onClick }
       />
