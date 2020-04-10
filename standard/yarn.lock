@@ -1021,10 +1021,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.0"
 
-"@nocode-works/builder@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@nocode-works/builder/-/builder-1.0.2.tgz#862ae5ca9a503cceccfaca9e0ba5b9f4b0ded7bd"
-  integrity sha512-OJboObzbGs6mPl1KYFwLrbZ4e0qQi3Iyj+MmbFDUnldoNsy7FzQ6twqEuMByxM9/4t/BKJOhoypwCewePNZAtg==
+"@nocode-works/builder@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@nocode-works/builder/-/builder-1.0.3.tgz#18b0f0050ff873cdb27a07b56371b8759459ae19"
+  integrity sha512-Xl2wyVHS9aiVJsyMT49ahpNyBe2/9Fzv01clOBKTw4FvQ1dwp/t5ASfMqB9nZrIEj5uFXQxStLcSwd18pkpQHg==
   dependencies:
     "@babel/cli" "^7.2.3"
     "@babel/core" "^7.3.4"
@@ -1109,14 +1109,14 @@
     router5 "^8.0.0"
 
 "@nocode-works/template@^1.0.2":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.4.tgz#4091ea29eeb7ac1356fa1b139bdc064c5b5cf5ad"
-  integrity sha512-/J8kpo3oebrljDv9upX/H+FEr8U6XqorxLa0zTjB78CkL/09bsdM3MOSTQ7FN4DuzswtYQcLL4mi02m5hvcRrQ==
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.5.tgz#a25350f78321163f2b69a34e59fcca0aa76462e2"
+  integrity sha512-el47jOVW98XE0cHZVsD4z2l9xOJdJpOdVF7GLi6apK0tnjrcqNfvQBQ9fPxh8HLJD/C4m6L08zd20lQ16YBWdw==
   dependencies:
     "@hot-loader/react-dom" "^16.12.0"
     "@material-ui/core" "^4.9.9"
     "@material-ui/icons" "^4.9.1"
-    "@nocode-works/builder" "^1.0.2"
+    "@nocode-works/builder" "^1.0.3"
     "@nocode-works/store" "^1.0.1"
     "@types/react" "^16.9.23"
     archiver "^3.1.1"
@@ -1902,7 +1902,7 @@ browserify-zlib@^0.2.0:
   dependencies:
     pako "~1.0.5"
 
-browserslist@^4.8.3, browserslist@^4.9.1:
+browserslist@^4.8.5, browserslist@^4.9.1:
   version "4.11.1"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.11.1.tgz#92f855ee88d6e050e7e7311d987992014f1a1f1b"
   integrity sha512-DCTr3kDrKEYNw6Jb9HFxVLQNaue8z+0ZfRBRjmCunKDEXEBajKDj2Y+Uelg+Pi29OnvaSGwjOsnRyNEkXzHg5g==
@@ -2332,11 +2332,11 @@ copy-webpack-plugin@^5.0.2:
     webpack-log "^2.0.0"
 
 core-js-compat@^3.6.2:
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.6.4.tgz#938476569ebb6cda80d339bcf199fae4f16fff17"
-  integrity sha512-zAa3IZPvsJ0slViBQ2z+vgyyTuhd3MFn1rBQjZSKVEgB0UMYhUkCj9jJUVPgGTGqWvsBVmfnruXgTcNyTlEiSA==
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/core-js-compat/-/core-js-compat-3.6.5.tgz#2a51d9a4e25dfd6e690251aa81f99e3c05481f1c"
+  integrity sha512-7ItTKOhOZbznhXAQ2g/slGg1PJV5zDO/WdkTwi7UEOJmkvsE32PWvx6mKtDjiMpjnR2CNf6BAD6sSxIlv7ptng==
   dependencies:
-    browserslist "^4.8.3"
+    browserslist "^4.8.5"
     semver "7.0.0"
 
 core-js@^2.4.0:
