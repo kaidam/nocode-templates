@@ -1,6 +1,5 @@
 import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
-import { makeStyles } from '@material-ui/core/styles'
 
 import Actions from '@nocode-works/template/utils/actions'
 import contentActions from '@nocode-works/template/store/modules/content'
