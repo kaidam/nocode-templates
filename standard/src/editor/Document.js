@@ -22,11 +22,15 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    padding: theme.spacing(0.5),
+    borderRadius: '24px',
+    padding: theme.spacing(0.75),
     backgroundColor: theme.palette.grey[200],
   },
   icon: {
-    paddingRight: theme.spacing(1),
+    marginRight: theme.spacing(0.5),
+    padding: theme.spacing(0.5),
+    borderRadius: '24px',
+    backgroundColor: '#fff',
   }
 }))
 
