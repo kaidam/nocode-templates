@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => {
       alignItems: 'center',
     },
     logoText: {
+      marginLeft: theme.spacing(1),
       color: theme.palette.primary.main,
       whiteSpace: 'nowrap',
     },
