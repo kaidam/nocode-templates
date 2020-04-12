@@ -1,6 +1,6 @@
 {
   "name": "nocode-template-standard",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "",
   "dependencies": {
@@ -20,6 +20,7 @@
     "template:preview": "nocode-template preview",
     "template:publish": "nocode-template publish",
     "template:link": "yarn link @nocode-works/template && yarn link @nocode-works/store && yarn link @nocode-works/builder",
+    "template:unlink": "yarn unlink @nocode-works/template && yarn unlink @nocode-works/store && yarn unlink @nocode-works/builder && yarn install --force",
     "template:link:plugins": "yarn link @nocode-works/plugin-stripe && yarn link @nocode-works/plugin-contactform",
     "template:upgrade": "yarn upgrade @nocode-works/template"
   },
