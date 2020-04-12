@@ -5,7 +5,7 @@ import MenuButton from '@nocode-works/template/components/widgets/MenuButton'
 import icons from '@nocode-works/template/icons'
 import withItemEditor from '../hooks/withItemEditor'
 
-const MoreVertIcon = icons.moreVert
+const EditIcon = icons.edit
 
 const ItemEditor = ({
   node,
@@ -26,7 +26,7 @@ const ItemEditor = ({
         className={ buttonClassname }
         onClick={ onClick }
       >
-        <MoreVertIcon
+        <EditIcon
           fontSize="inherit"
           className="navbar-ui-icon"
         />
