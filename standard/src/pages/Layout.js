@@ -63,7 +63,7 @@ const Layout = ({
           }}>
             {
               hasLeftNavigation && (
-                <Hidden mdUp>
+                <Hidden mdUp implementation="css">
                   <NavDrawer
                     Component={ Tree }
                     section="sidebar"
@@ -74,13 +74,13 @@ const Layout = ({
             <div className={ classes.appBarTitle }>
               <Logo />
             </div>
-            <Hidden smDown>
+            <Hidden smDown implementation="css">
               <NavBar
                 section="topbar"
                 withHome
               />
             </Hidden>
-            <Hidden mdUp>
+            <Hidden mdUp implementation="css">
               <NavBar
                 small
                 section="topbar"
@@ -89,7 +89,7 @@ const Layout = ({
             </Hidden>
             {
               hasRightNavigation && (
-                <Hidden mdUp>
+                <Hidden mdUp implementation="css">
                   <NavDrawer
                     Component={ Tree }
                     section="rightbar"
@@ -103,7 +103,7 @@ const Layout = ({
         <div className={ classes.main }>
           {
             hasLeftNavigation && (
-              <Hidden smDown>
+              <Hidden smDown implementation="css">
                 <div className={ navbarClassname }>
                   <Tree
                     section="sidebar"
@@ -126,7 +126,7 @@ const Layout = ({
                     <Copyright />
                   </div>
                   <div className={ classes.footerNavBar }>
-                    <Hidden smDown>
+                    <Hidden smDown implementation="css">
                       <NavBar
                         section="footer"
                         contrast
@@ -134,7 +134,7 @@ const Layout = ({
                         align="right"
                       />
                     </Hidden>
-                    <Hidden mdUp>
+                    <Hidden mdUp implementation="css">
                       <NavBar
                         small
                         section="footer"
@@ -150,7 +150,7 @@ const Layout = ({
           </main>
           {
             hasRightNavigation && (
-              <Hidden smDown>
+              <Hidden smDown implementation="css">
                 <div className={ navbarClassname }>
                   <Tree
                     section="rightbar"
