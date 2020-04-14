@@ -25,10 +25,12 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(0.5),
   },
   editorTop: {
+    marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
   editorBottom: {
     marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
   },
   bodyContainer: ({withDropshadow}) => {
     if(!withDropshadow) return {}

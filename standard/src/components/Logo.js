@@ -65,12 +65,12 @@ const Logo = ({
           )
         }
         {
-          settings.title && (
+          settings.logo_title && (
             <Typography
               variant="h5"
               className={ classes.logoText }
             >
-              { settings.title }
+              { settings.logo_title }
             </Typography>
           )
         }

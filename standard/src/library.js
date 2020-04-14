@@ -224,6 +224,7 @@ library.settings = {
   initialValues: Object.assign({
     title: 'Website Title',
     logo: null,
+    logo_title: '',
     copyright_message: '&copy; &year; My Company Name',
     description: '',
     keywords: '',
@@ -248,6 +249,10 @@ library.settings = {
       id: 'title',
       title: 'Title',
       helperText: 'Enter the title for your website',
+    }, {
+      id: 'logo_title',
+      title: 'Logo Title',
+      helperText: 'Enter the text to appear next to your logo',
     }, {
       id: 'logo',
       title: 'Logo',
