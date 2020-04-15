@@ -1,0 +1,29 @@
+{
+  "name": "nocode-template-standard",
+  "version": "0.0.3",
+  "private": true,
+  "description": "",
+  "dependencies": {
+    "@material-ui/core": "^4.9.9",
+    "@nocode-works/plugin-contactform": "^1.0.2",
+    "@nocode-works/plugin-stripe": "^1.0.4",
+    "@nocode-works/template": "^1.0.4",
+    "classnames": "^2.2.6",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-hot-loader": "^4.12.19",
+    "react-redux": "^7.2.0"
+  },
+  "scripts": {
+    "template:build": "nocode-template build",
+    "template:develop": "nocode-template develop",
+    "template:preview": "nocode-template preview",
+    "template:publish": "nocode-template publish",
+    "template:link": "yarn link @nocode-works/template && yarn link @nocode-works/store && yarn link @nocode-works/builder",
+    "template:unlink": "yarn unlink @nocode-works/template && yarn unlink @nocode-works/store && yarn unlink @nocode-works/builder && yarn install --force",
+    "template:link:plugins": "yarn link @nocode-works/plugin-stripe && yarn link @nocode-works/plugin-contactform",
+    "template:upgrade": "yarn upgrade @nocode-works/template"
+  },
+  "author": "",
+  "license": "ISC"
+}
