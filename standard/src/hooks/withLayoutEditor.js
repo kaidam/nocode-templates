@@ -111,7 +111,7 @@ const withLayoutEditor = ({
         }),
       },
       {
-        title: 'Rich Text',
+        title: 'Text Block',
         icon: icons.text,
         handler: () => onAddWidget({
           form: 'richtext',
