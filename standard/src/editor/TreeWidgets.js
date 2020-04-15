@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     marginLeft: theme.spacing(1),
     marginTop: '2px',
-    color: theme.palette.primary.main,
+    color: theme.palette.text.main,
   },
   itemTextTypography: {
     
@@ -84,7 +84,6 @@ const TreeWidgetsEditor = ({
       >
         <WidgetIcon
           fontSize="inherit"
-          color="primary"
         />
       </IconButton>
     )

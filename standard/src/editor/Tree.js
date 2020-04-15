@@ -40,13 +40,13 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     marginTop: '2px',
     marginLeft: theme.spacing(1),
-    color: theme.palette.primary.main,
+    color: theme.palette.text.main,
   },
   itemTextTypography: {
     fontWeight: 'bold',
   },
   settingsIcon: {
-    color: theme.palette.primary.main,
+    color: theme.palette.text.main,
   },
 }))
 

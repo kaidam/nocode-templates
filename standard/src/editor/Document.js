@@ -96,7 +96,6 @@ const DocumentEditor = ({
             >
               <SettingsIcon
                 fontSize="inherit"
-                color="primary"
                 className={ classes.icon }
               />
             </IconButton>
@@ -112,7 +111,6 @@ const DocumentEditor = ({
                 >
                   <EditIcon
                     fontSize="inherit"
-                    color="primary"
                     className={ classes.icon }
                   />
                 </IconButton>
@@ -136,13 +134,11 @@ const DocumentEditor = ({
                 driveUtils.isFolder(node) ? (
                   <OpenIcon
                     fontSize="inherit"
-                    color="primary"
                     className={ classes.icon }
                   />
                 ) : (
                   <EditIcon
                     fontSize="inherit"
-                    color="primary"
                     className={ classes.icon }
                   />
                 )

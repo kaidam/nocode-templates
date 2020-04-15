@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   settingsIcon: ({contrast} = {}) => ({
     color: contrast ?
       theme.palette.primary.contrastText :
-      theme.palette.primary.main,
+      theme.palette.text.main,
   }),
 }))
 

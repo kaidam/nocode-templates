@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => {
       
     },
     editIcon: {
-      color: theme.palette.primary.main,
+      //color: theme.palette.primary.main,
     }
   }
 })
