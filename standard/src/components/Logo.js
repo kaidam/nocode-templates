@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => {
       whiteSpace: 'nowrap',
     },
     logoImage: {
-      height: `${theme.layout.topbarHeight * 0.7}px`,
+      height: `${theme.layout.topbarHeight * 0.5}px`,
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
     },

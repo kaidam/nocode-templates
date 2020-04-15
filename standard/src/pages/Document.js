@@ -123,15 +123,6 @@ const DocumentPage = ({
           
         )
       }
-      <Suspense
-        Component={ DocumentEditor }
-        props={{
-          node: node,
-          annotation: annotation,
-          layout_id: topLayoutId,
-          className: classes.editorTop,
-        }}
-      />
       {
         showUI ? (
           <Suspense
@@ -142,6 +133,15 @@ const DocumentPage = ({
           <Layout { ...topLayoutProps } />
         )
       }
+      <Suspense
+        Component={ DocumentEditor }
+        props={{
+          node: node,
+          annotation: annotation,
+          layout_id: topLayoutId,
+          className: classes.editorTop,
+        }}
+      />
       <div className={ classes.cell }>
         {
           driveUtils.isFolder(node) ? (
