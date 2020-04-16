@@ -116,6 +116,7 @@ const getDocumentSettingsSchema = (prefix = '') => {
   ]
 }
 
+library.autoSnackbar = false
 library.sections = SECTIONS
 
 library.plugins = [

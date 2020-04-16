@@ -7,6 +7,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Divider from '@material-ui/core/Divider'
 
+import SnackBar from '@nocode-works/template/components/system/Snackbar'
 import AppLayout from '@nocode-works/template/components/system/Layout'
 import systemSelectors from '@nocode-works/template/store/selectors/system'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
@@ -160,6 +161,7 @@ const Layout = ({
             )
           }
         </div>
+      <SnackBar />
       </AppLayout>
     </div>
   )
