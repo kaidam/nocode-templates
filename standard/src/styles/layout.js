@@ -110,9 +110,17 @@ const styles = makeStyles(theme => {
       minHeight: `calc(100% - ${theme.layout.footerHeight}px - 1px)`,
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2),
-      paddingLeft: '96px',
       paddingRight: '96px',
-      letterSpacing: '0px'
+      paddingLeft: '96px',
+      [theme.breakpoints.up(theme.layout.largeScreenBreakpoint)]: {
+        paddingLeft: '96px',
+        paddingRight: '96px',
+      },
+      [theme.breakpoints.down(theme.layout.smallScreenBreakpoint)]: {
+        paddingLeft: [['17px'], '!important'],
+        paddingRight: [['17px'], '!important'],
+      },
+      letterSpacing: '0px',
     },
 
     footer: {
