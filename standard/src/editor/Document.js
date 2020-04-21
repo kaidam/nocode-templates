@@ -89,7 +89,7 @@ const DocumentEditor = ({
     <div className={ rootClassname }>
       <div className={ classnames(classes.iconSection, classes.leftIcons) }>
         <div className={ classes.iconContainer }>
-          <Tooltip title="Settings" placement="top">
+          <Tooltip title="Page Settings" placement="top">
             <IconButton
               size="small"
               onClick={ onOpenSettings }

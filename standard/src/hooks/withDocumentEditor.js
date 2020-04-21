@@ -27,7 +27,7 @@ const withDocumentEditor = ({
 
   const onOpenSettings = useCallback(() => {
     actions.onEditNode({
-      title: `Edit Item`,
+      title: `Edit Document Settings`,
       form: `documentSettings`,
       id: node.id,
     })
