@@ -25,7 +25,7 @@ const themeProcessor = ({
   }
   if(settings.sidebarWidth) {
     updates.layout.drawerWidthSmall = settings.sidebarWidth
-    updates.layout.drawerWidthLarge = settings.sidebarWidth + 120
+    updates.layout.drawerWidthLarge = settings.sidebarWidth + 60
   }
   return updates
 }
