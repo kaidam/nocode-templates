@@ -89,7 +89,7 @@ const styles = makeStyles(theme => {
     },
 
     main: {
-      height: `calc(100% - ${theme.layout.topbarHeight + theme.layout.uiTopbarHeight}px)`,
+      height: `calc(100% - ${theme.layout.topbarHeight}px)`,
       width: '100%',
       bottom: 0,
       left: 0,

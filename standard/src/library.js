@@ -330,11 +330,7 @@ library.settings = {
         }]
       },
 
-    ]
-  }, {
-    id: 'document',
-    title: 'Document',
-    schema: getDocumentSettingsSchema(),
+    ].concat(getDocumentSettingsSchema())
   }],
 }
 
