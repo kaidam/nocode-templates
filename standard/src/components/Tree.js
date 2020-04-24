@@ -35,7 +35,6 @@ const useStyles = makeStyles(theme => ({
 
 const Tree = ({
   section,
-  onClick,
 }) => {
   const classes = useStyles()
   const showUI = useSelector(systemSelectors.showUI)
@@ -93,7 +92,6 @@ const Tree = ({
           folderPages={ folderPages }
           ItemEditorComponent={ ItemEditor }
           containerRef={ containerRef }
-          onClick={ onClick }
         />
       </div>
     </div>

@@ -7,7 +7,7 @@ const themeProcessor = ({
     layout: {
       topbarHeight: 80,
       footerHeight: 80,
-      drawerWidthSmall: 240,
+      drawerWidthSmall: 280,
       drawerWidthLarge: 360,
       smallScreenBreakpoint: 'sm',
       largeScreenBreakpoint: 'md',

@@ -39,8 +39,7 @@ const Layout = ({
   const navbarClassname = classnames({
     [classes.drawer]: true,
     [classes.largeScreen]: true,
-    [classes.largeDrawer]: showUI,
-    [classes.smallDrawer]: !showUI,
+    [classes.smallDrawer]: true,
   })
 
   useEffect(() => {
