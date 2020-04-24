@@ -9,7 +9,7 @@ import MenuButton from '@nocode-works/template/components/widgets/MenuButton'
 import icons from '@nocode-works/template/icons'
 import driveUtils from '@nocode-works/template/utils/drive'
 
-import withDocumentEditor from '../hooks/withDocumentEditor'
+import useDocumentEditor from '@nocode-works/template/components/hooks/useDocumentEditor'
 
 const SettingsIcon = icons.settings
 const AddIcon = icons.add
@@ -61,7 +61,7 @@ const DocumentEditor = ({
     onOpenSettings,
     onOpenItem,
     onEditItem,
-  } = withDocumentEditor({
+  } = useDocumentEditor({
     node,
     layout_id,
   })

@@ -3,7 +3,7 @@ import IconButton from '@material-ui/core/IconButton'
 import MenuButton from '@nocode-works/template/components/widgets/MenuButton'
 
 import icons from '@nocode-works/template/icons'
-import withItemEditor from '../hooks/withItemEditor'
+import useItemEditor from '@nocode-works/template/components/hooks/useItemEditor'
 
 const EditIcon = icons.edit
 
@@ -15,7 +15,7 @@ const ItemEditor = ({
 
   const {
     getEditorItems,
-  } = withItemEditor({
+  } = useItemEditor({
     node,
   })
 

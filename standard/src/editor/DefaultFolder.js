@@ -1,7 +1,7 @@
 import React from 'react'
 import CoreDefaultFolder from '@nocode-works/template/components/document/DefaultFolder'
-import withMenuButton from '@nocode-works/template/components/hooks/withMenuButton'
-import withDocumentEditor from '../hooks/withDocumentEditor'
+import useMenuButton from '@nocode-works/template/components/hooks/useMenuButton'
+import useDocumentEditor from '@nocode-works/template/components/hooks/useDocumentEditor'
 
 const DefaultFolder = ({
   node,
@@ -9,14 +9,14 @@ const DefaultFolder = ({
 
   const {
     getAddContentItems,
-  } = withDocumentEditor({
+  } = useDocumentEditor({
     node,
   })
 
   const {
     menus,
     onClick,
-  } = withMenuButton({
+  } = useMenuButton({
     getItems: getAddContentItems,
   })
 

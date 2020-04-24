@@ -9,7 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import MenuButton from '@nocode-works/template/components/widgets/MenuButton'
 import icons from '@nocode-works/template/icons'
 
-import withLayoutEditor from '../hooks/withLayoutEditor'
+import useLayoutEditor from '@nocode-works/template/components/hooks/useLayoutEditor'
 
 const AddIcon = icons.add
 const WidgetIcon = icons.widget
@@ -55,7 +55,7 @@ const TreeWidgetsEditor = ({
   const {
     data,
     getAddMenu,
-  } = withLayoutEditor({
+  } = useLayoutEditor({
     content_id,
     layout_id
   })

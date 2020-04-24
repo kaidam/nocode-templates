@@ -1,8 +1,7 @@
 import React, { useCallback } from 'react'
 
 import Layout from '@nocode-works/template/components/layout/Layout'
-
-import withLayoutEditor from '../hooks/withLayoutEditor'
+import useLayoutEditor from '@nocode-works/template/components/hooks/useLayoutEditor'
 
 const LayoutEditor = ({
   content_id,
@@ -11,7 +10,7 @@ const LayoutEditor = ({
 
   const {
     getAddMenu,
-  } = withLayoutEditor({
+  } = useLayoutEditor({
     content_id,
     layout_id
   })

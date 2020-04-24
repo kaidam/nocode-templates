@@ -6,7 +6,7 @@ import MenuButton from '@nocode-works/template/components/widgets/MenuButton'
 
 import icons from '@nocode-works/template/icons'
 
-import withSectionEditor from '../hooks/withSectionEditor'
+import useSectionEditor from '@nocode-works/template/components/hooks/useSectionEditor'
 
 const SettingsIcon = icons.settings
 
@@ -33,7 +33,7 @@ const NavbarSectionEditor = ({
   const {
     ghostFolder,
     getSettingsItems,
-  } = withSectionEditor({
+  } = useSectionEditor({
     section,
     contrast,
   })
