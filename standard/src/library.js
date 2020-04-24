@@ -156,6 +156,22 @@ const baseDocumentSettingsFields = [
 const injectDocumentSettings = (form) => {
   const initialValues = form.initialValues || {}
   const processFormValues = form.processFormValues
+
+  form.tabs[0].schema = form.tabs[0].schema.concat([{
+    id: 'annotation.useDefaults',
+    title: 'Use Website Settings',
+    helperText: 'Inherit the following values from the website settings',
+    component: 'radio',
+    row: true,
+    options: [{
+      title: 'Inherit',
+      value: 'inherit',
+    }, {
+      title: 'Override',
+      value: 'override',
+    }]
+  }].concat(getDocumentSettingsSchema(`annotation.`)))
+
   return Object.assign({}, form, {
     initialValues: {
       annotation: Object.assign({}, DOCUMENT_SETTINGS_DEFAULT_VALUES, initialValues.annotation, {
@@ -207,20 +223,7 @@ const injectDocumentSettings = (form) => {
         settings: settingsSelectors.settings(state),
       }
     },
-    schema: form.schema.concat([{
-      id: 'annotation.useDefaults',
-      title: 'Use Website Settings',
-      helperText: 'Inherit the following values from the website settings',
-      component: 'radio',
-      row: true,
-      options: [{
-        title: 'Inherit',
-        value: 'inherit',
-      }, {
-        title: 'Override',
-        value: 'override',
-      }]
-    }]).concat(getDocumentSettingsSchema(`annotation.`))
+    
   }) 
 }
 
