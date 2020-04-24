@@ -116,6 +116,7 @@ const getDocumentSettingsSchema = (prefix = '') => {
   ]
 }
 
+library.topbarHeight = 80
 library.autoSnackbar = false
 library.sections = SECTIONS
 
