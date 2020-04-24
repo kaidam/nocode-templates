@@ -6,7 +6,7 @@ import Link from '@nocode-works/template/components/widgets/Link'
 import Suspense from '@nocode-works/template/components/system/Suspense'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
 
-const SettingsEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Settings'))
+const EditableSettings = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/settings/EditableSettings'))
 
 const useStyles = makeStyles(theme => {  
   return {
@@ -51,7 +51,7 @@ const Logo = ({
     >
       <div className={ classes.container }>
         <Suspense
-          Component={ SettingsEditor }
+          Component={ EditableSettings }
           props={{
             classNames: {
               button: classes.editButton,

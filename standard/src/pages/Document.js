@@ -16,9 +16,9 @@ import Folder from '@nocode-works/template/components/document/Folder'
 import Layout from '@nocode-works/template/components/layout/Layout'
 import driveUtils from '@nocode-works/template/utils/drive'
 
-const DocumentEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Document'))
-const DefaultFolder = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/DefaultFolder'))
-const LayoutEditor = lazy(() => import(/* webpackChunkName: "ui" */ '../editor/Layout'))
+const EditableDocument = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/EditableDocument'))
+const DefaultFolder = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/DefaultFolder'))
+const EditableLayout = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/layout/EditableLayout'))
 
 const useStyles = makeStyles(theme => ({
   cell: {
@@ -126,7 +126,7 @@ const DocumentPage = ({
       {
         showUI ? (
           <Suspense
-            Component={ LayoutEditor }
+            Component={ EditableLayout }
             props={ topLayoutProps }
           />
         ) : (
@@ -134,7 +134,7 @@ const DocumentPage = ({
         )
       }
       <Suspense
-        Component={ DocumentEditor }
+        Component={ EditableDocument }
         props={{
           node: node,
           annotation: annotation,
@@ -162,7 +162,7 @@ const DocumentPage = ({
         
       </div>
       <Suspense
-        Component={ DocumentEditor }
+        Component={ EditableDocument }
         props={{
           node: node,
           annotation: annotation,
@@ -173,7 +173,7 @@ const DocumentPage = ({
       {
         showUI ? (
           <Suspense
-            Component={ LayoutEditor }
+            Component={ EditableLayout }
             props={ bottomLayoutProps }
           />
         ) : (
