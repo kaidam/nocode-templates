@@ -154,6 +154,7 @@ const DocumentPage = ({
               <Body
                 node={ node }
                 html={ html }
+                defaultLayoutId={ topLayoutId }
               />
             </div>
           )
