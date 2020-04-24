@@ -25,10 +25,12 @@ import useStyles from '../styles/layout'
 const Layout = ({
   children,
 }) => {
-  const classes = useStyles()
+  const showUI = useSelector(systemSelectors.showUI)
+  const classes = useStyles({
+    showUI,
+  })
   const contentRef = useRef(null)
 
-  const showUI = useSelector(systemSelectors.showUI)
   const settings = useSelector(settingsSelectors.settings)
   const route = useSelector(routerSelectors.route)
   
@@ -132,6 +134,7 @@ const Layout = ({
                         contrast
                         vertical
                         align="right"
+                        className={ classes.footerNavBarContents }
                       />
                     </Hidden>
                     <Hidden mdUp implementation="css">
@@ -141,6 +144,7 @@ const Layout = ({
                         contrast
                         vertical
                         align="right"
+                        className={ classes.footerNavBarContents }
                       />
                     </Hidden>
                   </div>
