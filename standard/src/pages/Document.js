@@ -59,7 +59,7 @@ const DocumentPage = ({
   } = useSelector(contentSelectors.document)
 
   const activeWidgets = useMemo(() => {
-    const values =  !annotation.useDefaults || annotation.useDefaults == 'inherit' ?
+    const values =  !annotation || !annotation.useDefaults || annotation.useDefaults == 'inherit' ?
       settings :
       annotation
     const retValues = Object.assign({}, values)
