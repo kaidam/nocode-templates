@@ -153,12 +153,12 @@ const baseDocumentSettingsFields = [
   'imageDropshadow',
 ]
 
-library.forms = Object.assign({}, defaultForms, {
-  documentSettings: {
-    id: 'documentSettings',
-    title: 'Settings',
+const injectDocumentSettings = (form) => {
+  const initialValues = form.initialValues || {}
+  const processFormValues = form.processFormValues
+  return Object.assign({}, form, {
     initialValues: {
-      annotation: Object.assign({}, DOCUMENT_SETTINGS_DEFAULT_VALUES, {
+      annotation: Object.assign({}, DOCUMENT_SETTINGS_DEFAULT_VALUES, initialValues.annotation, {
         useDefaults: 'inherit',
       }),
     },
@@ -198,14 +198,16 @@ library.forms = Object.assign({}, defaultForms, {
           annotation: newAnnotation,
         })
       }
-      return values
+      return processFormValues ?
+        processFormValues(values) :
+        values
     },
     contextSelector: (state) => {
       return {
         settings: settingsSelectors.settings(state),
       }
     },
-    schema: [{
+    schema: form.schema.concat([{
       id: 'annotation.useDefaults',
       title: 'Use Website Settings',
       helperText: 'Inherit the following values from the website settings',
@@ -218,8 +220,13 @@ library.forms = Object.assign({}, defaultForms, {
         title: 'Override',
         value: 'override',
       }]
-    }].concat(getDocumentSettingsSchema(`annotation.`))
-  }
+    }]).concat(getDocumentSettingsSchema(`annotation.`))
+  }) 
+}
+
+library.forms = Object.assign({}, defaultForms, {
+  'drive.folder': injectDocumentSettings(defaultForms['drive.folder']),
+  'drive.document': injectDocumentSettings(defaultForms['drive.document']),
 })
 
 library.settings = {
