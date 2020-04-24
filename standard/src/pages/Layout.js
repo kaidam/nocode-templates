@@ -14,11 +14,11 @@ import settingsSelectors from '@nocode-works/template/store/selectors/settings'
 import routerSelectors from '@nocode-works/template/store/selectors/router'
 
 import NavDrawer from '@nocode-works/template/components/widgets/NavDrawer'
+import Tree from '@nocode-works/template/components/tree/Section'
+import NavBar from '@nocode-works/template/components/navbar/Section'
 
 import Logo from '../components/Logo'
 import Copyright from '../components/Copyright'
-import Tree from '../components/Tree'
-import NavBar from '../components/NavBar'
 
 import useStyles from '../styles/layout'
 
