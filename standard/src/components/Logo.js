@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography'
 import Link from '@nocode-works/template/components/widgets/Link'
 import Suspense from '@nocode-works/template/components/system/Suspense'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
+import systemSelectors from '@nocode-works/template/store/selectors/system'
 
 const EditableSettings = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/settings/EditableSettings'))
 
@@ -21,6 +22,7 @@ const useStyles = makeStyles(theme => {
     },
     logoText: {
       marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
       color: theme.palette.primary.main,
       whiteSpace: 'nowrap',
     },
@@ -43,38 +45,52 @@ const Logo = ({
 }) => {
   const classes = useStyles()
   const settings = useSelector(settingsSelectors.settings)
+  const showUI = useSelector(systemSelectors.showUI)
 
-  return (
+  const {
+    company_name,
+    logo,
+  } = settings
+
+  let title = company_name
+
+  if(!title && showUI) title = 'Nocode Website'
+  
+  const content = (
+    <div className={ classes.container }>
+      {
+        logo && logo.url && (
+          <img className={ classes.logoImage } src={ logo.url } />
+        )
+      }
+      {
+        title && (
+          <Typography
+            variant="h5"
+            className={ classes.logoText }
+          >
+            { title }
+          </Typography>
+        )
+      }
+    </div>
+  )
+
+  return showUI ? (
+    <Suspense>
+      <EditableSettings
+        title="Edit Logo"
+        form="logo"
+      >
+        { content }
+      </EditableSettings>
+    </Suspense>
+  ) : (
     <Link
       path="/"
       className={ classes.link }
     >
-      <div className={ classes.container }>
-        <Suspense
-          Component={ EditableSettings }
-          props={{
-            classNames: {
-              button: classes.editButton,
-              icon: classes.editIcon,
-            }
-          }}
-        />
-        {
-          settings.logo && settings.logo.url && (
-            <img className={ classes.logoImage } src={ settings.logo.url } />
-          )
-        }
-        {
-          settings.logo_title && (
-            <Typography
-              variant="h5"
-              className={ classes.logoText }
-            >
-              { settings.logo_title }
-            </Typography>
-          )
-        }
-      </div>
+      { content }
     </Link>
   )
 }

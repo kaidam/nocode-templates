@@ -235,13 +235,13 @@ library.forms = Object.assign({}, defaultForms, {
   logo: {
     initialValues: {
       logo: null,
-      logo_title: '',
+      company_name: '',
     },
     schema: [
       {
-        id: 'logo_title',
-        title: 'Logo Title',
-        helperText: 'Enter the text to appear next to your logo',
+        id: 'company_name',
+        title: 'Company / Project name',
+        helperText: 'The name of your company or project',
       }, {
         id: 'logo',
         title: 'Logo',
@@ -353,10 +353,6 @@ library.settings = {
       id: 'company_name',
       title: 'Company / Project name',
       helperText: 'Enter the name of your company or project',
-    }, {
-      id: 'title',
-      title: 'Title',
-      helperText: 'Enter the title for your website',
     }, {
       id: 'description',
       title: 'Description',
