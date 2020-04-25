@@ -56,6 +56,8 @@ const Copyright = ({
   else if(copyright_mode == 'manual') {
     value = copyright_message
   }
+
+  value = value.replace(/\d{4}/, new Date().getFullYear())
   
   const content = (
     <div className={ classes.container }>
