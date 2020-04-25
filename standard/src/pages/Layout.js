@@ -26,9 +26,7 @@ const Layout = ({
   children,
 }) => {
   const showUI = useSelector(systemSelectors.showUI)
-  const classes = useStyles({
-    showUI,
-  })
+  
   const contentRef = useRef(null)
 
   const settings = useSelector(settingsSelectors.settings)
@@ -37,6 +35,11 @@ const Layout = ({
   const navigationSettings = settings.navigation || {}
   let hasLeftNavigation = navigationSettings.left === true
   let hasRightNavigation = navigationSettings.right === true
+
+  const classes = useStyles({
+    showUI,
+    hasRightNavigation,
+  })
 
   const navbarClassname = classnames({
     [classes.drawer]: true,

@@ -145,8 +145,11 @@ const styles = makeStyles(theme => {
       flexGrow: 0,
     },
 
-    footerNavBarContents: ({showUI}) => ({
-      marginRight: showUI ? '80px' : '0px',
+    footerNavBarContents: ({
+      showUI,
+      hasRightNavigation,
+    }) => ({
+      marginRight: showUI && !hasRightNavigation ? '80px' : '0px',
     }),
 
     searchHolder: {
