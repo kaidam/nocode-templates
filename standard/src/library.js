@@ -186,6 +186,7 @@ const injectDocumentSettings = (form) => {
         values,
       }) => {
         if(name == 'annotation.useDefaults') return false
+        if(name == 'name') return false
         const useDefaults = values.annotation.useDefaults
         return useDefaults == 'inherit'
       },
@@ -196,6 +197,7 @@ const injectDocumentSettings = (form) => {
         context,
       }) => {
         if(name == 'annotation.useDefaults') return value
+        if(name == 'name') return value
         const useDefaults = values.annotation.useDefaults
         if(useDefaults == 'inherit') {
           const key = name.split('.')[1]
@@ -209,16 +211,17 @@ const injectDocumentSettings = (form) => {
       const {
         useDefaults,
       } = values.annotation
+      let returnValues = values
       if(useDefaults == 'inherit') {
         const newAnnotation = Object.assign({}, values.annotation)
         baseDocumentSettingsFields.forEach(field => delete(newAnnotation[field]))
-        return Object.assign({}, values, {
+        returnValues = Object.assign({}, values, {
           annotation: newAnnotation,
         })
       }
       return processFormValues ?
-        processFormValues(values) :
-        values
+        processFormValues(returnValues) :
+        returnValues
     },
     contextSelector: (state) => {
       return {
