@@ -25,7 +25,8 @@
     "template:softlink:plugins": "yarn run template:softlink && bash ../scripts/softlink.sh plugin-stripe plugin-contactform",
     "template:unlink": "yarn unlink @nocode-works/template && yarn unlink @nocode-works/store && yarn unlink @nocode-works/builder && yarn install --force",
     "template:unlink:plugins": "yarn unlink @nocode-works/plugin-stripe && yarn unlink @nocode-works/plugin-contactform && yarn run template:unlink",
-    "template:upgrade": "yarn upgrade @nocode-works/template"
+    "template:upgrade": "yarn upgrade @nocode-works/template",
+    "template:upgrade:plugins": "yarn run template:upgrade && yarn upgrade @nocode-works/plugin-stripe && yarn upgrade @nocode-works/plugin-contactform"
   },
   "author": "",
   "license": "ISC"
