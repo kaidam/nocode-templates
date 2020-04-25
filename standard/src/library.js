@@ -22,6 +22,8 @@ import defaultForms from '@nocode-works/template/forms'
 import LayoutDefault from './pages/Layout'
 import PageDefault from './pages/Document'
 
+import utils from './utils'
+
 const SECTIONS = [
   'sidebar',
   'rightbar',
@@ -251,15 +253,81 @@ library.forms = Object.assign({}, defaultForms, {
   },
   copyright: {
     initialValues: {
-      copyright_message: '',
+      copyright_mode: 'auto',
+      copyright_message: utils.autoCopyrightMessage({
+        company_name: '',
+      }),
+      company_name: '',
     },
     schema: [
       {
+        id: 'copyright_mode',
+        title: 'Mode',
+        component: 'radio',
+        row: true,
+        options: [{
+          value: 'auto',
+          title: 'Auto',
+        }, {
+          value: 'manual',
+          title: 'Manual',
+        }, {
+          value: 'none',
+          title: 'None',
+        }],
+        helperText: 'Choose which style of copyright message you want',
+      },
+      {
+        id: 'company_name',
+        title: 'Company / Project name',
+        helperText: 'The name of your company or project',
+      },
+      {
         id: 'copyright_message',
         title: 'Copyright Message',
-        helperText: 'Enter the copyright message to appear in the footer',
+        helperText: 'The copyright message to appear in the footer',
       },
     ],
+    contextSelector: (state) => {
+      return {
+        settings: settingsSelectors.settings(state),
+      }
+    },
+    handlers: {
+      filter: ({
+        name,
+        values,
+      }) => {
+        if(name == 'company_name') {
+          return values.copyright_mode == 'auto'
+        }
+        return true
+      },
+      isDisabled: ({
+        name,
+        values,
+      }) => {
+        if(name == 'copyright_message') return values.copyright_mode != 'manual'
+        return false
+      },
+      getValue: ({
+        name,
+        values,
+        value,
+        context,
+      }) => {
+        if(name == 'copyright_message') {
+          if(values.copyright_mode == 'auto') {
+            return utils.autoCopyrightMessage({
+              company_name: values.company_name,
+            })
+          }
+          else if(values.copyright_mode == 'none') return 'disabled'
+          else return value
+        }
+        return value
+      },
+    },
   }
 })
 

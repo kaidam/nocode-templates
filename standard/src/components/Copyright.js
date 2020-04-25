@@ -56,7 +56,10 @@ const Copyright = ({
 
   return showUI ? (
     <Suspense>
-      <EditableSettings>
+      <EditableSettings
+        title="Edit Copyright"
+        form="copyright"
+      >
         { content }
       </EditableSettings>
     </Suspense>
