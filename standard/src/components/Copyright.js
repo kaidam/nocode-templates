@@ -5,13 +5,9 @@ import Typography from '@material-ui/core/Typography'
 import Suspense from '@nocode-works/template/components/system/Suspense'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
 import systemSelectors from '@nocode-works/template/store/selectors/system'
+import utils from '../utils'
 
 const EditableSettings = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/settings/EditableSettings'))
-
-const getValue = (settings = {}) => {
-  if(!settings.copyright_message) return null
-  return settings.copyright_message.replace(/\&year;?/, () => new Date().getFullYear())
-}
 
 const useStyles = makeStyles(theme => {  
   return {
@@ -40,8 +36,26 @@ const Copyright = ({
   const classes = useStyles()
   const settings = useSelector(settingsSelectors.settings)
   const showUI = useSelector(systemSelectors.showUI)
-  //const value = getValue(settings)
-  const value = "© 2020 My Copyright Message"
+
+  const {
+    copyright_mode,
+    company_name,
+    copyright_message,
+  } = settings
+
+  let value = ''
+
+  if(copyright_mode == 'none' && showUI) {
+    value = 'copyright message disabled'
+  }
+  else if(copyright_mode == 'auto') {
+    value = utils.autoCopyrightMessage({
+      company_name,
+    })
+  }
+  else if(copyright_mode == 'manual') {
+    value = copyright_message
+  }
   
   const content = (
     <div className={ classes.container }>
