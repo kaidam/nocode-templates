@@ -48,7 +48,7 @@ const Copyright = ({
   if(copyright_mode == 'none' && showUI) {
     value = 'copyright message disabled'
   }
-  else if(copyright_mode == 'auto') {
+  else if(copyright_mode == 'auto' || !copyright_mode) {
     value = utils.autoCopyrightMessage({
       company_name,
     })
