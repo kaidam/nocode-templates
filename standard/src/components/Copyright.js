@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Suspense from '@nocode-works/template/components/system/Suspense'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
+import systemSelectors from '@nocode-works/template/store/selectors/system'
 
 const EditableSettings = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/settings/EditableSettings'))
 
@@ -38,28 +39,28 @@ const Copyright = ({
 }) => {
   const classes = useStyles()
   const settings = useSelector(settingsSelectors.settings)
-  const value = getValue(settings)
-  if(!value) return null
-  return (
+  const showUI = useSelector(systemSelectors.showUI)
+  //const value = getValue(settings)
+  const value = "© 2020 My Copyright Message"
+  
+  const content = (
     <div className={ classes.container }>
-      <Suspense
-        Component={ EditableSettings }
-        props={{
-          classNames: {
-            button: classes.editButton,
-            icon: classes.editIcon,
-          }
-        }}
-      />
       <Typography
         variant="body1"
         className={ classes.copyrightText }
       >
-        <span dangerouslySetInnerHTML={{__html: value}}>
-        </span>
+        { value }
       </Typography>
     </div>
   )
+
+  return showUI ? (
+    <Suspense>
+      <EditableSettings>
+        { content }
+      </EditableSettings>
+    </Suspense>
+  ) : content
 }
 
 export default Copyright

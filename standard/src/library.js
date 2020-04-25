@@ -230,14 +230,43 @@ const injectDocumentSettings = (form) => {
 library.forms = Object.assign({}, defaultForms, {
   'drive.folder': injectDocumentSettings(defaultForms['drive.folder']),
   'drive.document': injectDocumentSettings(defaultForms['drive.document']),
+  logo: {
+    initialValues: {
+      logo: null,
+      logo_title: '',
+    },
+    schema: [
+      {
+        id: 'logo_title',
+        title: 'Logo Title',
+        helperText: 'Enter the text to appear next to your logo',
+      }, {
+        id: 'logo',
+        title: 'Logo',
+        helperText: 'Upload an image for your logo',
+        component: 'image',
+        providers: ['local', 'google'],
+      }
+    ],
+  },
+  copyright: {
+    initialValues: {
+      copyright_message: '',
+    },
+    schema: [
+      {
+        id: 'copyright_message',
+        title: 'Copyright Message',
+        helperText: 'Enter the copyright message to appear in the footer',
+      },
+    ],
+  }
 })
 
 library.settings = {
   initialValues: Object.assign({
-    title: 'Website Title',
-    logo: null,
-    logo_title: '',
-    copyright_message: '&copy; &year; My Company Name',
+    company_name: '',
+    title: '',
     description: '',
     keywords: '',
     color: {color: "#3f51b5"},
@@ -253,28 +282,13 @@ library.settings = {
     id: 'main',
     title: 'Website',
     schema: [{
-      id: 'color',
-      title: 'Color',
-      helperText: 'Choose your color',
-      component: 'color',
+      id: 'company_name',
+      title: 'Company / Project name',
+      helperText: 'Enter the name of your company or project',
     }, {
       id: 'title',
       title: 'Title',
       helperText: 'Enter the title for your website',
-    }, {
-      id: 'logo_title',
-      title: 'Logo Title',
-      helperText: 'Enter the text to appear next to your logo',
-    }, {
-      id: 'logo',
-      title: 'Logo',
-      helperText: 'Upload an image for your logo',
-      component: 'image',
-      providers: ['local', 'google'],
-    }, {
-      id: 'copyright_message',
-      title: 'Copyright Message',
-      helperText: 'Enter the copyright message to appear in the footer',
     }, {
       id: 'description',
       title: 'Description',
@@ -292,6 +306,12 @@ library.settings = {
     id: 'layout',
     title: 'Layout',
     schema: [
+      {
+        id: 'color',
+        title: 'Color',
+        helperText: 'Choose your color',
+        component: 'color',
+      },
       [
         {
           id: 'topbarHeight',
