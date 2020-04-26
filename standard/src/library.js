@@ -342,7 +342,7 @@ library.settings = {
     keywords: '',
     color: {color: "#3f51b5"},
     topbarHeight: 80,
-    sidebarWidth: 240,
+    sidebarWidth: 280,
     folderPages: 'yes',
     navigation: {
       left: true,
