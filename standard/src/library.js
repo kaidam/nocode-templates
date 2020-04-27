@@ -546,17 +546,18 @@ library.initialise = (params = {}) => async (dispatch, getState) => {
       resources: sectionResources,
     }))
 
-    console.log('--------------------------------------------')
-    console.log('--------------------------------------------')
-    console.log(JSON.stringify(resources, null, 4))
-    
+    const topbar = resources.find(resource => resource.id == 'topbar')
+    const homepage = (topbar.children || []).find(child => child.name == 'Home')
+
     await dispatch(systemActions.updateWebsiteMeta({
       autoFoldersCreated: true,
     }))
 
-    await dispatch(settingsActions.updateSettings({
-      testApples: 10,
-    }, false))
+    if(homepage) {
+      await dispatch(settingsActions.updateSettings({
+        homepage: homepage.id,
+      }, false))
+    }
 
     ret.reload = true
   }
