@@ -237,10 +237,28 @@ library.forms = Object.assign({}, defaultForms, {
   'drive.document': injectDocumentSettings(defaultForms['drive.document']),
   logo: {
     initialValues: {
+      logo_mode: 'both',
       logo: null,
       company_name: '',
     },
     schema: [
+      {
+        id: 'logo_mode',
+        title: 'Show',
+        component: 'radio',
+        row: true,
+        options: [{
+          value: 'both',
+          title: 'Text & Image',
+        }, {
+          value: 'text',
+          title: 'Just Text',
+        }, {
+          value: 'image',
+          title: 'Just Image',
+        }],
+        helperText: 'Choose whether to include your company name in the logo',
+      },
       {
         id: 'company_name',
         title: 'Company / Project name',

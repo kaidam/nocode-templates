@@ -50,21 +50,25 @@ const Logo = ({
   const {
     company_name,
     logo,
+    logo_mode,
   } = settings
 
   let title = company_name
 
-  if(!title && showUI) title = 'Nocode Website'
-  
+  if(!title && !logo && showUI) title = 'Logo Title'
+
+  const showText = !logo_mode || logo_mode == 'both' || logo_mode == 'text'
+  const showImage = !logo_mode || logo_mode == 'both' || logo_mode == 'image'
+
   const content = (
     <div className={ classes.container }>
       {
-        logo && logo.url && (
+        showImage && logo && logo.url && (
           <img className={ classes.logoImage } src={ logo.url } />
         )
       }
       {
-        title && (
+        showText && title && (
           <Typography
             variant="h5"
             className={ classes.logoText }
