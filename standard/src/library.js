@@ -29,6 +29,7 @@ const SECTIONS = [
   'rightbar',
   'topbar',
   'footer',
+  'blog',
 ]
 
 const DOCUMENT_SETTINGS_DEFAULT_VALUES = {
@@ -155,28 +156,36 @@ const baseDocumentSettingsFields = [
   'imageDropshadow',
 ]
 
-const injectDocumentSettings = (form) => {
+const injectDocumentSettings = (form, extra = {}) => {
   const initialValues = form.initialValues || {}
   const processFormValues = form.processFormValues
 
-  form.tabs[0].schema = form.tabs[0].schema.concat([{
-    id: 'annotation.useDefaults',
-    title: 'Use Website Settings',
-    helperText: 'Inherit the following values from the website settings',
-    component: 'radio',
-    row: true,
-    options: [{
-      title: 'Inherit',
-      value: 'inherit',
-    }, {
-      title: 'Override',
-      value: 'override',
-    }]
-  }].concat(getDocumentSettingsSchema(`annotation.`)))
+  let injectSchema = (
+    extra.schema ?
+      extra.schema :
+      []
+  )
+    .concat([{
+      id: 'annotation.useDefaults',
+      title: 'Use Website Settings',
+      helperText: 'Inherit the following values from the website settings',
+      component: 'radio',
+      row: true,
+      options: [{
+        title: 'Inherit',
+        value: 'inherit',
+      }, {
+        title: 'Override',
+        value: 'override',
+      }]
+    }])
+    .concat(getDocumentSettingsSchema(`annotation.`))
+
+  form.tabs[0].schema = form.tabs[0].schema.concat(injectSchema)
 
   return Object.assign({}, form, {
     initialValues: {
-      annotation: Object.assign({}, DOCUMENT_SETTINGS_DEFAULT_VALUES, initialValues.annotation, {
+      annotation: Object.assign({}, DOCUMENT_SETTINGS_DEFAULT_VALUES, initialValues.annotation, extra.initialValues, {
         useDefaults: 'inherit',
       }),
     },
@@ -186,6 +195,7 @@ const injectDocumentSettings = (form) => {
         values,
       }) => {
         if(name == 'annotation.useDefaults') return false
+        if(name == 'annotation.folderLayoutTemplate') return false
         if(name == 'name') return false
         const useDefaults = values.annotation.useDefaults
         return useDefaults == 'inherit'
@@ -197,6 +207,7 @@ const injectDocumentSettings = (form) => {
         context,
       }) => {
         if(name == 'annotation.useDefaults') return value
+        if(name == 'annotation.folderLayoutTemplate') return value
         if(name == 'name') return value
         const useDefaults = values.annotation.useDefaults
         if(useDefaults == 'inherit') {
@@ -233,7 +244,25 @@ const injectDocumentSettings = (form) => {
 }
 
 library.forms = Object.assign({}, defaultForms, {
-  'drive.folder': injectDocumentSettings(defaultForms['drive.folder']),
+  'drive.folder': injectDocumentSettings(defaultForms['drive.folder'], {
+    initialValues: {
+      folderLayoutTemplate: 'default',
+    },
+    schema: [{
+      id: 'annotation.folderLayoutTemplate',
+      title: 'Layout Template',
+      component: 'radio',
+      row: true,
+      options: [{
+        value: 'default',
+        title: 'Default',
+      }, {
+        value: 'blog',
+        title: 'Blog',
+      }],
+      helperText: 'Choose how the content in this folder will display',
+    }]
+  }),
   'drive.document': injectDocumentSettings(defaultForms['drive.document']),
   logo: {
     initialValues: {
@@ -449,6 +478,16 @@ library.settings = {
     ].concat(getDocumentSettingsSchema())
   }],
 }
+
+library.quickstarts = [{
+  title: 'Blog',
+}, {
+  title: 'Documentation'
+}, {
+  title: 'Portfolio'
+}, {
+  title: 'Intranet'
+}]
 
 /*
 
