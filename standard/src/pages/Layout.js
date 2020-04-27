@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { lazy, useRef, useEffect } from 'react'
 import classnames from 'classnames'
 import { useSelector } from 'react-redux'
 
@@ -17,10 +17,14 @@ import NavDrawer from '@nocode-works/template/components/widgets/NavDrawer'
 import Tree from '@nocode-works/template/components/tree/Section'
 import NavBar from '@nocode-works/template/components/navbar/Section'
 
+import Suspense from '@nocode-works/template/components/system/Suspense'
+
 import Logo from '../components/Logo'
 import Copyright from '../components/Copyright'
 
 import useStyles from '../styles/layout'
+
+const GlobalSettings = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/system/GlobalSettings'))
 
 const Layout = ({
   children,
@@ -103,6 +107,13 @@ const Layout = ({
                 </Hidden>
               )
             }
+            <Suspense
+              coreEnabled
+              Component={ GlobalSettings }
+              props={{
+                className: classes.globalSettings,
+              }}
+            />
           </Toolbar>
         </AppBar>
         <div className={ classes.main }>
@@ -137,7 +148,6 @@ const Layout = ({
                         contrast
                         vertical
                         align="right"
-                        className={ classes.footerNavBarContents }
                       />
                     </Hidden>
                     <Hidden mdUp implementation="css">
@@ -147,7 +157,6 @@ const Layout = ({
                         contrast
                         vertical
                         align="right"
-                        className={ classes.footerNavBarContents }
                       />
                     </Hidden>
                   </div>
