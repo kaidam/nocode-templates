@@ -489,6 +489,17 @@ library.quickstarts = [{
   title: 'Intranet'
 }]
 
+library.handlers = {
+  // should we expand a menu for a navbar folder
+  // or treat it like a document
+  isFolder: (node) => {
+    if(node.type != 'folder') return false
+    return node.annotation && node.annotation.folderLayoutTemplate == 'blog' ?
+      false :
+      true
+  }
+}
+
 /*
 
   we auto initialise the drive folders for them here
