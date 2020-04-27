@@ -2,6 +2,7 @@ import library from '@nocode-works/template/library'
 
 import systemActions from '@nocode-works/template/store/modules/system'
 import uiActions from '@nocode-works/template/store/modules/ui'
+import settingsActions from '@nocode-works/template/store/modules/settings'
 import systemSelectors from '@nocode-works/template/store/selectors/system'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
 
@@ -24,13 +25,22 @@ import PageDefault from './pages/Document'
 
 import utils from './utils'
 
-const SECTIONS = [
-  'sidebar',
-  'rightbar',
-  'topbar',
-  'footer',
-  'blog',
-]
+const SECTIONS = [{
+  id: 'sidebar',
+}, {
+  id: 'rightbar',
+}, {
+  id: 'topbar',
+  getChildren: (params) => {
+    return [{
+      id: 'home',
+      name: 'Home',
+      type: params.quickstart == 'blog' ? 'folder' : 'document',
+    }]
+  }
+}, {
+  id: 'footer',
+}]
 
 const DOCUMENT_SETTINGS_DEFAULT_VALUES = {
   breadcrumbs: 'yes',
@@ -121,7 +131,7 @@ const getDocumentSettingsSchema = (prefix = '') => {
 
 library.topbarHeight = 80
 library.autoSnackbar = false
-library.sections = SECTIONS
+library.sections = SECTIONS.map(section => section.id)
 
 library.plugins = [
   StripePlugin(),
@@ -505,7 +515,7 @@ library.handlers = {
   we auto initialise the drive folders for them here
 
 */
-library.initialise = () => async (dispatch, getState) => {
+library.initialise = (params = {}) => async (dispatch, getState) => {
   const website = systemSelectors.website(getState())
 
   const ret = {}
@@ -518,29 +528,35 @@ library.initialise = () => async (dispatch, getState) => {
     const sectionResources = SECTIONS
       .map(section => {
         return {
-          id: section,
+          id: section.id,
           type: 'folder',
-          location: `section:${section}`,
+          location: `section:${section.id}`,
           data: {
             ghost: true,
             linked: true,
           },
+          children: section.getChildren ?
+            section.getChildren(params) :
+            []
         }
       })
-      .concat([{
-        id: 'home',
-        type: 'document',
-        location: 'singleton:home'
-      }])
 
-    await dispatch(systemActions.ensureSectionResources({
+    const resources = await dispatch(systemActions.ensureSectionResources({
       driver: 'drive',
       resources: sectionResources,
     }))
+
+    console.log('--------------------------------------------')
+    console.log('--------------------------------------------')
+    console.log(JSON.stringify(resources, null, 4))
     
     await dispatch(systemActions.updateWebsiteMeta({
       autoFoldersCreated: true,
     }))
+
+    await dispatch(settingsActions.updateSettings({
+      testApples: 10,
+    }, false))
 
     ret.reload = true
   }
