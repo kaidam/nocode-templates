@@ -31,6 +31,12 @@ const SECTIONS = [{
   id: 'rightbar',
 }, {
   id: 'topbar',
+  annotation: {
+    sorting: {
+      type: 'date',
+      direction: 'asc',
+    }
+  },
   getChildren: (params) => {
     return [{
       id: 'home',
@@ -535,6 +541,7 @@ library.initialise = (params = {}) => async (dispatch, getState) => {
             ghost: true,
             linked: true,
           },
+          annotation: section.annotation,
           children: section.getChildren ?
             section.getChildren(params) :
             []
