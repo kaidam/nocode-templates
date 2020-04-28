@@ -16,7 +16,7 @@ import Folder from '@nocode-works/template/components/document/Folder'
 import Layout from '@nocode-works/template/components/layout/Layout'
 import driveUtils from '@nocode-works/template/utils/drive'
 
-import BlogPage from './Blog'
+import BlogFolderLayout from '../components/BlogFolderLayout'
 
 const EditableDocument = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/EditableDocument'))
 const DefaultFolder = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/DefaultFolder'))
@@ -93,7 +93,7 @@ const DocumentPage = ({
   }
 
   const FolderComponent = annotation.folderLayoutTemplate == 'blog' ?
-    BlogPage :
+    BlogFolderLayout :
     Folder
   
   if(!node) return null

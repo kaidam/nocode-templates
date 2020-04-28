@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const BlogLayout = ({
+const BlogFolderLayout = ({
   node,
   DefaultFolder,
 }) => {
@@ -57,4 +57,4 @@ const BlogLayout = ({
   )
 }
 
-export default BlogLayout
+export default BlogFolderLayout
