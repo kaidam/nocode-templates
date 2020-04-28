@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => {
     },
     copyrightText: {
       marginLeft: theme.spacing(2),
+      marginRight: theme.spacing(2),
       color: theme.palette.primary.contrastText,
     },
     editButton: {

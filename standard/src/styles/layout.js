@@ -138,6 +138,10 @@ const styles = makeStyles(theme => {
     },
 
     footerCopyright: {
+      flexGrow: 0,
+    },
+
+    footerFiller: {
       flexGrow: 1,
     },
 

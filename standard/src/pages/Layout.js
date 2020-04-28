@@ -141,6 +141,9 @@ const Layout = ({
                   <div className={ classes.footerCopyright }>
                     <Copyright />
                   </div>
+                  <div className={ classes.footerFiller }>
+                    
+                  </div>
                   <div className={ classes.footerNavBar }>
                     <Hidden smDown implementation="css">
                       <NavBar
