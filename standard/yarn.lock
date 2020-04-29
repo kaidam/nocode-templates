@@ -1060,11 +1060,11 @@
     yargs "^15.0.1"
 
 "@nocode-works/plugin-contactform@^1.0.2":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@nocode-works/plugin-contactform/-/plugin-contactform-1.0.5.tgz#d29f984a4212151ae3d497d1af10f367aa5bd075"
-  integrity sha512-u96rjE0UrcumTkra/ryfXocvpBPRXDNq88Zl7VFB7D5th0CMhf/K8yBgEYGEJUjoVCaJFtF/SV8KMasa+UuwwQ==
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@nocode-works/plugin-contactform/-/plugin-contactform-1.0.6.tgz#b74cd43b4d934167b70905f5761a8fd633464606"
+  integrity sha512-G3hjaYLqsgPIMgrkQ3sL2gD1wSAejjP6uaPqTPkxixMpvRHl/UHF+cQ8egEpJ01p05rlODSTENyJohQsKwFYDA==
   dependencies:
-    "@nocode-works/store" "^1.0.4"
+    "@nocode-works/store" "^1.0.5"
     axios "0.19.0"
     body-parser "^1.19.0"
     express "^4.17.1"
@@ -1077,12 +1077,12 @@
     redux "^4.0.4"
 
 "@nocode-works/plugin-stripe@^1.0.4":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@nocode-works/plugin-stripe/-/plugin-stripe-1.0.7.tgz#c60137d18448a08dfc6f84c1fcd2b88a2299c781"
-  integrity sha512-wm7LhEyJ5Qe0vxnLKCgQZfqwqcPGYXMvpSpngeBUujImea3LxhcF3CRnvRGgktVX3150ffyKnSqbQJQ2Bjy7Rg==
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@nocode-works/plugin-stripe/-/plugin-stripe-1.0.8.tgz#96b88983114e51bcac9301edfda7c950e297cf79"
+  integrity sha512-Xr4Wjpac9j8ItruQeLInFjaWKypgNUOINYrYWA+VUb9B/tkopes3aOJ15lDk/24/GxI3B0JZ0637xRnbZ7sDZw==
   dependencies:
     "@material-ui/core" "^4.9.9"
-    "@nocode-works/store" "^1.0.4"
+    "@nocode-works/store" "^1.0.5"
     axios "0.19.0"
     body-parser "^1.19.0"
     express "^4.17.1"
@@ -1096,10 +1096,10 @@
     redux "^4.0.4"
     stripe "^7.14.0"
 
-"@nocode-works/store@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@nocode-works/store/-/store-1.0.4.tgz#4f367bf9f257a6356dca5948fe37fc3a2fedc427"
-  integrity sha512-deWSacnIbBay3fgToj+KbKWXCYllPq/2apFPOGeuU3L5efQ9YvrIXG4jJRd+o/umAgHD+HbtLzpXXzsX1txuZw==
+"@nocode-works/store@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@nocode-works/store/-/store-1.0.5.tgz#e8326cc9c1a9367ed4e5908268e4f0922e0f6d9d"
+  integrity sha512-w5KOUqWcYWeQaG9UF1xK4sRo2GbobdeoHUkgninzofioAw2KLH2eGvLxSBv1qQ9aktOf+LtYB+XPgCIFIGffvA==
   dependencies:
     axios "^0.19.2"
     immer "^6.0.2"
@@ -1109,15 +1109,15 @@
     router5 "^8.0.0"
 
 "@nocode-works/template@^1.0.4":
-  version "1.0.20"
-  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.20.tgz#91ef43fbfb9f4fbdfecead650d55e905749af28f"
-  integrity sha512-eTEyd2ohkNF5f0mqnsahttCCRroIdJB7UDwkW6vnaWeVDHtZ4kTBDNE+Zk76A5LJTfc/jXJ+KRsSMdxp/apbTw==
+  version "1.0.21"
+  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.21.tgz#63065a231cd6c03bd8025a8aeb1f2ad79a83940c"
+  integrity sha512-eu6ctrIKieSyuHISsY9DWk6Llozjls5gJxx0afS6FxwAev9PZu7tMB0v4rLcb1SUTDbIk28TiaV3Cj/f9MA6Fw==
   dependencies:
     "@hot-loader/react-dom" "^16.12.0"
     "@material-ui/core" "^4.9.9"
     "@material-ui/icons" "^4.9.1"
     "@nocode-works/builder" "^1.0.8"
-    "@nocode-works/store" "^1.0.4"
+    "@nocode-works/store" "^1.0.5"
     "@types/react" "^16.9.23"
     archiver "^3.1.1"
     async "^3.1.0"
@@ -2390,9 +2390,9 @@ crypto-browserify@^3.11.0:
     randomfill "^1.0.3"
 
 css-box-model@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/css-box-model/-/css-box-model-1.2.0.tgz#3a26377b4162b3200d2ede4b064ec5b6a75186d0"
-  integrity sha512-lri0br+jSNV0kkkiGEp9y9y3Njq2PmpqbeGWRFQJuZteZzY9iC9GZhQ8Y4WpPwM/2YocjHePxy14igJY7YKzkA==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/css-box-model/-/css-box-model-1.2.1.tgz#59951d3b81fd6b2074a62d49444415b0d2b4d7c1"
+  integrity sha512-a7Vr4Q/kd/aw96bnJG332W9V9LkJO69JRcaCYDUqjp6/z0w6VcZjgAcTbgFxEPfBgdnAwlh3iwu+hLopa+flJw==
   dependencies:
     tiny-invariant "^1.0.6"
 
@@ -2664,9 +2664,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.413:
-  version "1.3.418"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.418.tgz#840021191f466b803a873e154113620c9f53cec6"
-  integrity sha512-i2QrQtHes5fK/F9QGG5XacM5WKEuR322fxTYF9e8O9Gu0mc0WmjjwGpV8c7Htso6Zf2Di18lc3SIPxmMeRFBug==
+  version "1.3.423"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.423.tgz#1dcc9e54d642dd9b354c6609848abf8ba7b2570f"
+  integrity sha512-jXdnLcawJ/EMdN+j77TC3YyeAWiIjo1U63DFCKrjtLv4cu8ToyoF4HYXtFvkVVHhEtIl7lU1uDd307Xj1/YDjw==
 
 elliptic@^6.0.0:
   version "6.5.2"
@@ -3343,9 +3343,9 @@ globby@^7.1.1:
     slash "^1.0.0"
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0:
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
-  integrity sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
+  integrity sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
 
 gzip-size@^5.0.0:
   version "5.1.1"
@@ -4977,9 +4977,9 @@ popper.js@^1.16.1-lts:
   integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
 
 portfinder@^1.0.25:
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.25.tgz#254fd337ffba869f4b9d37edc298059cb4d35eca"
-  integrity sha512-6ElJnHBbxVA1XSLgBp7G1FiCkQdlqGzuF7DswL5tcea+E8UpuvPU7beVAjjRwCioTS9ZluNbu+ZyRvgTsmqEBg==
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.26.tgz#475658d56ca30bed72ac7f1378ed350bd1b64e70"
+  integrity sha512-Xi7mKxJHHMI3rIUrnm/jjUgwhbYMkp/XKEcZX3aG4BrumLpq3nmoQMX+ClYnDZnZ/New7IatC1no5RX0zo1vXQ==
   dependencies:
     async "^2.6.2"
     debug "^3.1.1"
