@@ -18,9 +18,18 @@ import driveUtils from '@nocode-works/template/utils/drive'
 
 import BlogFolderLayout from '../components/BlogFolderLayout'
 
+import config from '../config'
+
 const EditableDocument = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/EditableDocument'))
 const DefaultFolder = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/DefaultFolder'))
 const EditableLayout = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/layout/EditableLayout'))
+
+const {
+  document: {
+    topLayoutId,
+    bottomLayoutId,
+  }
+} = config
 
 const useStyles = makeStyles(theme => ({
   cell: {
@@ -81,8 +90,6 @@ const DocumentPage = ({
     withDropshadow: activeWidgets.imageDropshadow == 'yes'
   })
 
-  const topLayoutId = 'topLayout'
-  const bottomLayoutId = 'bottomLayout'
   const topLayoutProps = {
     content_id: node.id,
     layout_id: topLayoutId,

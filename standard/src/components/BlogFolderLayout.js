@@ -5,6 +5,8 @@ import Link from '@nocode-works/template/components/widgets/Link'
 import contentSelectors from '@nocode-works/template/store/selectors/content'
 import Suspense from '@nocode-works/template/components/system/Suspense'
 
+import utils from '../utils'
+
 const useStyles = makeStyles(theme => ({
   root: {
     
@@ -37,6 +39,12 @@ const BlogFolderLayout = ({
         {
           children
             .map((child, i) => {
+
+              const name = child.name
+              const image = utils.extractImage({
+                item: child,
+              })
+              
               return (
                 <li
                   key={ i }
