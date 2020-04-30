@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
 import Typography from '@material-ui/core/Typography'
