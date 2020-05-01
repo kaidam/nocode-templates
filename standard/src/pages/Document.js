@@ -25,11 +25,9 @@ const DefaultFolder = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-wo
 const EditableLayout = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/layout/EditableLayout'))
 
 const {
-  document: {
-    topLayoutId,
-    bottomLayoutId,
-  }
-} = config
+  topLayoutId,
+  bottomLayoutId,
+} = config.DOCUMENT
 
 const useStyles = makeStyles(theme => ({
   cell: {
@@ -104,6 +102,7 @@ const DocumentPage = ({
     Folder
   
   if(!node) return null
+
   return (
     <div className="document-container">
       {

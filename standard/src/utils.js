@@ -1,12 +1,9 @@
 import config from './config'
-import { useTheme } from '@material-ui/core'
 
 const {
-  document: {
-    topLayoutId,
-    bottomLayoutId,
-  }
-} = config
+  topLayoutId,
+  bottomLayoutId,
+} = config.DOCUMENT
 
 const autoCopyrightMessage = ({
   company_name,

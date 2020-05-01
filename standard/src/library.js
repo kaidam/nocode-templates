@@ -24,37 +24,14 @@ import LayoutDefault from './pages/Layout'
 import PageDefault from './pages/Document'
 
 import utils from './utils'
+import config from './config'
 
-const SECTIONS = [{
-  id: 'sidebar',
-}, {
-  id: 'rightbar',
-}, {
-  id: 'topbar',
-  annotation: {
-    sorting: {
-      type: 'date',
-      direction: 'asc',
-    }
-  },
-  getChildren: (params) => {
-    return [{
-      id: 'home',
-      name: 'Home',
-      type: params.quickstart == 'blog' ? 'folder' : 'document',
-    }]
-  }
-}, {
-  id: 'footer',
-}]
-
-const DOCUMENT_SETTINGS_DEFAULT_VALUES = {
-  breadcrumbs: 'yes',
-  documentTitle: 'yes',
-  documentInfo: 'yes',
-  backNextButtons: 'yes',
-  imageDropshadow: 'no',
-}
+const {
+  DOCUMENT_SETTINGS_DEFAULT_VALUES,
+  SECTIONS,
+  QUICKSTARTS,
+  getInitialResources,
+} = config
 
 const getDocumentSettingsSchema = (prefix = '') => {
   return [
@@ -138,6 +115,7 @@ const getDocumentSettingsSchema = (prefix = '') => {
 library.topbarHeight = 80
 library.autoSnackbar = false
 library.sections = SECTIONS.map(section => section.id)
+library.quickstarts = QUICKSTARTS
 
 library.plugins = [
   StripePlugin(),
@@ -163,14 +141,6 @@ library.templates = {
     default: PageDefault,
   },
 }
-
-const baseDocumentSettingsFields = [
-  'breadcrumbs',
-  'backNextButtons',
-  'documentTitle',
-  'documentInfo',
-  'imageDropshadow',
-]
 
 const injectDocumentSettings = (form, extra = {}) => {
   const initialValues = form.initialValues || {}
@@ -241,7 +211,7 @@ const injectDocumentSettings = (form, extra = {}) => {
       let returnValues = values
       if(useDefaults == 'inherit') {
         const newAnnotation = Object.assign({}, values.annotation)
-        baseDocumentSettingsFields.forEach(field => delete(newAnnotation[field]))
+        Object.keys(DOCUMENT_SETTINGS_DEFAULT_VALUES).forEach(field => delete(newAnnotation[field]))
         returnValues = Object.assign({}, values, {
           annotation: newAnnotation,
         })
@@ -495,16 +465,6 @@ library.settings = {
   }],
 }
 
-library.quickstarts = [{
-  title: 'Blog',
-}, {
-  title: 'Documentation'
-}, {
-  title: 'Portfolio'
-}, {
-  title: 'Intranet'
-}]
-
 library.handlers = {
   // should we expand a menu for a navbar folder
   // or treat it like a document
@@ -527,31 +487,26 @@ library.initialise = (params = {}) => async (dispatch, getState) => {
   const ret = {}
 
   if(website.meta.autoFoldersEnsure && !website.meta.autoFoldersCreated) {
+    const quickstartParams = await dispatch(uiActions.getQuickstartConfig({apples:10}))
+    console.log('--------------------------------------------')
+    console.log('--------------------------------------------')
+    console.dir(quickstartParams)
+    return
+
     dispatch(uiActions.setLoading({
       message: 'Setting up your website for the first time...',
     }))
 
-    const sectionResources = SECTIONS
-      .map(section => {
-        return {
-          id: section.id,
-          type: 'folder',
-          location: `section:${section.id}`,
-          data: {
-            ghost: true,
-            linked: true,
-          },
-          annotation: section.annotation,
-          children: section.getChildren ?
-            section.getChildren(params) :
-            []
-        }
-      })
+    const resourceDescriptors = getInitialResources({
+      quickstart: 'documentation',
+    })
 
     const resources = await dispatch(systemActions.ensureSectionResources({
       driver: 'drive',
-      resources: sectionResources,
+      resources: resourceDescriptors.resources,
     }))
+
+    let useSettings = resourceDescriptors.settings
 
     const topbar = resources.find(resource => resource.id == 'topbar')
     const homepage = (topbar.children || []).find(child => child.name == 'Home')
@@ -561,10 +516,12 @@ library.initialise = (params = {}) => async (dispatch, getState) => {
     }))
 
     if(homepage) {
-      await dispatch(settingsActions.updateSettings({
+      useSettings = Object.assign({}, useSettings, {
         homepage: homepage.id,
-      }, false))
+      })
     }
+
+    await dispatch(settingsActions.updateSettings(useSettings, false))
 
     ret.reload = true
   }

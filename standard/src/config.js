@@ -1,8 +1,190 @@
-const CONFIG = {
-  document: {
-    topLayoutId: 'topLayout',
-    bottomLayoutId: 'bottomLayout'
+export const DOCUMENT_SETTINGS_DEFAULT_VALUES = {
+  breadcrumbs: 'yes',
+  documentTitle: 'yes',
+  documentInfo: 'yes',
+  backNextButtons: 'yes',
+  imageDropshadow: 'no',
+}
+
+export const SECTIONS = [
+  'sidebar',
+  'rightbar',
+  'topbar',
+  'footer',
+]
+
+export const QUICKSTARTS = [{
+  id: 'blog',
+  title: 'Blog',
+  description: 'A blog template where each post is a Google document',
+}, {
+  id: 'documentation',
+  title: 'Documentation',
+  description: 'Documentation website with nested folders of content',
+}, {
+  id: 'portfolio',
+  title: 'Portfolio',
+  description: 'Perfect for showcasing your product or services',
+}, {
+  id: 'intranet',
+  title: 'Intranet',
+  description: 'Publish internal documents to team-members',
+}]
+
+export const DOCUMENT = {
+  topLayoutId: 'topLayout',
+  bottomLayoutId: 'bottomLayout'
+}
+
+const getHomepageAnnotation = (merge = {}) => {
+  return Object.assign({}, merge, {
+    breadcrumbs: 'no',
+    documentTitle: 'no',
+    documentInfo: 'no',
+    backNextButtons: 'no',
+    imageDropshadow: 'no',
+    useDefaults: 'override',
+  })
+}
+
+const getInitialResource = (id) => ({
+  id,
+  type: 'folder',
+  location: `section:${id}`,
+  data: {
+    ghost: true,
+    linked: true,
+  },
+})
+
+const getSettings = (params = {}) => {
+  if(params.quickstart == 'blog') {
+    return {
+      folderPages: 'yes',
+      navigation: {
+        left: false,
+        right: false
+      },
+      breadcrumbs: 'yes',
+      documentTitle: 'yes',
+      documentInfo: 'yes',
+      backNextButtons: 'yes',
+      imageDropshadow: 'yes',
+    }
+  }
+  else if(params.quickstart == 'documentation') {
+    return {
+      folderPages: 'yes',
+      navigation: {
+        left: true,
+        right: false
+      },
+      breadcrumbs: 'yes',
+      documentTitle: 'yes',
+      documentInfo: 'yes',
+      backNextButtons: 'yes',
+      imageDropshadow: 'yes',
+    }
+  }
+  else if(params.quickstart == 'intranet') {
+    return {
+      folderPages: 'yes',
+      navigation: {
+        left: true,
+        right: false
+      },
+      breadcrumbs: 'yes',
+      documentTitle: 'yes',
+      documentInfo: 'yes',
+      backNextButtons: 'yes',
+      imageDropshadow: 'yes',
+    }
+  }
+  else if(params.quickstart == 'portfolio') {
+    return {
+      folderPages: 'no',
+      navigation: {
+        left: true,
+        right: true
+      },
+      breadcrumbs: 'no',
+      documentTitle: 'yes',
+      documentInfo: 'no',
+      backNextButtons: 'no',
+      imageDropshadow: 'no',
+    }
+  }
+  else {
+    return {
+      folderPages: 'yes',
+      navigation: {
+        left: true,
+        right: false
+      },
+      breadcrumbs: 'no',
+      documentTitle: 'yes',
+      documentInfo: 'no',
+      backNextButtons: 'no',
+      imageDropshadow: 'no',
+    }
   }
 }
 
-export default CONFIG
+export const getInitialResources = (params = {}) => {
+  const quickstart = params.quickstart
+  const settings = getSettings(params)
+  const resources = [
+    getInitialResource('sidebar'),
+    getInitialResource('rightbar'),
+    getInitialResource('footer'),
+    Object.assign({}, getInitialResource('topbar'), {
+      annotation: {
+        sorting: {
+          type: 'date',
+          direction: 'asc',
+        }
+      },
+      children: [{
+        id: 'home',
+        name: 'Home',
+        type: quickstart == 'blog' ? 'folder' : 'document',
+        annotation: getHomepageAnnotation(params.quickstart == 'blog' ? {
+          folderLayoutTemplate: 'blog',
+          sorting: {
+            type: 'date',
+            direction: 'desc',
+          },
+          topLayout: [
+            [
+              {
+                type: 'richtext',
+                settings: {
+                  horizontal_align: 'left',
+                  vertical_align: 'top',
+                  padding: 8
+                },
+                data: {
+                  text: 'Welcome to my blog!',
+                  style: 'body1'
+                }
+              }
+            ]
+          ]
+        } : {}),
+      }]
+    })
+  ]
+  return {
+    settings,
+    resources,
+  }
+}
+
+export default {
+  DOCUMENT_SETTINGS_DEFAULT_VALUES,
+  SECTIONS,
+  QUICKSTARTS,
+  DOCUMENT,
+  getHomepageAnnotation,
+  getInitialResources,
+}
