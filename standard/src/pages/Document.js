@@ -97,7 +97,7 @@ const DocumentPage = ({
     layout_id: bottomLayoutId,
   }
 
-  const FolderComponent = annotation.folderLayoutTemplate == 'blog' ?
+  const FolderComponent = annotation && annotation.folderLayoutTemplate == 'blog' ?
     BlogFolderLayout :
     Folder
   
