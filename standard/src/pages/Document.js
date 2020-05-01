@@ -98,9 +98,15 @@ const DocumentPage = ({
     layout_id: bottomLayoutId,
   }
 
-  const FolderComponent = annotation && annotation.folderLayoutTemplate == 'blog' ?
+  const isBlogLayout = annotation && annotation.folderLayoutTemplate == 'blog'
+
+  const FolderComponent = isBlogLayout ?
     BlogFolderLayout :
     Folder
+
+  const addContentFilter = isBlogLayout ?
+    ['document'] :
+    null
 
   const isHomepage = settings.homepage == node.id
 
@@ -168,6 +174,7 @@ const DocumentPage = ({
           annotation: annotation,
           layout_id: topLayoutId,
           className: classes.editorTop,
+          addContentFilter,
         }}
       />
       <div className={ classes.cell }>
@@ -176,6 +183,7 @@ const DocumentPage = ({
             <FolderComponent
               node={ node }
               DefaultFolder={ DefaultFolder }
+              addContentFilter={ addContentFilter }
             />
           ) : (
             <div className={ classes.bodyContainer }>
@@ -196,6 +204,7 @@ const DocumentPage = ({
           annotation: annotation,
           layout_id: bottomLayoutId,
           className: classes.editorBottom,
+          addContentFilter,
         }}
       />
       {

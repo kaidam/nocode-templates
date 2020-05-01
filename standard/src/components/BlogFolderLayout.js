@@ -53,6 +53,7 @@ const useStyles = makeStyles(theme => ({
 const BlogFolderLayout = ({
   node,
   DefaultFolder,
+  addContentFilter,
 }) => {
   const classes = useStyles()
   const children = useSelector(contentSelectors.routeChildren)
@@ -62,6 +63,7 @@ const BlogFolderLayout = ({
       <Suspense>
         <DefaultFolder
           node={ node }
+          addContentFilter={ addContentFilter }
         />
       </Suspense>
     )
