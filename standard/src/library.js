@@ -487,18 +487,14 @@ library.initialise = (params = {}) => async (dispatch, getState) => {
   const ret = {}
 
   if(website.meta.autoFoldersEnsure && !website.meta.autoFoldersCreated) {
-    const quickstartParams = await dispatch(uiActions.getQuickstartConfig({apples:10}))
-    console.log('--------------------------------------------')
-    console.log('--------------------------------------------')
-    console.dir(quickstartParams)
-    return
-
+    const quickstartParams = await dispatch(uiActions.getQuickstartConfig({}))
+    
     dispatch(uiActions.setLoading({
       message: 'Setting up your website for the first time...',
     }))
 
     const resourceDescriptors = getInitialResources({
-      quickstart: 'documentation',
+      quickstart: quickstartParams.quickstart,
     })
 
     const resources = await dispatch(systemActions.ensureSectionResources({
