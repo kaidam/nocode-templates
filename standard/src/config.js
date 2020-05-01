@@ -36,17 +36,6 @@ export const DOCUMENT = {
   bottomLayoutId: 'bottomLayout'
 }
 
-const getHomepageAnnotation = (merge = {}) => {
-  return Object.assign({}, merge, {
-    breadcrumbs: 'no',
-    documentTitle: 'no',
-    documentInfo: 'no',
-    backNextButtons: 'no',
-    imageDropshadow: 'no',
-    useDefaults: 'override',
-  })
-}
-
 const getInitialResource = (id) => ({
   id,
   type: 'folder',
@@ -148,7 +137,7 @@ export const getInitialResources = (params = {}) => {
         id: 'home',
         name: 'Home',
         type: quickstart == 'blog' ? 'folder' : 'document',
-        annotation: getHomepageAnnotation(params.quickstart == 'blog' ? {
+        annotation: params.quickstart == 'blog' ? {
           folderLayoutTemplate: 'blog',
           sorting: {
             type: 'date',
@@ -164,13 +153,13 @@ export const getInitialResources = (params = {}) => {
                   padding: 8
                 },
                 data: {
-                  text: 'Welcome to my blog!',
+                  text: 'Click to edit this text...',
                   style: 'body1'
                 }
               }
             ]
           ]
-        } : {}),
+        } : {},
       }]
     })
   ]
@@ -185,6 +174,5 @@ export default {
   SECTIONS,
   QUICKSTARTS,
   DOCUMENT,
-  getHomepageAnnotation,
   getInitialResources,
 }

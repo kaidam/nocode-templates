@@ -176,6 +176,15 @@ const injectDocumentSettings = (form, extra = {}) => {
       }),
     },
     handlers: {
+      isVisible: ({
+        name,
+        values,
+      }) => {
+        if(values.id) return true
+        if(name == 'annotation.folderLayoutTemplate') return true
+        if(name == 'name') return true
+        return false
+      },
       isDisabled: ({
         name,
         values,

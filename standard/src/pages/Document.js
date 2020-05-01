@@ -22,6 +22,7 @@ import config from '../config'
 
 const EditableDocument = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/EditableDocument'))
 const DefaultFolder = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/DefaultFolder'))
+const DefaultHome = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/DefaultHome'))
 const EditableLayout = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/layout/EditableLayout'))
 
 const {
@@ -100,13 +101,28 @@ const DocumentPage = ({
   const FolderComponent = annotation && annotation.folderLayoutTemplate == 'blog' ?
     BlogFolderLayout :
     Folder
+
+  const isHomepage = settings.homepage == node.id
+
+  const isWidgetActive = (name) => {
+    if(isHomepage) return false
+    return activeWidgets[name] == 'yes'
+  }
   
   if(!node) return null
+
+  if(node.type == 'defaultHome') {
+    return (
+      <Suspense
+        Component={ DefaultHome }
+      />
+    )
+  }
 
   return (
     <div className="document-container">
       {
-        activeWidgets.breadcrumbs == 'yes' && (
+        isWidgetActive('breadcrumbs') && (
           <div className={ classes.cell }>
             <BreadCrumbs
               node={ node }
@@ -116,7 +132,7 @@ const DocumentPage = ({
         )
       }
       {
-        activeWidgets.documentTitle == 'yes' && (
+        isWidgetActive('documentTitle') && (
           <div className={ classes.cell }>
             <Title
               node={ node }
@@ -126,7 +142,7 @@ const DocumentPage = ({
         )
       }
       {
-        activeWidgets.documentInfo == 'yes' && (
+        isWidgetActive('documentInfo') && (
           <div className={ classes.cell }>
             <Info
               node={ node }
@@ -193,7 +209,7 @@ const DocumentPage = ({
         )
       }
       {
-        activeWidgets.backNextButtons == 'yes' && (
+        isWidgetActive('backNextButtons') && (
           <div className={ classes.cell }>
             <BackNextButtons
               node={ node }
