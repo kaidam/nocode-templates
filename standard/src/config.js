@@ -53,6 +53,13 @@ export const ONBOARDING = {
       {
         id: 'waitForText',
         type: 'wait',
+        element: 'defaultBody',
+        title: 'Waiting for homepage content',
+        description: [
+          'Waiting for some content in the Google document that just opened.',
+        ],
+        noSubmit: true,
+        noProgress: true,
         handler: async (dispatch, getState) => {
           console.log('--------------------------------------------')
           console.log('here waiting')
