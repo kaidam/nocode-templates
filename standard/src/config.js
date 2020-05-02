@@ -1,5 +1,6 @@
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
 import nocodeSelectors from '@nocode-works/template/store/selectors/nocode'
+import documentUtils from '@nocode-works/template/utils/document'
 
 export const DOCUMENT_SETTINGS_DEFAULT_VALUES = {
   breadcrumbs: 'yes',
@@ -69,11 +70,7 @@ export const ONBOARDING = {
           const externals = nocodeSelectors.externals(getState())
           const html = externals[`drive:${settings.homepage}.html`]
           if(!html) return false
-          const checkDiv = document.createElement('div')
-          checkDiv.innerHTML = html
-          const hasText = checkDiv.innerText.match(/\w/) ? true : false
-          const hasImage = checkDiv.querySelector('img') ? true : false
-          return hasText || hasImage
+          return documentUtils.hasContent(html)
         },
       },
     ]
