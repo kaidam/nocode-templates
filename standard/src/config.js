@@ -1,3 +1,6 @@
+import settingsSelectors from '@nocode-works/template/store/selectors/settings'
+import nocodeSelectors from '@nocode-works/template/store/selectors/nocode'
+
 export const DOCUMENT_SETTINGS_DEFAULT_VALUES = {
   breadcrumbs: 'yes',
   documentTitle: 'yes',
@@ -12,6 +15,7 @@ export const SECTIONS = [
   'topbar',
   'footer',
 ]
+
 
 export const QUICKSTARTS = [{
   id: 'blog',
@@ -44,8 +48,8 @@ export const ONBOARDING = {
         element: 'defaultBody',
         title: 'Welcome! Let\'s get started...',
         description: [
-          'Each page on a nocode site is a Google Document.',
-          'First off - click "Edit Document" to edit your homepage...', 
+          'Each page on a nocode website is a Google Document, let\'s add some content to our Homepage.',
+          'Click "Edit Document" and the Document will open, type some content and then come back to this screen.', 
         ],
         submitTitle: 'Edit Document',
       },
@@ -56,15 +60,22 @@ export const ONBOARDING = {
         element: 'defaultBody',
         title: 'Waiting for homepage content',
         description: [
-          'Waiting for some content in the Google document that just opened.',
+          'Type some content in the Google Document that just opened.',
         ],
         noSubmit: true,
         noProgress: true,
         handler: async (dispatch, getState) => {
-          console.log('--------------------------------------------')
-          console.log('here checking')
+          const settings = settingsSelectors.settings(getState())
+          const externals = nocodeSelectors.externals(getState())
+          const html = externals[`drive:${settings.homepage}.html`]
+          if(!html) return false
+          const checkDiv = document.createElement('div')
+          checkDiv.innerHTML = html
+          const hasText = checkDiv.innerText.match(/\w/) ? true : false
+          const hasImage = checkDiv.querySelector('img') ? true : false
+          return hasText || hasImage
         },
-      }
+      },
     ]
   },
 }
