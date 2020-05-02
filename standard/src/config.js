@@ -46,7 +46,8 @@ export const ONBOARDING = {
         description: [
           'Each page on a nocode site is a Google Document.',
           'First off - click "Edit Document" to edit your homepage...', 
-        ]
+        ],
+        submitTitle: 'Edit Document',
       },
       // wait for them to have typed some text
       {
