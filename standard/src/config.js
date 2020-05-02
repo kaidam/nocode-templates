@@ -42,7 +42,11 @@ export const ONBOARDING = {
         id: 'highlightDefaultBody',
         type: 'focus',
         element: 'defaultBody',
-        message: 'Click this',
+        title: 'Welcome! Let\'s get started...',
+        description: [
+          'Each page on a nocode site is a Google Document.',
+          'First off - click "Edit Document" to edit your homepage...', 
+        ]
       },
       // wait for them to have typed some text
       {
