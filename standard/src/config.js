@@ -40,7 +40,28 @@ export const QUICKSTARTS = [{
 
 export const ONBOARDING = {
   blog: {
-
+    steps: [
+      {
+        id: 'highlightDefaultFolder',
+        type: 'focus',
+        element: 'defaultFolder',
+        title: 'Let\'s get started...',
+        description: [
+          'We have created a Google drive folder for your blog posts.',
+          'Click "Add Google Document" to add your first post.', 
+        ],
+        submitTitle: 'Add Google Document',
+      },
+      {
+        id: 'invisibleWait',
+        type: 'wait',
+        noSubmit: true,
+        handler: async (dispatch, getState) => {
+          console.log('--------------------------------------------')
+          console.log('wait for blog post')
+        },
+      },
+    ]
   },
   default: {
     steps: [
