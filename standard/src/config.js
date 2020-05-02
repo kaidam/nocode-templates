@@ -1,5 +1,7 @@
+import Promise from 'bluebird'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
 import nocodeSelectors from '@nocode-works/template/store/selectors/nocode'
+import uiActions from '@nocode-works/template/store/modules/ui'
 import documentUtils from '@nocode-works/template/utils/document'
 
 export const DOCUMENT_SETTINGS_DEFAULT_VALUES = {
@@ -42,51 +44,49 @@ export const ONBOARDING = {
   },
   default: {
     steps: [
-      // // open the default homepage to edit
-      // {
-      //   id: 'highlightDefaultBody',
-      //   type: 'focus',
-      //   element: 'defaultBody',
-      //   title: 'Welcome! Let\'s get started...',
-      //   description: [
-      //     'Each page on a nocode website is a Google Document, let\'s add some content to our Homepage.',
-      //     'Click "Edit Document" and the Document will open, enter some content and then come back to this screen.', 
-      //   ],
-      //   submitTitle: 'Edit Document',
-      // },
-      // // wait for them to have typed some text
-      // {
-      //   id: 'waitForText',
-      //   type: 'wait',
-      //   element: 'defaultBody',
-      //   title: 'Waiting for homepage content',
-      //   description: [
-      //     'Enter some content into the Google Document that just opened.',
-      //   ],
-      //   noSubmit: true,
-      //   noProgress: true,
-      //   handler: async (dispatch, getState) => {
-      //     const settings = settingsSelectors.settings(getState())
-      //     const externals = nocodeSelectors.externals(getState())
-      //     const html = externals[`drive:${settings.homepage}.html`]
-      //     if(!html) return false
-      //     return documentUtils.hasContent(html)
-      //   },
-      // },
+      // open the default homepage to edit
+      {
+        id: 'highlightDefaultBody',
+        type: 'focus',
+        element: 'defaultBody',
+        title: 'Let\'s get started...',
+        description: [
+          'Each page on a nocode website is a Google Document, let\'s add some content to our Homepage.',
+          'Click "Edit Document" and the Document will open, enter some content and then come back to this screen.', 
+        ],
+        submitTitle: 'Edit Document',
+      },
+      // wait for them to have typed some text
+      {
+        id: 'waitForText',
+        type: 'wait',
+        element: 'defaultBody',
+        title: 'Waiting for homepage content',
+        description: [
+          'Enter some content into the Google Document that just opened.',
+        ],
+        noSubmit: true,
+        noProgress: true,
+        handler: async (dispatch, getState) => {
+          const settings = settingsSelectors.settings(getState())
+          const externals = nocodeSelectors.externals(getState())
+          const html = externals[`drive:${settings.homepage}.html`]
+          if(!html) return false
+          return documentUtils.hasContent(html)
+        },
+      },
       {
         id: 'publishWebsite',
         type: 'focus',
-        element: 'publishButton',
-        title: 'Publish your website',
+        element: 'buildButton',
+        title: 'Good Job!',
         description: [
-          'Let\'s publish our website to see what it will look like',
+          'Now, let\'s publish our website to see what it will look like',
           'Click the "Build Website" button.'
         ],
         submitTitle: 'Build Website',
         initialise: async (dispatch, getState) => {
-          console.log('--------------------------------------------')
-          console.log('--------------------------------------------')
-          console.log('initialising step')
+          await dispatch(uiActions.setSettingsOpen(true))
         },
       },
     ]
