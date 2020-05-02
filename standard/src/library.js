@@ -30,6 +30,7 @@ const {
   DOCUMENT_SETTINGS_DEFAULT_VALUES,
   SECTIONS,
   QUICKSTARTS,
+  ONBOARDING,
   getInitialResources,
 } = config
 
@@ -116,6 +117,7 @@ library.topbarHeight = 80
 library.autoSnackbar = false
 library.sections = SECTIONS.map(section => section.id)
 library.quickstarts = QUICKSTARTS
+library.onboarding = ONBOARDING
 
 library.plugins = [
   StripePlugin(),
@@ -518,6 +520,7 @@ library.initialise = (params = {}) => async (dispatch, getState) => {
 
     await dispatch(systemActions.updateWebsiteMeta({
       autoFoldersCreated: true,
+      quickstart: quickstartParams.quickstart,
     }))
 
     if(homepage) {

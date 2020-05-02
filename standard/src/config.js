@@ -31,6 +31,32 @@ export const QUICKSTARTS = [{
   description: 'Publish internal documents to team-members',
 }]
 
+export const ONBOARDING = {
+  blog: {
+
+  },
+  default: {
+    steps: [
+      // open the default homepage to edit
+      {
+        id: 'highlightDefaultBody',
+        type: 'focus',
+        element: 'defaultBody',
+        message: 'Click this',
+      },
+      // wait for them to have typed some text
+      {
+        id: 'waitForText',
+        type: 'wait',
+        handler: async (dispatch, getState) => {
+          console.log('--------------------------------------------')
+          console.log('here waiting')
+        },
+      }
+    ]
+  },
+}
+
 export const DOCUMENT = {
   topLayoutId: 'topLayout',
   bottomLayoutId: 'bottomLayout'
@@ -173,6 +199,7 @@ export default {
   DOCUMENT_SETTINGS_DEFAULT_VALUES,
   SECTIONS,
   QUICKSTARTS,
+  ONBOARDING,
   DOCUMENT,
   getInitialResources,
 }
