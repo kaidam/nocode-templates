@@ -42,35 +42,51 @@ export const ONBOARDING = {
   },
   default: {
     steps: [
-      // open the default homepage to edit
+      // // open the default homepage to edit
+      // {
+      //   id: 'highlightDefaultBody',
+      //   type: 'focus',
+      //   element: 'defaultBody',
+      //   title: 'Welcome! Let\'s get started...',
+      //   description: [
+      //     'Each page on a nocode website is a Google Document, let\'s add some content to our Homepage.',
+      //     'Click "Edit Document" and the Document will open, enter some content and then come back to this screen.', 
+      //   ],
+      //   submitTitle: 'Edit Document',
+      // },
+      // // wait for them to have typed some text
+      // {
+      //   id: 'waitForText',
+      //   type: 'wait',
+      //   element: 'defaultBody',
+      //   title: 'Waiting for homepage content',
+      //   description: [
+      //     'Enter some content into the Google Document that just opened.',
+      //   ],
+      //   noSubmit: true,
+      //   noProgress: true,
+      //   handler: async (dispatch, getState) => {
+      //     const settings = settingsSelectors.settings(getState())
+      //     const externals = nocodeSelectors.externals(getState())
+      //     const html = externals[`drive:${settings.homepage}.html`]
+      //     if(!html) return false
+      //     return documentUtils.hasContent(html)
+      //   },
+      // },
       {
-        id: 'highlightDefaultBody',
+        id: 'publishWebsite',
         type: 'focus',
-        element: 'defaultBody',
-        title: 'Welcome! Let\'s get started...',
+        element: 'publishButton',
+        title: 'Publish your website',
         description: [
-          'Each page on a nocode website is a Google Document, let\'s add some content to our Homepage.',
-          'Click "Edit Document" and the Document will open, type some content and then come back to this screen.', 
+          'Let\'s publish our website to see what it will look like',
+          'Click the "Build Website" button.'
         ],
-        submitTitle: 'Edit Document',
-      },
-      // wait for them to have typed some text
-      {
-        id: 'waitForText',
-        type: 'wait',
-        element: 'defaultBody',
-        title: 'Waiting for homepage content',
-        description: [
-          'Type some content in the Google Document that just opened.',
-        ],
-        noSubmit: true,
-        noProgress: true,
-        handler: async (dispatch, getState) => {
-          const settings = settingsSelectors.settings(getState())
-          const externals = nocodeSelectors.externals(getState())
-          const html = externals[`drive:${settings.homepage}.html`]
-          if(!html) return false
-          return documentUtils.hasContent(html)
+        submitTitle: 'Build Website',
+        initialise: async (dispatch, getState) => {
+          console.log('--------------------------------------------')
+          console.log('--------------------------------------------')
+          console.log('initialising step')
         },
       },
     ]
