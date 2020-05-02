@@ -62,7 +62,7 @@ export const ONBOARDING = {
         noProgress: true,
         handler: async (dispatch, getState) => {
           console.log('--------------------------------------------')
-          console.log('here waiting')
+          console.log('here checking')
         },
       }
     ]
