@@ -182,16 +182,6 @@ export const DOCUMENT = {
   bottomLayoutId: 'bottomLayout'
 }
 
-const getInitialResource = (id) => ({
-  id,
-  type: 'folder',
-  location: `section:${id}`,
-  data: {
-    ghost: true,
-    linked: true,
-  },
-})
-
 const getSettings = (params = {}) => {
   if(params.quickstart == 'blog') {
     return {
@@ -264,6 +254,16 @@ const getSettings = (params = {}) => {
     }
   }
 }
+
+const getInitialResource = (id) => ({
+  id,
+  type: 'folder',
+  location: `section:${id}`,
+  data: {
+    ghost: true,
+    linked: true,
+  },
+})
 
 export const getInitialResources = (params = {}) => {
   const quickstart = params.quickstart
