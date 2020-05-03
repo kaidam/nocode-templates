@@ -175,6 +175,7 @@ const DocumentPage = ({
           layout_id: topLayoutId,
           className: classes.editorTop,
           addContentFilter,
+          widgetTitleAppend: ' Above',
         }}
       />
       <div className={ classes.cell }>
@@ -205,6 +206,7 @@ const DocumentPage = ({
           layout_id: bottomLayoutId,
           className: classes.editorBottom,
           addContentFilter,
+          widgetTitleAppend: ' Below',
         }}
       />
       {
