@@ -289,22 +289,22 @@ export const getInitialResources = (params = {}) => {
             type: 'date',
             direction: 'desc',
           },
-          topLayout: [
-            [
-              {
-                type: 'richtext',
-                settings: {
-                  horizontal_align: 'left',
-                  vertical_align: 'top',
-                  padding: 8
-                },
-                data: {
-                  text: 'Click to edit this text...',
-                  style: 'body1'
-                }
-              }
-            ]
-          ]
+          // topLayout: [
+          //   [
+          //     {
+          //       type: 'richtext',
+          //       settings: {
+          //         horizontal_align: 'left',
+          //         vertical_align: 'top',
+          //         padding: 8
+          //       },
+          //       data: {
+          //         text: 'Click to edit this text...',
+          //         style: 'body1'
+          //       }
+          //     }
+          //   ]
+          // ]
         } : {},
       }]
     })
