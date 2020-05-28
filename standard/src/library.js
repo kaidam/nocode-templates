@@ -516,7 +516,7 @@ library.initialise = (params = {}) => async (dispatch, getState) => {
     let useSettings = resourceDescriptors.settings
 
     const topbar = resources.find(resource => resource.id == 'topbar')
-    const homepage = (topbar.children || []).find(child => child.name == 'Home')
+    const homepage = (topbar.children || []).find(child => child.annotation && child.annotation.initialHomepage)
 
     await dispatch(systemActions.updateWebsiteMeta({
       autoFoldersCreated: true,

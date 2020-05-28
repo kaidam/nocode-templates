@@ -284,28 +284,19 @@ export const getInitialResources = (params = {}) => {
         name: 'Home',
         type: quickstart == 'blog' ? 'folder' : 'document',
         annotation: params.quickstart == 'blog' ? {
+          initialHomepage: true,
           folderLayoutTemplate: 'blog',
           sorting: {
             type: 'date',
             direction: 'desc',
           },
-          // topLayout: [
-          //   [
-          //     {
-          //       type: 'richtext',
-          //       settings: {
-          //         horizontal_align: 'left',
-          //         vertical_align: 'top',
-          //         padding: 8
-          //       },
-          //       data: {
-          //         text: 'Click to edit this text...',
-          //         style: 'body1'
-          //       }
-          //     }
-          //   ]
-          // ]
-        } : {},
+        } : {
+          initialHomepage: true,
+        },
+        children: params.quickstart == 'blog' ? [{
+          name: 'My First Blog Post',
+          type: 'document',
+        }] : [],
       }]
     })
   ]
