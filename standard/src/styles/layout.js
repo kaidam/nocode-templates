@@ -106,7 +106,7 @@ const styles = makeStyles(theme => {
 
     contentChildren: {
       maxWidth: '816px',
-      margin: '5px auto',
+      margin: '0px auto',
       minHeight: `calc(100% - ${theme.layout.footerHeight}px - 1px)`,
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2),
