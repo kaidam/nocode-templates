@@ -2,6 +2,7 @@ import library from '@nocode-works/template/library'
 
 import systemActions from '@nocode-works/template/store/modules/system'
 import uiActions from '@nocode-works/template/store/modules/ui'
+import jobActions from '@nocode-works/template/store/modules/job'
 import settingsActions from '@nocode-works/template/store/modules/settings'
 import systemSelectors from '@nocode-works/template/store/selectors/system'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
@@ -508,11 +509,18 @@ library.initialise = (params = {}) => async (dispatch, getState) => {
       quickstart: quickstartParams.quickstart,
     })
 
-    await dispatch(systemActions.ensureSectionResources({
+    const {
+      id,
+    } = await dispatch(systemActions.ensureSectionResources({
       driver: 'drive',
       resources: resourceDescriptors.resources,
       settings: resourceDescriptors.settings,
       quickstart: quickstartParams.quickstart,
+    }))
+
+    await dispatch(jobActions.waitForJobWithLoading({
+      jobId: id,
+      message: 'Setting up your website for the first time...',
     }))
 
     ret.reload = true
