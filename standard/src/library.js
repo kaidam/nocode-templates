@@ -508,30 +508,15 @@ library.initialise = (params = {}) => async (dispatch, getState) => {
       quickstart: quickstartParams.quickstart,
     })
 
-    const resources = await dispatch(systemActions.ensureSectionResources({
+    await dispatch(systemActions.ensureSectionResources({
       driver: 'drive',
       resources: resourceDescriptors.resources,
-    }))
-
-    let useSettings = resourceDescriptors.settings
-
-    const topbar = resources.find(resource => resource.id == 'topbar')
-    const homepage = (topbar.children || []).find(child => child.annotation && child.annotation.initialHomepage)
-
-    await dispatch(systemActions.updateWebsiteMeta({
-      autoFoldersCreated: true,
+      settings: resourceDescriptors.settings,
       quickstart: quickstartParams.quickstart,
     }))
 
-    if(homepage) {
-      useSettings = Object.assign({}, useSettings, {
-        homepage: homepage.id,
-      })
-    }
-
-    await dispatch(settingsActions.updateSettings(useSettings, false))
-
     ret.reload = true
+    ret.redirect = resourceDescriptors.redirect
   }
   
   return ret

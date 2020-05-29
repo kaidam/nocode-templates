@@ -255,10 +255,10 @@ const getSettings = (params = {}) => {
   }
 }
 
-const getInitialResource = (id) => ({
-  id,
+const getInitialResource = (name) => ({
+  name,
   type: 'folder',
-  location: `section:${id}`,
+  location: `section:${name}`,
   data: {
     ghost: true,
     linked: true,
@@ -280,9 +280,9 @@ export const getInitialResources = (params = {}) => {
         }
       },
       children: [{
-        id: 'home',
         name: 'Home',
         type: quickstart == 'blog' ? 'folder' : 'document',
+        wordDocument: quickstart == 'blog' ? null : 'homepage.docx',
         annotation: params.quickstart == 'blog' ? {
           initialHomepage: true,
           folderLayoutTemplate: 'blog',
@@ -296,6 +296,7 @@ export const getInitialResources = (params = {}) => {
         children: params.quickstart == 'blog' ? [{
           name: 'My First Blog Post',
           type: 'document',
+          wordDocument: quickstart == 'blog' ? 'homepage.docx' : null,
         }] : [],
       }]
     })
@@ -303,6 +304,9 @@ export const getInitialResources = (params = {}) => {
   return {
     settings,
     resources,
+    redirect: params.quickstart == 'blog' ?
+      'my-first-blog-post' :
+      null
   }
 }
 
