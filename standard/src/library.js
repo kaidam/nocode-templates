@@ -381,6 +381,7 @@ library.forms = Object.assign({}, defaultForms, {
 
 library.settings = {
   initialValues: Object.assign({
+    drive_mode: 'basic',
     company_name: '',
     title: '',
     description: '',
@@ -413,6 +414,18 @@ library.settings = {
       component: 'textarea',
       rows: 3,
       helperText: 'Enter some keywords for search engines to find your website',
+    }, {
+      id: 'drive_mode',
+      title: 'Google Drive Access Mode',
+      component: 'radio',
+      helperText: 'Choose your level of Google drive access.  Advanced mode let\'s you use any existing content you have on your drive.',
+      options: [{
+        title: 'Basic - create all content with nocode',
+        value: 'basic',
+      },{
+        title: 'Advanced - import existing Google drive content',
+        value: 'advanced',
+      }]
     }]
   }, {
     id: 'layout',
