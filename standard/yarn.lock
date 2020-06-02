@@ -1158,9 +1158,9 @@
     router5 "^8.0.0"
 
 "@nocode-works/template@^1.0.4":
-  version "1.0.27"
-  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.27.tgz#31a29b8f9aa969cbe1c1e1a1dd1185b35268bd01"
-  integrity sha512-VwpTeDJIlDemfDXnmnWEvq2K24usn2GydJ32efNqG8iuVAaX7uKug1cRUcVqlmUrx1UDX0RrpDZ+1FoAm8KFEA==
+  version "1.0.28"
+  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.28.tgz#0fce95445d917ffa1d2bab32624282cc3d89fc10"
+  integrity sha512-gMkA3qMqCgpT78VTp0n/PZ+cA9SBLY2ZBJCYEsVrmgYOFtiI5TFw2Uy84ZFwl7XV5Xh6JIpXjH5F4PM0TwwG0w==
   dependencies:
     "@hot-loader/react-dom" "^16.12.0"
     "@material-ui/core" "^4.9.9"
@@ -6797,9 +6797,9 @@ websocket-driver@>=0.5.1:
     websocket-extensions ">=0.1.1"
 
 websocket-extensions@>=0.1.1:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
-  integrity sha512-nqHUnMXmBzT0w570r2JpJxfiSD1IzoI+HGVdd3aZ0yNi3ngvQ4jv1dtHt5VGxfI2yj5yqImPhOK4vmIh2xMbGg==
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
+  integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
 which-module@^2.0.0:
   version "2.0.0"
