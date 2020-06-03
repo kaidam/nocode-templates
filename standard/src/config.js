@@ -76,7 +76,21 @@ const ONBOARDING_STEPS = {
     smallDescription: [
       'Clicking on the "Add Widgets" button means you can add things like images and videos to your page.',
     ],
-    
+  }),
+  highlightAddSectionContent: () => ({
+    id: 'highlightAddSectionContent',
+    type: 'focus',
+    element: 'addSectionContent',
+    title: 'Create Content',
+    offset: '0, 20',
+    disableClick: true,
+    description: [
+      'You can create new content in any section by clicking the edit button.',
+      'Widgets include things like images and videos that can spruce up your page',
+    ],
+    smallDescription: [
+      'Clicking on the "Add Widgets" button means you can add things like images and videos to your page.',
+    ],
   }),
   publishWebsite: () => ({
     id: 'publishWebsite',

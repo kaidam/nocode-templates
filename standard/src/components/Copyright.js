@@ -15,11 +15,11 @@ const useStyles = makeStyles(theme => {
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
-      marginTop: theme.spacing(2),
+      //marginTop: theme.spacing(2),
     },
     copyrightText: {
-      marginLeft: theme.spacing(2),
-      marginRight: theme.spacing(2),
+      // marginLeft: theme.spacing(2),
+      // marginRight: theme.spacing(2),
       color: theme.palette.primary.contrastText,
     },
     editButton: {

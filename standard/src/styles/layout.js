@@ -30,11 +30,6 @@ const styles = makeStyles(theme => {
       paddingRight: theme.spacing(1),
       height: [`${theme.layout.topbarHeight}px`, '!important'],
     },
-    footerToolbar: {
-      paddingLeft: '8px',
-      paddingRight: '8px',
-      //height: [`${theme.layout.footerHeight}px`, '!important'],
-    },
     appBarTitle: {
       display: 'flex',
       flexDirection: 'row',
@@ -127,14 +122,27 @@ const styles = makeStyles(theme => {
       width: '100%',
       color: theme.palette.common.white,
       minHeight: [`${theme.layout.footerHeight}px`, '!important'],
+      //height: [`${theme.layout.footerHeight}px`, '!important'],
       backgroundColor: theme.palette.primary.main,
+    },
+
+    footerToolbar: {
+      padding: 0,
+      height: '100%',
     },
 
     footerContainer: {
       display: 'flex',
       flexDirection: 'row',
-      alignItems: 'flex-start',
+      alignItems: 'center',
       width: '100%',
+      height: '100%',
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      paddingBottom: theme.spacing(1),
+      // paddingRight: theme.spacing(1),
+      
+      // paddingBottom: theme.spacing(2),
     },
 
     footerCopyright: {
@@ -146,6 +154,7 @@ const styles = makeStyles(theme => {
     },
 
     footerNavBar: {
+      paddingTop: theme.spacing(1),
       flexGrow: 0,
     },
 
