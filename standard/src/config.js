@@ -25,18 +25,22 @@ export const QUICKSTARTS = [{
   id: 'blog',
   title: 'Blog',
   description: 'A blog template where each post is a Google document',
+  image: '/images/onboarding/blog.jpg',
 }, {
   id: 'documentation',
   title: 'Documentation',
   description: 'Documentation website with nested folders of content',
+  image: '/images/onboarding/documentation.jpg',
 }, {
   id: 'portfolio',
   title: 'Portfolio',
   description: 'Perfect for showcasing your product or services',
+  image: '/images/onboarding/portfolio.jpg',
 }, {
   id: 'intranet',
   title: 'Intranet',
   description: 'Publish internal documents to team-members',
+  image: '/images/onboarding/intranet.jpg',
 }]
 
 const ONBOARDING_STEPS = {
@@ -267,7 +271,11 @@ const getInitialResource = (name) => ({
 
 export const getInitialResources = (params = {}) => {
   const quickstart = params.quickstart
-  const settings = getSettings(params)
+  const baseSettings = getSettings(params)
+  const settings = Object.assign({}, baseSettings, {
+    driveMode: params.driveMode,
+    driveExperience: params.driveExperience,
+  })
   const resources = [
     getInitialResource('sidebar'),
     getInitialResource('rightbar'),
