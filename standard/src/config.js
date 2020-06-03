@@ -4,6 +4,7 @@ import contentSelectors from '@nocode-works/template/store/selectors/content'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
 import nocodeSelectors from '@nocode-works/template/store/selectors/nocode'
 import uiActions from '@nocode-works/template/store/modules/ui'
+import routerActions from '@nocode-works/template/store/modules/router'
 import documentUtils from '@nocode-works/template/utils/document'
 
 export const DOCUMENT_SETTINGS_DEFAULT_VALUES = {
@@ -53,7 +54,7 @@ const ONBOARDING_STEPS = {
     offset: '0, 20',
     description: [
       'Each page on a nocode website is a Google Document.',
-      'Click "Edit Document" and the Document will open in Google Drive.',
+      'Click "edit document" and the Document will open in Google Drive.',
       'Enter some content and then come back to this screen.', 
     ],
     smallDescription: [
@@ -70,13 +71,37 @@ const ONBOARDING_STEPS = {
     offset: '0, 20',
     disableClick: true,
     description: [
-      'You can create new content in any section by clicking the plus button.',
+      'Create new content in any section by clicking the plus button.',
       'You can create Folders and Google Documents and any content you create will appear in this section.',
+      'Also, you can add widgets like images or videos that can spruce up your page.',
+    ],
+    smallDescription: [
+      'Create new content in any section by clicking the plus button.',
+      'You can create Folders and Google Documents and any content you create will appear in the section.',
+      'Also, you can add widgets like images or videos that can spruce up your page.',
+    ],
+  }),
+  highlightAddBlogContent: () => ({
+    id: 'highlightAddBlogContent',
+    type: 'focus',
+    element: 'addContent',
+    title: 'Creating Content',
+    offset: '0, 20',
+    disableClick: true,
+    initialise: async (dispatch, getState) => {
+      await dispatch(routerActions.navigateTo('root'))
+      await Promise.delay(300)
+    },
+    description: [
+      'Your blog posts live in a folder on Google drive.',
+      'Click "add content" to create new blog posts.',
+      'Also, you can create new content in any section by clicking the plus button.',
       'You can also add widgets like images or videos that can spruce up your page.',
     ],
     smallDescription: [
-      'You can create new content in any section by clicking the plus button.',
-      'You can create Folders and Google Documents and any content you create will appear in the section.',
+      'Your blog posts live in a folder on Google drive.',
+      'Click "add content" to create new blog posts.',
+      'Also, you can create new content in any section by clicking the plus button.',
       'You can also add widgets like images or videos that can spruce up your page.',
     ],
   }),
@@ -129,6 +154,8 @@ export const ONBOARDING = {
   blog: {
     steps: [
       ONBOARDING_STEPS.highlightEditDocument(),
+      ONBOARDING_STEPS.highlightAddBlogContent(),
+      ONBOARDING_STEPS.editSettings(),
       ONBOARDING_STEPS.publishWebsite(),
     ]
   },
