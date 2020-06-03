@@ -49,7 +49,7 @@ const ONBOARDING_STEPS = {
     id: 'highlightEditDocument',
     type: 'focus',
     element: 'editDocument',
-    title: 'Editing Page Content',
+    title: 'Editing Content',
     offset: '0, 20',
     description: [
       'Each page on a nocode website is a Google Document.',
@@ -62,34 +62,42 @@ const ONBOARDING_STEPS = {
       'Once you have entered some content - you can return to nocode and it will automatically load your new content.', 
     ],
   }),
-  highlightAddWidgets: () => ({
-    id: 'highlightAddWidgets',
+  highlightAddSectionContent: () => ({
+    id: 'highlightAddSectionContent_sidebar',
     type: 'focus',
-    element: 'addWidgets',
-    title: 'Add Widgets',
+    element: 'highlightAddSectionContent_sidebar',
+    title: 'Creating Content',
     offset: '0, 20',
     disableClick: true,
     description: [
-      'You can add widgets to your pages using this button.',
-      'Widgets include things like images and videos that can spruce up your page',
+      'You can create new content in any section by clicking the plus button.',
+      'You can create Folders and Google Documents and any content you create will appear in this section.',
+      'You can also add widgets like images or videos that can spruce up your page.',
     ],
     smallDescription: [
-      'Clicking on the "Add Widgets" button means you can add things like images and videos to your page.',
+      'You can create new content in any section by clicking the plus button.',
+      'You can create Folders and Google Documents and any content you create will appear in the section.',
+      'You can also add widgets like images or videos that can spruce up your page.',
     ],
   }),
-  highlightAddSectionContent: () => ({
-    id: 'highlightAddSectionContent',
+  editSettings: () => ({
+    id: 'editSettings',
     type: 'focus',
-    element: 'addSectionContent',
-    title: 'Create Content',
+    element: 'settingsButton',
+    title: 'Editing Settings',
     offset: '0, 20',
     disableClick: true,
+    initialise: async (dispatch, getState) => {
+      await dispatch(uiActions.setSettingsOpen(true))
+      await Promise.delay(300)
+    },
     description: [
-      'You can create new content in any section by clicking the edit button.',
-      'Widgets include things like images and videos that can spruce up your page',
+      'You can configure many things for your website using the settings button.',
+      'Change the colour, change layout settings and many more settings can configured here.',
     ],
     smallDescription: [
-      'Clicking on the "Add Widgets" button means you can add things like images and videos to your page.',
+      'You can configure many things for your website using the settings button.',
+      'Change the colour, change layout settings and many more settings can configured here.',
     ],
   }),
   publishWebsite: () => ({
@@ -98,12 +106,9 @@ const ONBOARDING_STEPS = {
     element: 'buildButton',
     title: 'Publishing Your Website',
     offset: '0, 20',
-    initialise: async (dispatch, getState) => {
-      await dispatch(uiActions.setSettingsOpen(true))
-      await Promise.delay(500)
-    },
+    disableClick: true,
     cleanup: async (dispatch, getState) => {
-      await Promise.delay(500)
+      await Promise.delay(300)
       await dispatch(uiActions.setSettingsOpen(false))
     },
     description: [
@@ -124,14 +129,14 @@ export const ONBOARDING = {
   blog: {
     steps: [
       ONBOARDING_STEPS.highlightEditDocument(),
-      ONBOARDING_STEPS.highlightAddWidgets(),
-      //ONBOARDING_STEPS.publishWebsite(),
+      ONBOARDING_STEPS.publishWebsite(),
     ]
   },
   default: {
     steps: [
       ONBOARDING_STEPS.highlightEditDocument(),
-      ONBOARDING_STEPS.highlightAddWidgets(),
+      ONBOARDING_STEPS.highlightAddSectionContent(),
+      ONBOARDING_STEPS.editSettings(),
       ONBOARDING_STEPS.publishWebsite(),
     ]
   },
