@@ -176,6 +176,7 @@ const DocumentPage = ({
           className: classes.editorTop,
           addContentFilter,
           widgetTitleAppend: ' Above',
+          quickstart: true,
         }}
       />
       <div className={ classes.cell }>

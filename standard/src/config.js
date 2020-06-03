@@ -1,3 +1,4 @@
+import Promise from 'bluebird'
 import routerSelectors from '@nocode-works/template/store/selectors/router'
 import contentSelectors from '@nocode-works/template/store/selectors/content'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
@@ -44,138 +45,79 @@ export const QUICKSTARTS = [{
 }]
 
 const ONBOARDING_STEPS = {
-  highlightDefaultFolder: () => ({
-    id: 'highlightDefaultFolder',
+  highlightEditDocument: () => ({
+    id: 'highlightEditDocument',
     type: 'focus',
-    element: 'defaultFolder',
-    title: 'Let\'s get started...',
+    element: 'editDocument',
+    title: 'Editing Page Content',
+    offset: '0, 20',
     description: [
-      'We have created a Google drive folder for your blog posts.',
-      'Click "Add Google Document" to add your first post.', 
+      'Each page on a nocode website is a Google Document.',
+      'Click "Edit Document" and the Document will open in Google Drive.',
+      'Enter some content and then come back to this screen.', 
     ],
-    submitTitle: 'Add Google Document',
-  }),
-  waitForFormWindow: () => ({
-    id: 'waitForFormWindow',
-    type: 'wait',
-    noSubmit: true,
-    handler: async (dispatch, getState) => {
-      const formWindow = contentSelectors.formWindow(getState())
-      if(!formWindow) {
-        return {
-          cancel: true
-        }
-      }
-      else if(formWindow.accepted) {
-        return true
-      }
-      else {
-        return false
-      }
-    },
-  }),
-  waitForNewDocumentPage: () => ({
-    id: 'waitForNewDocumentPage',
-    type: 'wait',
-    noSubmit: true,
-    handler: async (dispatch, getState) => {
-      const nodes = nocodeSelectors.nodes(getState())
-      const settings = settingsSelectors.settings(getState())
-      const homepageNode = nodes[settings.homepage]
-      const currentRoute = routerSelectors.route(getState())
-      if(!homepageNode || !homepageNode.children || homepageNode.children.length <= 0) return false
-      const postId = homepageNode.children[0]
-      return currentRoute.item == postId
-    },
-  }),
-  // open the default homepage to edit
-  highlightDefaultBody: ({
-    title = 'Let\'s get started...',
-    description = [
-      'Each page on a nocode website is a Google Document, let\'s add some content to our Homepage.',
-      'Click "Edit Document" and the Document will open, enter some content and then come back to this screen.', 
+    smallDescription: [
+      'Each page on a nocode website is a Google Document.',
+      'Clicking on "Edit Document" will cause the Document to open in Google Drive.',
+      'Once you have entered some content - you can return to nocode and it will automatically load your new content.', 
     ],
-  } = {}) => ({
-    id: 'highlightDefaultBody',
+  }),
+  highlightAddWidgets: () => ({
+    id: 'highlightAddWidgets',
     type: 'focus',
-    element: 'defaultBody',
-    title,
-    description,
-    submitTitle: 'Edit Document',
-  }),
-  // wait for them to have typed some text
-  waitForText: ({
-    title = 'Waiting for homepage content',
-    idSelector = (getState) => {
-      const settings = settingsSelectors.settings(getState())
-      return settings.homepage
-    },
-  } = {}) => ({
-    id: 'waitForText',
-    type: 'wait',
-    element: 'defaultBody',
-    title,
+    element: 'addWidgets',
+    title: 'Add Widgets',
+    offset: '0, 20',
+    disableClick: true,
     description: [
-      'Enter some content into the Google Document that just opened.',
+      'You can add widgets to your pages using this button.',
+      'Widgets include things like images and videos that can spruce up your page',
     ],
-    noSubmit: true,
-    noProgress: true,
-    handler: async (dispatch, getState) => {
-      const id = idSelector(getState)
-      if(!id) return false
-      const externals = nocodeSelectors.externals(getState())
-      const html = externals[`drive:${id}.html`]
-      if(!html) return false
-      return documentUtils.hasContent(html)
-    },
+    smallDescription: [
+      'Clicking on the "Add Widgets" button means you can add things like images and videos to your page.',
+    ],
+    
   }),
   publishWebsite: () => ({
     id: 'publishWebsite',
     type: 'focus',
     element: 'buildButton',
-    title: 'Good Job!',
-    description: [
-      'Now, let\'s publish our website to see what it will look like',
-      'Click the "Build Website" button.'
-    ],
-    submitTitle: 'Build Website',
+    title: 'Publishing Your Website',
+    offset: '0, 20',
     initialise: async (dispatch, getState) => {
       await dispatch(uiActions.setSettingsOpen(true))
+      await Promise.delay(500)
     },
+    cleanup: async (dispatch, getState) => {
+      await Promise.delay(500)
+      await dispatch(uiActions.setSettingsOpen(false))
+    },
+    description: [
+      'So people can see your amazing content, we need to "publish" it.',
+      'This will convert all of your Google documents and combine them into a website.',
+      'It will then give you a URL that you can send to your vistors.',
+      'Click "Build Website" to publish now.'
+    ],
+    smallDescription: [
+      'So people can see your amazing content, we need to "publish" it.',
+      'This will convert all of your Google documents and combine them into a website.',
+      'It will then give you a URL that you can send to your vistors.',
+    ],
   }),
 }
 
 export const ONBOARDING = {
   blog: {
     steps: [
-      ONBOARDING_STEPS.highlightDefaultFolder(),
-      ONBOARDING_STEPS.waitForFormWindow(),
-      ONBOARDING_STEPS.waitForNewDocumentPage(),
-      ONBOARDING_STEPS.highlightDefaultBody({
-        title: 'Good Job!',
-        description: [
-          'Each page on a nocode website is a Google Document, let\'s add some content to your new Blog Post.',
-          'Click "Edit Document" and the Document will open, enter some content and then come back to this screen.', 
-        ],
-      }),
-      ONBOARDING_STEPS.waitForText({
-        title: 'Waiting for blog post content',
-        idSelector: (getState) => {
-          const nodes = nocodeSelectors.nodes(getState())
-          const settings = settingsSelectors.settings(getState())          
-          const homepageNode = nodes[settings.homepage]
-          return homepageNode && homepageNode.children ?
-            homepageNode.children[0] :
-            null
-        },
-      }),
-      ONBOARDING_STEPS.publishWebsite(),
+      ONBOARDING_STEPS.highlightEditDocument(),
+      ONBOARDING_STEPS.highlightAddWidgets(),
+      //ONBOARDING_STEPS.publishWebsite(),
     ]
   },
   default: {
     steps: [
-      ONBOARDING_STEPS.highlightDefaultBody(),
-      ONBOARDING_STEPS.waitForText(),
+      ONBOARDING_STEPS.highlightEditDocument(),
+      ONBOARDING_STEPS.highlightAddWidgets(),
       ONBOARDING_STEPS.publishWebsite(),
     ]
   },
