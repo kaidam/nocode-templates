@@ -16,7 +16,7 @@ const extractImageFromLayout = ({
 }) => {
   if(!layout) return null
   return layout
-    .reduce((all, row) => all.concat(row))
+    .reduce((all, row) => all.concat(row), [])
     .find(item => item.type == 'image')
 }
 
