@@ -128,7 +128,7 @@ const styles = makeStyles(theme => {
 
     footerToolbar: {
       padding: 0,
-      height: '100%',
+      //height: '100%',
     },
 
     footerContainer: {
@@ -136,7 +136,7 @@ const styles = makeStyles(theme => {
       flexDirection: 'row',
       alignItems: 'center',
       width: '100%',
-      height: '100%',
+      //height: '100%',
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
       paddingBottom: theme.spacing(1),
