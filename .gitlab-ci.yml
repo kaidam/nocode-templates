@@ -19,7 +19,4 @@ publish_standard:
   - docker:19.03-dind
   script:
     - docker build -t nocode-template-standard:local standard
-    - docker run --rm \
-        -e NOCODE_API_HOSTNAME \
-        -e ACCESS_TOKEN \
-        nocode-template-standard:local
+    - docker run --rm -e NOCODE_API_HOSTNAME -e ACCESS_TOKEN nocode-template-standard:local
