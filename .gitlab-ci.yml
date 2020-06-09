@@ -1,0 +1,25 @@
+image: binocarlos/cibase:v13
+
+variables:
+  DOCKER_API_VERSION: "1.23"
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: "/certs"
+  NOCODE_API_HOSTNAME: https://app.nocode.works
+
+stages:
+  - publish
+
+publish_standard:
+  stage: publish
+  only:
+    refs:
+      - master
+  services:
+  - docker:19.03-dind
+  script:
+    - docker build -t nocode-template-standard:local standard
+    - docker run --rm \
+        -e NOCODE_API_HOSTNAME \
+        -e ACCESS_TOKEN \
+        nocode-template-standard:local
