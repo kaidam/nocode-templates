@@ -27,7 +27,6 @@ import PageDefault from './pages/Document'
 import utils from './utils'
 import config from './config'
 
-console.log('here template2')
 const {
   DOCUMENT_SETTINGS_DEFAULT_VALUES,
   SECTIONS,
