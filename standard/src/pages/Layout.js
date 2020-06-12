@@ -25,6 +25,7 @@ import Copyright from '../components/Copyright'
 import useStyles from '../styles/layout'
 
 const GlobalSettings = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/system/GlobalSettings'))
+const EditableDocumentToolbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/EditableDocumentToolbar'))
 
 const Layout = ({
   children,
@@ -52,6 +53,7 @@ const Layout = ({
   })
 
   useEffect(() => {
+    if(!contentRef.current) return
     contentRef.current.scrollTop = 0
   }, [route])
 
@@ -128,45 +130,50 @@ const Layout = ({
               </Hidden>
             )
           }
-          <main className={ classes.content } ref={ contentRef }>
-            <div className={ classes.contentChildren }>
-              { children }
-            </div>
-            <Divider />
-            <div className={ classes.footer }>
-              <Toolbar classes={{
-                root: classes.footerToolbar,
-              }}>
-                <div className={ classes.footerContainer }>
-                  <div className={ classes.footerCopyright }>
-                    <Copyright />
+          <div className={ classes.contentContainer }>
+            <Suspense
+              Component={ EditableDocumentToolbar }
+            />
+            <main className={ classes.content } ref={ contentRef }>
+              <div className={ classes.contentChildren }>
+                { children }
+              </div>
+              <Divider />
+              <div className={ classes.footer }>
+                <Toolbar classes={{
+                  root: classes.footerToolbar,
+                }}>
+                  <div className={ classes.footerContainer }>
+                    <div className={ classes.footerCopyright }>
+                      <Copyright />
+                    </div>
+                    <div className={ classes.footerFiller }>
+                      
+                    </div>
+                    <div className={ classes.footerNavBar }>
+                      <Hidden smDown implementation="css">
+                        <NavBar
+                          section="footer"
+                          contrast
+                          vertical
+                          align="right"
+                        />
+                      </Hidden>
+                      <Hidden mdUp implementation="css">
+                        <NavBar
+                          small
+                          section="footer"
+                          contrast
+                          vertical
+                          align="right"
+                        />
+                      </Hidden>
+                    </div>
                   </div>
-                  <div className={ classes.footerFiller }>
-                    
-                  </div>
-                  <div className={ classes.footerNavBar }>
-                    <Hidden smDown implementation="css">
-                      <NavBar
-                        section="footer"
-                        contrast
-                        vertical
-                        align="right"
-                      />
-                    </Hidden>
-                    <Hidden mdUp implementation="css">
-                      <NavBar
-                        small
-                        section="footer"
-                        contrast
-                        vertical
-                        align="right"
-                      />
-                    </Hidden>
-                  </div>
-                </div>
-              </Toolbar>
-            </div>
-          </main>
+                </Toolbar>
+              </div>
+            </main>
+          </div>
           {
             hasRightNavigation && (
               <Hidden smDown implementation="css">
@@ -186,3 +193,19 @@ const Layout = ({
 }
 
 export default Layout
+
+
+/*
+
+  {
+            showUI ? (
+              <Suspense
+                Component={ EditableDocumentToolbar }
+                props={{
+                  children: mainContent,
+                }}
+              />
+            ) : mainContent
+          }
+
+*/

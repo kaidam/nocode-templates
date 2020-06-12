@@ -92,9 +92,15 @@ const styles = makeStyles(theme => {
       flexDirection: 'row',
     },
 
-    content: {
+    contentContainer: {
       flexGrow: 1,
       height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+
+    content: {
+      flexGrow: 1,
       overflowY: 'auto',
       background: 'rgba(0, 0, 0, 0.001)',
     },
