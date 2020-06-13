@@ -261,7 +261,6 @@ export const getInitialResources = (params = {}) => {
   const quickstart = params.quickstart
   const baseSettings = getSettings(params)
   const settings = Object.assign({}, baseSettings, {
-    driveMode: params.driveMode,
     driveExperience: params.driveExperience,
   })
   const resources = [
