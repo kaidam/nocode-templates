@@ -105,6 +105,17 @@ const styles = makeStyles(theme => {
       background: 'rgba(0, 0, 0, 0.001)',
     },
 
+    contentToolbar: {
+      height: '100%',
+      maxWidth: '816px',
+      margin: '0px auto',
+      paddingRight: '108px',
+      paddingLeft: '86px',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+
     contentChildren: {
       maxWidth: '816px',
       margin: '0px auto',

@@ -19,6 +19,8 @@ import NavBar from '@nocode-works/template/components/navbar/Section'
 
 import Suspense from '@nocode-works/template/components/system/Suspense'
 
+import systemUtils from '@nocode-works/template/utils/system'
+
 import Logo from '../components/Logo'
 import Copyright from '../components/Copyright'
 
@@ -57,6 +59,8 @@ const Layout = ({
     contentRef.current.scrollTop = 0
   }, [route])
 
+  const hiddenMode = systemUtils.isNode ? "css" : "js"
+
   return (
     <div className={ classes.root }>
       <AppLayout
@@ -74,7 +78,7 @@ const Layout = ({
           }}>
             {
               hasLeftNavigation && (
-                <Hidden mdUp implementation="css">
+                <Hidden mdUp implementation={ hiddenMode }>
                   <NavDrawer
                     Component={ Tree }
                     section="sidebar"
@@ -85,13 +89,13 @@ const Layout = ({
             <div className={ classes.appBarTitle }>
               <Logo />
             </div>
-            <Hidden smDown implementation="css">
+            <Hidden smDown implementation={ hiddenMode }>
               <NavBar
                 section="topbar"
                 withHome
               />
             </Hidden>
-            <Hidden mdUp implementation="css">
+            <Hidden mdUp implementation={ hiddenMode }>
               <NavBar
                 small
                 section="topbar"
@@ -100,7 +104,7 @@ const Layout = ({
             </Hidden>
             {
               hasRightNavigation && (
-                <Hidden mdUp implementation="css">
+                <Hidden mdUp implementation={ hiddenMode }>
                   <NavDrawer
                     Component={ Tree }
                     section="rightbar"
@@ -121,7 +125,7 @@ const Layout = ({
         <div className={ classes.main }>
           {
             hasLeftNavigation && (
-              <Hidden smDown implementation="css">
+              <Hidden smDown implementation={ hiddenMode }>
                 <div className={ navbarClassname }>
                   <Tree
                     section="sidebar"
@@ -133,6 +137,9 @@ const Layout = ({
           <div className={ classes.contentContainer }>
             <Suspense
               Component={ EditableDocumentToolbar }
+              props={{
+                className: classes.contentToolbar,
+              }}
             />
             <main className={ classes.content } ref={ contentRef }>
               <div className={ classes.contentChildren }>
@@ -151,7 +158,7 @@ const Layout = ({
                       
                     </div>
                     <div className={ classes.footerNavBar }>
-                      <Hidden smDown implementation="css">
+                      <Hidden smDown implementation={ hiddenMode }>
                         <NavBar
                           section="footer"
                           contrast
@@ -159,7 +166,7 @@ const Layout = ({
                           align="right"
                         />
                       </Hidden>
-                      <Hidden mdUp implementation="css">
+                      <Hidden mdUp implementation={ hiddenMode }>
                         <NavBar
                           small
                           section="footer"
@@ -176,7 +183,7 @@ const Layout = ({
           </div>
           {
             hasRightNavigation && (
-              <Hidden smDown implementation="css">
+              <Hidden smDown implementation={ hiddenMode }>
                 <div className={ navbarClassname }>
                   <Tree
                     section="rightbar"

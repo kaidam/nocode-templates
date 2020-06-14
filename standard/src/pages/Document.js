@@ -20,7 +20,6 @@ import BlogFolderLayout from '../components/BlogFolderLayout'
 
 import config from '../config'
 
-const EditableDocument = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/EditableDocument'))
 const DefaultFolder = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/DefaultFolder'))
 const DefaultHome = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/DefaultHome'))
 const EditableLayout = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/layout/EditableLayout'))
@@ -167,18 +166,6 @@ const DocumentPage = ({
           <Layout { ...topLayoutProps } />
         )
       }
-      <Suspense
-        Component={ EditableDocument }
-        props={{
-          node: node,
-          annotation: annotation,
-          layout_id: topLayoutId,
-          className: classes.editorTop,
-          addContentFilter,
-          widgetTitleAppend: ' Above',
-          quickstart: true,
-        }}
-      />
       <div className={ classes.cell }>
         {
           driveUtils.isFolder(node) ? (
@@ -199,17 +186,6 @@ const DocumentPage = ({
         }
         
       </div>
-      <Suspense
-        Component={ EditableDocument }
-        props={{
-          node: node,
-          annotation: annotation,
-          layout_id: bottomLayoutId,
-          className: classes.editorBottom,
-          addContentFilter,
-          widgetTitleAppend: ' Below',
-        }}
-      />
       {
         showUI ? (
           <Suspense
