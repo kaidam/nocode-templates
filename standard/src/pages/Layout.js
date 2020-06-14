@@ -26,6 +26,10 @@ import Copyright from '../components/Copyright'
 
 import useStyles from '../styles/layout'
 
+import {
+  DOCUMENT,
+} from '../config'
+
 const GlobalSettings = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/system/GlobalSettings'))
 const EditableDocumentToolbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/EditableDocumentToolbar'))
 
@@ -139,6 +143,7 @@ const Layout = ({
               Component={ EditableDocumentToolbar }
               props={{
                 className: classes.contentToolbar,
+                defaultLayoutId: DOCUMENT.topLayoutId,
               }}
             />
             <main className={ classes.content } ref={ contentRef }>
