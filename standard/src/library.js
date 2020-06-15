@@ -396,7 +396,7 @@ library.settings = {
   }, DOCUMENT_SETTINGS_DEFAULT_VALUES),
   tabs: [{
     id: 'main',
-    title: 'Website',
+    title: 'General',
     schema: [{
       id: 'company_name',
       title: 'Company / Project name',
