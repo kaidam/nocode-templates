@@ -171,8 +171,16 @@ export const ONBOARDING = {
 
 export const DOCUMENT = {
   topLayoutId: 'topLayout',
-  bottomLayoutId: 'bottomLayout'
+  bottomLayoutId: 'bottomLayout',
 }
+
+export const DOCUMENT_LAYOUTS = [{
+  id: DOCUMENT.topLayoutId,
+  title: 'Top',
+},{
+  id: DOCUMENT.bottomLayoutId,
+  title: 'Bottom',
+}]
 
 const getSettings = (params = {}) => {
   if(params.quickstart == 'blog') {

@@ -116,6 +116,14 @@ const styles = makeStyles(theme => {
       alignItems: 'center',
     },
 
+    smallContentToolbar: {
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingLeft: theme.spacing(2),
+    },
+
     contentChildren: {
       maxWidth: '816px',
       margin: '0px auto',

@@ -27,7 +27,7 @@ import Copyright from '../components/Copyright'
 import useStyles from '../styles/layout'
 
 import {
-  DOCUMENT,
+  DOCUMENT_LAYOUTS,
 } from '../config'
 
 const GlobalSettings = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/system/GlobalSettings'))
@@ -139,13 +139,25 @@ const Layout = ({
             )
           }
           <div className={ classes.contentContainer }>
-            <Suspense
-              Component={ EditableDocumentToolbar }
-              props={{
-                className: classes.contentToolbar,
-                defaultLayoutId: DOCUMENT.topLayoutId,
-              }}
-            />
+            <Hidden smDown implementation={ hiddenMode }>
+              <Suspense
+                Component={ EditableDocumentToolbar }
+                props={{
+                  className: classes.contentToolbar,
+                  layouts: DOCUMENT_LAYOUTS,
+                }}
+              />
+            </Hidden>
+            <Hidden mdUp implementation={ hiddenMode }>
+              <Suspense
+                Component={ EditableDocumentToolbar }
+                props={{
+                  className: classes.smallContentToolbar,
+                  small: true,
+                  layouts: DOCUMENT_LAYOUTS,
+                }}
+              />
+            </Hidden>
             <main className={ classes.content } ref={ contentRef }>
               <div className={ classes.contentChildren }>
                 { children }
