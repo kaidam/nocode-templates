@@ -505,6 +505,10 @@ library.initialise = (params = {}) => async (dispatch, getState) => {
       message: 'Setting up your website for the first time...',
     }))
 
+    dispatch(systemActions.updateUserMeta({
+      driveExperience: quickstartParams.driveExperience,
+    }))
+
     const resourceDescriptors = getInitialResources(quickstartParams)
 
     const {
