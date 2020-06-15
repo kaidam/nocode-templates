@@ -22,7 +22,7 @@ import config from '../config'
 
 const DefaultFolder = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/DefaultFolder'))
 const DefaultHome = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/DefaultHome'))
-const EditableLayout = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/layout/EditableLayout'))
+const DraggableLayout = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/layout/DraggableLayout'))
 
 const {
   topLayoutId,
@@ -159,7 +159,7 @@ const DocumentPage = ({
       {
         showUI ? (
           <Suspense
-            Component={ EditableLayout }
+            Component={ DraggableLayout }
             props={ topLayoutProps }
           />
         ) : (
@@ -189,7 +189,7 @@ const DocumentPage = ({
       {
         showUI ? (
           <Suspense
-            Component={ EditableLayout }
+            Component={ DraggableLayout }
             props={ bottomLayoutProps }
           />
         ) : (
