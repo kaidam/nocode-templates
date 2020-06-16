@@ -9,6 +9,10 @@ const useStyles = makeStyles(theme => {
       alignItems: 'center',
       justifyContent: 'center',
       margin: theme.spacing(1),
+      padding: theme.spacing(2),
+      backgroundColor: '#fafafa',
+      border: '1px solid #999',
+      borderRadius: '10px',
     },
     logoImage: {
       width: '50px',
