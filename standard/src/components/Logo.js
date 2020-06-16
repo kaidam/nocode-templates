@@ -47,33 +47,27 @@ const Logo = ({
   const settings = useSelector(settingsSelectors.settings)
   const showUI = useSelector(systemSelectors.showUI)
 
-  const {
-    company_name,
+  let {
     logo,
-    logo_mode,
+    logo_text,
   } = settings
 
-  let title = company_name
-
-  if(!title && !logo && showUI) title = 'Logo Title'
-
-  const showText = !logo_mode || logo_mode == 'both' || logo_mode == 'text'
-  const showImage = !logo_mode || logo_mode == 'both' || logo_mode == 'image'
+  if(!logo_text && !logo && showUI) logo_text = 'Your Logo'
 
   const content = (
     <div className={ classes.container }>
       {
-        showImage && logo && logo.url && (
+        logo && logo.url && (
           <img className={ classes.logoImage } src={ logo.url } />
         )
       }
       {
-        showText && title && (
+        logo_text && (
           <Typography
             variant="h5"
             className={ classes.logoText }
           >
-            { title }
+            { logo_text }
           </Typography>
         )
       }

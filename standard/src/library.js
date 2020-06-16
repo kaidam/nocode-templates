@@ -157,16 +157,6 @@ const injectDocumentSettings = (form, extra = {}) => {
         useDefaults: 'inherit',
       }),
     },
-    handlers: {
-      // isVisible: ({
-      //   name,
-      //   values,
-      // }) => {
-      //   if(values.id) return true
-      //   if(name == 'annotation.folderLayoutTemplate') return true
-      //   return name.indexOf('annotation.') == 0 ? false : true
-      // },
-    },
     processInitialValues: (values, context) => {
       let annotation = values.annotation || {}
       const settings = context && context.settings ? context.settings : {}
@@ -247,38 +237,21 @@ library.forms = Object.assign({}, defaultForms, {
   'drive.document': injectDocumentSettings(defaultForms['drive.document']),
   logo: {
     initialValues: {
-      logo_mode: 'both',
       logo: null,
-      company_name: '',
+      logo_text: '',
     },
     schema: [
       {
-        id: 'logo_mode',
-        title: 'Show',
-        component: 'radio',
-        row: true,
-        options: [{
-          value: 'both',
-          title: 'Text & Image',
-        }, {
-          value: 'text',
-          title: 'Just Text',
-        }, {
-          value: 'image',
-          title: 'Just Image',
-        }],
-        helperText: 'Choose whether to include your company name in the logo',
-      },
-      {
-        id: 'company_name',
-        title: 'Company / Project name',
-        helperText: 'The name of your company or project',
-      }, {
         id: 'logo',
         title: 'Logo',
         helperText: 'Upload an image for your logo',
         component: 'image',
         providers: ['local', 'google'],
+      },
+      {
+        id: 'logo_text',
+        title: 'Logo Text',
+        helperText: 'Text that will appear next to your logos',
       }
     ],
   },
