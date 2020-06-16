@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => {
       margin: theme.spacing(1),
       padding: theme.spacing(2),
       backgroundColor: '#fafafa',
-      border: '1px solid #999',
+      border: '1px dashed #ccc',
       borderRadius: '10px',
     },
     logoImage: {
