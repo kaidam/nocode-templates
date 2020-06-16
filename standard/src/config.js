@@ -234,6 +234,7 @@ const getSettings = (params = {}) => {
       folderPages: true,
       leftNavigation: false,
       rightNavigation: false,
+      footer: true,
       breadcrumbs: true,
       documentTitle: true,
       documentInfo: true,
@@ -247,6 +248,7 @@ const getSettings = (params = {}) => {
       folderPages: true,
       leftNavigation: true,
       rightNavigation: false,
+      footer: true,
       breadcrumbs: true,
       documentTitle: true,
       documentInfo: true,
@@ -260,6 +262,7 @@ const getSettings = (params = {}) => {
       folderPages: true,
       leftNavigation: true,
       rightNavigation: false,
+      footer: true,
       breadcrumbs: true,
       documentTitle: true,
       documentInfo: true,
@@ -273,6 +276,7 @@ const getSettings = (params = {}) => {
       folderPages: false,
       leftNavigation: true,
       rightNavigation: true,
+      footer: true,
       breadcrumbs: false,
       documentTitle: true,
       documentInfo: false,
@@ -286,6 +290,7 @@ const getSettings = (params = {}) => {
       folderPages: true,
       leftNavigation: true,
       rightNavigation: false,
+      footer: true,
       breadcrumbs: false,
       documentTitle: true,
       documentInfo: false,
@@ -315,7 +320,13 @@ export const getInitialResources = (params = {}) => {
   const resources = [
     getInitialResource('sidebar'),
     getInitialResource('rightbar'),
-    getInitialResource('footer'),
+    Object.assign({}, getInitialResource('footer'), {
+      children: [{
+        name: 'Privacy Policy',
+        type: 'document',
+        wordDocument: 'privacypolicy.docx',
+      }]
+    }),
     Object.assign({}, getInitialResource('topbar'), {
       annotation: {
         sorting: {
