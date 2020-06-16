@@ -8,11 +8,12 @@ import systemSelectors from '@nocode-works/template/store/selectors/system'
 import driveUtils from '@nocode-works/template/utils/drive'
 
 export const DOCUMENT_SETTINGS_DEFAULT_VALUES = {
-  breadcrumbs: 'yes',
-  documentTitle: 'yes',
-  documentInfo: 'yes',
-  backNextButtons: 'yes',
-  imageDropshadow: 'no',
+  breadcrumbs: true,
+  documentTitle: true,
+  documentInfo: true,
+  backNextButtons: true,
+  imageDropshadow: false,
+  autoLineHeight: true,
 }
 
 export const SECTIONS = [

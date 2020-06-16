@@ -74,7 +74,7 @@ const DocumentPage = ({
     const retValues = Object.assign({}, values)
     // we don't have documentInfo for folder pages
     if(driveUtils.isFolder(node)) {
-      retValues.documentInfo = 'no'
+      retValues.documentInfo = false
     }
     return retValues
   }, [
@@ -85,7 +85,7 @@ const DocumentPage = ({
   ])
 
   const classes = useStyles({
-    withDropshadow: activeWidgets.imageDropshadow == 'yes'
+    withDropshadow: activeWidgets.imageDropshadow
   })
 
   const topLayoutProps = {
@@ -111,7 +111,7 @@ const DocumentPage = ({
 
   const isWidgetActive = (name) => {
     if(isHomepage) return false
-    return activeWidgets[name] == 'yes'
+    return activeWidgets[name]
   }
   
   if(!node) return null

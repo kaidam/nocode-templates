@@ -43,9 +43,9 @@ const Layout = ({
   const settings = useSelector(settingsSelectors.settings)
   const route = useSelector(routerSelectors.route)
   
-  const navigationSettings = settings.navigation || {}
-  let hasLeftNavigation = navigationSettings.left === true
-  let hasRightNavigation = navigationSettings.right === true
+  const hasLeftNavigation = settings.leftNavigation
+  const hasRightNavigation = settings.rightNavigation
+  const hasFooter = settings.footer
 
   const classes = useStyles({
     showUI,
@@ -162,40 +162,46 @@ const Layout = ({
               <div className={ classes.contentChildren }>
                 { children }
               </div>
-              <Divider />
-              <div className={ classes.footer }>
-                <Toolbar classes={{
-                  root: classes.footerToolbar,
-                }}>
-                  <div className={ classes.footerContainer }>
-                    <div className={ classes.footerCopyright }>
-                      <Copyright />
+              {
+                hasFooter && (
+                  <>
+                    <Divider />
+                    <div className={ classes.footer }>
+                      <Toolbar classes={{
+                        root: classes.footerToolbar,
+                      }}>
+                        <div className={ classes.footerContainer }>
+                          <div className={ classes.footerCopyright }>
+                            <Copyright />
+                          </div>
+                          <div className={ classes.footerFiller }>
+                            
+                          </div>
+                          <div className={ classes.footerNavBar }>
+                            <Hidden smDown implementation={ hiddenMode }>
+                              <NavBar
+                                section="footer"
+                                contrast
+                                vertical
+                                align="right"
+                              />
+                            </Hidden>
+                            <Hidden mdUp implementation={ hiddenMode }>
+                              <NavBar
+                                small
+                                section="footer"
+                                contrast
+                                vertical
+                                align="right"
+                              />
+                            </Hidden>
+                          </div>
+                        </div>
+                      </Toolbar>
                     </div>
-                    <div className={ classes.footerFiller }>
-                      
-                    </div>
-                    <div className={ classes.footerNavBar }>
-                      <Hidden smDown implementation={ hiddenMode }>
-                        <NavBar
-                          section="footer"
-                          contrast
-                          vertical
-                          align="right"
-                        />
-                      </Hidden>
-                      <Hidden mdUp implementation={ hiddenMode }>
-                        <NavBar
-                          small
-                          section="footer"
-                          contrast
-                          vertical
-                          align="right"
-                        />
-                      </Hidden>
-                    </div>
-                  </div>
-                </Toolbar>
-              </div>
+                  </>
+                )
+              }
             </main>
           </div>
           {

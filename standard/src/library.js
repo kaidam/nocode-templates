@@ -126,20 +126,6 @@ const injectDocumentSettings = (form, extra = {}) => {
       extra.schema :
       []
   )
-    .concat([{
-      id: 'annotation.useDefaults',
-      title: 'Use Website Settings',
-      helperText: 'Inherit the following values from the website settings',
-      component: 'radio',
-      row: true,
-      options: [{
-        title: 'Inherit',
-        value: 'inherit',
-      }, {
-        title: 'Override',
-        value: 'override',
-      }]
-    }])
     .concat(getDocumentSettingsSchema(`annotation.`))
 
   // a hack to prevent hot reloading from keep adding to the list
@@ -161,49 +147,52 @@ const injectDocumentSettings = (form, extra = {}) => {
       }) => {
         if(values.id) return true
         if(name == 'annotation.folderLayoutTemplate') return true
-        if(name == 'name') return true
-        return false
-      },
-      isDisabled: ({
-        name,
-        values,
-      }) => {
-        if(name == 'annotation.useDefaults') return false
-        if(name == 'annotation.folderLayoutTemplate') return false
-        if(name == 'name') return false
-        const useDefaults = values.annotation.useDefaults
-        return useDefaults == 'inherit'
-      },
-      getValue: ({
-        name,
-        values,
-        value,
-        context,
-      }) => {
-        if(name == 'annotation.useDefaults') return value
-        if(name == 'annotation.folderLayoutTemplate') return value
-        if(name == 'name') return value
-        const useDefaults = values.annotation.useDefaults
-        if(useDefaults == 'inherit') {
-          const key = name.split('.')[1]
-          return context.settings[key]
-        } else {
-          return value
-        }
+        return name.indexOf('annotation.') == 0 ? false : true
       },
     },
-    processFormValues: (values, context) => {
-      const {
-        useDefaults,
-      } = values.annotation
-      let returnValues = values
-      if(useDefaults == 'inherit') {
-        const newAnnotation = Object.assign({}, values.annotation)
-        Object.keys(DOCUMENT_SETTINGS_DEFAULT_VALUES).forEach(field => delete(newAnnotation[field]))
-        returnValues = Object.assign({}, values, {
-          annotation: newAnnotation,
+    processInitialValues: (values, context) => {
+      let annotation = values.annotation || {}
+      const settings = context && context.settings ? context.settings : {}
+      if(!annotation.useDefaults || annotation.useDefaults == 'inherit') {
+        annotation = Object.assign({}, annotation)
+        Object.keys(DOCUMENT_SETTINGS_DEFAULT_VALUES).forEach(field => {
+          annotation[field] = typeof(settings[field]) == 'boolean' ?
+            settings[field] :
+            DOCUMENT_SETTINGS_DEFAULT_VALUES[field]
         })
+        const merged = Object.assign({}, values, {annotation})
+        return merged
       }
+      return values
+    },
+    processFormValues: (values, context) => {
+
+      const compareValues = Object.keys(DOCUMENT_SETTINGS_DEFAULT_VALUES).reduce((all, field) => {
+        const formValue = values.annotation[field]
+        const contextValue = context[field]
+        return {
+          form: all.form.concat([`${field}=${formValue?'y':'n'}`]),
+          context: all.context.concat([`${field}=${contextValue?'y':'n'}`]),
+        }
+      }, {
+        form: [],
+        context: [],
+      })
+      const newAnnotation = Object.assign({}, values.annotation)
+      if(compareValues.form.join(',') == compareValues.context.join(',')) {
+        Object.keys(DOCUMENT_SETTINGS_DEFAULT_VALUES).forEach(field => {
+          delete(newAnnotation[field])
+        })
+        newAnnotation.useDefaults = 'inherit'
+      }
+      else {
+        newAnnotation.useDefaults = 'override'
+      }
+
+      const returnValues = Object.assign({}, values, {
+        annotation: newAnnotation,
+      })
+      
       return processFormValues ?
         processFormValues(returnValues) :
         returnValues
