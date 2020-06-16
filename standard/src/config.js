@@ -230,72 +230,67 @@ export const DOCUMENT_LAYOUTS = [{
 const getSettings = (params = {}) => {
   if(params.quickstart == 'blog') {
     return {
-      folderPages: 'yes',
-      navigation: {
-        left: false,
-        right: false
-      },
-      breadcrumbs: 'yes',
-      documentTitle: 'yes',
-      documentInfo: 'yes',
-      backNextButtons: 'yes',
-      imageDropshadow: 'yes',
+      folderPages: true,
+      leftNavigation: false,
+      rightNavigation: false,
+      breadcrumbs: true,
+      documentTitle: true,
+      documentInfo: true,
+      backNextButtons: true,
+      imageDropshadow: true,
+      autoLineHeight: true,
     }
   }
   else if(params.quickstart == 'documentation') {
     return {
-      folderPages: 'yes',
-      navigation: {
-        left: true,
-        right: false
-      },
-      breadcrumbs: 'yes',
-      documentTitle: 'yes',
-      documentInfo: 'yes',
-      backNextButtons: 'yes',
-      imageDropshadow: 'yes',
+      folderPages: true,
+      leftNavigation: true,
+      rightNavigation: false,
+      breadcrumbs: true,
+      documentTitle: true,
+      documentInfo: true,
+      backNextButtons: true,
+      imageDropshadow: true,
+      autoLineHeight: true,
     }
   }
   else if(params.quickstart == 'intranet') {
     return {
-      folderPages: 'yes',
-      navigation: {
-        left: true,
-        right: false
-      },
-      breadcrumbs: 'yes',
-      documentTitle: 'yes',
-      documentInfo: 'yes',
-      backNextButtons: 'yes',
-      imageDropshadow: 'yes',
+      folderPages: true,
+      leftNavigation: true,
+      rightNavigation: false,
+      breadcrumbs: true,
+      documentTitle: true,
+      documentInfo: true,
+      backNextButtons: true,
+      imageDropshadow: true,
+      autoLineHeight: true,
     }
   }
   else if(params.quickstart == 'portfolio') {
     return {
-      folderPages: 'no',
-      navigation: {
-        left: true,
-        right: true
-      },
-      breadcrumbs: 'no',
-      documentTitle: 'yes',
-      documentInfo: 'no',
-      backNextButtons: 'no',
-      imageDropshadow: 'no',
+      folderPages: false,
+      leftNavigation: true,
+      rightNavigation: true,
+      breadcrumbs: false,
+      documentTitle: true,
+      documentInfo: false,
+      backNextButtons: false,
+      imageDropshadow: false,
+      autoLineHeight: true,
     }
   }
   else {
     return {
-      folderPages: 'yes',
-      navigation: {
-        left: true,
-        right: false
-      },
-      breadcrumbs: 'no',
-      documentTitle: 'yes',
-      documentInfo: 'no',
-      backNextButtons: 'no',
-      imageDropshadow: 'no',
+      folderPages: true,
+      leftNavigation: true,
+      rightNavigation: false,
+      breadcrumbs: false,
+      documentTitle: true,
+      documentInfo: false,
+      backNextButtons: false,
+      imageDropshadow: false,
+      autoLineHeight: true,
     }
   }
 }

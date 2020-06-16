@@ -42,73 +42,45 @@ const getDocumentSettingsSchema = (prefix = '') => {
         id: prefix + 'breadcrumbs',
         title: 'Breadcrumbs',
         helperText: 'Include links to parent folders above the document',
-        component: 'radio',
-        row: true,
-        options: [{
-          title: 'Enable',
-          value: 'yes',
-        },{
-          title: 'Disable',
-          value: 'no',
-        }]
+        component: 'checkbox',
+        showTitle: false,
       },
       {
         id: prefix + 'backNextButtons',
         title: 'Back / Next Buttons',
         helperText: 'Include back & next buttons to the previous and next pages',
-        component: 'radio',
-        row: true,
-        options: [{
-          title: 'Enable',
-          value: 'yes',
-        },{
-          title: 'Disable',
-          value: 'no',
-        }]
+        component: 'checkbox',
+        showTitle: false,
       },
     ],[
       {
         id: prefix + 'documentTitle',
         title: 'Document Title',
         helperText: 'Include the name of the Google document as the page title',
-        component: 'radio',
-        row: true,
-        options: [{
-          title: 'Enable',
-          value: 'yes',
-        },{
-          title: 'Disable',
-          value: 'no',
-        }]
+        component: 'checkbox',
+        showTitle: false,
       },
       {
         id: prefix + 'documentInfo',
         title: 'Document Info',
-        helperText: 'Include the author and date of when the document was created',
-        component: 'radio',
-        row: true,
-        options: [{
-          title: 'Enable',
-          value: 'yes',
-        },{
-          title: 'Disable',
-          value: 'no',
-        }]
+        helperText: 'Include the author and date of the document',
+        component: 'checkbox',
+        showTitle: false,
       },
     ],[
       {
         id: prefix + 'imageDropshadow',
-        title: 'Image Drop Shadow & Border',
+        title: 'Image Drop Shadow',
         helperText: 'Apply a drop shadow and border to any images in a google document',
-        component: 'radio',
-        row: true,
-        options: [{
-          title: 'Enable',
-          value: 'yes',
-        },{
-          title: 'Disable',
-          value: 'no',
-        }]
+        component: 'checkbox',
+        showTitle: false,
+      },
+      {
+        id: prefix + 'autoLineHeight',
+        title: 'Auto Line Height',
+        helperText: 'Auto adjust the line height of text for readability',
+        component: 'checkbox',
+        showTitle: false,
       },
     ]
   ]
@@ -170,7 +142,11 @@ const injectDocumentSettings = (form, extra = {}) => {
     }])
     .concat(getDocumentSettingsSchema(`annotation.`))
 
-  form.tabs[0].schema = form.tabs[0].schema.concat(injectSchema)
+  // a hack to prevent hot reloading from keep adding to the list
+  if(!form._originalSchema) {
+    form._originalSchema = form.tabs[0].schema
+  }
+  form.tabs[0].schema = form._originalSchema.concat(injectSchema)
 
   return Object.assign({}, form, {
     initialValues: {
@@ -240,6 +216,7 @@ const injectDocumentSettings = (form, extra = {}) => {
     
   }) 
 }
+
 
 library.forms = Object.assign({}, defaultForms, {
   'drive.folder': injectDocumentSettings(defaultForms['drive.folder'], {
@@ -398,6 +375,11 @@ library.settings = {
     id: 'main',
     title: 'General',
     schema: [{
+      id: 'color',
+      title: 'Color',
+      helperText: 'Choose your color',
+      component: 'color',
+    },{
       id: 'company_name',
       title: 'Company / Project name',
       helperText: 'Enter the name of your company or project',
@@ -416,63 +398,53 @@ library.settings = {
     }]
   }, {
     id: 'layout',
-    title: 'Layout',
+    title: 'Features',
     schema: [
-      {
-        id: 'color',
-        title: 'Color',
-        helperText: 'Choose your color',
-        component: 'color',
-      },
+      'Navigation',
       [
         {
-          id: 'topbarHeight',
-          title: 'Top Bar Height',
-          helperText: 'The pixel height of the top bar',
-          inputProps: {
-            type: 'number',
-          },
-        },
-        {
           id: 'sidebarWidth',
-          title: 'Side Bar Width',
+          title: 'Width',
           helperText: 'The pixel width of the side bars',
           inputProps: {
             type: 'number',
           },
         },
+        {
+          id: 'topbarHeight',
+          title: 'Height',
+          helperText: 'The pixel height of the top bar',
+          inputProps: {
+            type: 'number',
+          },
+        },
       ],
-  
-      {
-        id: 'navigation',
-        title: 'Navigation Bars',
-        helperText: 'Choose which navigation bars are active',
-        component: 'multipleCheckbox',
-        row: true,
-        options: [{
-          title: 'Left Hand Navigation',
-          value: 'left',
-        },{
-          title: 'Right Hand Navigation',
-          value: 'right',
-        }]
-      },
-
-      {
+      [{
+        id: 'leftNavigation',
+        title: 'Left Navigation',
+        helperText: 'Show a navigation bar on the left hand side.',
+        component: 'checkbox',
+        showTitle: false,
+      },{
+        id: 'rightNavigation',
+        title: 'Right Navigation',
+        helperText: 'Show a navigation bar on the right hand side.',
+        component: 'checkbox',
+        showTitle: false,
+      }],[{
+        id: 'footer',
+        title: 'Footer',
+        helperText: 'Show a footer at the bottom of the website.',
+        component: 'checkbox',
+        showTitle: false,
+      },{
         id: 'folderPages',
         title: 'Folder Pages',
         helperText: 'Render a page for folders with links to their contents',
-        component: 'radio',
-        row: true,
-        options: [{
-          title: 'Enable',
-          value: 'yes',
-        },{
-          title: 'Disable',
-          value: 'no',
-        }]
-      },
-
+        component: 'checkbox',
+        showTitle: false,
+      }],
+      'Page Components',
     ].concat(getDocumentSettingsSchema())
   }],
 }
