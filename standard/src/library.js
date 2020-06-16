@@ -21,6 +21,7 @@ import SnippetWidget from '@nocode-works/template/widgets/snippet'
 
 import defaultForms from '@nocode-works/template/forms'
 
+import ParrotLoading from './components/ParrotLoading'
 import LayoutDefault from './pages/Layout'
 import PageDefault from './pages/Document'
 
@@ -108,6 +109,8 @@ library.widgets = [
   SnippetWidget(),
 ]
 
+library.components.loading = ParrotLoading
+
 library.templates = {
   layouts: {
     default: LayoutDefault,
@@ -128,27 +131,41 @@ const injectDocumentSettings = (form, extra = {}) => {
   )
     .concat(getDocumentSettingsSchema(`annotation.`))
 
-  // a hack to prevent hot reloading from keep adding to the list
-  if(!form._originalSchema) {
-    form._originalSchema = form.tabs[0].schema
-  }
-  form.tabs[0].schema = form._originalSchema.concat(injectSchema)
+  // // a hack to prevent hot reloading from keep adding to the list
+  // if(!form._originalSchema) {
+  //   form._originalSchema = form.tabs[0].schema
+  // }
+  // form.tabs[0].schema = form._originalSchema.concat(injectSchema)
+
+  const useTabs = form.tabs.reduce((all, tab) => {
+    if(tab.id=='settings') {
+      return all.concat([tab, {
+        id: 'features',
+        title: 'Features',
+        schema: injectSchema,
+      }])
+    }
+    else {
+      return all.concat([tab])
+    }
+  }, [])
 
   return Object.assign({}, form, {
+    tabs: useTabs,
     initialValues: {
       annotation: Object.assign({}, DOCUMENT_SETTINGS_DEFAULT_VALUES, initialValues.annotation, extra.initialValues, {
         useDefaults: 'inherit',
       }),
     },
     handlers: {
-      isVisible: ({
-        name,
-        values,
-      }) => {
-        if(values.id) return true
-        if(name == 'annotation.folderLayoutTemplate') return true
-        return name.indexOf('annotation.') == 0 ? false : true
-      },
+      // isVisible: ({
+      //   name,
+      //   values,
+      // }) => {
+      //   if(values.id) return true
+      //   if(name == 'annotation.folderLayoutTemplate') return true
+      //   return name.indexOf('annotation.') == 0 ? false : true
+      // },
     },
     processInitialValues: (values, context) => {
       let annotation = values.annotation || {}
