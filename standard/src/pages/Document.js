@@ -131,6 +131,7 @@ const DocumentPage = ({
           <div className={ classes.cell }>
             <BreadCrumbs
               node={ node }
+              activeWidgets={ activeWidgets }
             />
           </div>
           
@@ -141,6 +142,7 @@ const DocumentPage = ({
           <div className={ classes.cell }>
             <Title
               node={ node }
+              activeWidgets={ activeWidgets }
             />
           </div>
           
@@ -151,6 +153,7 @@ const DocumentPage = ({
           <div className={ classes.cell }>
             <Info
               node={ node }
+              activeWidgets={ activeWidgets }
             />
           </div>
           
@@ -201,6 +204,7 @@ const DocumentPage = ({
           <div className={ classes.cell }>
             <BackNextButtons
               node={ node }
+              activeWidgets={ activeWidgets }
             />
           </div>
           
