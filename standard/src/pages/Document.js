@@ -45,10 +45,9 @@ const useStyles = makeStyles(theme => ({
     if(!withDropshadow) return {}
     return {
       '& .nocode-document-image-container': {
-        boxShadow: '0px 5px 12px 0px rgba(0,0,0,0.2)',
+        boxShadow: '5px 5px 5px 0px rgba(0,0,0,0.4)',
       },
       '& .nocode-document-image': {
-        border: '1px solid #dcdcdc',
         display: 'block',
       },
     }
