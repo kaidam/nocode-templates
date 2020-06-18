@@ -41,16 +41,29 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
-  bodyContainer: ({withDropshadow}) => {
-    if(!withDropshadow) return {}
-    return {
-      '& .nocode-document-image-container': {
+  bodyContainer: ({
+    imageDropshadow,
+    autoLineHeight,
+  }) => {
+
+    const ret = {}
+
+    if(imageDropshadow) {
+      ret['& .nocode-document-image-container'] = {
         boxShadow: '5px 5px 5px 0px rgba(0,0,0,0.4)',
-      },
-      '& .nocode-document-image': {
+      }
+      ret['& .nocode-document-image'] = {
         display: 'block',
-      },
+      }
     }
+
+    if(autoLineHeight) {
+      ret['& #nocode-document-html p'] = {
+        lineHeight: [1.5, '!important'],
+      }
+    }
+
+    return ret
   }
 }))
 
@@ -84,7 +97,8 @@ const DocumentPage = ({
   ])
 
   const classes = useStyles({
-    withDropshadow: activeWidgets.imageDropshadow
+    imageDropshadow: activeWidgets.imageDropshadow,
+    autoLineHeight: activeWidgets.autoLineHeight
   })
 
   const topLayoutProps = {
