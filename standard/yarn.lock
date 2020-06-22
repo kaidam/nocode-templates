@@ -1158,9 +1158,9 @@
     router5 "^8.0.0"
 
 "@nocode-works/template@^1.0.4":
-  version "1.0.38"
-  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.38.tgz#ff57c64195c6a2e7a98d1abb23188a9319a295ba"
-  integrity sha512-HX6MppgRvh0B5I3Ng2ugVvaCupRrgObEUDOUiwGBYWZHX1ppL1dOI1w8M0lECWAjOvX7WfCUPI/mtTXmNoxDvg==
+  version "1.0.39"
+  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.39.tgz#412facc86b00fb9801617a8588ffbc74d1823cc4"
+  integrity sha512-KX6JAvyEma9jcdvjOjmt2bFUmxQv/vI3Ut051NwtN1Bai6qwAFlL8IGPvI+Tb+gQ9rr/da1FU4Acag0yq/WPzg==
   dependencies:
     "@hot-loader/react-dom" "^16.12.0"
     "@material-ui/core" "^4.9.9"
