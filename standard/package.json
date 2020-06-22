@@ -8,11 +8,13 @@
     "@nocode-works/plugin-contactform": "^1.0.2",
     "@nocode-works/plugin-stripe": "^1.0.4",
     "@nocode-works/template": "^1.0.4",
+    "@types/react": "^16.0.0",
     "classnames": "^2.2.6",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-hot-loader": "^4.12.19",
-    "react-redux": "^7.2.0"
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
   },
   "scripts": {
     "template:build": "nocode-template build",
