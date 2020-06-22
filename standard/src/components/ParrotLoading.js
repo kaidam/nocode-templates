@@ -32,13 +32,13 @@ const ParrotLoading = ({
   return (
     <div className={ classes.root }>
       <div className={ classes.parrot }>
-        <img className={ classes.parrotImage } src="/images/loading/portal-parrot-in.gif" />
+        <img className={ classes.parrotImage } src="./images/loading/portal-parrot-in.gif" />
       </div>
       <div className={ classes.nocode }>
-      <img className={ classes.logoImage } src="/images/favicon.png" />
+      <img className={ classes.logoImage } src="./images/favicon.png" />
       </div>
       <div className={ classes.parrot }>
-      <img className={ classes.parrotImage } src="/images/loading/portal-parrot-out.gif" />
+      <img className={ classes.parrotImage } src="./images/loading/portal-parrot-out.gif" />
       </div>
     </div>
   )
