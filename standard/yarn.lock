@@ -1070,10 +1070,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.0"
 
-"@nocode-works/builder@^1.0.12":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@nocode-works/builder/-/builder-1.0.12.tgz#d22616fc3d988838abd86d327fac1620a2c00db1"
-  integrity sha512-REKnZmM2wQzxWPkoJMHfao8vm5P2bPXine5dBMRr+f8QJDhW2onDpBVoO+jJK90aCXTjIQHDA8CeOjGdsEpGeg==
+"@nocode-works/builder@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@nocode-works/builder/-/builder-1.0.13.tgz#6edd4134465be378dfddf87750fe8dfbc0f00ef9"
+  integrity sha512-4oOQ6tYjalOdoBwWpwMQf9diBhUcO8aHIoiRgqA0pgS3QoKNLXV1c5OtCi5svN2AvaWovIp490ZsCrft0Qq2/Q==
   dependencies:
     "@babel/cli" "^7.2.3"
     "@babel/core" "^7.3.4"
@@ -1109,11 +1109,11 @@
     yargs "^15.0.1"
 
 "@nocode-works/plugin-contactform@^1.0.2":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@nocode-works/plugin-contactform/-/plugin-contactform-1.0.9.tgz#81e1977ab04b88c2f414e17a5e03d7c981d70762"
-  integrity sha512-7rYgQluL6X7F+ZwfIluasmf80VaobCV8WIysc9PHEhVEemXI1/Y5gtrsCWVo4dVxw3p7MoZTaQERgh3UWkDR0g==
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@nocode-works/plugin-contactform/-/plugin-contactform-1.0.10.tgz#48e412b55765230caee4c7f9cad2626a7fc94879"
+  integrity sha512-/Cw/GO94O7l7r2PYPK5NTYk8lmZONU+E4LB8dcKhqh0lALyB9+/m8AIt77zckWhfnBtKTylUqPDhlyUsK073dg==
   dependencies:
-    "@nocode-works/store" "^1.0.8"
+    "@nocode-works/store" "^1.0.9"
     axios "0.19.0"
     body-parser "^1.19.0"
     express "^4.17.1"
@@ -1126,12 +1126,12 @@
     redux "^4.0.4"
 
 "@nocode-works/plugin-stripe@^1.0.4":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@nocode-works/plugin-stripe/-/plugin-stripe-1.0.11.tgz#315de7a234b1f0f058f5d8a1bc06ed1560ad8196"
-  integrity sha512-6aO4SUpqHN/xNub0FuTjTSq9pV4Q2E60BOOF4b9jiPIzhMpBMF09HBGzohE/P/dkYObSS372cAs+o3bR7ItUJQ==
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@nocode-works/plugin-stripe/-/plugin-stripe-1.0.12.tgz#8aa14eaf6add2a825d32b581439d40685debaa73"
+  integrity sha512-AQfCPViaDF6ir448gqXOQcvzXzTlydfFo8cHOVCHfkuBZBl1thsX7OfwHkdyKfKFHmCO/T9/tI0psbLN0S+VZA==
   dependencies:
     "@material-ui/core" "^4.9.9"
-    "@nocode-works/store" "^1.0.8"
+    "@nocode-works/store" "^1.0.9"
     axios "0.19.0"
     body-parser "^1.19.0"
     express "^4.17.1"
@@ -1145,10 +1145,10 @@
     redux "^4.0.4"
     stripe "^7.14.0"
 
-"@nocode-works/store@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@nocode-works/store/-/store-1.0.8.tgz#dabee3c3f7ef2745231139cff3088d161c9ce271"
-  integrity sha512-+ik7/CZ6vCI3A5HWk7aTuFc7q47sYlSqymiZ00RYgsiZfw2nhqbzamBmr8C/8tQ58ij1IQ1KxDvLs2SPFP9Ddg==
+"@nocode-works/store@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@nocode-works/store/-/store-1.0.9.tgz#e45be338165177691c7ab2fea56da7ed926f243f"
+  integrity sha512-Hp7WGhZq5NFi6gFa+UdVzRvk096skbJvhKHl6+zC1LaEMZuo8UWFAhXxsE0xgRN2R2WKp9EmNEKC3Ouk7mNXnQ==
   dependencies:
     axios "^0.19.2"
     immer "^6.0.2"
@@ -1158,15 +1158,15 @@
     router5 "^8.0.0"
 
 "@nocode-works/template@^1.0.4":
-  version "1.0.41"
-  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.41.tgz#9eba290ad02463a344c21f16d64e552a02938ac3"
-  integrity sha512-+38NcIjE4AbhCpdQHFsn4yAKfLJhlnWTgAMHpHsPMR0GE+i5ycR06UnZ2rLjSnn/xAkPHXdjMxqmY/XJK6BgSw==
+  version "1.0.42"
+  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.42.tgz#c9f917ed9ded9ce92d0e8295d3323418b929a7f0"
+  integrity sha512-XiP7jI2qX6GKi2g/zyjWDFgSfSor2waWvA+BHJQAyjUhMG2Amyb0UAIeaw++bwjAyK5IZKGIc9FOHYWnLR9jbw==
   dependencies:
     "@hot-loader/react-dom" "^16.12.0"
     "@material-ui/core" "^4.9.9"
     "@material-ui/icons" "^4.9.1"
-    "@nocode-works/builder" "^1.0.12"
-    "@nocode-works/store" "^1.0.8"
+    "@nocode-works/builder" "^1.0.13"
+    "@nocode-works/store" "^1.0.9"
     "@types/react" "^16.9.23"
     archiver "^3.1.1"
     async "^3.1.0"
@@ -2059,9 +2059,9 @@ camelcase@^5.0.0:
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
 caniuse-lite@^1.0.30001043:
-  version "1.0.30001085"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001085.tgz#bed28bd51ff7425d33ee23e730c7f3b703711db6"
-  integrity sha512-x0YRFRE0pmOD90z+9Xk7jwO58p4feVNXP+U8kWV+Uo/HADyrgESlepzIkUqPgaXkpyceZU6siM1gsK7sHgplqA==
+  version "1.0.30001087"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001087.tgz#4a0bdc5998a114fcf8b7954e7ba6c2c29831c54a"
+  integrity sha512-KAQRGtt+eGCQBSp2iZTQibdCf9oe6cNTi5lmpsW38NnxP4WMYzfU6HCRmh4kJyh6LrTM9/uyElK4xcO93kafpg==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -2744,9 +2744,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.413:
-  version "1.3.480"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.480.tgz#190ae45074578349a4c4f336fba29e76b20e9ef5"
-  integrity sha512-wnuUfQCBMAdzu5Xe+F4FjaRK+6ToG6WvwG72s8k/3E6b+hoGVYGiQE7JD1NhiCMcqF3+wV+c2vAnaLGRSSWVqA==
+  version "1.3.481"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.481.tgz#0d59e72a0aaeb876b43fb1d6e84bf0dfc99617e8"
+  integrity sha512-q2PeCP2PQXSYadDo9uNY+uHXjdB9PcsUpCVoGlY8TZOPHGlXdevlqW9PkKeqCxn2QBkGB8b6AcMO++gh8X82bA==
 
 elliptic@^6.0.0, elliptic@^6.5.2:
   version "6.5.3"
