@@ -20,11 +20,7 @@ function softlink_module() {
     exit 1
   fi
 
-  cp -r "$package_target_dir/node_modules" "/tmp/nocode-temp-node-modules"
-  rm -rf $package_target_dir
-  cp -r $package_source_dir $package_target_dir
-  mv "/tmp/nocode-temp-node-modules" "$package_target_dir/node_modules"
-
+  rsync -av $package_source_dir/* $package_target_dir --exclude=node_modules
   echo "Code updated for: $module"
 }
 
