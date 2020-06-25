@@ -90,7 +90,7 @@ const Layout = ({
                 </Hidden>
               )
             }
-            <div className={ classes.appBarTitle } style={{border:'1px solid #ff0000'}}>
+            <div className={ classes.appBarTitle }>
               <Logo />
             </div>
             <Hidden smDown implementation={ hiddenMode }>
