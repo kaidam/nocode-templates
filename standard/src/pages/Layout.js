@@ -63,7 +63,7 @@ const Layout = ({
     contentRef.current.scrollTop = 0
   }, [route])
 
-  const hiddenMode = systemUtils.isNode ? "css" : "js"
+  const hiddenMode = "css"
 
   return (
     <div className={ classes.root }>
@@ -90,7 +90,7 @@ const Layout = ({
                 </Hidden>
               )
             }
-            <div className={ classes.appBarTitle }>
+            <div className={ classes.appBarTitle } style={{border:'1px solid #ff0000'}}>
               <Logo />
             </div>
             <Hidden smDown implementation={ hiddenMode }>
@@ -223,19 +223,3 @@ const Layout = ({
 }
 
 export default Layout
-
-
-/*
-
-  {
-            showUI ? (
-              <Suspense
-                Component={ EditableDocumentToolbar }
-                props={{
-                  children: mainContent,
-                }}
-              />
-            ) : mainContent
-          }
-
-*/
