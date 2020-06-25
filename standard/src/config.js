@@ -113,7 +113,7 @@ const ONBOARDING_STEPS = {
     ],
   }),
   addSectionContent: () => ({
-    id: 'sectionSettings_sidebar',
+    id: 'sectionSettings_sidebar_full',
     type: 'focus',
     title: 'Creating Content',
     offset: '0, 20',

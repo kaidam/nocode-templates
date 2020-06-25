@@ -19,8 +19,6 @@ import NavBar from '@nocode-works/template/components/navbar/Section'
 
 import Suspense from '@nocode-works/template/components/system/Suspense'
 
-import systemUtils from '@nocode-works/template/utils/system'
-
 import Logo from '../components/Logo'
 import Copyright from '../components/Copyright'
 
@@ -86,6 +84,7 @@ const Layout = ({
                   <NavDrawer
                     Component={ Tree }
                     section="sidebar"
+                    type="drawer"
                   />
                 </Hidden>
               )
@@ -113,6 +112,7 @@ const Layout = ({
                     Component={ Tree }
                     section="rightbar"
                     anchor="right"
+                    type="drawer"
                   />
                 </Hidden>
               )
@@ -133,6 +133,7 @@ const Layout = ({
                 <div className={ navbarClassname }>
                   <Tree
                     section="sidebar"
+                    type="full"
                   />
                 </div>
               </Hidden>
@@ -210,6 +211,7 @@ const Layout = ({
                 <div className={ navbarClassname }>
                   <Tree
                     section="rightbar"
+                    type="full"
                   />
                 </div>
               </Hidden>
