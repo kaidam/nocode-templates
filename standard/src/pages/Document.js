@@ -1,6 +1,6 @@
-import React, { lazy, useMemo } from 'react'
+import React, { lazy, useMemo, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import contentSelectors from '@nocode-works/template/store/selectors/content'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
@@ -15,10 +15,13 @@ import Body from '@nocode-works/template/components/document/Body'
 import Folder from '@nocode-works/template/components/document/Folder'
 import Layout from '@nocode-works/template/components/layout/Layout'
 import driveUtils from '@nocode-works/template/utils/drive'
+import documentActions from '@nocode-works/template/store/modules/document'
 
 import BlogFolderLayout from '../components/BlogFolderLayout'
 
 import config from '../config'
+
+
 
 const DefaultFolder = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/DefaultFolder'))
 const DefaultHome = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/DefaultHome'))
@@ -70,6 +73,8 @@ const useStyles = makeStyles(theme => ({
 const DocumentPage = ({
 
 } = {}) => {
+  
+  const dispatch = useDispatch()
   const showUI = useSelector(systemSelectors.showUI)
   const settings = useSelector(settingsSelectors.settings)
   const {
@@ -77,7 +82,14 @@ const DocumentPage = ({
     route,
     annotation,
     html,
+    cssImports,
   } = useSelector(contentSelectors.document)
+
+  useEffect(() => {
+    dispatch(documentActions.addCssImports(cssImports))
+  }, [
+    cssImports,
+  ])
 
   const activeWidgets = useMemo(() => {
     const values =  !annotation || !annotation.useDefaults || annotation.useDefaults == 'inherit' ?
