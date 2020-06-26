@@ -37,7 +37,7 @@ const Layout = ({
   const showUI = useSelector(systemSelectors.showUI)
   
   const contentRef = useRef(null)
-
+  
   const settings = useSelector(settingsSelectors.settings)
   const route = useSelector(routerSelectors.route)
   
@@ -63,10 +63,25 @@ const Layout = ({
 
   const hiddenMode = "css"
 
+  let {
+    logo,
+    favicon,
+  } = settings
+
+  let useFavicon = ''
+
+  if(favicon && favicon.url) {
+    useFavicon = favicon.url
+  }
+  else if(logo && logo.url) {
+    useFavicon = logo.url
+  }
+
   return (
     <div className={ classes.root }>
       <AppLayout
         material
+        favicon={ useFavicon }
         head={(
           <link rel="stylesheet" href="./css/index.css" />
         )}

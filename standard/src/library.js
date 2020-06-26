@@ -238,6 +238,7 @@ library.forms = Object.assign({}, defaultForms, {
   logo: {
     initialValues: {
       logo: null,
+      favicon: null,
       logo_text: '',
     },
     schema: [
@@ -252,7 +253,14 @@ library.forms = Object.assign({}, defaultForms, {
         id: 'logo_text',
         title: 'Logo Text',
         helperText: 'Text that will appear next to your logos',
-      }
+      },
+      {
+        id: 'favicon',
+        title: 'Favicon',
+        helperText: 'Upload an image for your favicon',
+        component: 'image',
+        providers: ['local', 'google'],
+      },
     ],
   },
   copyright: {
