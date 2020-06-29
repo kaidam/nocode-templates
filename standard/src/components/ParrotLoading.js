@@ -10,8 +10,8 @@ const useStyles = makeStyles(theme => {
       justifyContent: 'center',
       margin: theme.spacing(1),
       padding: theme.spacing(2),
-      backgroundColor: '#f5f5f5',
       borderRadius: '10px',
+      border: `1px dotted #e5e5e5`,
       width: '200px',
     },
     logoImage: {
