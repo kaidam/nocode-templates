@@ -353,6 +353,12 @@ library.settings = {
     topbarHeight: 80,
     sidebarWidth: 280,
     folderPages: 'yes',
+    facebookUrl: '',
+    twitterUrl: '',
+    linkedinUrl: '',
+    youtubeUrl: '',
+    instagramUrl: '',
+    pinterestUrl: '',
     navigation: {
       left: true,
       right: false,
@@ -433,6 +439,34 @@ library.settings = {
       }],
       'Page Components',
     ].concat(getDocumentSettingsSchema())
+  }, {
+    id: 'social',
+    title: 'Social Links',
+    schema: [{
+      id: 'facebookUrl',
+      title: 'Facebook URL',
+      helperText: 'The url of your Facebook profile',
+    },{
+      id: 'twitterUrl',
+      title: 'Twitter URL',
+      helperText: 'The url of your Twitter profile',
+    },{
+      id: 'linkedinUrl',
+      title: 'LinkedIn URL',
+      helperText: 'The url of your LinkedIn profile',
+    },{
+      id: 'youtubeUrl',
+      title: 'Youtube URL',
+      helperText: 'The url of your Youtube profile',
+    },{
+      id: 'pinterestUrl',
+      title: 'Pinterest URL',
+      helperText: 'The url of your Pinterest profile',
+    },{
+      id: 'instagramUrl',
+      title: 'Instagram URL',
+      helperText: 'The url of your Instagram profile',
+    }],
   }],
 }
 
