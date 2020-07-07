@@ -36,57 +36,6 @@ const {
   getInitialResources,
 } = config
 
-const getDocumentSettingsSchema = (prefix = '') => {
-  return [
-    [
-      {
-        id: prefix + 'breadcrumbs',
-        title: 'Breadcrumbs',
-        helperText: 'Include links to parent folders above the document',
-        component: 'checkbox',
-        showTitle: false,
-      },
-      {
-        id: prefix + 'backNextButtons',
-        title: 'Back / Next Buttons',
-        helperText: 'Include back & next buttons to the previous and next pages',
-        component: 'checkbox',
-        showTitle: false,
-      },
-    ],[
-      {
-        id: prefix + 'documentTitle',
-        title: 'Document Title',
-        helperText: 'Include the name of the Google document as the page title',
-        component: 'checkbox',
-        showTitle: false,
-      },
-      {
-        id: prefix + 'documentInfo',
-        title: 'Document Info',
-        helperText: 'Include the author and date of the document',
-        component: 'checkbox',
-        showTitle: false,
-      },
-    ],[
-      {
-        id: prefix + 'imageDropshadow',
-        title: 'Image Drop Shadow',
-        helperText: 'Apply a drop shadow and border to any images in a google document',
-        component: 'checkbox',
-        showTitle: false,
-      },
-      {
-        id: prefix + 'autoLineHeight',
-        title: 'Auto Line Height',
-        helperText: 'Auto adjust the line height of text for readability',
-        component: 'checkbox',
-        showTitle: false,
-      },
-    ]
-  ]
-}
-
 library.topbarHeight = 80
 library.autoSnackbar = false
 library.sections = SECTIONS.map(section => section.id)
@@ -120,121 +69,7 @@ library.templates = {
   },
 }
 
-const injectDocumentSettings = (form, extra = {}) => {
-  const initialValues = form.initialValues || {}
-  const processFormValues = form.processFormValues
-
-  let injectSchema = (
-    extra.schema ?
-      extra.schema :
-      []
-  )
-    .concat(getDocumentSettingsSchema(`annotation.`))
-
-  // // a hack to prevent hot reloading from keep adding to the list
-  // if(!form._originalSchema) {
-  //   form._originalSchema = form.tabs[0].schema
-  // }
-  // form.tabs[0].schema = form._originalSchema.concat(injectSchema)
-
-  const useTabs = form.tabs.reduce((all, tab) => {
-    if(tab.id=='settings') {
-      return all.concat([tab, {
-        id: 'features',
-        title: 'Features',
-        schema: injectSchema,
-      }])
-    }
-    else {
-      return all.concat([tab])
-    }
-  }, [])
-
-  return Object.assign({}, form, {
-    tabs: useTabs,
-    initialValues: {
-      annotation: Object.assign({}, DOCUMENT_SETTINGS_DEFAULT_VALUES, initialValues.annotation, extra.initialValues, {
-        useDefaults: 'inherit',
-      }),
-    },
-    processInitialValues: (values, context) => {
-      let annotation = values.annotation || {}
-      const settings = context && context.settings ? context.settings : {}
-      if(!annotation.useDefaults || annotation.useDefaults == 'inherit') {
-        annotation = Object.assign({}, annotation)
-        Object.keys(DOCUMENT_SETTINGS_DEFAULT_VALUES).forEach(field => {
-          annotation[field] = typeof(settings[field]) == 'boolean' ?
-            settings[field] :
-            DOCUMENT_SETTINGS_DEFAULT_VALUES[field]
-        })
-        const merged = Object.assign({}, values, {annotation})
-        return merged
-      }
-      return values
-    },
-    processFormValues: (values, context) => {
-
-      const compareValues = Object.keys(DOCUMENT_SETTINGS_DEFAULT_VALUES).reduce((all, field) => {
-        const formValue = values.annotation[field]
-        const contextValue = context[field]
-        return {
-          form: all.form.concat([`${field}=${formValue?'y':'n'}`]),
-          context: all.context.concat([`${field}=${contextValue?'y':'n'}`]),
-        }
-      }, {
-        form: [],
-        context: [],
-      })
-      const newAnnotation = Object.assign({}, values.annotation)
-      if(compareValues.form.join(',') == compareValues.context.join(',')) {
-        Object.keys(DOCUMENT_SETTINGS_DEFAULT_VALUES).forEach(field => {
-          delete(newAnnotation[field])
-        })
-        newAnnotation.useDefaults = 'inherit'
-      }
-      else {
-        newAnnotation.useDefaults = 'override'
-      }
-
-      const returnValues = Object.assign({}, values, {
-        annotation: newAnnotation,
-      })
-      
-      return processFormValues ?
-        processFormValues(returnValues) :
-        returnValues
-    },
-    contextSelector: (state) => {
-      return {
-        settings: settingsSelectors.settings(state),
-      }
-    },
-    
-  }) 
-}
-
-
 library.forms = Object.assign({}, defaultForms, {
-  'drive.folder': injectDocumentSettings(defaultForms['drive.folder'], {
-    initialValues: {
-      folderLayoutTemplate: 'default',
-    },
-    schema: [{
-      id: 'annotation.folderLayoutTemplate',
-      title: 'Layout Template',
-      component: 'radio',
-      row: true,
-      options: [{
-        value: 'default',
-        title: 'Default',
-      }, {
-        value: 'blog',
-        title: 'Blog',
-      }],
-      helperText: 'Choose how the content in this folder will display',
-    }]
-  }),
-  'drive.document': injectDocumentSettings(defaultForms['drive.document']),
   logo: {
     initialValues: {
       logo: null,
@@ -306,7 +141,7 @@ library.forms = Object.assign({}, defaultForms, {
       }
     },
     handlers: {
-      filter: ({
+      filter: `({
         name,
         values,
       }) => {
@@ -314,19 +149,19 @@ library.forms = Object.assign({}, defaultForms, {
           return values.copyright_mode == 'auto'
         }
         return true
-      },
-      isDisabled: ({
+      }`,
+      isDisabled: `({
         name,
         values,
       }) => {
         if(name == 'copyright_message') return values.copyright_mode != 'manual'
         return false
-      },
-      getValue: ({
+      }`,
+      getValue: `({
         name,
         values,
         value,
-        context,
+        settings,
       }) => {
         if(name == 'copyright_message') {
           if(values.copyright_mode == 'auto') {
@@ -338,7 +173,7 @@ library.forms = Object.assign({}, defaultForms, {
           else return value
         }
         return value
-      },
+      }`,
     },
   }
 })
@@ -437,8 +272,7 @@ library.settings = {
         component: 'checkbox',
         showTitle: false,
       }],
-      'Page Components',
-    ].concat(getDocumentSettingsSchema())
+    ]
   }, {
     id: 'social',
     title: 'Social Links',
