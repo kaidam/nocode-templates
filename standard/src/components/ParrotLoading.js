@@ -12,8 +12,8 @@ const useStyles = makeStyles(theme => {
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2),
       borderRadius: '10px',
-      border: `0.5px solid #999`,
-      boxShadow: '2px 2px 2px 0px rgba(0,0,0,0.2)',
+      border: `0.5px solid #e5e5e5`,
+      boxShadow: '2px 2px 10px 0px rgba(0,0,0,0.2)',
     },
     logoImage: {
       width: '50px',
