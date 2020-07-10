@@ -21,8 +21,6 @@ import BlogFolderLayout from '../components/BlogFolderLayout'
 
 import config from '../config'
 
-
-
 const DefaultFolder = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/DefaultFolder'))
 const DefaultHome = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/DefaultHome'))
 const DraggableLayout = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/layout/DraggableLayout'))
@@ -84,6 +82,9 @@ const DocumentPage = ({
     html,
     cssImports,
   } = useSelector(contentSelectors.document)
+
+  console.log('--------------------------------------------')
+  console.log(JSON.stringify(annotation, null, 4))
 
   useEffect(() => {
     dispatch(documentActions.addCssImports(cssImports))
