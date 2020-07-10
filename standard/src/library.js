@@ -40,6 +40,8 @@ library.sections = SECTIONS.map(section => section.id)
 library.quickstarts = QUICKSTARTS
 library.onboarding = ONBOARDING
 
+library.forms = defaultForms
+
 library.widgets = [
   ImageWidget(),
   SocialLinksWidget(),

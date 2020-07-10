@@ -83,9 +83,6 @@ const DocumentPage = ({
     cssImports,
   } = useSelector(contentSelectors.document)
 
-  console.log('--------------------------------------------')
-  console.log(JSON.stringify(annotation, null, 4))
-
   useEffect(() => {
     dispatch(documentActions.addCssImports(cssImports))
   }, [
