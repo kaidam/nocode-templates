@@ -148,4 +148,63 @@ export default {
       default: '',
     }],
   }],
+  layout: {
+    plain: {
+      title: 'Basic',
+      description: 'Just the document content',
+      layout: [
+        [{
+          type: 'documentContent',
+        }]
+      ]
+    },
+    title: {
+      title: 'Title',
+      description: 'Show the document title above the content',
+      layout: [
+        [{
+          type: 'documentTitle',
+        }],
+        [{
+          type: 'documentContent',
+        }]
+      ]
+    },
+    image: {
+      title: 'Image',
+      description: 'Show an image above the document content',
+      layout: [
+        [{
+          type: 'documentTitle',
+        }],
+        [{
+          type: 'image',
+        }],
+        [{
+          type: 'documentContent',
+        }],
+      ]
+    },
+    documentation: {
+      title: 'Documentation',
+      description: 'Show navigation widgets around the document content',
+      layout: [
+        [{
+          type: 'breadcrumbs',
+        }],
+        [{
+          type: 'documentTitle',
+        }],
+        [{
+          type: 'documentInfo',
+        }],
+        [{
+          type: 'documentContent',
+        }],
+        [{
+          type: 'backNextButtons',
+        }]
+      ]
+    },
+  }
 }

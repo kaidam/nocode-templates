@@ -6,17 +6,6 @@ import jobActions from '@nocode-works/template/store/modules/job'
 import systemSelectors from '@nocode-works/template/store/selectors/system'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
 
-import EcommerceWidget from '@nocode-works/template/widgets/ecommerce'
-import ContactFormWidget from '@nocode-works/template/widgets/contactform'
-import ImageWidget from '@nocode-works/template/widgets/image'
-import VideoWidget from '@nocode-works/template/widgets/video'
-import SocialLinksWidget from '@nocode-works/template/widgets/social_links'
-import RichTextWidget from '@nocode-works/template/widgets/richtext'
-import HeadingWidget from '@nocode-works/template/widgets/heading'
-import SearchWidget from '@nocode-works/template/widgets/search'
-import HTMLWidget from '@nocode-works/template/widgets/html'
-import SnippetWidget from '@nocode-works/template/widgets/snippet'
-
 import defaultForms from '@nocode-works/template/forms'
 
 import ParrotLoading from './components/ParrotLoading'
@@ -41,19 +30,6 @@ library.quickstarts = QUICKSTARTS
 library.onboarding = ONBOARDING
 
 library.forms = defaultForms
-
-library.widgets = [
-  ImageWidget(),
-  SocialLinksWidget(),
-  VideoWidget(),
-  RichTextWidget(),
-  HeadingWidget(),
-  SearchWidget(),
-  HTMLWidget(),
-  SnippetWidget(),
-  EcommerceWidget(),
-  ContactFormWidget(),
-]
 
 library.components.loading = ParrotLoading
 
