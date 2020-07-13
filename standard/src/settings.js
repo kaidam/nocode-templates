@@ -116,33 +116,34 @@ export default {
   }, {
     id: 'social',
     title: 'Social Links',
+    group: 'social_links',
     schema: [{
-      id: 'facebookUrl',
+      id: 'social_links.facebook',
       title: 'Facebook URL',
       helperText: 'The url of your Facebook profile',
       default: '',
     },{
-      id: 'twitterUrl',
+      id: 'social_links.twitter',
       title: 'Twitter URL',
       helperText: 'The url of your Twitter profile',
       default: '',
     },{
-      id: 'linkedinUrl',
+      id: 'social_links.linkedin',
       title: 'LinkedIn URL',
       helperText: 'The url of your LinkedIn profile',
       default: '',
     },{
-      id: 'youtubeUrl',
+      id: 'social_links.youtube',
       title: 'Youtube URL',
       helperText: 'The url of your Youtube profile',
       default: '',
     },{
-      id: 'pinterestUrl',
+      id: 'social_links.pinterest',
       title: 'Pinterest URL',
       helperText: 'The url of your Pinterest profile',
       default: '',
     },{
-      id: 'instagramUrl',
+      id: 'social_links.instagram',
       title: 'Instagram URL',
       helperText: 'The url of your Instagram profile',
       default: '',

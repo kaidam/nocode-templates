@@ -6,8 +6,6 @@ import jobActions from '@nocode-works/template/store/modules/job'
 import systemSelectors from '@nocode-works/template/store/selectors/system'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
 
-import defaultForms from '@nocode-works/template/forms'
-
 import ParrotLoading from './components/ParrotLoading'
 import LayoutDefault from './pages/Layout'
 import PageDefault from './pages/Document'
@@ -28,8 +26,6 @@ library.autoSnackbar = false
 library.sections = SECTIONS.map(section => section.id)
 library.quickstarts = QUICKSTARTS
 library.onboarding = ONBOARDING
-
-library.forms = defaultForms
 
 library.components.loading = ParrotLoading
 
