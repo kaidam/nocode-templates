@@ -16,7 +16,10 @@
     "redux": "^4.0.5"
   },
   "nocode": {
-    "settings": "src/settings.js"
+    "name": "Documentation",
+    "description": "Perfect for documentation or intranet websites",
+    "settings": "src/settings.js",
+    "screenshot": "src/screenshot.png"
   },
   "scripts": {
     "template:build": "nocode-template build",
