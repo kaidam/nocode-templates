@@ -1,5 +1,11 @@
 export default {
   websiteNameField: 'company_name',
+  sections: [
+    'topbar',
+    'footer',
+    'sidebar',
+    'rightbar',
+  ],
   initialResources: [{
     type: 'section',
     name: 'topbar',
