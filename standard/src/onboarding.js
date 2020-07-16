@@ -1,7 +1,5 @@
 import Promise from 'bluebird'
 import uiActions from '@nocode-works/template/store/modules/ui'
-import routerActions from '@nocode-works/template/store/modules/router'
-import systemSelectors from '@nocode-works/template/store/selectors/system'
 
 import FolderInfoDescription from '@nocode-works/template/components/onboarding/FolderInfoDescription'
 
@@ -18,17 +16,10 @@ const ONBOARDING_STEPS = {
   }),
   editDocument: () => ({
     id: 'editDocument',
+    element: 'editDocument',
     type: 'focus',
     title: 'Editing Content',
     offset: '0, 20',
-    initialise: async (dispatch, getState) => {
-      const website = systemSelectors.website(getState())
-      if(!website || !website.meta) return
-      if(website.meta.quickstart == 'blog') {
-        await dispatch(routerActions.navigateTo('my-first-blog-post'))
-        await Promise.delay(300)
-      }
-    },
     description: [
       'Each page on a nocode website is a Google Document.',
       'Click "Edit Document" and the Document will open in Google Drive.',
@@ -42,6 +33,7 @@ const ONBOARDING_STEPS = {
   }),
   addSectionContent: () => ({
     id: 'sectionSettings_sidebar_full',
+    element: 'sectionSettings_sidebar_full',
     type: 'focus',
     title: 'Creating Content',
     offset: '0, 20',
@@ -59,6 +51,7 @@ const ONBOARDING_STEPS = {
   }),
   editSettings: () => ({
     id: 'editSettings',
+    element: 'editSettings',
     type: 'focus',
     title: 'Editing Settings',
     offset: '0, 20',
@@ -78,6 +71,7 @@ const ONBOARDING_STEPS = {
   }),
   publishWebsite: () => ({
     id: 'publishWebsite',
+    element: 'publishWebsite',
     type: 'focus',
     title: 'Publishing Your Website',
     offset: '0, 20',
@@ -99,12 +93,14 @@ const ONBOARDING_STEPS = {
   }),
 }
 
-const ONBOARDING = [
-  ONBOARDING_STEPS.sectionFolders(),
-  ONBOARDING_STEPS.editDocument(),
-  ONBOARDING_STEPS.addSectionContent(),
-  ONBOARDING_STEPS.editSettings(),
-  ONBOARDING_STEPS.publishWebsite(),
-]
+const ONBOARDING = {
+  steps: [
+    ONBOARDING_STEPS.sectionFolders(),
+    ONBOARDING_STEPS.editDocument(),
+    ONBOARDING_STEPS.addSectionContent(),
+    ONBOARDING_STEPS.editSettings(),
+    ONBOARDING_STEPS.publishWebsite(),
+  ]
+}
 
 export default ONBOARDING
