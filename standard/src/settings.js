@@ -1,5 +1,37 @@
 export default {
   websiteNameField: 'company_name',
+  initialResources: [{
+    type: 'section',
+    name: 'topbar',
+    annotation: {
+      sorting: {
+        type: 'date',
+        direction: 'asc',
+      }
+    },
+    children: [{
+      name: 'Home',
+      type: 'document',
+      wordDocument: 'homepage.docx',
+      annotation: {
+        initialHomepage: true,
+      }
+    }]
+  }, {
+    type: 'section',
+    name: 'footer',
+    children: [{
+      name: 'Privacy Policy',
+        type: 'document',
+        wordDocument: 'privacypolicy.docx',
+    }]
+  }, {
+    type: 'section',
+    name: 'sidebar',
+  }, {
+    type: 'section',
+    name: 'rightbar',
+  }],
   tabs: [{
     id: 'main',
     title: 'General',
@@ -160,7 +192,7 @@ export default {
       ]
     },
     title: {
-      title: 'Title',
+      title: 'With Title',
       description: 'Show the document title above the content',
       layout: [
         [{
@@ -172,7 +204,7 @@ export default {
       ]
     },
     image: {
-      title: 'Image',
+      title: 'With Image',
       description: 'Show an image above the document content',
       layout: [
         [{
@@ -187,7 +219,7 @@ export default {
       ]
     },
     documentation: {
-      title: 'Documentation',
+      title: 'Full Navigation',
       description: 'Show navigation widgets around the document content',
       layout: [
         [{

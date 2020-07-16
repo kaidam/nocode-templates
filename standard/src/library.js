@@ -3,10 +3,9 @@ import library from '@nocode-works/template/library'
 import systemActions from '@nocode-works/template/store/modules/system'
 import uiActions from '@nocode-works/template/store/modules/ui'
 import jobActions from '@nocode-works/template/store/modules/job'
-import systemSelectors from '@nocode-works/template/store/selectors/system'
+import websiteSelectors from '@nocode-works/template/store/selectors/website'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
 
-import ParrotLoading from './components/ParrotLoading'
 import LayoutDefault from './pages/Layout'
 import PageDefault from './pages/Document'
 
@@ -26,8 +25,6 @@ library.autoSnackbar = false
 library.sections = SECTIONS.map(section => section.id)
 library.quickstarts = QUICKSTARTS
 library.onboarding = ONBOARDING
-
-library.components.loading = ParrotLoading
 
 library.templates = {
   layouts: {
@@ -57,7 +54,11 @@ library.handlers = {
 
 */
 library.initialise = (params = {}) => async (dispatch, getState) => {
-  const website = systemSelectors.website(getState())
+  const website = websiteSelectors.websiteData(getState())
+
+  console.log('--------------------------------------------')
+  console.dir(website)
+  return
 
   const ret = {}
 
