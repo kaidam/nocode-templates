@@ -8,6 +8,8 @@
     "@nocode-works/template": "^1.0.4",
     "@types/react": "^16.0.0",
     "classnames": "^2.2.6",
+    "dot-prop": "^5.2.0",
+    "dset": "^2.0.1",
     "esm": "^3.2.25",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
