@@ -19,8 +19,8 @@ import NavBar from '@nocode-works/template/components/navbar/Section'
 
 import Suspense from '@nocode-works/template/components/system/Suspense'
 
-import Logo from '../components/Logo'
-import Copyright from '../components/Copyright'
+import Logo from '@nocode-works/template/components/editable/Logo'
+import Copyright from '@nocode-works/template/components/editable/Copyright'
 
 import useStyles from '../styles/layout'
 
