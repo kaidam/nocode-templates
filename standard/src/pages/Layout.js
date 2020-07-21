@@ -31,7 +31,7 @@ const Layout = ({
   children,
 }) => {
   const showUI = useSelector(systemSelectors.showUI)
-  
+
   const contentRef = useRef(null)
   
   const settings = useSelector(settingsSelectors.settings)
