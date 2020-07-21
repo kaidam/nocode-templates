@@ -153,6 +153,24 @@ export default {
           default: true,
         }
       ],
+      [
+        {
+          id: 'imageDropshadow',
+          title: 'Image Drop Shadow',
+          helperText: 'Apply a drop shadow and border to any images in a google document',
+          component: 'checkbox',
+          showTitle: false,
+          default: true,
+        },
+        {
+          id: 'autoLineHeight',
+          title: 'Auto Line Height',
+          helperText: 'Auto adjust the line height of text for readability',
+          component: 'checkbox',
+          showTitle: false,
+          default: true,
+        },
+      ]
     ]
   }, {
     id: 'social',
