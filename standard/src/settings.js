@@ -46,6 +46,7 @@ export default {
       title: 'Project name',
       helperText: 'Enter the name of your project',
       default: '',
+      groups: ['copyright'],
     }, {
       id: 'color',
       title: 'Color',
@@ -59,12 +60,14 @@ export default {
       component: 'image',
       providers: ['local', 'google'],
       default: null,
+      groups: ['logo'],
     },
     {
       id: 'logo_text',
       title: 'Logo Text',
       helperText: 'Text that will appear next to your logos',
       default: '',
+      groups: ['logo'],
     },
     {
       id: 'favicon',
@@ -160,31 +163,37 @@ export default {
       title: 'Facebook URL',
       helperText: 'The url of your Facebook profile',
       default: '',
+      groups: ['social_links'],
     },{
       id: 'social_links.twitter',
       title: 'Twitter URL',
       helperText: 'The url of your Twitter profile',
       default: '',
+      groups: ['social_links'],
     },{
       id: 'social_links.linkedin',
       title: 'LinkedIn URL',
       helperText: 'The url of your LinkedIn profile',
       default: '',
+      groups: ['social_links'],
     },{
       id: 'social_links.youtube',
       title: 'Youtube URL',
       helperText: 'The url of your Youtube profile',
       default: '',
+      groups: ['social_links'],
     },{
       id: 'social_links.pinterest',
       title: 'Pinterest URL',
       helperText: 'The url of your Pinterest profile',
       default: '',
+      groups: ['social_links'],
     },{
       id: 'social_links.instagram',
       title: 'Instagram URL',
       helperText: 'The url of your Instagram profile',
       default: '',
+      groups: ['social_links'],
     }],
   }],
   layout: {
