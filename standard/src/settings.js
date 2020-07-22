@@ -21,6 +21,7 @@ export default {
       wordDocument: 'homepage.docx',
       annotation: {
         initialHomepage: true,
+        layout_id: 'plain',
       }
     }]
   }, {
