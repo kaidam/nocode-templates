@@ -186,7 +186,7 @@ const styles = makeStyles(theme => {
     globalSettings: ({
       
     }) => ({
-      marginLeft: theme.spacing(4),
+      marginLeft: theme.spacing(2),
     }),
 
     searchHolder: {

@@ -19,14 +19,10 @@ import NavBar from '@nocode-works/template/components/navbar/Section'
 
 import Suspense from '@nocode-works/template/components/system/Suspense'
 
-import Logo from '../components/Logo'
-import Copyright from '../components/Copyright'
+import Logo from '@nocode-works/template/components/editable/Logo'
+import Copyright from '@nocode-works/template/components/editable/Copyright'
 
 import useStyles from '../styles/layout'
-
-import {
-  DOCUMENT_LAYOUTS,
-} from '../config'
 
 const GlobalSettings = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/system/GlobalSettings'))
 const EditableDocumentToolbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/EditableDocumentToolbar'))
@@ -35,7 +31,7 @@ const Layout = ({
   children,
 }) => {
   const showUI = useSelector(systemSelectors.showUI)
-  
+
   const contentRef = useRef(null)
   
   const settings = useSelector(settingsSelectors.settings)
@@ -160,7 +156,6 @@ const Layout = ({
                 Component={ EditableDocumentToolbar }
                 props={{
                   className: classes.contentToolbar,
-                  layouts: DOCUMENT_LAYOUTS,
                 }}
               />
             </Hidden>
@@ -170,7 +165,6 @@ const Layout = ({
                 props={{
                   className: classes.smallContentToolbar,
                   small: true,
-                  layouts: DOCUMENT_LAYOUTS,
                 }}
               />
             </Hidden>
@@ -233,7 +227,7 @@ const Layout = ({
             )
           }
         </div>
-      <SnackBar />
+        <SnackBar />
       </AppLayout>
     </div>
   )
