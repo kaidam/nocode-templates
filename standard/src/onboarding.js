@@ -23,7 +23,7 @@ const ONBOARDING_STEPS = {
     description: [
       'Each page on a nocode website is a Google Document.',
       'Click "Edit Document" and the Document will open in Google Drive.',
-      'Enter some content, then come back to this screen and the content will automatically reload.', 
+      'Once you have entered some content - you can return to nocode and it will automatically load your new content.', 
     ],
     smallDescription: [
       'Each page on a nocode website is a Google Document.',
@@ -39,14 +39,12 @@ const ONBOARDING_STEPS = {
     offset: '0, 20',
     disableClick: true,
     description: [
-      'Create new content in any section by clicking the "nocode" button.',
-      'You can create Folders and Google Documents and any content you create will appear in this section.',
-      'Also, you can add widgets like images or videos that can spruce up your page.',
+      'Create new content in a section by clicking the add button.',
+      'You can create new Drive Folders or Google Documents or you can import existing content you already have.',
     ],
     smallDescription: [
-      'Create new content in any section by clicking the "nocode" button.',
-      'You can create Folders and Google Documents and any content you create will appear in the section.',
-      'Also, you can add widgets like images or videos that can spruce up your page.',
+      'Create new content in a section by clicking the add button.',
+      'You can create new Drive Folders or Google Documents or you can import existing content you already have.',
     ],
   }),
   editSettings: () => ({
