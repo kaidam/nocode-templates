@@ -1115,9 +1115,9 @@
     yargs "^15.0.1"
 
 "@nocode-works/template@^1.0.4":
-  version "1.0.56"
-  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.56.tgz#b4dd071188a0c44b2e6a7a39b55b6526f070fad7"
-  integrity sha512-b0gX+V1WXy6BiCC/Y4dxzKmK4nKcEThKXSvC9402YJ/We4TES/SYdANZIBG4cP5uTmj7TsHQezvVGcdTEYp67g==
+  version "1.0.57"
+  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.57.tgz#f986a45116b1f9bde49e81f8409daf88916b5afc"
+  integrity sha512-cdS3Jw9wm5ojqbOV1k8Zeg5jcQHFyNEKO75tWwYn+Yr8ir3MFhTUz909qO5gMFtIe9B/llV2qX1E2LGo/qWQVQ==
   dependencies:
     "@hot-loader/react-dom" "^16.12.0"
     "@material-ui/core" "^4.9.9"
