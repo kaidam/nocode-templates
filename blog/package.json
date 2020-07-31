@@ -1,0 +1,37 @@
+{
+  "name": "nocode-template-blog",
+  "version": "0.0.1",
+  "private": true,
+  "description": "",
+  "dependencies": {
+    "@material-ui/core": "^4.9.9",
+    "@nocode-works/template": "^1.0.4",
+    "@types/react": "^16.0.0",
+    "classnames": "^2.2.6",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-hot-loader": "^4.12.19",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
+  },
+  "nocode": {
+    "name": "Blog",
+    "description": "A blog where your posts are google documents",
+    "settings": "src/settings.js",
+    "screenshot": "src/screenshot.png",
+    "exampleUrl": "https://blog.nocode.works/"
+  },
+  "scripts": {
+    "template:build": "nocode-template build",
+    "template:develop": "nocode-template develop",
+    "template:preview": "nocode-template preview",
+    "template:preview:dev": "yarn template:softlink && yarn template:preview --cache-preview-file=/tmp/nocode_preview_dev.json --serve",
+    "template:publish": "nocode-template publish",
+    "template:link": "yarn link @nocode-works/template && yarn link @nocode-works/builder",
+    "template:softlink": "bash ../scripts/softlink.sh template builder",
+    "template:unlink": "yarn unlink @nocode-works/template && yarn unlink @nocode-works/builder && yarn install --force",
+    "template:upgrade": "yarn upgrade @nocode-works/template"
+  },
+  "author": "",
+  "license": "ISC"
+}

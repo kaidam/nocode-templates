@@ -1,0 +1,12 @@
+.cache
+node_modules
+yarn-error.log
+build
+public
+_nocode_media
+lib
+.DS_Store
+dist
+.cache
+env.*
+.env
