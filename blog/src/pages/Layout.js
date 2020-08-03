@@ -1,4 +1,4 @@
-import React, { lazy, useRef, useEffect } from 'react'
+import React, { lazy, useRef, useEffect, useCallback } from 'react'
 import classnames from 'classnames'
 import { useSelector } from 'react-redux'
 
@@ -16,7 +16,7 @@ import NavBar from '@nocode-works/template/components/navbar/Section'
 
 import Suspense from '@nocode-works/template/components/system/Suspense'
 
-import Logo from '@nocode-works/template/components/editable/Logo'
+import selectors from '../selectors'
 
 import useStyles from '../styles/layout'
 
@@ -32,7 +32,19 @@ const Layout = ({
   
   const settings = useSelector(settingsSelectors.settings)
   const route = useSelector(routerSelectors.route)
+
+  const blogbarItems = useSelector(selectors.blogbarLinks)
   
+  const isItemActive = useCallback(({
+    node,
+  }) => {
+    if(route.name == 'root' && node.id == 'root') return true
+    if(route.name == 'tag' && node.route.params && node.route.params.tag == route.params.tag) return true
+    return false
+  }, [
+    route,
+  ])
+
   const classes = useStyles({
     showUI,
   })
@@ -76,33 +88,62 @@ const Layout = ({
         <AppBar 
           position="static" 
           className={ classes.appbar }
+          elevation={ 0 }
         >
           <Toolbar classes={{
             root: classes.headerToolbar,
           }}>
-            <div className={ classes.appBarTitle }>
-              <Logo />
-            </div>
             <Hidden smDown implementation={ hiddenMode }>
-              <NavBar
-                section="topbar"
-                withHome
-              />
+              <div className={ classes.toolbarControls }></div>
             </Hidden>
-            <Hidden mdUp implementation={ hiddenMode }>
-              <NavBar
-                small
-                section="topbar"
-                withHome
+            <div className={ classes.toolbarMenuContainer }>
+              <div className={ classes.toolbarMenu }>
+                <div className={ classes.toolbarMenuLeft }>
+                  <Hidden smDown implementation={ hiddenMode }>
+                    <NavBar
+                      items={ blogbarItems }
+                      align="left"
+                      editable={ false }
+                      isItemActive={ isItemActive }
+                    />
+                  </Hidden>
+                  <Hidden mdUp implementation={ hiddenMode }>
+                    <NavBar
+                      small
+                      items={ blogbarItems }
+                      align="left"
+                      editable={ false }
+                      isItemActive={ isItemActive }
+                    />
+                  </Hidden>
+                </div>
+                <div className={ classes.toolbarMenuFiller }></div>
+                <div className={ classes.toolbarMenuRight }>
+                  <Hidden smDown implementation={ hiddenMode }>
+                    <NavBar
+                      section="topbar"
+                      align="right"
+                    />
+                  </Hidden>
+                  <Hidden mdUp implementation={ hiddenMode }>
+                    <NavBar
+                      small
+                      section="topbar"
+                      align="right"
+                    />
+                  </Hidden>
+                </div>
+              </div>
+            </div>
+            <div className={ classes.toolbarControls }>
+              <Suspense
+                coreEnabled
+                Component={ GlobalSettings }
+                props={{
+                  className: classes.globalSettings,
+                }}
               />
-            </Hidden>
-            <Suspense
-              coreEnabled
-              Component={ GlobalSettings }
-              props={{
-                className: classes.globalSettings,
-              }}
-            />
+            </div>
           </Toolbar>
         </AppBar>
         <div className={ classes.main }>

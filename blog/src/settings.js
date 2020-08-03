@@ -4,6 +4,18 @@ export default {
     'topbar',
     'blogposts',
   ],
+  injectRoutes: {
+    '/': {
+      item: 'home',
+      externals: [],
+      location: 'section:home',
+    },
+    '/tag': {
+      item: 'tag',
+      externals: [],
+      location: 'section:tag',
+    }
+  },
   initialResources: [{
     type: 'section',
     name: 'topbar',
@@ -25,7 +37,7 @@ export default {
     type: 'section',
     name: 'blogposts',
     children: [{
-      name: 'My FIrst Blog Post',
+      name: 'My First Blog Post',
       type: 'document',
       wordDocument: 'homepage.docx',
       annotation: {
@@ -48,13 +60,13 @@ export default {
       component: 'color',
       default: {color: "#3f51b5"},
     },{
-      id: 'topbar_background',
-      title: 'Topbar Background',
-      helperText: 'Upload an image for your topbar',
+      id: 'homepage_image',
+      title: 'Homepage Image',
+      helperText: 'Upload an image for your homepage',
       component: 'image',
       providers: ['local', 'google', 'unsplash'],
       default: null,
-      groups: ['logo'],
+      groups: ['homepage'],
     },{
       id: 'logo',
       title: 'Logo',
@@ -99,6 +111,17 @@ export default {
     id: 'layout',
     title: 'Features',
     schema: [
+      [
+        {
+          id: 'topbarHeight',
+          title: 'Topbar Height',
+          helperText: 'The pixel height of the top bar',
+          inputProps: {
+            type: 'number',
+          },
+          default: 67,
+        },
+      ],
       [
         {
           id: 'imageDropshadow',
@@ -198,12 +221,10 @@ export default {
       ]
     },
     documentation: {
-      title: 'Full Navigation',
+      title: 'With Info',
       description: 'Show navigation widgets around the document content',
       layout: [
-        [{
-          type: 'breadcrumbs',
-        }],
+        
         [{
           type: 'documentTitle',
         }],
@@ -211,11 +232,11 @@ export default {
           type: 'documentInfo',
         }],
         [{
-          type: 'documentContent',
+          type: 'image',
         }],
         [{
-          type: 'backNextButtons',
-        }]
+          type: 'documentContent',
+        }],
       ]
     },
   }

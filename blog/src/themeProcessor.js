@@ -5,10 +5,7 @@ const themeProcessor = ({
 }) => {
   const updates = {
     layout: {
-      topbarHeight: 80,
-      footerHeight: 80,
-      drawerWidthSmall: 280,
-      drawerWidthLarge: 360,
+      topbarHeight: 67,
       smallScreenBreakpoint: 'sm',
       largeScreenBreakpoint: 'md',
     }
@@ -22,10 +19,6 @@ const themeProcessor = ({
   }
   if(settings.topbarHeight) {
     updates.layout.topbarHeight = settings.topbarHeight
-  }
-  if(settings.sidebarWidth) {
-    updates.layout.drawerWidthSmall = settings.sidebarWidth
-    updates.layout.drawerWidthLarge = settings.sidebarWidth + 60
   }
   return updates
 }

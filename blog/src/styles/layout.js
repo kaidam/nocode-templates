@@ -19,24 +19,44 @@ const styles = makeStyles(theme => {
       position: 'relative',
       zIndex: theme.zIndex.drawer + 1,
       height: [`${theme.layout.topbarHeight}px`, '!important'],
-      //backgroundColor: theme.palette.primary.main,
-      backgroundColor: '#ffffff',
-      boxShadow: 'none',
-      borderBottom: 'solid 1px rgba(0, 0, 0, 0.12)',
-      boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
+      backgroundColor: '#F2F2F2',
     },
     headerToolbar: {
       paddingLeft: theme.spacing(1),
       paddingRight: theme.spacing(1),
       height: [`${theme.layout.topbarHeight}px`, '!important'],
     },
-    appBarTitle: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      flexGrow: 1,
-      color: theme.palette.primary.main,
+
+    toolbarControls: {
+      width: '70px',
+      flexGrow: 0,
+      paddingRight: theme.spacing(2),
     },
+
+    toolbarMenuContainer: {
+      flexGrow: 1,
+    },
+
+    toolbarMenu: {
+      maxWidth: '1024px',
+      margin: 'auto',
+      display: 'flex',
+    },
+
+    toolbarMenuLeft: {
+      flexGrow: 0,
+      justifyContent: 'flex-start',
+    },
+
+    toolbarMenuFiller: {
+      flexGrow: 1,
+    },
+
+    toolbarMenuRight: {
+      flexGrow: 0,
+      justifyContent: 'flex-end',
+    },
+
     logoTitle: {
       color: theme.palette.primary.main,
     },
