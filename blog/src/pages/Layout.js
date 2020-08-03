@@ -11,12 +11,10 @@ import AppLayout from '@nocode-works/template/components/system/Layout'
 import systemSelectors from '@nocode-works/template/store/selectors/system'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
 import routerSelectors from '@nocode-works/template/store/selectors/router'
+import contentSelectors from '@nocode-works/template/store/selectors/content'
 
 import NavBar from '@nocode-works/template/components/navbar/Section'
-
 import Suspense from '@nocode-works/template/components/system/Suspense'
-import contentSelectors from '@nocode-works/template/store/selectors/content'
-import selectors from '../selectors'
 
 import useStyles from '../styles/layout'
 
@@ -33,7 +31,9 @@ const Layout = ({
   
   const settings = useSelector(settingsSelectors.settings)
   const route = useSelector(routerSelectors.route)
-
+  const {
+    annotation,
+  } = useSelector(contentSelectors.document)
   const storeTagSelector = useMemo(contentSelectors.mergedAnnotationArray, [])
   const storeTagData = useSelector(state => storeTagSelector(state, 'blogpost_tags'))
 
@@ -68,8 +68,15 @@ const Layout = ({
   }) => {
     if(route.name == 'root' && node.id == 'root') return true
     if(route.name == 'tag' && node.route.params && node.route.params.tag == route.params.tag) return true
+
+    if(annotation && annotation.blogpost_tags && annotation.blogpost_tags.length > 0 && node.route.params) {
+      const pageTag = annotation.blogpost_tags[0]
+      if(pageTag == node.route.params.tag) return true
+    }
+    
     return false
   }, [
+    annotation,
     route,
   ])
 
