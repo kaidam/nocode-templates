@@ -36,6 +36,12 @@ export default {
   },{
     type: 'section',
     name: 'blogposts',
+    annotation: {
+      sorting: {
+        type: 'date',
+        direction: 'desc',
+      }
+    },
     children: [{
       name: 'My First Blog Post',
       type: 'document',

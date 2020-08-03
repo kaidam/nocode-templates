@@ -35,12 +35,15 @@ const styles = makeStyles(theme => {
 
     toolbarMenuContainer: {
       flexGrow: 1,
+      height: '100%',
     },
 
     toolbarMenu: {
       maxWidth: '1024px',
       margin: 'auto',
       display: 'flex',
+      height: '100%',
+      alignItems: 'center',
     },
 
     toolbarMenuLeft: {

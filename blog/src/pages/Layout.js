@@ -20,6 +20,8 @@ import selectors from '../selectors'
 
 import useStyles from '../styles/layout'
 
+import icons from '@nocode-works/template/icons'
+
 const GlobalSettings = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/system/GlobalSettings'))
 const EditableDocumentToolbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/EditableDocumentToolbar'))
 
@@ -44,6 +46,23 @@ const Layout = ({
   }, [
     route,
   ])
+
+  const getTopbarAddItems = useCallback(({
+    onCreateContent,
+    addTargetFolderId,
+  }) => {
+    return [{
+      title: 'New Blogpost',
+      icon: icons.docs,
+      handler: () => onCreateContent({
+        title: 'Create Blogpost',
+        driver: 'drive',
+        type: 'drive.document',
+        form: 'drive.blogpost',
+        parentId: addTargetFolderId,
+      }),
+    }]
+  })
 
   const classes = useStyles({
     showUI,
@@ -102,18 +121,24 @@ const Layout = ({
                   <Hidden smDown implementation={ hiddenMode }>
                     <NavBar
                       items={ blogbarItems }
+                      section="blogposts"
                       align="left"
                       editable={ false }
+                      withSettings={ false }
                       isItemActive={ isItemActive }
+                      getAddItems={ getTopbarAddItems }
                     />
                   </Hidden>
                   <Hidden mdUp implementation={ hiddenMode }>
                     <NavBar
                       small
                       items={ blogbarItems }
+                      section="blogposts"
                       align="left"
                       editable={ false }
+                      withSettings={ false }
                       isItemActive={ isItemActive }
+                      getAddItems={ getTopbarAddItems }
                     />
                   </Hidden>
                 </div>
