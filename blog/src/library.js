@@ -40,7 +40,19 @@ library.forms['drive.blogpost'] = {
           ['required', 'The name is required'],
         ],
       }
-    },{
+    }, {
+      id: 'annotation.summary',
+      title: 'Summary',
+      helperText: 'Enter a summary of what the blog post is about',
+      default: '',
+    }, {
+      id: 'annotation.image',
+      title: 'Image',
+      helperText: 'Choose an image to display above this blog post',
+      component: 'image',
+      providers: ['local', 'google', 'unsplash'],
+      default: null,
+    }, {
       id: 'annotation.blogpost_tags',
       title: 'Tags',
       helperText: 'Associate this blog post with the following tags',

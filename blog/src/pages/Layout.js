@@ -1,4 +1,4 @@
-import React, { lazy, useRef, useEffect, useCallback } from 'react'
+import React, { lazy, useRef, useEffect, useCallback, useMemo } from 'react'
 import classnames from 'classnames'
 import { useSelector } from 'react-redux'
 
@@ -15,7 +15,7 @@ import routerSelectors from '@nocode-works/template/store/selectors/router'
 import NavBar from '@nocode-works/template/components/navbar/Section'
 
 import Suspense from '@nocode-works/template/components/system/Suspense'
-
+import contentSelectors from '@nocode-works/template/store/selectors/content'
 import selectors from '../selectors'
 
 import useStyles from '../styles/layout'
@@ -34,7 +34,34 @@ const Layout = ({
   const settings = useSelector(settingsSelectors.settings)
   const route = useSelector(routerSelectors.route)
 
-  const blogbarItems = useSelector(selectors.blogbarLinks)
+  const storeTagSelector = useMemo(contentSelectors.mergedAnnotationArray, [])
+  const storeTagData = useSelector(state => storeTagSelector(state, 'blogpost_tags'))
+
+  const blogbarItems = useMemo(() => {
+    return [{
+      id: 'root',
+      name: 'Home',
+      route: {
+        name: 'root',
+        path: '/',
+      },
+    }].concat(storeTagData.map(tag => {
+      return {
+        id: `blogbar-${tag.toLowerCase().replace(/\W/g, '')}`,
+        name: tag,
+        route: {
+          name: 'tag',
+          path: '/tag',
+          params: {
+            tag,
+          }
+        }
+      }
+    }))
+  }, [
+    storeTagData,
+  ])
+    
   
   const isItemActive = useCallback(({
     node,
@@ -97,6 +124,7 @@ const Layout = ({
       <AppLayout
         material
         favicon={ useFavicon }
+        titleField="blog_name"
         head={(
           <link rel="stylesheet" href="./css/index.css" />
         )}

@@ -65,7 +65,7 @@ export default {
       helperText: 'Choose your color',
       component: 'color',
       default: {color: "#3f51b5"},
-    },{
+    }, /*{
       id: 'homepage_image',
       title: 'Homepage Image',
       helperText: 'Upload an image for your homepage',
@@ -88,7 +88,7 @@ export default {
       helperText: 'Text that will appear next to your logos',
       default: '',
       groups: ['logo'],
-    },
+    },*/
     {
       id: 'favicon',
       title: 'Favicon',

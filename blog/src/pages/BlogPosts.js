@@ -1,21 +1,16 @@
-import React, { lazy, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import { useSelector } from 'react-redux'
 import Link from '@nocode-works/template/components/widgets/Link'
-import CoreDocumentPage from '@nocode-works/template/components/document/Page'
-
-import Hidden from '@material-ui/core/Hidden'
-
-import Suspense from '@nocode-works/template/components/system/Suspense'
 import routerSelectors from '@nocode-works/template/store/selectors/router'
 import contentSelectors from '@nocode-works/template/store/selectors/content'
 
-const EditableDocumentToolbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/EditableDocumentToolbar'))
+import TagHeroSection from './TagHeroSection'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(0.5),
+    
   },
   row: {
     marginTop: theme.spacing(1),
@@ -49,7 +44,25 @@ const useStyles = makeStyles(theme => ({
   bold: {
     fontWeight: 500,
     color:'#666',
-  }
+  },
+  contentChildren: {
+    maxWidth: '816px',
+    margin: '0px auto',
+    minHeight: `calc(100% - ${theme.layout.footerHeight}px - 1px)`,
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+    paddingRight: '96px',
+    paddingLeft: '96px',
+    [theme.breakpoints.up(theme.layout.largeScreenBreakpoint)]: {
+      paddingLeft: '96px',
+      paddingRight: '96px',
+    },
+    [theme.breakpoints.down(theme.layout.smallScreenBreakpoint)]: {
+      paddingLeft: [['17px'], '!important'],
+      paddingRight: [['17px'], '!important'],
+    },
+    letterSpacing: '0px',
+  },
 }))
 
 
@@ -76,44 +89,50 @@ const BlogPosts = ({
     tagField,
   ])
 
-  console.log(blogPosts)
+  const tagId = (tag || 'root').toLowerCase().replace(/\W+/g, '_')
 
   return (
     <div className={ classes.root }>
-      {
-        blogPosts
-          .map((child, i) => {
-            const {
-              name,
-              modifiedTime,
-              lastModifyingUser,
-            } = child
+      <TagHeroSection
+        defaultTitle={ tag || 'My Blog' }
+        prefix={ `blogsection_${tagId}` }
+      />
+      <div className={ classes.contentChildren }>
+        {
+          blogPosts
+            .map((child, i) => {
+              const {
+                name,
+                modifiedTime,
+                lastModifyingUser,
+              } = child
 
-            return (
-              <div
-                key={ i }
-                className={ classes.row }
-              >
-                <div className={ classes.content }>
-                  <Link
-                    path={ child.route.path }
-                    name={ child.route.name }
-                    className={ classes.link }
-                  >
-                    <Typography
-                      variant="h6"
+              return (
+                <div
+                  key={ i }
+                  className={ classes.row }
+                >
+                  <div className={ classes.content }>
+                    <Link
+                      path={ child.route.path }
+                      name={ child.route.name }
+                      className={ classes.link }
                     >
-                      { name }
-                    </Typography>
-                    <div className={ classes.info }>
-                      Updated <span className={ classes.bold }>{ new Date(modifiedTime).toLocaleString() }</span> { lastModifyingUser && (<>by <span className={ classes.bold }>{ lastModifyingUser }</span></>) }
-                    </div>
-                  </Link>
+                      <Typography
+                        variant="h6"
+                      >
+                        { name }
+                      </Typography>
+                      <div className={ classes.info }>
+                        Updated <span className={ classes.bold }>{ new Date(modifiedTime).toLocaleString() }</span> { lastModifyingUser && (<>by <span className={ classes.bold }>{ lastModifyingUser }</span></>) }
+                      </div>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            )
-          })
-      }
+              )
+            })
+        }
+      </div>
     </div>
   )
 }
