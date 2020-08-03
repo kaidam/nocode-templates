@@ -23,7 +23,6 @@ import useStyles from '../styles/layout'
 import icons from '@nocode-works/template/icons'
 
 const GlobalSettings = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/system/GlobalSettings'))
-const EditableDocumentToolbar = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/document/EditableDocumentToolbar'))
 
 const Layout = ({
   children,
@@ -79,8 +78,6 @@ const Layout = ({
     contentRef.current.scrollTop = 0
   }, [route])
 
-  const hiddenMode = "css"
-
   let {
     logo,
     favicon,
@@ -112,13 +109,13 @@ const Layout = ({
           <Toolbar classes={{
             root: classes.headerToolbar,
           }}>
-            <Hidden smDown implementation={ hiddenMode }>
+            <Hidden smDown implementation="css">
               <div className={ classes.toolbarControls }></div>
             </Hidden>
             <div className={ classes.toolbarMenuContainer }>
               <div className={ classes.toolbarMenu }>
                 <div className={ classes.toolbarMenuLeft }>
-                  <Hidden smDown implementation={ hiddenMode }>
+                  <Hidden smDown implementation="css">
                     <NavBar
                       items={ blogbarItems }
                       section="blogposts"
@@ -129,7 +126,7 @@ const Layout = ({
                       getAddItems={ getTopbarAddItems }
                     />
                   </Hidden>
-                  <Hidden mdUp implementation={ hiddenMode }>
+                  <Hidden mdUp implementation="css">
                     <NavBar
                       small
                       items={ blogbarItems }
@@ -144,13 +141,13 @@ const Layout = ({
                 </div>
                 <div className={ classes.toolbarMenuFiller }></div>
                 <div className={ classes.toolbarMenuRight }>
-                  <Hidden smDown implementation={ hiddenMode }>
+                  <Hidden smDown implementation="css">
                     <NavBar
                       section="topbar"
                       align="right"
                     />
                   </Hidden>
-                  <Hidden mdUp implementation={ hiddenMode }>
+                  <Hidden mdUp implementation="css">
                     <NavBar
                       small
                       section="topbar"
@@ -173,27 +170,8 @@ const Layout = ({
         </AppBar>
         <div className={ classes.main }>
           <div className={ classes.contentContainer }>
-            <Hidden smDown implementation={ hiddenMode }>
-              <Suspense
-                Component={ EditableDocumentToolbar }
-                props={{
-                  className: classes.contentToolbar,
-                }}
-              />
-            </Hidden>
-            <Hidden mdUp implementation={ hiddenMode }>
-              <Suspense
-                Component={ EditableDocumentToolbar }
-                props={{
-                  className: classes.smallContentToolbar,
-                  small: true,
-                }}
-              />
-            </Hidden>
             <main className={ classes.content } ref={ contentRef }>
-              <div className={ classes.contentChildren }>
-                { children }
-              </div>
+              { children }
             </main>
           </div>
         </div>
