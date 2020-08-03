@@ -66,8 +66,6 @@ const DocumentPage = ({
   const classes = useStyles()
 
   const route = useSelector(routerSelectors.route)
-  
-
   const isBlogPostsRoute = route.name == 'root' || route.name == 'tag'
 
   return (

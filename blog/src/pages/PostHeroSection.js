@@ -30,9 +30,15 @@ const PostHeroSection = ({
   // only render hero sections for blogposts not about pages
   if(!annotation || annotation.form != 'drive.blogpost') return null
 
+  const heroValues = {
+    title: node.name,
+    subtitle: annotation.summary,
+    image: annotation.image,
+  }
+
   const content = (
     <HeroSection
-      values={ annotation }
+      values={ heroValues }
     />
   )
 

@@ -65,30 +65,7 @@ export default {
       helperText: 'Choose your color',
       component: 'color',
       default: {color: "#3f51b5"},
-    }, /*{
-      id: 'homepage_image',
-      title: 'Homepage Image',
-      helperText: 'Upload an image for your homepage',
-      component: 'image',
-      providers: ['local', 'google', 'unsplash'],
-      default: null,
-      groups: ['homepage'],
-    },{
-      id: 'logo',
-      title: 'Logo',
-      helperText: 'Upload an image for your logo',
-      component: 'image',
-      providers: ['local', 'google'],
-      default: null,
-      groups: ['logo'],
     },
-    {
-      id: 'logo_text',
-      title: 'Logo Text',
-      helperText: 'Text that will appear next to your logos',
-      default: '',
-      groups: ['logo'],
-    },*/
     {
       id: 'favicon',
       title: 'Favicon',
@@ -200,49 +177,15 @@ export default {
       ]
     },
     title: {
-      title: 'With Title',
-      description: 'Show the document title above the content',
-      layout: [
-        [{
-          type: 'documentTitle',
-        }],
-        [{
-          type: 'documentContent',
-        }]
-      ]
-    },
-    image: {
-      title: 'With Image',
-      description: 'Show an image above the document content',
-      layout: [
-        [{
-          type: 'documentTitle',
-        }],
-        [{
-          type: 'image',
-        }],
-        [{
-          type: 'documentContent',
-        }],
-      ]
-    },
-    documentation: {
       title: 'With Info',
-      description: 'Show navigation widgets around the document content',
+      description: 'Show the document info above the content',
       layout: [
-        
-        [{
-          type: 'documentTitle',
-        }],
         [{
           type: 'documentInfo',
         }],
         [{
-          type: 'image',
-        }],
-        [{
           type: 'documentContent',
-        }],
+        }]
       ]
     },
   }

@@ -22,13 +22,20 @@ const useStyles = makeStyles(theme => ({
   },
   img: {
     flexGrow: 0,
+    marginRight: theme.spacing(2),
     width: '250px',
     marginLeft: theme.spacing(2),
     '& img': {
-      boxShadow: '5px 5px 5px 0px rgba(0,0,0,0.2)',
+      width: '100%',
+      boxShadow: '3px 3px 3px 0px rgba(0,0,0,0.2)',
     }
   },
   content: {
+    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  documentInfo: {
     flexGrow: 1,
   },
   link: {
@@ -40,6 +47,11 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: '5px',
     borderTop: '1px solid #e5e5e5',
     borderBottom: '1px solid #e5e5e5',
+  },
+  summary: {
+    color:'#999',
+    paddingTop: '5px',
+    paddingBottom: '5px',
   },
   bold: {
     fontWeight: 500,
@@ -80,8 +92,12 @@ const BlogPosts = ({
 
   const blogPosts = useMemo(() => {
     return items.filter(item => {
-      if(!tag) return item
-      return item.annotation && item.annotation[tagField] == tag ? true : false
+      if(!tag) return true
+      const postTags = item.annotation && item.annotation[tagField] ?
+        item.annotation[tagField] :
+        null
+      if(!postTags) return false
+      return postTags.indexOf(tag) >= 0
     })
   }, [
     items,
@@ -103,9 +119,12 @@ const BlogPosts = ({
             .map((child, i) => {
               const {
                 name,
+                annotation,
                 modifiedTime,
                 lastModifyingUser,
               } = child
+
+              const image = annotation.image
 
               return (
                 <div
@@ -113,20 +132,49 @@ const BlogPosts = ({
                   className={ classes.row }
                 >
                   <div className={ classes.content }>
-                    <Link
-                      path={ child.route.path }
-                      name={ child.route.name }
-                      className={ classes.link }
-                    >
-                      <Typography
-                        variant="h6"
+                    <div className={ classes.img }>
+                      {
+                        image && (
+                          <Link
+                            path={ child.route.path }
+                            name={ child.route.name }
+                            className={ classes.link }
+                          >
+                            <img src={ image.url } />
+                          </Link>
+                        )
+                      }
+                    </div>
+                    <div className={ classes.documentInfo }>
+                      <Link
+                        path={ child.route.path }
+                        name={ child.route.name }
+                        className={ classes.link }
                       >
-                        { name }
-                      </Typography>
-                      <div className={ classes.info }>
-                        Updated <span className={ classes.bold }>{ new Date(modifiedTime).toLocaleString() }</span> { lastModifyingUser && (<>by <span className={ classes.bold }>{ lastModifyingUser }</span></>) }
-                      </div>
-                    </Link>
+                        <Typography
+                          variant="h6"
+                        >
+                          { name }
+                        </Typography>
+                        {
+                          annotation && annotation.summary && (
+                            <div className={ classes.summary }>
+                              { annotation.summary }
+                            </div>
+                          )
+                        }
+                        <div className={ classes.info }>
+                          Updated <span className={ classes.bold }>{ new Date(modifiedTime).toLocaleString() }</span> { lastModifyingUser && (<>by <span className={ classes.bold }>{ lastModifyingUser }</span></>) }
+                        </div>
+                        {
+                          annotation && annotation.blogpost_tags && annotation.blogpost_tags.length > 0 && (
+                            <div className={ classes.summary }>
+                              tags: { annotation.blogpost_tags.join(', ') }
+                            </div>
+                          )
+                        }
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )
