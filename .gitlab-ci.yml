@@ -38,5 +38,5 @@ publish_blog:
     - docker build -t nocode-template-blog:local blog
     # test the template building against fixture data to catch silly errors
     - docker run --rm --entrypoint yarn -e ACCESS_TOKEN=none -e WEBSITE_ID=1 nocode-template-blog:local template:preview --use-preview-file /app/test/fixtures/data.json
-    - docker run --rm -e NOCODE_API_HOSTNAME -e ACCESS_TOKEN nocode-template-standard:local
+    - docker run --rm -e NOCODE_API_HOSTNAME -e ACCESS_TOKEN nocode-template-blog:local
     
