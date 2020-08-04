@@ -1104,10 +1104,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.0"
 
-"@nocode-works/builder@^1.0.18":
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/@nocode-works/builder/-/builder-1.0.18.tgz#27702f5d70240ccbc3cb7f9521017e83edaad9ff"
-  integrity sha512-i70d0pM7D8wHOSkUYo54torUgGBoEkRlqlHHCtSV/EpStdNRjEufclDUwSOZ+DIKDLYh1zmQWe5+gDyMpyoUsA==
+"@nocode-works/builder@^1.0.19":
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/@nocode-works/builder/-/builder-1.0.19.tgz#38635f971835e374e2b4e91084cd54d93fb174e8"
+  integrity sha512-ShM8EvdCe4ulxn/MWOlOaTRewttQcNpyC1XWyt/zs0k6yCswgXoRUZXyRLUfQBZo6e1I3xur9rxvcNqUabq4yg==
   dependencies:
     "@babel/cli" "^7.2.3"
     "@babel/core" "^7.3.4"
@@ -1143,14 +1143,14 @@
     yargs "^15.0.1"
 
 "@nocode-works/template@^1.0.4":
-  version "1.0.61"
-  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.61.tgz#6daf17abb380e74191c6fb209f086f8bf177529a"
-  integrity sha512-9sSTSLbRVSHwcURk1GsJQZ7zFW8PhwuSNV3XyxES1mqAHXr6wVeNNWLDaYf80UUF4vJLbW998imJ1pweeZM0Ng==
+  version "1.0.62"
+  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.62.tgz#ccf38587275420752d900ee5fbcf6688a31def01"
+  integrity sha512-RwG4Z5w+cCSHPYpOgaiAkV7Mbs+V+Ds8w5ZLpJYF3tTY/u/sOKQrf48vcIntG8MYUTbLpaSw5tYMi27+Z+YYRw==
   dependencies:
     "@hot-loader/react-dom" "^16.12.0"
     "@material-ui/core" "^4.9.9"
     "@material-ui/icons" "^4.9.1"
-    "@nocode-works/builder" "^1.0.18"
+    "@nocode-works/builder" "^1.0.19"
     "@types/react" "^16.9.23"
     archiver "^3.1.1"
     async "^3.1.0"
