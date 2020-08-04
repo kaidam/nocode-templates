@@ -111,54 +111,73 @@ const autoAssignImages = async ({
   }))
 }
 
-// redirect to a blog post when it is created
-const postCreatedHandler = async ({
-  dispatch,
-  getState,
-  item,
-}) => {
-  await autoAssignImages({
+const hooks = {
+  createContent: async ({
     dispatch,
     getState,
-  })
-  const routeMap = nocodeSelectors.routeMap(getState())
-  const route = routeMap[`section:blogposts:${item.id}`]
-  dispatch(routerActions.navigateTo(route.name))
-}
-
-const postHideHandler = async ({
-  dispatch,
-  getState,
-  id,
-}) => {
-  await dispatch(routerActions.navigateTo('root'))
-  await dispatch(uiActions.cancelFormWindow())
-}
-
-const postImportHandler = async ({
-  dispatch,
-  getState,
-  item,
-}) => {
-  const annotations = nocodeSelectors.annotations(getState())
-  const annotation = annotations[item.id]
-  if(annotation.form == 'drive.blogpost') {
-    await autoAssignImages({
-      dispatch,
-      getState,
-    })
-    const routeMap = nocodeSelectors.routeMap(getState())
-    const route = routeMap[`section:blogposts:${item.id}`]
-    dispatch(routerActions.navigateTo(route.name)) 
-  }
-}
-
-const postRemoveSectionContentHandler = async ({
-  dispatch,
-  getState,
-  id,
-}) => {
-  await dispatch(uiActions.cancelFormWindow())  
+    item,
+  }) => {
+    const annotations = nocodeSelectors.annotations(getState())
+    const annotation = annotations[item.id]
+    if(annotation.form == 'drive.blogpost') {
+      await autoAssignImages({
+        dispatch,
+        getState,
+      })
+      const routeMap = nocodeSelectors.routeMap(getState())
+      const route = routeMap[`section:blogposts:${item.id}`]
+      dispatch(routerActions.navigateTo(route.name))
+    }
+  },
+  editContent: async ({
+    dispatch,
+    getState,
+    item,
+  }) => {
+    const annotations = nocodeSelectors.annotations(getState())
+    const annotation = annotations[item.id]
+    if(annotation.form == 'drive.blogpost') {
+      await autoAssignImages({
+        dispatch,
+        getState,
+      })
+      const routeMap = nocodeSelectors.routeMap(getState())
+      const route = routeMap[`section:blogposts:${item.id}`]
+      dispatch(routerActions.navigateTo(route.name))
+    }
+  },
+  hideContent: async ({
+    dispatch,
+    getState,
+    id,
+  }) => {
+    await dispatch(routerActions.navigateTo('root'))
+    await dispatch(uiActions.cancelFormWindow())
+  },
+  importContent: async ({
+    dispatch,
+    getState,
+    item,
+  }) => {
+    const annotations = nocodeSelectors.annotations(getState())
+    const annotation = annotations[item.id]
+    if(annotation.form == 'drive.blogpost') {
+      await autoAssignImages({
+        dispatch,
+        getState,
+      })
+      const routeMap = nocodeSelectors.routeMap(getState())
+      const route = routeMap[`section:blogposts:${item.id}`]
+      dispatch(routerActions.navigateTo(route.name)) 
+    }
+  },
+  removeSectionContent: async ({
+    dispatch,
+    getState,
+    id,
+  }) => {
+    await dispatch(uiActions.cancelFormWindow())  
+  },
 }
 
 export default {
@@ -167,8 +186,5 @@ export default {
   tagSettingsKey,
   tagTitle,
   autoAssignImages,
-  postCreatedHandler,
-  postHideHandler,
-  postImportHandler,
-  postRemoveSectionContentHandler,
+  hooks,
 }

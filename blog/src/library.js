@@ -91,51 +91,6 @@ library.initialise = async (dispatch, getState) => {
   })
 }
 
-library.hooks = {
-  createContent: async ({
-    dispatch,
-    getState,
-    item,
-  }) => {
-    await utils.postCreatedHandler({
-      dispatch,
-      getState,
-      item,
-    })
-  },
-  hideContent: async ({
-    dispatch,
-    getState,
-    id,
-  }) => {
-    await utils.postHideHandler({
-      dispatch,
-      getState,
-      id,
-    })
-  },
-  importContent: async ({
-    dispatch,
-    getState,
-    item,
-  }) => {
-    await utils.postImportHandler({
-      dispatch,
-      getState,
-      item,
-    })
-  },
-  removeSectionContent: async ({
-    dispatch,
-    getState,
-    id,
-  }) => {
-    await utils.postRemoveSectionContentHandler({
-      dispatch,
-      getState,
-      id,
-    })
-  },
-}
+library.hooks = utils.hooks
 
 export default library

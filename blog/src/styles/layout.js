@@ -127,10 +127,15 @@ const styles = makeStyles(theme => {
       flexGrow: 1,
       overflowY: 'auto',
       background: 'rgba(0, 0, 0, 0.001)',
+      display: 'flex',
+      minHeight: `calc(100% - ${theme.layout.topbarHeight}px)`,
+      flexDirection: 'column',
+      justifyContent: 'space-between',
     },
 
     footer: {
       height: [`${theme.layout.footerHeight}px`, '!important'],
+      minHeight: [`${theme.layout.footerHeight}px`, '!important'],
       backgroundColor: '#fff',
       borderTop: '1px solid #ccc',
       display: 'flex',
