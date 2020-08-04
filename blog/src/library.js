@@ -1,11 +1,17 @@
 import library from '@nocode-works/template/library'
+import widgets from '@nocode-works/template/widgets'
+
+import DocumentInfo from './widgets/DocumentInfo'
 
 import LayoutDefault from './pages/Layout'
 import PageDefault from './pages/Document'
 
 import onboarding from './onboarding'
 import settings from './settings'
+import utils from './utils'
 
+
+widgets.documentInfo = DocumentInfo
 library.autoSnackbar = false
 library.onboarding = onboarding
 library.settings = settings
@@ -61,6 +67,10 @@ library.forms['drive.blogpost'] = {
       default: [],
     }],
   }]
+}
+
+library.initialise = async (dispatch, getState) => {
+  await utils.autoAssignImages(dispatch, getState)
 }
 
 export default library

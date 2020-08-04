@@ -4,7 +4,12 @@ import Typography from '@material-ui/core/Typography'
 import UnsplashCopyright from '@nocode-works/template/components/widgets/UnsplashCopyright'
 
 const useStyles = makeStyles(theme => ({
-  root: ({image}) => ({
+  root: {
+    backgroundColor: '#fff',
+    borderBottom: '1px solid #666',
+    paddingBottom: '0px',
+  },
+  image: ({image}) => ({
     height: '350px',
     position: 'relative',
     backgroundColor: '#fff',
@@ -37,26 +42,28 @@ const HeroSection = ({
 
   return (
     <div className={ classes.root }>
-      <div className={ classes.text }>
-        {
-          values.title && (
-            <Typography color="primary" variant="h4" gutterBottom={ values.subtitle ? true : false }>
-              <strong>{ values.title.replace(/^(\w)/, st => st.toUpperCase()) }</strong>
-            </Typography>
-          )
-        }
-        {
-          values.subtitle && (
-            <Typography variant="body1">
-              { values.subtitle }
-            </Typography>
-          )
-        }
+      <div className={ classes.image }>
+        <div className={ classes.text }>
+          {
+            values.title && (
+              <Typography color="primary" variant="h4" gutterBottom={ values.subtitle ? true : false }>
+                <strong>{ values.title.replace(/^(\w)/, st => st.toUpperCase()) }</strong>
+              </Typography>
+            )
+          }
+          {
+            values.subtitle && (
+              <Typography variant="body1">
+                { values.subtitle }
+              </Typography>
+            )
+          }
+        </div>
+        <UnsplashCopyright
+          withWrapper
+          unsplash={ values.image ? values.image.unsplash : null }
+        />
       </div>
-      <UnsplashCopyright
-        withWrapper
-        unsplash={ values.image ? values.image.unsplash : null }
-      />
     </div>
   )
 }

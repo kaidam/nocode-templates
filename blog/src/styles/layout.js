@@ -19,7 +19,8 @@ const styles = makeStyles(theme => {
       position: 'relative',
       zIndex: theme.zIndex.drawer + 1,
       height: [`${theme.layout.topbarHeight}px`, '!important'],
-      backgroundColor: '#F2F2F2',
+      backgroundColor: '#fff',
+      borderBottom: '1px solid #666',
     },
     headerToolbar: {
       paddingLeft: theme.spacing(1),

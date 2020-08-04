@@ -4,11 +4,12 @@ import Suspense from '@nocode-works/template/components/system/Suspense'
 
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
 import systemSelectors from '@nocode-works/template/store/selectors/system'
+import websiteSelectors from '@nocode-works/template/store/selectors/website'
 
 import HeroSection from './HeroSection'
+import utils from '../utils'
 
 const EditableSettings = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/content/EditableSettings'))
-const RandomImageLoader = lazy(() => import(/* webpackChunkName: "ui" */ './RandomImageLoader'))
 
 const SCHEMA = [{
   id: 'title',
@@ -36,16 +37,18 @@ const DEFAULT_VALUES = {
 }
 
 const TagHeroSection = ({
-  defaultTitle,
-  prefix,
+  tag
 } = {}) => {
 
   const showUI = useSelector(systemSelectors.showUI)
   const settings = useSelector(settingsSelectors.settings)
-  const values = settings[prefix] || Object.assign({}, DEFAULT_VALUES, {
-    title: defaultTitle,
-  })
+  const websiteData = useSelector(websiteSelectors.websiteData)
 
+  const settingsKey = utils.tagSettingsKey(tag)
+  const values = Object.assign({}, DEFAULT_VALUES, {
+    title: utils.tagTitle(tag, websiteData),
+  }, settings[settingsKey])
+  
   const content = (
     <HeroSection
       values={ values }
@@ -57,16 +60,11 @@ const TagHeroSection = ({
       <EditableSettings
         title="Hero Section"
         values={ values }
-        prefix={ prefix }
+        prefix={ settingsKey }
         schema={ SCHEMA }
       >
         { content }
       </EditableSettings>
-      <RandomImageLoader
-        mode="tag"
-        prefix={ prefix }
-        values={ values }
-      />
     </Suspense>
   ) : content
 }

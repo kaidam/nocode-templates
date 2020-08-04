@@ -10,7 +10,6 @@ import contentSelectors from '@nocode-works/template/store/selectors/content'
 import HeroSection from './HeroSection'
 
 const EditableElement = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/content/EditableElement'))
-const RandomImageLoader = lazy(() => import(/* webpackChunkName: "ui" */ './RandomImageLoader'))
 
 const PostHeroSection = ({
   
@@ -50,12 +49,6 @@ const PostHeroSection = ({
       >
         { content }
       </EditableElement>
-      <RandomImageLoader
-        mode="annotation"
-        content_id={ node.id }
-        annotation={ annotation }
-        values={ heroValues }
-      />
     </Suspense>
   ) : content
 }

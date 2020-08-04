@@ -8,6 +8,9 @@ import contentSelectors from '@nocode-works/template/store/selectors/content'
 import websiteSelectors from '@nocode-works/template/store/selectors/website'
 
 import TagHeroSection from './TagHeroSection'
+import TagLinks from '../components/TagLinks'
+
+import utils from '../utils'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,6 +32,7 @@ const useStyles = makeStyles(theme => ({
     '& img': {
       width: '100%',
       boxShadow: '3px 3px 3px 0px rgba(0,0,0,0.2)',
+      border: '1px solid #000'
     }
   },
   content: {
@@ -107,14 +111,13 @@ const BlogPosts = ({
     tagField,
   ])
 
-  const tagId = (tag || 'root').toLowerCase().replace(/\W+/g, '_')
-  const tagTitle = tag ?
-    tag.replace(/^(\w)/, st => st.toUpperCase()) :
-    websiteData.name
+  const tagId = utils.tagId(tag)
+  const tagTitle = utils.tagTitle(tag, websiteData)
 
   return (
     <div className={ classes.root }>
       <TagHeroSection
+        tag={ tag }
         defaultTitle={ tagTitle }
         prefix={ `blogsection_${tagId}` }
       />
@@ -171,11 +174,12 @@ const BlogPosts = ({
                         <div className={ classes.info }>
                           Updated <span className={ classes.bold }>{ new Date(modifiedTime).toLocaleString() }</span> { lastModifyingUser && (<>by <span className={ classes.bold }>{ lastModifyingUser }</span></>) }
                         </div>
+                        
                         {
                           annotation && annotation.blogpost_tags && annotation.blogpost_tags.length > 0 && (
-                            <div className={ classes.summary }>
-                              tags: { annotation.blogpost_tags.join(', ') }
-                            </div>
+                            <TagLinks
+                              tags={ annotation.blogpost_tags }
+                            />
                           )
                         }
                       </Link>
