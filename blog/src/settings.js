@@ -47,7 +47,8 @@ export default {
       type: 'document',
       wordDocument: 'homepage.docx',
       annotation: {
-        
+        form: 'drive.blogpost',
+        type: 'drive.document',
       }
     }]
   }],

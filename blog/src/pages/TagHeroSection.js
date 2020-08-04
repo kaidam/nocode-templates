@@ -1,6 +1,5 @@
 import React, { lazy } from 'react'
 import { useSelector } from 'react-redux'
-import { makeStyles } from '@material-ui/core/styles'
 import Suspense from '@nocode-works/template/components/system/Suspense'
 
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
@@ -9,6 +8,7 @@ import systemSelectors from '@nocode-works/template/store/selectors/system'
 import HeroSection from './HeroSection'
 
 const EditableSettings = lazy(() => import(/* webpackChunkName: "ui" */ '@nocode-works/template/components/content/EditableSettings'))
+const RandomImageLoader = lazy(() => import(/* webpackChunkName: "ui" */ './RandomImageLoader'))
 
 const SCHEMA = [{
   id: 'title',
@@ -62,6 +62,11 @@ const TagHeroSection = ({
       >
         { content }
       </EditableSettings>
+      <RandomImageLoader
+        mode="tag"
+        prefix={ prefix }
+        values={ values }
+      />
     </Suspense>
   ) : content
 }

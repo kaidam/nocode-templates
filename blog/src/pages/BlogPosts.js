@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import Link from '@nocode-works/template/components/widgets/Link'
 import routerSelectors from '@nocode-works/template/store/selectors/router'
 import contentSelectors from '@nocode-works/template/store/selectors/content'
+import websiteSelectors from '@nocode-works/template/store/selectors/website'
 
 import TagHeroSection from './TagHeroSection'
 
@@ -86,6 +87,7 @@ const BlogPosts = ({
   const classes = useStyles()
 
   const route = useSelector(routerSelectors.route)
+  const websiteData = useSelector(websiteSelectors.websiteData)
   const tag = route.params.tag
   const treeSelector = useMemo(contentSelectors.sectionTree, [])
   const items = useSelector(state => treeSelector(state, section))
@@ -106,11 +108,14 @@ const BlogPosts = ({
   ])
 
   const tagId = (tag || 'root').toLowerCase().replace(/\W+/g, '_')
+  const tagTitle = tag ?
+    tag.replace(/^(\w)/, st => st.toUpperCase()) :
+    websiteData.name
 
   return (
     <div className={ classes.root }>
       <TagHeroSection
-        defaultTitle={ tag || 'My Blog' }
+        defaultTitle={ tagTitle }
         prefix={ `blogsection_${tagId}` }
       />
       <div className={ classes.contentChildren }>
