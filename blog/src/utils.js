@@ -1,6 +1,7 @@
 import Promise from 'bluebird'
 import websiteActions from '@nocode-works/template/store/modules/website'
 import contentActions from '@nocode-works/template/store/modules/content'
+import routerActions from '@nocode-works/template/store/modules/router'
 import nocodeSelectors from '@nocode-works/template/store/selectors/nocode'
 import contentSelectors from '@nocode-works/template/store/selectors/content'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
@@ -18,7 +19,10 @@ const tagTitle = (tag, websiteData) => tag ?
   tag.replace(/^(\w)/, st => st.toUpperCase()) :
   websiteData.name
 
-const autoAssignImages = async (dispatch, getState) => {
+const autoAssignImages = async ({
+  dispatch,
+  getState,
+}) => {
   const nodes = nocodeSelectors.nodes(getState())
   const annotations = nocodeSelectors.annotations(getState())
   const settings = settingsSelectors.settings(getState())
@@ -75,11 +79,31 @@ const autoAssignImages = async (dispatch, getState) => {
   const settingsUpdate = {}
   await Promise.map(allItems, async item => {
 
-    const randomImage = await dispatch(contentActions.getRandomContent({
+    let randomImage = await dispatch(contentActions.getRandomContent({
       driver: 'unsplash',
       query: item.searchQuery,
       size: 'landscape'
     }))
+
+    // we didn't find an image for this query - so search for one
+    // with the title of the blog
+    if(randomImage.errors && randomImage.errors.length > 0) {
+      randomImage = await dispatch(contentActions.getRandomContent({
+        driver: 'unsplash',
+        query: websiteData.name,
+        size: 'landscape'
+      }))
+    }
+
+    // we didn't even find one for that - so let's search for
+    // a generic query
+    if(randomImage.errors && randomImage.errors.length > 0) {
+      randomImage = await dispatch(contentActions.getRandomContent({
+        driver: 'unsplash',
+        query: 'website',
+        size: 'landscape'
+      }))
+    }
 
     const imageValue = {
       url: randomImage.urls.regular,
@@ -119,10 +143,22 @@ const autoAssignImages = async (dispatch, getState) => {
   }))
 }
 
+// redirect to a blog post when it is created
+const postCreatedHandler = async ({
+  dispatch,
+  getState,
+  item,
+}) => {
+  const routeMap = nocodeSelectors.routeMap(getState())
+  const route = routeMap[`section:blogposts:${item.id}`]
+  dispatch(routerActions.navigateTo(route.name))
+}
+
 export default {
   autoCopyrightMessage,
   tagId,
   tagSettingsKey,
   tagTitle,
   autoAssignImages,
+  postCreatedHandler,
 }

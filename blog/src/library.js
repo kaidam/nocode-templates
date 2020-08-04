@@ -1,6 +1,8 @@
 import library from '@nocode-works/template/library'
 import widgets from '@nocode-works/template/widgets'
 
+import nocodeSelectors from '@nocode-works/template/store/selectors/nocode'
+
 import DocumentInfo from './widgets/DocumentInfo'
 
 import LayoutDefault from './pages/Layout'
@@ -70,7 +72,28 @@ library.forms['drive.blogpost'] = {
 }
 
 library.initialise = async (dispatch, getState) => {
-  await utils.autoAssignImages(dispatch, getState)
+  await utils.autoAssignImages({
+    dispatch,
+    getState,
+  })
+}
+
+library.hooks = {
+  createContent: async ({
+    dispatch,
+    getState,
+    item,
+  }) => {
+    await utils.autoAssignImages({
+      dispatch,
+      getState,
+    })
+    await utils.postCreatedHandler({
+      dispatch,
+      getState,
+      item,
+    })
+  }
 }
 
 export default library

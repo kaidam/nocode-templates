@@ -6,6 +6,7 @@ import Link from '@nocode-works/template/components/widgets/Link'
 import routerSelectors from '@nocode-works/template/store/selectors/router'
 import contentSelectors from '@nocode-works/template/store/selectors/content'
 import websiteSelectors from '@nocode-works/template/store/selectors/website'
+import nocodeSelectors from '@nocode-works/template/store/selectors/nocode'
 
 import TagHeroSection from './TagHeroSection'
 import TagLinks from '../components/TagLinks'
@@ -164,25 +165,25 @@ const BlogPosts = ({
                         >
                           { name }
                         </Typography>
-                        {
-                          annotation && annotation.summary && (
-                            <div className={ classes.summary }>
-                              { annotation.summary }
-                            </div>
-                          )
-                        }
-                        <div className={ classes.info }>
-                          Updated <span className={ classes.bold }>{ new Date(modifiedTime).toLocaleString() }</span> { lastModifyingUser && (<>by <span className={ classes.bold }>{ lastModifyingUser }</span></>) }
-                        </div>
-                        
-                        {
-                          annotation && annotation.blogpost_tags && annotation.blogpost_tags.length > 0 && (
-                            <TagLinks
-                              tags={ annotation.blogpost_tags }
-                            />
-                          )
-                        }
                       </Link>
+                      {
+                        annotation && annotation.summary && (
+                          <div className={ classes.summary }>
+                            { annotation.summary }
+                          </div>
+                        )
+                      }
+                      <div className={ classes.info }>
+                        Updated <span className={ classes.bold }>{ new Date(modifiedTime).toLocaleString() }</span> { lastModifyingUser && (<>by <span className={ classes.bold }>{ lastModifyingUser }</span></>) }
+                      </div>
+                      
+                      {
+                        annotation && annotation.blogpost_tags && annotation.blogpost_tags.length > 0 && (
+                          <TagLinks
+                            tags={ annotation.blogpost_tags }
+                          />
+                        )
+                      }
                     </div>
                   </div>
                 </div>
