@@ -20,7 +20,7 @@ const tagId = tag => (tag || 'root').toLowerCase().replace(/\W+/g, '_')
 const tagSettingsKey = tag => `blogsection_${tagId(tag)}`
 const tagTitle = (tag, websiteData) => tag ?
   tag.replace(/^(\w)/, st => st.toUpperCase()) :
-  websiteData.name
+  (websiteData ? websiteData.name : '')
 
 const autoAssignImages = async ({
   dispatch,
