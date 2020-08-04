@@ -1,7 +1,10 @@
 import Promise from 'bluebird'
+import formActions from '@nocode-works/template/store/modules/form'
 import websiteActions from '@nocode-works/template/store/modules/website'
 import contentActions from '@nocode-works/template/store/modules/content'
+import unsplashActions from '@nocode-works/template/store/modules/unsplash'
 import routerActions from '@nocode-works/template/store/modules/router'
+import uiActions from '@nocode-works/template/store/modules/ui'
 import nocodeSelectors from '@nocode-works/template/store/selectors/nocode'
 import contentSelectors from '@nocode-works/template/store/selectors/content'
 import settingsSelectors from '@nocode-works/template/store/selectors/settings'
@@ -79,55 +82,20 @@ const autoAssignImages = async ({
   const settingsUpdate = {}
   await Promise.map(allItems, async item => {
 
-    let randomImage = await dispatch(contentActions.getRandomContent({
-      driver: 'unsplash',
+    const randomImage = await dispatch(unsplashActions.getRandomImage({
       query: item.searchQuery,
-      size: 'landscape'
     }))
-
-    // we didn't find an image for this query - so search for one
-    // with the title of the blog
-    if(randomImage.errors && randomImage.errors.length > 0) {
-      randomImage = await dispatch(contentActions.getRandomContent({
-        driver: 'unsplash',
-        query: websiteData.name,
-        size: 'landscape'
-      }))
-    }
-
-    // we didn't even find one for that - so let's search for
-    // a generic query
-    if(randomImage.errors && randomImage.errors.length > 0) {
-      randomImage = await dispatch(contentActions.getRandomContent({
-        driver: 'unsplash',
-        query: 'website',
-        size: 'landscape'
-      }))
-    }
-
-    const imageValue = {
-      url: randomImage.urls.regular,
-      unsplash: {
-        image: {
-          id: randomImage.id,
-        },
-        user: {
-          fullname: randomImage.user.name,
-          username: randomImage.user.username,
-        }
-      }
-    }
 
     if(item.type == 'tag') {
       const existingSettingsValue = settingsUpdate[item.key] || {}
       settingsUpdate[item.key] = Object.assign({}, existingSettingsValue, {
-        image: imageValue,
+        image: randomImage,
       })
     }
     else {
       const existingAnnotation = item.annotation || {}
       const newAnnotation = Object.assign({}, existingAnnotation, {
-        image: imageValue,
+        image: randomImage,
       })
       await dispatch(contentActions.updateAnnotation({
         id: item.node.id,
@@ -149,9 +117,48 @@ const postCreatedHandler = async ({
   getState,
   item,
 }) => {
+  await autoAssignImages({
+    dispatch,
+    getState,
+  })
   const routeMap = nocodeSelectors.routeMap(getState())
   const route = routeMap[`section:blogposts:${item.id}`]
   dispatch(routerActions.navigateTo(route.name))
+}
+
+const postHideHandler = async ({
+  dispatch,
+  getState,
+  id,
+}) => {
+  await dispatch(routerActions.navigateTo('root'))
+  await dispatch(uiActions.cancelFormWindow())
+}
+
+const postImportHandler = async ({
+  dispatch,
+  getState,
+  item,
+}) => {
+  const annotations = nocodeSelectors.annotations(getState())
+  const annotation = annotations[item.id]
+  if(annotation.form == 'drive.blogpost') {
+    await autoAssignImages({
+      dispatch,
+      getState,
+    })
+    const routeMap = nocodeSelectors.routeMap(getState())
+    const route = routeMap[`section:blogposts:${item.id}`]
+    dispatch(routerActions.navigateTo(route.name)) 
+  }
+}
+
+const postRemoveSectionContentHandler = async ({
+  dispatch,
+  getState,
+  id,
+}) => {
+  await dispatch(uiActions.cancelFormWindow())  
 }
 
 export default {
@@ -161,4 +168,7 @@ export default {
   tagTitle,
   autoAssignImages,
   postCreatedHandler,
+  postHideHandler,
+  postImportHandler,
+  postRemoveSectionContentHandler,
 }

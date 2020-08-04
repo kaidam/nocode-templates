@@ -6,7 +6,7 @@ import UnsplashCopyright from '@nocode-works/template/components/widgets/Unsplas
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: '#fff',
-    borderBottom: '1px solid #666',
+    borderBottom: '0.5px solid #666',
     paddingBottom: '0px',
   },
   image: ({image}) => ({

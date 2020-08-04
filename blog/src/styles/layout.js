@@ -129,46 +129,36 @@ const styles = makeStyles(theme => {
       background: 'rgba(0, 0, 0, 0.001)',
     },
 
-    
-
     footer: {
-      width: '100%',
-      color: theme.palette.common.white,
-      minHeight: [`${theme.layout.footerHeight}px`, '!important'],
-      //height: [`${theme.layout.footerHeight}px`, '!important'],
-      backgroundColor: theme.palette.primary.main,
-    },
-
-    footerToolbar: {
-      padding: 0,
-      //height: '100%',
-    },
-
-    footerContainer: {
+      height: [`${theme.layout.footerHeight}px`, '!important'],
+      backgroundColor: '#fff',
+      borderTop: '1px solid #ccc',
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
+    },
+
+    footerContent: {
       width: '100%',
-      //height: '100%',
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-      paddingBottom: theme.spacing(1),
-      // paddingRight: theme.spacing(1),
-      
-      // paddingBottom: theme.spacing(2),
+      maxWidth: '1024px',
+      margin: '0px auto',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
     },
 
     footerCopyright: {
       flexGrow: 0,
+      paddingLeft: theme.spacing(1),
     },
 
     footerFiller: {
       flexGrow: 1,
     },
 
-    footerNavBar: {
-      paddingTop: theme.spacing(1),
+    footerSocialLinks: {
       flexGrow: 0,
+      paddingRight: theme.spacing(1),
     },
 
     globalSettings: ({

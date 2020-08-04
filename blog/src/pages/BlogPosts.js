@@ -3,10 +3,11 @@ import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import { useSelector } from 'react-redux'
 import Link from '@nocode-works/template/components/widgets/Link'
+import UnsplashCopyright from '@nocode-works/template//components/widgets/UnsplashCopyright'
+
 import routerSelectors from '@nocode-works/template/store/selectors/router'
 import contentSelectors from '@nocode-works/template/store/selectors/content'
 import websiteSelectors from '@nocode-works/template/store/selectors/website'
-import nocodeSelectors from '@nocode-works/template/store/selectors/nocode'
 
 import TagHeroSection from './TagHeroSection'
 import TagLinks from '../components/TagLinks'
@@ -81,6 +82,10 @@ const useStyles = makeStyles(theme => ({
     },
     letterSpacing: '0px',
   },
+  copyright: {
+    fontSize: '0.8em',
+    color: '#999'
+  }
 }))
 
 
@@ -151,6 +156,15 @@ const BlogPosts = ({
                           >
                             <img src={ image.url } />
                           </Link>
+                        )
+                      }
+                      {
+                        image && (
+                          <div className={ classes.copyright }>
+                            <UnsplashCopyright
+                              unsplash={ image.unsplash }
+                            />
+                          </div>
                         )
                       }
                     </div>

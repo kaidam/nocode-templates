@@ -26,7 +26,8 @@ const SCHEMA = [{
   title: 'Image',
   helperText: 'Choose an image to display in this hero section',
   component: 'image',
-  providers: ['local', 'google', 'unsplash'],
+  providers: ['local', 'google', 'unsplash', 'unsplash_random'],
+  random_query_field: 'title',
   default: null,
 }]
 

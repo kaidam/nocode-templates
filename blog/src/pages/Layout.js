@@ -15,6 +15,8 @@ import contentSelectors from '@nocode-works/template/store/selectors/content'
 
 import NavBar from '@nocode-works/template/components/navbar/Section'
 import Suspense from '@nocode-works/template/components/system/Suspense'
+import Copyright from '@nocode-works/template/components/editable/Copyright'
+import SocialLinks from '@nocode-works/template/components/editable/SocialLinks'
 
 import useStyles from '../styles/layout'
 
@@ -82,6 +84,7 @@ const Layout = ({
 
   const getTopbarAddItems = useCallback(({
     onCreateContent,
+    onImportContent,
     addTargetFolderId,
   }) => {
     return [{
@@ -94,17 +97,23 @@ const Layout = ({
         form: 'drive.blogpost',
         parentId: addTargetFolderId,
       }),
+    },{
+      title: 'Import Existing Document',
+      icon: icons.drive,
+      handler: () => onImportContent({
+        section: 'blogposts',
+        listFilter: 'folder,document',
+        addFilter: 'document',
+        annotation: {
+          form: 'drive.blogpost',
+          type: 'drive.document',
+        }
+      }),
     }]
   })
 
   const classes = useStyles({
     showUI,
-  })
-
-  const navbarClassname = classnames({
-    [classes.drawer]: true,
-    [classes.largeScreen]: true,
-    [classes.smallDrawer]: true,
   })
 
   useEffect(() => {
@@ -156,7 +165,6 @@ const Layout = ({
                       section="blogposts"
                       align="left"
                       editable={ false }
-                      withSettings={ false }
                       isItemActive={ isItemActive }
                       getAddItems={ getTopbarAddItems }
                     />
@@ -168,7 +176,6 @@ const Layout = ({
                       section="blogposts"
                       align="left"
                       editable={ false }
-                      withSettings={ false }
                       isItemActive={ isItemActive }
                       getAddItems={ getTopbarAddItems }
                     />
@@ -207,6 +214,22 @@ const Layout = ({
           <div className={ classes.contentContainer }>
             <main className={ classes.content } ref={ contentRef }>
               { children }
+              <div className={ classes.footer }>
+                <div className={ classes.footerContent }>
+                  <div className={ classes.footerCopyright }>
+                    <Copyright
+                      color="dark"
+                      field="blog_name"
+                    />
+                  </div>
+                  <div className={ classes.footerFiller }>
+
+                  </div>
+                  <div className={ classes.footerSocialLinks }>
+                    <SocialLinks />
+                  </div>
+                </div>
+              </div>
             </main>
           </div>
         </div>

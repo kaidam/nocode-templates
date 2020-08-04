@@ -61,6 +61,7 @@ export default {
       title: 'Blog name',
       helperText: 'Enter the name of your blog',
       default: '',
+      groups: ['copyright'],
     }, {
       id: 'color',
       title: 'Color',
@@ -104,7 +105,16 @@ export default {
           inputProps: {
             type: 'number',
           },
-          default: 67,
+          default: 80,
+        },
+        {
+          id: 'footerHeight',
+          title: 'Footer Height',
+          helperText: 'The pixel height of the footer',
+          inputProps: {
+            type: 'number',
+          },
+          default: 60,
         },
       ],
       [
