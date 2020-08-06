@@ -93,9 +93,36 @@ const Layout = ({
               hasLeftNavigation && (
                 <Hidden mdUp implementation={ hiddenMode }>
                   <NavDrawer
-                    Component={ Tree }
-                    section="sidebar"
-                    type="drawer"
+                    getChildren={({
+                      closeDrawer,
+                    }) => {
+
+                      const onClick = ({
+                        isFolderToggle,
+                      }) => {
+                        if(isFolderToggle) return
+                        closeDrawer()
+                      }
+
+                      return (
+                        <>
+                          <Tree
+                            section="sidebar"
+                            type="drawer"
+                            isNavDrawer
+                            autoHeight={ false }
+                            onClick={ onClick }
+                          />
+                          <Tree
+                            section="rightbar"
+                            type="drawer"
+                            isNavDrawer
+                            autoHeight={ false }
+                            onClick={ onClick }
+                          />
+                        </>
+                      )
+                    }}
                   />
                 </Hidden>
               )
@@ -116,18 +143,6 @@ const Layout = ({
                 withHome
               />
             </Hidden>
-            {
-              hasRightNavigation && (
-                <Hidden mdUp implementation={ hiddenMode }>
-                  <NavDrawer
-                    Component={ Tree }
-                    section="rightbar"
-                    anchor="right"
-                    type="drawer"
-                  />
-                </Hidden>
-              )
-            }
             <Suspense
               coreEnabled
               Component={ GlobalSettings }
