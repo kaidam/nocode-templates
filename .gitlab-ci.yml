@@ -1,10 +1,4 @@
-image: binocarlos/cibase:v13
-
 variables:
-  DOCKER_API_VERSION: "1.23"
-  DOCKER_HOST: tcp://docker:2376
-  DOCKER_DRIVER: overlay2
-  DOCKER_TLS_CERTDIR: "/certs"
   NOCODE_API_HOSTNAME: https://app.nocode.works
 
 stages:
@@ -17,13 +11,11 @@ publish_standard:
       - master
     changes:
       - "standard/**/*"
-  services:
-  - docker:19.03-dind
   script:
-    - docker build -t nocode-template-standard:local standard
+    - docker build -t nocode-template-standard:$CI_COMMIT_SHA standard
     # test the template building against fixture data to catch silly errors
-    - docker run --rm --entrypoint yarn -e ACCESS_TOKEN=none -e WEBSITE_ID=1 nocode-template-standard:local template:preview --skip-build --use-preview-file /app/test/fixtures/data.json
-    - docker run --rm -e NOCODE_API_HOSTNAME -e ACCESS_TOKEN nocode-template-standard:local --skip-build
+    - docker run --rm --entrypoint yarn -e ACCESS_TOKEN=none -e WEBSITE_ID=1 nocode-template-standard:$CI_COMMIT_SHA template:preview --skip-build --use-preview-file /app/test/fixtures/data.json
+    - docker run --rm -e NOCODE_API_HOSTNAME -e ACCESS_TOKEN nocode-template-standard:$CI_COMMIT_SHA --skip-build
 
 publish_blog:
   stage: publish
@@ -32,11 +24,9 @@ publish_blog:
       - master
     changes:
       - "blog/**/*"
-  services:
-  - docker:19.03-dind
   script:
-    - docker build -t nocode-template-blog:local blog
+    - docker build -t nocode-template-blog:$CI_COMMIT_SHA blog
     # test the template building against fixture data to catch silly errors
-    - docker run --rm --entrypoint yarn -e ACCESS_TOKEN=none -e WEBSITE_ID=1 nocode-template-blog:local template:preview --skip-build --use-preview-file /app/test/fixtures/data.json
-    - docker run --rm -e NOCODE_API_HOSTNAME -e ACCESS_TOKEN nocode-template-blog:local --skip-build
+    - docker run --rm --entrypoint yarn -e ACCESS_TOKEN=none -e WEBSITE_ID=1 nocode-template-blog:$CI_COMMIT_SHA template:preview --skip-build --use-preview-file /app/test/fixtures/data.json
+    - docker run --rm -e NOCODE_API_HOSTNAME -e ACCESS_TOKEN nocode-template-blog:$CI_COMMIT_SHA --skip-build
     
