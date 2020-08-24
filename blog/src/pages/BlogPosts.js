@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import { useSelector } from 'react-redux'
@@ -116,6 +116,12 @@ const BlogPosts = ({
     tag,
     tagField,
   ])
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     throw new Error('hello')
+  //   }, 1000)
+  // }, [])
 
   const tagId = utils.tagId(tag)
   const tagTitle = utils.tagTitle(tag, websiteData)
