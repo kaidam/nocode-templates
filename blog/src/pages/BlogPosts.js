@@ -139,7 +139,7 @@ const BlogPosts = ({
                 lastModifyingUser,
               } = child
 
-              const image = annotation.image
+              const image = annotation ? annotation.image : ''
 
               return (
                 <div
