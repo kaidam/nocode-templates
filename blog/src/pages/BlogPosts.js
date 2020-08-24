@@ -130,6 +130,7 @@ const BlogPosts = ({
       <div className={ classes.contentChildren }>
         {
           blogPosts
+            .filter(child => child.route ? true : false)
             .map((child, i) => {
               const {
                 name,
