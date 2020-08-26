@@ -118,7 +118,7 @@ const hooks = {
     item,
   }) => {
     const annotations = nocodeSelectors.annotations(getState())
-    const annotation = annotations[item.id]
+    const annotation = annotations[item.id] || {}
     if(annotation.form == 'drive.blogpost') {
       await autoAssignImages({
         dispatch,
@@ -135,7 +135,7 @@ const hooks = {
     item,
   }) => {
     const annotations = nocodeSelectors.annotations(getState())
-    const annotation = annotations[item.id]
+    const annotation = annotations[item.id] || {}
     if(annotation.form == 'drive.blogpost') {
       await autoAssignImages({
         dispatch,
@@ -160,7 +160,7 @@ const hooks = {
     item,
   }) => {
     const annotations = nocodeSelectors.annotations(getState())
-    const annotation = annotations[item.id]
+    const annotation = annotations[item.id] || {}
     if(annotation.form == 'drive.blogpost') {
       await autoAssignImages({
         dispatch,
