@@ -20,7 +20,7 @@
     "description": "A blog where your posts are google documents",
     "settings": "src/settings.js",
     "screenshot": "src/screenshot.png",
-    "exampleUrl": "https://blog.nocode.works/"
+    "exampleUrl": "https://travelblog.nocode.works/"
   },
   "scripts": {
     "template:build": "nocode-template build",
