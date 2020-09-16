@@ -1,6 +1,6 @@
 {
   "name": "nocode-template-blog",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "private": true,
   "description": "",
   "dependencies": {
@@ -20,7 +20,7 @@
     "description": "A blog where your posts are google documents",
     "settings": "src/settings.js",
     "screenshot": "src/screenshot.png",
-    "exampleUrl": "https://travelblog.nocode.works/"
+    "exampleUrl": "https://blog.nocode.works/"
   },
   "scripts": {
     "template:build": "nocode-template build",
