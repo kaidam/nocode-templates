@@ -1,5 +1,6 @@
 import Promise from 'bluebird'
 import uiActions from '@nocode-works/template/store/modules/ui'
+import routerActions from '@nocode-works/template/store/modules/router'
 
 import FolderInfoDescription from '@nocode-works/template/components/onboarding/FolderInfoDescription'
 
@@ -13,6 +14,9 @@ const ONBOARDING_STEPS = {
     placement: 'left',
     description: FolderInfoDescription,
     smallDescription: FolderInfoDescription,
+    initialise: async (dispatch, getState) => {
+      dispatch(routerActions.navigateTo('my-first-blog-post'))
+    },
   }),
   addSectionContent: () => ({
     id: 'navbar_blogposts_full',
@@ -42,6 +46,9 @@ const ONBOARDING_STEPS = {
     initialise: async (dispatch, getState) => {
       await dispatch(uiActions.setSettingsOpen(true))
       await Promise.delay(300)
+    },
+    onClose: async (dispatch, getState) => {
+      await dispatch(uiActions.setSettingsOpen(false))
     },
     description: [
       'You can configure many things for your website using the settings button.',
