@@ -39,6 +39,7 @@ const PostHeroSection = ({
   const content = (
     <HeroSection
       values={ heroValues }
+      showEditMessage={ showUI }
     />
   )
 

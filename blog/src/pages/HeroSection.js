@@ -34,6 +34,7 @@ const useStyles = makeStyles(theme => ({
 
 const HeroSection = ({
   values,
+  showEditMessage,
 } = {}) => {
 
   const classes = useStyles({
@@ -55,6 +56,13 @@ const HeroSection = ({
             values.subtitle && (
               <Typography variant="body1">
                 { values.subtitle }
+              </Typography>
+            )
+          }
+          {
+            showEditMessage && (
+              <Typography variant="caption">
+                (click to edit title and image)
               </Typography>
             )
           }
