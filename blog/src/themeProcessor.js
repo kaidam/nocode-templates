@@ -6,7 +6,7 @@ const themeProcessor = ({
   const updates = {
     layout: {
       topbarHeight: 80,
-      footerHeight: 60,
+      footerHeight: 80,
       smallScreenBreakpoint: 'sm',
       largeScreenBreakpoint: 'md',
     }

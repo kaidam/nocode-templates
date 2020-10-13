@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => {
     },
     contentToolbar: {
       height: '100%',
-      maxWidth: '816px',
+      maxWidth: '1024px',
       margin: '0px auto',
       paddingRight: '108px',
       paddingLeft: '86px',

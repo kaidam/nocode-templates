@@ -159,41 +159,31 @@ const Layout = ({
             <div className={ classes.toolbarMenuContainer }>
               <div className={ classes.toolbarMenu }>
                 <div className={ classes.toolbarMenuLeft }>
-                  <Hidden smDown implementation="css">
-                    <NavBar
-                      items={ blogbarItems }
-                      section="blogposts"
-                      align="left"
-                      editable={ false }
-                      isItemActive={ isItemActive }
-                      getAddItems={ getTopbarAddItems }
-                    />
-                  </Hidden>
-                  <Hidden mdUp implementation="css">
-                    <NavBar
-                      small
-                      items={ blogbarItems }
-                      section="blogposts"
-                      align="left"
-                      editable={ false }
-                      isItemActive={ isItemActive }
-                      getAddItems={ getTopbarAddItems }
-                    />
-                  </Hidden>
+
                 </div>
                 <div className={ classes.toolbarMenuFiller }></div>
                 <div className={ classes.toolbarMenuRight }>
                   <Hidden smDown implementation="css">
                     <NavBar
-                      section="topbar"
-                      align="right"
+                      items={ blogbarItems }
+                      section="blogposts"
+                      align="left"
+                      settingsAlign="right"
+                      editable={ false }
+                      isItemActive={ isItemActive }
+                      getAddItems={ getTopbarAddItems }
                     />
                   </Hidden>
                   <Hidden mdUp implementation="css">
                     <NavBar
                       small
-                      section="topbar"
-                      align="right"
+                      items={ blogbarItems }
+                      section="blogposts"
+                      align="left"
+                      settingsAlign="right"
+                      editable={ false }
+                      isItemActive={ isItemActive }
+                      getAddItems={ getTopbarAddItems }
                     />
                   </Hidden>
                 </div>
@@ -222,11 +212,28 @@ const Layout = ({
                       field="blog_name"
                     />
                   </div>
-                  <div className={ classes.footerFiller }>
-
-                  </div>
                   <div className={ classes.footerSocialLinks }>
                     <SocialLinks />
+                  </div>
+                  <div className={ classes.footerFiller }>
+                    
+                  </div>
+                  <div className={ classes.footerSectionContent }>
+                    <Hidden smDown implementation="css">
+                      <NavBar
+                        section="topbar"
+                        align="left"
+                        settingsAlign="right"
+                      />
+                    </Hidden>
+                    <Hidden mdUp implementation="css">
+                      <NavBar
+                        small
+                        section="topbar"
+                        align="left"
+                        settingsAlign="right"
+                      />
+                    </Hidden>
                   </div>
                 </div>
               </div>

@@ -157,14 +157,20 @@ const styles = makeStyles(theme => {
       paddingLeft: theme.spacing(1),
     },
 
+    footerSocialLinks: {
+      flexGrow: 0,
+      paddingLeft: theme.spacing(3),
+    },
+
     footerFiller: {
       flexGrow: 1,
     },
 
-    footerSocialLinks: {
+    footerSectionContent: {
       flexGrow: 0,
       paddingRight: theme.spacing(1),
     },
+
 
     globalSettings: ({
       
