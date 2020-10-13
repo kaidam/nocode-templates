@@ -61,6 +61,14 @@ const styles = makeStyles(theme => {
       justifyContent: 'flex-end',
     },
 
+    appBarTitle: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      flexGrow: 1,
+      color: theme.palette.primary.main,
+    },
+
     logoTitle: {
       color: theme.palette.primary.main,
     },

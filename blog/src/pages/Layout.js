@@ -17,6 +17,7 @@ import NavBar from '@nocode-works/template/components/navbar/Section'
 import Suspense from '@nocode-works/template/components/system/Suspense'
 import Copyright from '@nocode-works/template/components/editable/Copyright'
 import SocialLinks from '@nocode-works/template/components/editable/SocialLinks'
+import Logo from '@nocode-works/template/components/editable/Logo'
 
 import useStyles from '../styles/layout'
 
@@ -159,7 +160,9 @@ const Layout = ({
             <div className={ classes.toolbarMenuContainer }>
               <div className={ classes.toolbarMenu }>
                 <div className={ classes.toolbarMenuLeft }>
-
+                  <div className={ classes.appBarTitle }>
+                    <Logo />
+                  </div>
                 </div>
                 <div className={ classes.toolbarMenuFiller }></div>
                 <div className={ classes.toolbarMenuRight }>

@@ -70,6 +70,22 @@ export default {
       default: {color: "#3f51b5"},
     },
     {
+      id: 'logo',
+      title: 'Logo',
+      helperText: 'Upload an image for your logo',
+      component: 'image',
+      providers: ['local', 'google'],
+      default: null,
+      groups: ['logo'],
+    },
+    {
+      id: 'logo_text',
+      title: 'Logo Text',
+      helperText: 'Text that will appear next to your logos',
+      default: '',
+      groups: ['logo'],
+    },
+    {
       id: 'favicon',
       title: 'Favicon',
       helperText: 'Upload an image for your favicon',
