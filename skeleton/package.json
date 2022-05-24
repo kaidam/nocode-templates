@@ -15,8 +15,8 @@
     "redux": "^4.0.5"
   },
   "nocode": {
-    "name": "Documentation",
-    "description": "Perfect for documentation or intranet websites",
+    "name": "Skeleton",
+    "description": "For testing",
     "settings": "src/settings.js",
     "screenshot": "src/screenshot.png",
     "exampleUrl": "https://guide.nocode.works/"
