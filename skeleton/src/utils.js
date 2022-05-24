@@ -34,18 +34,23 @@ const autoAssignPages = async ({
 }) => {
   const nodes = nocodeSelectors.nodes(getState())
   const annotations = nocodeSelectors.annotations(getState())
+  const settings = settingsSelectors.settings(getState())
 
   const allPagesToUpdate = Object
     .keys(nodes)
     .map(id => {
       const node = nodes[id]
       const title = node.name
+      let searchQueryParts = [title]
+      if(settings.theme && settings.theme != 'General') {
+        searchQueryParts = [settings.theme].concat(searchQueryParts)
+      }
       return {
         type: 'page',
         node: nodes[id],
         annotation: annotations[id] || {},
         title,
-        searchQuery: title,
+        searchQuery: searchQueryParts.join(' '),
       }
     })
     .filter(item => {
@@ -63,6 +68,9 @@ const autoAssignPages = async ({
       const randomImage = await dispatch(unsplashActions.getRandomImage({
         query: item.searchQuery,
       }))
+      console.log('--------------------------------------------')
+      console.dir(item.searchQuery)
+      console.dir(randomImage)
       newAnnotation.image = randomImage
     }
 
