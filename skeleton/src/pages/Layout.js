@@ -57,8 +57,6 @@ const Layout = ({
     contentRef.current.scrollTop = 0
   }, [route])
 
-  const hiddenMode = "css"
-
   let {
     logo,
     favicon,
@@ -91,7 +89,7 @@ const Layout = ({
           }}>
             {
               hasLeftNavigation && (
-                <Hidden mdUp implementation={ hiddenMode }>
+                <Hidden mdUp implementation="css">
                   <NavDrawer
                     getChildren={({
                       closeDrawer,
@@ -130,13 +128,13 @@ const Layout = ({
             <div className={ classes.appBarTitle }>
               <Logo />
             </div>
-            <Hidden smDown implementation={ hiddenMode }>
+            <Hidden smDown implementation="css">
               <NavBar
                 section="topbar"
                 withHome
               />
             </Hidden>
-            <Hidden mdUp implementation={ hiddenMode }>
+            <Hidden mdUp implementation="css">
               <NavBar
                 small
                 section="topbar"
@@ -155,7 +153,7 @@ const Layout = ({
         <div className={ classes.main }>
           {
             hasLeftNavigation && (
-              <Hidden smDown implementation={ hiddenMode }>
+              <Hidden smDown implementation="css">
                 <div className={ navbarClassname }>
                   <Tree
                     section="sidebar"
@@ -166,23 +164,7 @@ const Layout = ({
             )
           }
           <div className={ classes.contentContainer }>
-            <Hidden smDown implementation={ hiddenMode }>
-              <Suspense
-                Component={ EditableDocumentToolbar }
-                props={{
-                  className: classes.contentToolbar,
-                }}
-              />
-            </Hidden>
-            <Hidden mdUp implementation={ hiddenMode }>
-              <Suspense
-                Component={ EditableDocumentToolbar }
-                props={{
-                  className: classes.smallContentToolbar,
-                  small: true,
-                }}
-              />
-            </Hidden>
+            
             <main className={ classes.content } ref={ contentRef }>
               <div className={ classes.contentChildrenContainer }>
                 { children }
@@ -203,7 +185,7 @@ const Layout = ({
                             
                           </div>
                           <div className={ classes.footerNavBar }>
-                            <Hidden smDown implementation={ hiddenMode }>
+                            <Hidden smDown implementation="css">
                               <NavBar
                                 section="footer"
                                 contrast
@@ -211,7 +193,7 @@ const Layout = ({
                                 align="right"
                               />
                             </Hidden>
-                            <Hidden mdUp implementation={ hiddenMode }>
+                            <Hidden mdUp implementation="css">
                               <NavBar
                                 small
                                 section="footer"
@@ -231,7 +213,7 @@ const Layout = ({
           </div>
           {
             hasRightNavigation && (
-              <Hidden smDown implementation={ hiddenMode }>
+              <Hidden smDown implementation="css">
                 <div className={ navbarClassname }>
                   <Tree
                     section="rightbar"
