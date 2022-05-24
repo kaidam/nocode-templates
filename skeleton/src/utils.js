@@ -25,6 +25,16 @@ const tagTitle = (tag, websiteData) => tag ?
   (websiteData ? websiteData.name : '')
 
 
+const getPageUnsplashQuery = (node, state) => {
+  const title = node.name
+  let searchQueryParts = [title]
+  const settings = settingsSelectors.settings(state)
+  if(settings.theme && settings.theme != 'General') {
+    searchQueryParts = [settings.theme].concat(searchQueryParts)
+  }
+  return searchQueryParts.join(' ')
+}
+
 // auto-assign the annotation values
 // for the correct editable page form
 // and the image for each page
@@ -34,23 +44,17 @@ const autoAssignPages = async ({
 }) => {
   const nodes = nocodeSelectors.nodes(getState())
   const annotations = nocodeSelectors.annotations(getState())
-  const settings = settingsSelectors.settings(getState())
 
   const allPagesToUpdate = Object
     .keys(nodes)
     .map(id => {
       const node = nodes[id]
       const title = node.name
-      let searchQueryParts = [title]
-      if(settings.theme && settings.theme != 'General') {
-        searchQueryParts = [settings.theme].concat(searchQueryParts)
-      }
       return {
         type: 'page',
-        node: nodes[id],
+        node,
         annotation: annotations[id] || {},
         title,
-        searchQuery: searchQueryParts.join(' '),
       }
     })
     .filter(item => {
@@ -65,11 +69,12 @@ const autoAssignPages = async ({
     const newAnnotation = Object.assign({}, existingAnnotation, {})
 
     if(!existingAnnotation.image) {
+      const searchQuery = getPageUnsplashQuery(item.node, getState())
       const randomImage = await dispatch(unsplashActions.getRandomImage({
-        query: item.searchQuery,
+        query: searchQuery,
       }))
       console.log('--------------------------------------------')
-      console.dir(item.searchQuery)
+      console.dir(`searching for unsplash item: ${searchQuery}`)
       console.dir(randomImage)
       newAnnotation.image = randomImage
     }
@@ -132,6 +137,7 @@ const hooks = {
 }
 
 export default {
+  getPageUnsplashQuery,
   autoCopyrightMessage,
   tagId,
   tagSettingsKey,

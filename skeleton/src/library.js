@@ -61,7 +61,9 @@ library.forms[HERO_FORM_NAME] = {
       helperText: 'Choose an image to display above this page',
       component: 'image',
       providers: ['local', 'google', 'unsplash', 'unsplash_random'],
-      random_query_field: 'name',
+      get_random_query_field: (values, state) => {
+        return utils.getPageUnsplashQuery(values, state)
+      },
       default: null,
     }],
   }, {
