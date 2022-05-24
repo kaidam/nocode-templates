@@ -1,6 +1,6 @@
 {
-  "name": "nocode-template-standard",
-  "version": "0.0.104",
+  "name": "nocode-template-skeleton",
+  "version": "0.0.1",
   "private": true,
   "description": "",
   "dependencies": {
