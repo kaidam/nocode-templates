@@ -64,10 +64,6 @@ const autoAssignPages = async ({
         query: item.searchQuery,
       }))
       newAnnotation.image = randomImage
-
-      console.log('--------------------------------------------')
-      console.dir(`${item.searchQuery}`)
-      console.dir(randomImage)
     }
 
     newAnnotation.form = HERO_FORM_NAME
