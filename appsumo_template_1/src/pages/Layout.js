@@ -77,7 +77,10 @@ const Layout = ({
         material
         favicon={ useFavicon }
         head={(
-          <link rel="stylesheet" href="./css/index.css" />
+          <React.Fragment>
+            <link rel="stylesheet" href="./css/index.css" />
+            <script src="https://cdn.tailwindcss.com"></script>
+          </React.Fragment>
         )}
       >
         <AppBar 
@@ -150,6 +153,96 @@ const Layout = ({
             />
           </Toolbar>
         </AppBar>
+        <header class="bg-white-600">
+          <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
+            <div class="w-full py-6 flex items-center justify-between border-b border-indigo-500 lg:border-none">
+            {
+              hasLeftNavigation && (
+                <Hidden mdUp implementation="css">
+                  <NavDrawer
+                    getChildren={({
+                      closeDrawer,
+                    }) => {
+
+                      const onClick = ({
+                        isFolderToggle,
+                      }) => {
+                        if(isFolderToggle) return
+                        closeDrawer()
+                      }
+
+                      return (
+                        <>
+                          <Tree
+                            section="sidebar"
+                            type="drawer"
+                            isNavDrawer
+                            autoHeight={ false }
+                            onClick={ onClick }
+                          />
+                          <Tree
+                            section="rightbar"
+                            type="drawer"
+                            isNavDrawer
+                            autoHeight={ false }
+                            onClick={ onClick }
+                          />
+                        </>
+                      )
+                    }}
+                  />
+                </Hidden>
+              )
+            }
+              <div class="flex items-center">
+                <a href="#">
+                  <div className={ classes.appBarTitle }>
+                    <Logo />
+                  </div>
+                </a>
+                <div class="hidden ml-10 space-x-8 lg:block">
+                  <Hidden smDown implementation="css">
+                    <NavBar
+                      section="topbar"
+                      withHome
+                    />
+                  </Hidden>
+                  <Hidden mdUp implementation="css">
+                    <NavBar
+                      small
+                      section="topbar"
+                      withHome
+                    />
+                  </Hidden>
+                </div>
+              </div>
+              <div class="ml-10 space-x-4">
+                <Suspense
+                  coreEnabled
+                  Component={ GlobalSettings }
+                  props={{
+                    className: classes.globalSettings,
+                  }}
+                />
+              </div>
+            </div>
+            <div class="py-4 flex flex-wrap justify-center space-x-6 lg:hidden">
+              <Hidden smDown implementation="css">
+                <NavBar
+                  section="topbar"
+                  withHome
+                />
+              </Hidden>
+              <Hidden mdUp implementation="css">
+                <NavBar
+                  small
+                  section="topbar"
+                  withHome
+                />
+              </Hidden>
+            </div>
+          </nav>
+        </header>
         <div className={ classes.main }>
           {
             hasLeftNavigation && (
