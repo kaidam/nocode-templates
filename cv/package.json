@@ -1,6 +1,6 @@
 {
-  "name": "nocode-template-appsumo1",
-  "version": "0.0.2",
+  "name": "nocode-template-cv",
+  "version": "0.0.3",
   "private": true,
   "description": "",
   "dependencies": {
@@ -15,8 +15,8 @@
     "redux": "^4.0.5"
   },
   "nocode": {
-    "name": "Appsumo",
-    "description": "For testing",
+    "name": "CV",
+    "description": "CV website",
     "settings": "src/settings.js",
     "screenshot": "src/screenshot.png",
     "exampleUrl": "https://guide.nocode.works/"
