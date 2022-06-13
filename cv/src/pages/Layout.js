@@ -141,7 +141,7 @@ const Layout = ({
           {
             hasLeftNavigation && (
               <Hidden smDown implementation="css">
-                <div className={ classnames( 'templateFooter', classes.navbarClassname ) }>
+                <div className={ classnames( 'templateFooter', navbarClassname ) }>
                   <Tree
                     section="sidebar"
                     type="full"
