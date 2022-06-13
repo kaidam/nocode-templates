@@ -1,5 +1,11 @@
 export default {
   websiteNameField: 'blog_name',
+  defaultLayout: 'title',
+  initialOptions: [
+    'color',
+    'logo',
+    'logo_text',
+  ],
   sections: [
     'topbar',
     'blogposts',

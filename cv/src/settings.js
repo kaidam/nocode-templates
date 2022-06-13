@@ -1,5 +1,12 @@
 export default {
   websiteNameField: 'company_name',
+  defaultLayout: 'documentation',
+  initialOptions: [
+    'theme',
+    'color',
+    'logo',
+    'logo_text',
+  ],
   sections: [
     'topbar',
     'footer',
@@ -77,6 +84,12 @@ export default {
       helperText: 'Choose your color',
       component: 'color',
       default: {color: "#3f51b5"},
+    }, {
+      id: 'background_color',
+      title: 'Background Color',
+      helperText: 'Choose your background color',
+      component: 'color',
+      default: {color: "#ffffff"},
     },{
       id: 'logo',
       title: 'Logo',

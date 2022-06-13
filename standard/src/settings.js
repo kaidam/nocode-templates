@@ -1,5 +1,11 @@
 export default {
   websiteNameField: 'company_name',
+  defaultLayout: 'documentation',
+  initialOptions: [
+    'color',
+    'logo',
+    'logo_text',
+  ],
   sections: [
     'topbar',
     'footer',
