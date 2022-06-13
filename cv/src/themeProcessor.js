@@ -3,6 +3,7 @@ const themeProcessor = ({
   route,
   settings,
 }) => {
+
   const updates = {
     layout: {
       topbarHeight: 80,
@@ -11,6 +12,7 @@ const themeProcessor = ({
       drawerWidthLarge: 360,
       smallScreenBreakpoint: 'sm',
       largeScreenBreakpoint: 'md',
+      backgroundColor: '#ffffff',
     }
   }
   if(settings.color && settings.color.color) {
@@ -26,6 +28,9 @@ const themeProcessor = ({
   if(settings.sidebarWidth) {
     updates.layout.drawerWidthSmall = settings.sidebarWidth
     updates.layout.drawerWidthLarge = settings.sidebarWidth + 60
+  }
+  if(settings.background_color && settings.background_color.color) {
+    updates.layout.backgroundColor = settings.background_color.color
   }
   return updates
 }

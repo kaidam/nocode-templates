@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 const styles = makeStyles(theme => {
+
   return {
     '@global': {
       'body, html, #_nocode_root': {
@@ -197,6 +198,7 @@ const styles = makeStyles(theme => {
     contentChildrenContainer: {
       margin: '0px auto',
       minHeight: `calc(100% - ${theme.layout.footerHeight}px - 10px)`,
+      backgroundColor: theme.layout.backgroundColor,
     },
 
     footer: {
