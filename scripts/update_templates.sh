@@ -20,3 +20,4 @@ function update_template() {
 
 update_template standard
 update_template blog
+update_template cv
