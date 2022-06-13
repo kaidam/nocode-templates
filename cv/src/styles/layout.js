@@ -10,6 +10,67 @@ const styles = makeStyles(theme => {
         margin: '0px',
         border: 0,
       },
+
+      // the container for the logo div
+      '.nocode-logo-container': {
+        display: 'flex',
+        flexDirection: 'column',
+      },
+      // the logo image
+      '.nocode-logo-image': {
+        height: '20px'
+      },
+      // the image in the logo
+      '.nocode-logo-text': {
+        color: 'red',
+      },
+
+      '.nocode-copyright-container': {
+        padding: '1px',
+      },
+
+      '.nocode-copyright-text': {
+        color: 'red',
+      },
+
+      '.nocode-navbar-open-button-icon': {
+        color: 'red',
+      },
+
+      '.nocode-drawer-open-button-icon': {
+        color: 'red',
+      },
+
+      // make these look as horrible as I can :-)
+      '.nocode-navbar-item': {
+        borderRadius: 0,
+        backgroundColor: 'red',
+        color: 'green !important'
+      },
+
+      '.nocode-navbar-item-hover': {
+        borderRadius: 10,
+        backgroundColor: 'yellow !important',
+      },
+
+      '.nocode-tree-list': {
+        backgroundColor: 'pink'
+      },
+
+      '.nocode-tree-item': {
+        padding: '20px',
+        '&:hover': {
+          backgroundColor: 'orange !important',
+        }
+      },
+
+      '.nocode-tree-item-active': {
+        backgroundColor: 'blue !important'
+      },
+
+      '.nocode-tree-text': {
+        textDecoration: 'underline !important'
+      },
     },
     root: {
       height: '100%',
@@ -19,26 +80,28 @@ const styles = makeStyles(theme => {
       position: 'relative',
       zIndex: theme.zIndex.drawer + 1,
       minHeight: [`${theme.layout.topbarHeight}px`, '!important'],
-      //backgroundColor: theme.palette.primary.main,
       backgroundColor: '#ffffff',
       boxShadow: 'none',
       borderBottom: 'solid 1px rgba(0, 0, 0, 0.12)',
-      boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
-      display: 'flex',
-      flexDirection: 'column',
     },
     headerToolbar: {
       paddingLeft: theme.spacing(1),
       paddingRight: theme.spacing(1),
       height: [`${theme.layout.topbarHeight}px`, '!important'],
       display: 'flex',
-      flexDirection: 'column',
+      flexDirection: 'row',
       alignItems: 'center',
     },
     appBarTitle: {
       flexGrow: 1,
       color: theme.palette.primary.main,
       padding: theme.spacing(2),
+    },
+    appBarSmallMenu: {
+      flexGrow: 0,
+    },
+    appBarFiller: {
+      width: '38px',
     },
     logoContainer: {
       display: 'flex',

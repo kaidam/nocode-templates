@@ -50,7 +50,7 @@ const Layout = ({
     [classes.drawer]: true,
     [classes.largeScreen]: true,
     [classes.smallDrawer]: true,
-  }, 'templateSidebar')
+  })
 
   useEffect(() => {
     if(!contentRef.current) return
@@ -76,9 +76,6 @@ const Layout = ({
       <AppLayout
         material
         favicon={ useFavicon }
-        head={(
-          <link rel="stylesheet" href="./css/overrides.css" />
-        )}
       >
         <AppBar 
           position="static"
@@ -90,58 +87,69 @@ const Layout = ({
             {
               hasLeftNavigation && (
                 <Hidden mdUp implementation="css">
-                  <NavDrawer
-                    getChildren={({
-                      closeDrawer,
-                    }) => {
-
-                      const onClick = ({
-                        isFolderToggle,
+                  <div className={ classes.appBarSmallMenu }>
+                    <NavDrawer
+                      getChildren={({
+                        closeDrawer,
                       }) => {
-                        if(isFolderToggle) return
-                        closeDrawer()
-                      }
 
-                      return (
-                        <div className={ classnames( 'templateFooter', classes.templateMobileSidebar ) }>
-                          <Tree
-                            section="sidebar"
-                            type="drawer"
-                            isNavDrawer
-                            autoHeight={ false }
-                            onClick={ onClick }
-                          />
-                          <Tree
-                            section="rightbar"
-                            type="drawer"
-                            isNavDrawer
-                            autoHeight={ false }
-                            onClick={ onClick }
-                          />
-                        </div>
-                      )
-                    }}
-                  />
+                        const onClick = ({
+                          isFolderToggle,
+                        }) => {
+                          if(isFolderToggle) return
+                          closeDrawer()
+                        }
+
+                        return (
+                          <div className={ classnames('nocode-sidebar', 'nocode-sidebar-combined') }>
+                            <Tree
+                              section="sidebar"
+                              type="drawer"
+                              isNavDrawer
+                              autoHeight={ false }
+                              onClick={ onClick }
+                            />
+                            <Tree
+                              section="rightbar"
+                              type="drawer"
+                              isNavDrawer
+                              autoHeight={ false }
+                              onClick={ onClick }
+                            />
+                          </div>
+                        )
+                      }}
+                    />
+                  </div>
                 </Hidden>
               )
             }
             <div className={ classes.appBarTitle }>
               <Logo />
             </div>
+            {
+              hasLeftNavigation && (
+                <Hidden mdUp implementation="css">
+                  <div className={ classnames(classes.appBarSmallMenu, classes.appBarFiller) }>
+                    
+                  </div>
+                </Hidden>
+              )
+            }
             <Suspense
-                coreEnabled
-                Component={ GlobalSettings }
-                props={{
-                  className: classes.globalSettings,
-                }}
-              />
+              coreEnabled
+              Component={ GlobalSettings }
+              props={{
+                className: classes.globalSettings,
+              }}
+            />
           </Toolbar>
         </AppBar>
         <div className={ classes.main }>
           {
             hasLeftNavigation && (
               <Hidden smDown implementation="css">
-                <div className={ classnames( 'templateFooter', navbarClassname ) }>
+                <div className={ classnames('nocode-sidebar', 'nocode-sidebar-left', navbarClassname) }>
                   <Tree
                     section="sidebar"
                     type="full"
@@ -160,7 +168,7 @@ const Layout = ({
                 hasFooter && (
                   <>
                     <Divider />
-                    <div className={ classnames( 'templateFooter', classes.footer ) }>
+                    <div className={ classes.footer }>
                       <Toolbar classes={{
                         root: classes.footerToolbar,
                       }}>
@@ -171,12 +179,13 @@ const Layout = ({
                           <div className={ classes.footerFiller }>
                             
                           </div>
-                          <div className={ classes.footerNavBar }>
+                          <div className={ classnames('nocode-navbar', 'nocode-navbar-footer', classes.footerNavBar) }>
                             <Hidden smDown implementation="css">
                               <NavBar
                                 section="footer"
                                 contrast
                                 align="right"
+                                float="left"
                               />
                             </Hidden>
                             <Hidden mdUp implementation="css">
@@ -186,6 +195,7 @@ const Layout = ({
                                 contrast
                                 vertical
                                 align="right"
+                                float="left"
                               />
                             </Hidden>
                           </div>
@@ -200,7 +210,7 @@ const Layout = ({
           {
             hasRightNavigation && (
               <Hidden smDown implementation="css">
-                <div className={ navbarClassname }>
+                <div className={ classnames('nocode-sidebar', 'nocode-sidebar-right', navbarClassname) }>
                   <Tree
                     section="rightbar"
                     type="full"
