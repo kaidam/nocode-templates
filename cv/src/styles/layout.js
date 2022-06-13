@@ -18,12 +18,14 @@ const styles = makeStyles(theme => {
     appbar: {
       position: 'relative',
       zIndex: theme.zIndex.drawer + 1,
-      height: [`${theme.layout.topbarHeight}px`, '!important'],
+      minHeight: [`${theme.layout.topbarHeight}px`, '!important'],
       //backgroundColor: theme.palette.primary.main,
       backgroundColor: '#ffffff',
       boxShadow: 'none',
       borderBottom: 'solid 1px rgba(0, 0, 0, 0.12)',
       boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
+      display: 'flex',
+      flexDirection: 'column',
     },
     headerToolbar: {
       paddingLeft: theme.spacing(1),
@@ -31,13 +33,16 @@ const styles = makeStyles(theme => {
       height: [`${theme.layout.topbarHeight}px`, '!important'],
       display: 'flex',
       flexDirection: 'column',
+      alignItems: 'center',
     },
     appBarTitle: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
       flexGrow: 1,
       color: theme.palette.primary.main,
+      padding: theme.spacing(2),
+    },
+    logoContainer: {
+      display: 'flex',
+      flexDirection: 'column',
     },
     logoTitle: {
       color: theme.palette.primary.main,
@@ -128,7 +133,7 @@ const styles = makeStyles(theme => {
 
     contentChildrenContainer: {
       margin: '0px auto',
-      minHeight: `calc(100% - ${theme.layout.footerHeight}px - 1px)`,
+      minHeight: `calc(100% - ${theme.layout.footerHeight}px - 10px)`,
     },
 
     footer: {
@@ -146,7 +151,7 @@ const styles = makeStyles(theme => {
 
     footerContainer: {
       display: 'flex',
-      flexDirection: 'row',
+      flexDirection: 'column',
       alignItems: 'center',
       width: '100%',
       //height: '100%',
@@ -175,6 +180,9 @@ const styles = makeStyles(theme => {
       
     }) => ({
       marginLeft: theme.spacing(2),
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
     }),
 
     searchHolder: {
@@ -184,7 +192,7 @@ const styles = makeStyles(theme => {
     document: {
       maxWidth: '832px',
       margin: '0px auto',
-      minHeight: `calc(100% - ${theme.layout.footerHeight}px - 1px)`,
+      minHeight: `calc(100% - ${theme.layout.footerHeight}px - 10px)`,
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2),
       paddingRight: '96px',

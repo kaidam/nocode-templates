@@ -12,29 +12,27 @@ body {
 
 /* items */
 header div div div nav div ul div li a[class*="makeStyles-item-"] {
-  border-radius: 0 !important;
-  padding: 4px 8px !important;
+  border-radius: 0;
+  padding: 4px 8px;
   border: 1px solid #aeaeae;
 }
 
 /* Folder */
 header div div div nav div ul div li div[class*="makeStyles-item-"] {
-  border-radius: 0 !important;
-  padding: 4px 8px !important;
+  border-radius: 0;
+  padding: 4px 8px;
   border: 1px solid #aeaeae;
 }
 
 [class*="footerNavBar"] div div div nav div ul div li a {
-  background-color: #FF0000 !important;
+
 }
 
 [class*="globalSettings"] {
-  margin-left: auto;
-  margin-right: 24px;
+
 }
 
 [class*="appBarTitle"] {
-  margin-right: 24px;
   flex-grow: 0;
 }
 
