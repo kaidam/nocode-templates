@@ -155,7 +155,7 @@ const styles = makeStyles(theme => {
     },
 
     main: {
-      height: `calc(100% - ${theme.layout.topbarHeight}px)`,
+      height: `calc(100% - ${theme.layout.topbarHeight}px - 1px)`,
       width: '100%',
       bottom: 0,
       left: 0,
@@ -232,6 +232,10 @@ const styles = makeStyles(theme => {
       flexGrow: 0,
     },
 
+    footerSocialLinks: {
+      marginTop: '20px',
+    },
+
     footerFiller: {
       flexGrow: 1,
     },
@@ -252,6 +256,10 @@ const styles = makeStyles(theme => {
 
     searchHolder: {
       padding: theme.spacing(1),
+    },
+
+    appBarSearch: {
+      maxWidth: '200px',
     },
 
     document: {

@@ -21,6 +21,9 @@ import Suspense from '@nocode-works/template/components/system/Suspense'
 
 import Logo from '@nocode-works/template/components/editable/Logo'
 import Copyright from '@nocode-works/template/components/editable/Copyright'
+import SocialLinks from '@nocode-works/template/components/editable/SocialLinks'
+import Search from '@nocode-works/template/components/editable/Search'
+import useHasFeature from '@nocode-works/template/components/hooks/useHasFeature'
 
 import useStyles from '../styles/layout'
 
@@ -31,6 +34,7 @@ const Layout = ({
   children,
 }) => {
   const showUI = useSelector(systemSelectors.showUI)
+  const hasSearch = useHasFeature('search')
 
   const contentRef = useRef(null)
   
@@ -128,6 +132,14 @@ const Layout = ({
               <Logo />
             </div>
             {
+              hasSearch && (
+                <div className={ classes.appBarSearch }>
+                  <Search />
+                </div>
+              )
+            }
+            
+            {
               hasLeftNavigation && (
                 <Hidden mdUp implementation="css">
                   <div className={ classnames(classes.appBarSmallMenu, classes.appBarFiller) }>
@@ -198,6 +210,9 @@ const Layout = ({
                                 float="left"
                               />
                             </Hidden>
+                          </div>
+                          <div className={ classes.footerSocialLinks }>
+                            <SocialLinks />
                           </div>
                         </div>
                       </Toolbar>
