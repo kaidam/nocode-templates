@@ -85,12 +85,18 @@ export default {
       component: 'color',
       default: {color: "#3f51b5"},
     }, {
+      id: 'accent_color',
+      title: 'Accent Color',
+      helperText: 'Choose your accent color',
+      component: 'color',
+      default: {color: "#2196f3"},
+    }, {
       id: 'background_color',
       title: 'Background Color',
       helperText: 'Choose your background color',
       component: 'color',
       default: {color: "#ffffff"},
-    },{
+    }, {
       id: 'logo',
       title: 'Logo',
       helperText: 'Upload an image for your logo',
@@ -151,7 +157,7 @@ export default {
           inputProps: {
             type: 'number',
           },
-          default: 160,
+          default: 180,
         },
       ],
       [

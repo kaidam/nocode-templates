@@ -13,6 +13,7 @@ const themeProcessor = ({
       smallScreenBreakpoint: 'sm',
       largeScreenBreakpoint: 'md',
       backgroundColor: '#ffffff',
+      accentColor: '#ff0000',
     }
   }
   if(settings.color && settings.color.color) {
@@ -31,6 +32,9 @@ const themeProcessor = ({
   }
   if(settings.background_color && settings.background_color.color) {
     updates.layout.backgroundColor = settings.background_color.color
+  }
+  if(settings.accent_color && settings.accent_color.color) {
+    updates.layout.accentColor = settings.accent_color.color
   }
   return updates
 }

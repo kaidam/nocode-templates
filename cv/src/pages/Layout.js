@@ -39,6 +39,7 @@ const Layout = ({
   const contentRef = useRef(null)
   
   const settings = useSelector(settingsSelectors.settings)
+  console.dir(settings)
   const route = useSelector(routerSelectors.route)
   
   const hasLeftNavigation = settings.leftNavigation
@@ -131,19 +132,22 @@ const Layout = ({
             <div className={ classes.appBarTitle }>
               <Logo />
             </div>
-            {
+            {/* {
               hasSearch && (
                 <div className={ classes.appBarSearch }>
                   <Search />
                 </div>
               )
-            }
+            } */}
             
             {
               hasLeftNavigation && (
                 <Hidden mdUp implementation="css">
                   <div className={ classnames(classes.appBarSmallMenu, classes.appBarFiller) }>
-                    
+                    <Tree
+                      section="sidebar"
+                      type="full"
+                    />
                   </div>
                 </Hidden>
               )
@@ -176,7 +180,22 @@ const Layout = ({
               <div className={ classes.contentChildrenContainer }>
                 { children }
               </div>
-              {
+            </main>
+          </div>
+          {
+            hasRightNavigation && (
+              <Hidden smDown implementation="css">
+                <div className={ classnames('nocode-sidebar', 'nocode-sidebar-right', navbarClassname) }>
+                  <Tree
+                    section="rightbar"
+                    type="full"
+                  />
+                </div>
+              </Hidden>
+            )
+          }
+        </div>
+        {
                 hasFooter && (
                   <>
                     <Divider />
@@ -185,11 +204,10 @@ const Layout = ({
                         root: classes.footerToolbar,
                       }}>
                         <div className={ classes.footerContainer }>
-                          <div className={ classes.footerCopyright }>
-                            <Copyright />
-                          </div>
                           <div className={ classes.footerFiller }>
-                            
+                            <div className={ classes.footerSocialLinks }>
+                              <SocialLinks />
+                            </div>
                           </div>
                           <div className={ classnames('nocode-navbar', 'nocode-navbar-footer', classes.footerNavBar) }>
                             <Hidden smDown implementation="css">
@@ -211,8 +229,8 @@ const Layout = ({
                               />
                             </Hidden>
                           </div>
-                          <div className={ classes.footerSocialLinks }>
-                            <SocialLinks />
+                          <div className={ classes.footerCopyright }>
+                            <Copyright />
                           </div>
                         </div>
                       </Toolbar>
@@ -220,21 +238,6 @@ const Layout = ({
                   </>
                 )
               }
-            </main>
-          </div>
-          {
-            hasRightNavigation && (
-              <Hidden smDown implementation="css">
-                <div className={ classnames('nocode-sidebar', 'nocode-sidebar-right', navbarClassname) }>
-                  <Tree
-                    section="rightbar"
-                    type="full"
-                  />
-                </div>
-              </Hidden>
-            )
-          }
-        </div>
         <SnackBar />
       </AppLayout>
     </div>
