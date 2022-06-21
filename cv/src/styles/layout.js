@@ -25,7 +25,7 @@ const styles = makeStyles(theme => {
       },
       // the text in the logo
       '.nocode-logo-text': {
-        color: [`${theme.palette.primary.contrastText} !important`],
+        color: [`${theme.palette.getContrastText(theme.palette.primary.main)} !important`],
         fontWeight: '500',
       },
 
@@ -55,11 +55,19 @@ const styles = makeStyles(theme => {
       },
 
       '.nocode-tree-list': {
-        backgroundColor: 'theme.palette.primary.secondary',
+
       },
 
-      '.nocode-tree-list .nocode-tree-list': {
-        paddingLeft: '24px',
+      '.nocode-sidebar-left': {
+
+      },
+
+      '.nocode-sidebar-left .nocode-tree-list .nocode-tree-list': {
+        paddingLeft: '24px !important',
+      },
+
+      '.nocode-sidebar-right .nocode-tree-list .nocode-tree-list': {
+        paddingRight: '24px !important',
       },
 
       '.nocode-tree-item': {
@@ -82,6 +90,10 @@ const styles = makeStyles(theme => {
         backgroundColor: [`${theme.layout.accentColor} !important`],
         border: [`2px solid ${theme.palette.primary.main} !important`],
         borderRadius: '30px 0 0 30px',
+      },
+
+      '.nocode-tree-item-active .nocode-tree-text span' : {
+        color: [`${theme.palette.getContrastText(theme.layout.accentColor)} !important`],
       },
 
       '.nocode-tree-text': {
@@ -175,6 +187,7 @@ const styles = makeStyles(theme => {
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
+      backgroundColor: theme.layout.backgroundColor,
     },
 
     content: {
@@ -205,7 +218,7 @@ const styles = makeStyles(theme => {
     contentChildrenContainer: {
       margin: '0px auto',
       minHeight: `calc(100% - ${theme.layout.footerHeight}px - 110px)`,
-      backgroundColor: theme.layout.backgroundColor,
+      
     },
 
     footer: {

@@ -175,7 +175,6 @@ const Layout = ({
             )
           }
           <div className={ classes.contentContainer }>
-            
             <main className={ classes.content } ref={ contentRef }>
               <div className={ classes.contentChildrenContainer }>
                 { children }

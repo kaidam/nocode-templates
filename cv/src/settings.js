@@ -89,7 +89,7 @@ export default {
       title: 'Accent Color',
       helperText: 'Choose your accent color',
       component: 'color',
-      default: {color: "#2196f3"},
+      default: {color: "#ff0000"},
     }, {
       id: 'background_color',
       title: 'Background Color',
