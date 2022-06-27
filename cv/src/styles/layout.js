@@ -47,11 +47,16 @@ const styles = makeStyles(theme => {
 
       // make these look as horrible as I can :-)
       '.nocode-navbar-footer .nocode-navbar-item': {
-        borderRadius: 0,
+        borderRadius: 10,
+      },
+
+      '.nocode-navbar-footer .nocode-navbar-item:active': {
+        backgroundColor: [`${theme.layout.accentColor} !important`],
       },
 
       '.nocode-navbar-footer .nocode-navbar-item-hover': {
-        borderRadius: 10,
+        backgroundColor: [`${theme.palette.primary.dark} !important`],
+        color: [`${theme.palette.primary.contrastText} !important`],
       },
 
       '.nocode-tree-list': {
@@ -101,7 +106,6 @@ const styles = makeStyles(theme => {
     },
     root: {
       height: '100%',
-      overflowX: 'hidden',
     },
     appbar: {
       position: 'relative',
@@ -130,12 +134,12 @@ const styles = makeStyles(theme => {
       width: '38px',
     },
 
-    drawer: {
-      height: '100%',
-      borderLeft: '1px solid rgba(0, 0, 0, 0.12)',
-      borderRight: '1px solid rgba(0, 0, 0, 0.12)',
-      backgroundColor: theme.palette.background.paper,
-    },
+    // drawer: {
+    //   height: '100%',
+    //   borderLeft: '1px solid rgba(0, 0, 0, 0.12)',
+    //   borderRight: '1px solid rgba(0, 0, 0, 0.12)',
+    //   backgroundColor: theme.palette.background.paper,
+    // },
 
     smallDrawer: {
       width: `${theme.layout.drawerWidthSmall}px`,
@@ -174,16 +178,15 @@ const styles = makeStyles(theme => {
 
     main: {
       minHeight: `calc(100% - ${theme.layout.topbarHeight}px - 223.351px - 2px)`,
-      width: '100%',
       bottom: 0,
       left: 0,
       display: 'flex',
       flexDirection: 'row',
-      overflow: 'expand',
     },
 
     contentContainer: {
       flexGrow: 1,
+      width: '100%',
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
@@ -192,8 +195,38 @@ const styles = makeStyles(theme => {
 
     content: {
       flexGrow: 1,
-      overflowY: 'auto',
+      width: '100%',
       background: 'rgba(0, 0, 0, 0.001)',
+    },
+
+    contentChildrenContainer: {
+      margin: '0px auto',
+      minHeight: `calc(100% - ${theme.layout.footerHeight}px - 110px)`,
+      width: '100%',
+    },
+
+    documentContainer: {
+      width: '100% !important',
+    },
+
+    document: {
+      maxWidth: '832px',
+      margin: '0px auto',
+      minHeight: `calc(100% - ${theme.layout.footerHeight}px - 10px)`,
+      paddingTop: theme.spacing(2),
+      paddingBottom: theme.spacing(2),
+      paddingRight: '96px',
+      paddingLeft: '96px',
+      [theme.breakpoints.up(theme.layout.largeScreenBreakpoint)]: {
+        paddingLeft: '96px',
+        paddingRight: '96px',
+      },
+      [theme.breakpoints.down(theme.layout.smallScreenBreakpoint)]: {
+        paddingLeft: [['17px'], '!important'],
+        paddingRight: [['17px'], '!important'],
+      },
+      letterSpacing: '0px',
+      hyphens: 'auto',
     },
 
     contentToolbar: {
@@ -215,17 +248,9 @@ const styles = makeStyles(theme => {
       paddingLeft: theme.spacing(2),
     },
 
-    contentChildrenContainer: {
-      margin: '0px auto',
-      minHeight: `calc(100% - ${theme.layout.footerHeight}px - 110px)`,
-      
-    },
-
     footer: {
       width: '100%',
-      color: theme.palette.common.white,
       minHeight: [`${theme.layout.footerHeight}px`, '!important'],
-      //height: [`${theme.layout.footerHeight}px`, '!important'],
       backgroundColor: theme.palette.primary.main,
     },
 
@@ -243,9 +268,6 @@ const styles = makeStyles(theme => {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
       paddingBottom: theme.spacing(1),
-      // paddingRight: theme.spacing(1),
-      
-      // paddingBottom: theme.spacing(2),
     },
 
     footerCopyright: {
@@ -283,25 +305,6 @@ const styles = makeStyles(theme => {
 
     appBarSearch: {
       maxWidth: '200px',
-    },
-
-    document: {
-      maxWidth: '832px',
-      margin: '0px auto',
-      minHeight: `calc(100% - ${theme.layout.footerHeight}px - 10px)`,
-      paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2),
-      paddingRight: '96px',
-      paddingLeft: '96px',
-      [theme.breakpoints.up(theme.layout.largeScreenBreakpoint)]: {
-        paddingLeft: '96px',
-        paddingRight: '96px',
-      },
-      [theme.breakpoints.down(theme.layout.smallScreenBreakpoint)]: {
-        paddingLeft: [['17px'], '!important'],
-        paddingRight: [['17px'], '!important'],
-      },
-      letterSpacing: '0px',
     },
   }
 })

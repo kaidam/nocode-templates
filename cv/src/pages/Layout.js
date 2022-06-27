@@ -132,26 +132,7 @@ const Layout = ({
             <div className={ classes.appBarTitle }>
               <Logo />
             </div>
-            {/* {
-              hasSearch && (
-                <div className={ classes.appBarSearch }>
-                  <Search />
-                </div>
-              )
-            } */}
             
-            {
-              hasLeftNavigation && (
-                <Hidden mdUp implementation="css">
-                  <div className={ classnames(classes.appBarSmallMenu, classes.appBarFiller) }>
-                    <Tree
-                      section="sidebar"
-                      type="full"
-                    />
-                  </div>
-                </Hidden>
-              )
-            }
             <Suspense
               coreEnabled
               Component={ GlobalSettings }
