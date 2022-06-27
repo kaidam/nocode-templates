@@ -130,7 +130,9 @@ const Layout = ({
               )
             }
             <div className={ classes.appBarTitle }>
-              <Logo />
+              <Logo
+                defaultLogo="/images/placeholder-logo.jpg"
+              />
             </div>
             
             <Suspense
