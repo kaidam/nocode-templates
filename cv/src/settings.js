@@ -4,8 +4,6 @@ export default {
   initialOptions: [
     'theme',
     'color',
-    'logo',
-    'logo_text',
   ],
   sections: [
     'topbar',
