@@ -83,7 +83,7 @@ const Layout = ({
         favicon={ useFavicon }
       >
         <AppBar 
-          position="static"
+          position="fixed"
           className={ classes.appbar }
         >
           <Toolbar classes={{

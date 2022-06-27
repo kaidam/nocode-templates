@@ -16,6 +16,7 @@ const styles = makeStyles(theme => {
       '.nocode-logo-container': {
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'center',
         height: `${theme.layout.topbarHeight}px`,
       },
       // the logo image
@@ -64,7 +65,13 @@ const styles = makeStyles(theme => {
       },
 
       '.nocode-sidebar-left': {
+        backgroundColor: theme.layout.backgroundColor,
+        minHeight: '100%',
+      },
 
+      '.nocode-sidebar-right': {
+        backgroundColor: theme.layout.backgroundColor,
+        minHeight: '100%',
       },
 
       '.nocode-sidebar-left .nocode-tree-list .nocode-tree-list': {
@@ -125,6 +132,8 @@ const styles = makeStyles(theme => {
     },
     appBarTitle: {
       flexGrow: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
       padding: theme.spacing(2),
     },
     appBarSmallMenu: {
@@ -177,7 +186,7 @@ const styles = makeStyles(theme => {
     },
 
     main: {
-      minHeight: `calc(100% - ${theme.layout.topbarHeight}px - 223.351px - 2px)`,
+      minHeight: `calc(100% - ${theme.layout.topbarHeight}px - 200px)`,
       bottom: 0,
       left: 0,
       display: 'flex',
@@ -196,7 +205,6 @@ const styles = makeStyles(theme => {
     content: {
       flexGrow: 1,
       width: '100%',
-      background: 'rgba(0, 0, 0, 0.001)',
     },
 
     contentChildrenContainer: {
@@ -268,6 +276,7 @@ const styles = makeStyles(theme => {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
       paddingBottom: theme.spacing(1),
+      paddingTop: theme.spacing(1),
     },
 
     footerCopyright: {
@@ -283,11 +292,6 @@ const styles = makeStyles(theme => {
 
     footerFiller: {
       flexGrow: 1,
-    },
-
-    footerNavBar: {
-      paddingTop: theme.spacing(1),
-      flexGrow: 0,
     },
 
     globalSettings: ({
