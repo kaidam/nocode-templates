@@ -39,7 +39,6 @@ const Layout = ({
   const contentRef = useRef(null)
   
   const settings = useSelector(settingsSelectors.settings)
-  console.dir(settings)
   const route = useSelector(routerSelectors.route)
   
   const hasLeftNavigation = settings.leftNavigation
