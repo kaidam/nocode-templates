@@ -39,11 +39,11 @@ const styles = makeStyles(theme => {
       },
 
       '.nocode-navbar-open-button-icon': {
-        color: 'red',
+        color: theme.palette.primary.contrastText,
       },
 
       '.nocode-drawer-open-button-icon': {
-        color: 'red',
+        color: theme.palette.primary.contrastText,
       },
 
       // make these look as horrible as I can :-)
@@ -60,12 +60,8 @@ const styles = makeStyles(theme => {
         color: [`${theme.palette.primary.contrastText} !important`],
       },
 
-      '.nocode-tree-list': {
-
-      },
-
       '.nocode-sidebar-left': {
-        backgroundColor: theme.layout.backgroundColor,
+        backgroundColor: [`${theme.palette.common.white} !important`],
         minHeight: '100%',
       },
 
@@ -75,32 +71,36 @@ const styles = makeStyles(theme => {
       },
 
       '.nocode-sidebar-left .nocode-tree-list .nocode-tree-list': {
-        paddingLeft: '24px !important',
+        paddingRight: '28px !important',
       },
 
       '.nocode-sidebar-right .nocode-tree-list .nocode-tree-list': {
-        paddingRight: '24px !important',
+        paddingLeft: '28px !important',
+      },
+
+      '.nocode-tree-list': {
+
       },
 
       '.nocode-tree-item': {
         color: [`${theme.palette.primary.contrastText} !important`],
-        backgroundColor: [`${theme.palette.primary.light} !important`],
-        borderRadius: '100px 0 0 100px',
-        padding: '10px',
-        margin: '2px 0px 0px 4px',
+        backgroundColor: [`${theme.palette.primary.main} !important`],
+        width: 'calc( 100% - 8px)',
+        borderRadius: '30px',
+        padding: '8px',
+        margin: '4px',
         '&:hover': {
           backgroundColor: [`${theme.palette.primary.dark} !important`],
+          color: [`${theme.palette.primary.contrastText} !important`],
         }
       },
 
       '.nocode-sidebar-right .nocode-tree-item': {
-        borderRadius: '0 30px 30px 0',
-        margin: '2px 4px 0px 0px',
+        borderRadius: '30px',
       },
 
       '.nocode-tree-item-active': {
         backgroundColor: [`${theme.layout.accentColor} !important`],
-        borderRadius: '30px 0 0 30px',
       },
 
       '.nocode-tree-item-active .nocode-tree-text span' : {
@@ -142,13 +142,6 @@ const styles = makeStyles(theme => {
     appBarFiller: {
       width: '38px',
     },
-
-    // drawer: {
-    //   height: '100%',
-    //   borderLeft: '1px solid rgba(0, 0, 0, 0.12)',
-    //   borderRight: '1px solid rgba(0, 0, 0, 0.12)',
-    //   backgroundColor: theme.palette.background.paper,
-    // },
 
     smallDrawer: {
       width: `${theme.layout.drawerWidthSmall}px`,
@@ -209,12 +202,10 @@ const styles = makeStyles(theme => {
 
     contentChildrenContainer: {
       margin: '0px auto',
-      minHeight: `calc(100% - ${theme.layout.footerHeight}px - 110px)`,
+      minHeight: `calc(100vh - ${theme.layout.topbarHeight}px - ${theme.layout.footerHeight}px - 110px)`,
       width: '100%',
-    },
-
-    documentContainer: {
-      width: '100% !important',
+      borderLeft: 'solid 1px rgba(0, 0, 0, 0.12)',
+      borderRight: 'solid 1px rgba(0, 0, 0, 0.12)',
     },
 
     document: {
