@@ -88,7 +88,6 @@ const styles = makeStyles(theme => {
 
       '.nocode-tree-item-active': {
         backgroundColor: [`${theme.layout.accentColor} !important`],
-        border: [`2px solid ${theme.palette.primary.main} !important`],
         borderRadius: '30px 0 0 30px',
       },
 
@@ -174,12 +173,13 @@ const styles = makeStyles(theme => {
     },
 
     main: {
-      height: `calc(100% - ${theme.layout.topbarHeight}px - 1px)`,
+      minHeight: `calc(100% - ${theme.layout.topbarHeight}px - 223.351px - 2px)`,
       width: '100%',
       bottom: 0,
       left: 0,
       display: 'flex',
       flexDirection: 'row',
+      overflow: 'expand',
     },
 
     contentContainer: {
@@ -253,7 +253,7 @@ const styles = makeStyles(theme => {
     },
 
     footerSocialLinks: {
-      borderRadius: '5%',
+      borderRadius: '20px',
       margin: '10px',
       padding: '16px 14px 14px',
       backgroundColor: '#fff',

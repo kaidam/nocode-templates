@@ -204,29 +204,29 @@ const Layout = ({
                       }}>
                         <div className={ classes.footerContainer }>
                           <div className={ classes.footerFiller }>
-                            <div className={ classes.footerSocialLinks }>
-                              <SocialLinks />
+                            <div className={ classnames('nocode-navbar', 'nocode-navbar-footer', classes.footerNavBar) }>
+                              <Hidden smDown implementation="css">
+                                <NavBar
+                                  section="footer"
+                                  contrast
+                                  align="right"
+                                  float="left"
+                                />
+                              </Hidden>
+                              <Hidden mdUp implementation="css">
+                                <NavBar
+                                  small
+                                  section="footer"
+                                  contrast
+                                  vertical
+                                  align="right"
+                                  float="left"
+                                />
+                              </Hidden>
                             </div>
                           </div>
-                          <div className={ classnames('nocode-navbar', 'nocode-navbar-footer', classes.footerNavBar) }>
-                            <Hidden smDown implementation="css">
-                              <NavBar
-                                section="footer"
-                                contrast
-                                align="right"
-                                float="left"
-                              />
-                            </Hidden>
-                            <Hidden mdUp implementation="css">
-                              <NavBar
-                                small
-                                section="footer"
-                                contrast
-                                vertical
-                                align="right"
-                                float="left"
-                              />
-                            </Hidden>
+                          <div className={ classes.footerSocialLinks }>
+                            <SocialLinks />
                           </div>
                           <div className={ classes.footerCopyright }>
                             <Copyright />
