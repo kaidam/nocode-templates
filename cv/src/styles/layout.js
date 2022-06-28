@@ -61,7 +61,8 @@ const styles = makeStyles(theme => {
       },
 
       '.nocode-sidebar-left': {
-        backgroundColor: [`${theme.palette.common.white} !important`],
+        backgroundColor: theme.layout.backgroundColor,
+        flex: '0 0 auto',
         minHeight: '100%',
       },
 
@@ -105,10 +106,6 @@ const styles = makeStyles(theme => {
 
       '.nocode-tree-item-active .nocode-tree-text span' : {
         color: [`${theme.palette.getContrastText(theme.layout.accentColor)} !important`],
-      },
-
-      '.nocode-tree-text': {
-        // textDecoration: 'underline !important'
       },
     },
     root: {
@@ -189,7 +186,7 @@ const styles = makeStyles(theme => {
     contentContainer: {
       flexGrow: 1,
       width: '100%',
-      height: '100%',
+      minHeight: '100%',
       display: 'flex',
       flexDirection: 'column',
       backgroundColor: theme.layout.backgroundColor,
@@ -202,7 +199,7 @@ const styles = makeStyles(theme => {
 
     contentChildrenContainer: {
       margin: '0px auto',
-      minHeight: `calc(100vh - ${theme.layout.topbarHeight}px - ${theme.layout.footerHeight}px - 110px)`,
+      minHeight: 'calc(100%)',
       width: '100%',
       borderLeft: 'solid 1px rgba(0, 0, 0, 0.12)',
       borderRight: 'solid 1px rgba(0, 0, 0, 0.12)',

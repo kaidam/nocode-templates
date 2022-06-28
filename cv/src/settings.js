@@ -6,14 +6,13 @@ export default {
     'color',
   ],
   sections: [
-    'topbar',
     'footer',
     'sidebar',
     'rightbar',
   ],
   initialResources: [{
     type: 'section',
-    name: 'topbar',
+    name: 'footer',
     annotation: {
       sorting: {
         type: 'date',
@@ -21,7 +20,7 @@ export default {
       }
     },
     children: [{
-      name: 'Home',
+      name: 'CV',
       type: 'document',
       wordDocument: 'homepage.docx',
       annotation: {
