@@ -28,7 +28,7 @@ const themeProcessor = ({
   }
   if(settings.sidebarWidth) {
     updates.layout.drawerWidthSmall = settings.sidebarWidth
-    updates.layout.drawerWidthLarge = settings.sidebarWidth + 60
+    updates.layout.drawerWidthLarge = settings.sidebarWidth + 80
   }
   if(settings.background_color && settings.background_color.color) {
     updates.layout.backgroundColor = settings.background_color.color

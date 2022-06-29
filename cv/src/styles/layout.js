@@ -62,21 +62,24 @@ const styles = makeStyles(theme => {
 
       '.nocode-sidebar-left': {
         backgroundColor: theme.layout.backgroundColor,
-        flex: '0 0 auto',
-        minHeight: '100%',
+        position: 'sticky',
+        top: 0,
+        alignSelf: 'flex-start',
       },
 
       '.nocode-sidebar-right': {
         backgroundColor: theme.layout.backgroundColor,
-        minHeight: '100%',
+        position: 'sticky',
+        top: 0,
+        alignSelf: 'flex-start',
       },
 
       '.nocode-sidebar-left .nocode-tree-list .nocode-tree-list': {
-        paddingRight: '28px !important',
+        paddingRight: '18px !important',
       },
 
       '.nocode-sidebar-right .nocode-tree-list .nocode-tree-list': {
-        paddingLeft: '28px !important',
+        paddingLeft: '18px !important',
       },
 
       '.nocode-tree-list': {
@@ -84,20 +87,27 @@ const styles = makeStyles(theme => {
       },
 
       '.nocode-tree-item': {
-        color: [`${theme.palette.primary.contrastText} !important`],
-        backgroundColor: [`${theme.palette.primary.main} !important`],
+        color: [`${theme.palette.primary.main} !important`],
+        backgroundColor: [`${theme.palette.common.white} !important`],
         width: 'calc( 100% - 8px)',
+        border: [`3px solid ${theme.palette.primary.light} !important`],
         borderRadius: '30px',
         padding: '8px',
         margin: '4px',
         '&:hover': {
-          backgroundColor: [`${theme.palette.primary.dark} !important`],
+          backgroundColor: [`${theme.palette.primary.main} !important`],
+          border: [`3px solid ${theme.palette.primary.dark} !important`],
+          color: [`${theme.palette.primary.contrastText} !important`],
+        },
+        '&:active': {
+          backgroundColor: [`${theme.palette.primary.main} !important`],
+          border: [`3px solid ${theme.palette.primary.light} !important`],
           color: [`${theme.palette.primary.contrastText} !important`],
         }
       },
 
       '.nocode-sidebar-right .nocode-tree-item': {
-        borderRadius: '30px',
+
       },
 
       '.nocode-tree-item-active': {
@@ -111,6 +121,34 @@ const styles = makeStyles(theme => {
     root: {
       height: '100%',
     },
+    // Page Breakpoints
+    largeScreen: {
+      display: 'none',
+      [theme.breakpoints.up(theme.layout.largeScreenBreakpoint)]: {
+        display: 'block',
+      },
+      [theme.breakpoints.down(theme.layout.smallScreenBreakpoint)]: {
+        display: 'none',
+      },
+      "& *": {
+        textDecoration: 'none'
+      }
+    },
+
+    smallScreen: {
+      display: 'none',
+      [theme.breakpoints.up(theme.layout.largeScreenBreakpoint)]: {
+        display: 'none',
+      },
+      [theme.breakpoints.down(theme.layout.smallScreenBreakpoint)]: {
+        display: 'block',
+      },
+      "& *": {
+        textDecoration: 'none'
+      }
+    },
+
+    // Topbar
     appbar: {
       position: 'relative',
       zIndex: theme.zIndex.drawer + 1,
@@ -139,70 +177,44 @@ const styles = makeStyles(theme => {
     appBarFiller: {
       width: '38px',
     },
-
-    smallDrawer: {
-      width: `${theme.layout.drawerWidthSmall}px`,
-      minWidth: `${theme.layout.drawerWidthSmall}px`,
-    },
-
-    largeDrawer: {
-      width: `${theme.layout.drawerWidthLarge}px`,
-      minWidth: `${theme.layout.drawerWidthLarge}px`,
-    },
-    
-    largeScreen: {
-      display: 'none',
-      [theme.breakpoints.up(theme.layout.largeScreenBreakpoint)]: {
-        display: 'block',
-      },
-      [theme.breakpoints.down(theme.layout.smallScreenBreakpoint)]: {
-        display: 'none',
-      },
-      "& *": {
-        textDecoration: 'none'
-      }
-    },
-    smallScreen: {
-      display: 'none',
-      [theme.breakpoints.up(theme.layout.largeScreenBreakpoint)]: {
-        display: 'none',
-      },
-      [theme.breakpoints.down(theme.layout.smallScreenBreakpoint)]: {
-        display: 'block',
-      },
-      "& *": {
-        textDecoration: 'none'
-      }
-    },
-
+    // Structure
     main: {
       minHeight: `calc(100% - ${theme.layout.topbarHeight}px - 200px)`,
-      bottom: 0,
-      left: 0,
       display: 'flex',
       flexDirection: 'row',
     },
+    // Sidebar width
+    smallDrawer: {
+      minWidth: [`${theme.layout.drawerWidthSmall}px`],
+      maxWidth: [`${theme.layout.drawerWidthSmall}px`],
+    },
 
+    largeDrawer: {
+      minWidth: [`${theme.layout.drawerWidthLarge}px`],
+      maxWidth: [`${theme.layout.drawerWidthLarge}px`],
+    },
+
+    //Layout and Doc Content
     contentContainer: {
       flexGrow: 1,
-      width: '100%',
-      minHeight: '100%',
+      backgroundColor: theme.layout.backgroundColor,
+      borderLeft: 'solid 1px rgba(0, 0, 0, 0.12)',
+      borderRight: 'solid 1px rgba(0, 0, 0, 0.12)',
       display: 'flex',
       flexDirection: 'column',
-      backgroundColor: theme.layout.backgroundColor,
     },
 
     content: {
       flexGrow: 1,
-      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
     },
 
     contentChildrenContainer: {
-      margin: '0px auto',
-      minHeight: 'calc(100%)',
-      width: '100%',
-      borderLeft: 'solid 1px rgba(0, 0, 0, 0.12)',
-      borderRight: 'solid 1px rgba(0, 0, 0, 0.12)',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
     },
 
     document: {
@@ -225,7 +237,16 @@ const styles = makeStyles(theme => {
       hyphens: 'auto',
     },
 
+    toolbar: {
+      position: 'sticky',
+      top: 0,
+      alignSelf: 'flex-start',
+    },
+
     contentToolbar: {
+      position: 'sticky',
+      top: 0,
+      alignSelf: 'flex-start',
       height: '100%',
       maxWidth: '1024px',
       margin: '0px auto',
@@ -244,6 +265,7 @@ const styles = makeStyles(theme => {
       paddingLeft: theme.spacing(2),
     },
 
+    // Footer
     footer: {
       width: '100%',
       minHeight: [`${theme.layout.footerHeight}px`, '!important'],
@@ -252,7 +274,6 @@ const styles = makeStyles(theme => {
 
     footerToolbar: {
       padding: theme.spacing(2),
-      //height: '100%',
     },
 
     footerContainer: {
@@ -260,7 +281,6 @@ const styles = makeStyles(theme => {
       flexDirection: 'column',
       alignItems: 'center',
       width: '100%',
-      //height: '100%',
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
       paddingBottom: theme.spacing(1),
@@ -269,11 +289,12 @@ const styles = makeStyles(theme => {
 
     footerCopyright: {
       flexGrow: 0,
+      margin: '20px',
     },
 
     footerSocialLinks: {
       borderRadius: '20px',
-      margin: '10px',
+      margin: '20px',
       padding: '16px 14px 14px',
       backgroundColor: '#fff',
     },
@@ -282,6 +303,7 @@ const styles = makeStyles(theme => {
       flexGrow: 1,
     },
 
+    // Settings button
     globalSettings: ({
       
     }) => ({
@@ -291,6 +313,7 @@ const styles = makeStyles(theme => {
       right: '10px',
     }),
 
+    // Search widget
     searchHolder: {
       padding: theme.spacing(1),
     },
