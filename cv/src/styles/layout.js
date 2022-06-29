@@ -87,7 +87,7 @@ const styles = makeStyles(theme => {
       },
 
       '.nocode-tree-item': {
-        color: [`${theme.palette.primary.main} !important`],
+        color: [`${theme.palette.common.black} !important`],
         backgroundColor: [`${theme.palette.common.white} !important`],
         width: 'calc( 100% - 8px)',
         border: [`3px solid ${theme.palette.primary.light} !important`],
@@ -97,13 +97,8 @@ const styles = makeStyles(theme => {
         '&:hover': {
           backgroundColor: [`${theme.palette.primary.main} !important`],
           border: [`3px solid ${theme.palette.primary.dark} !important`],
-          color: [`${theme.palette.primary.contrastText} !important`],
+          color: [`${theme.palette.getContrastText(theme.palette.primary.main)} !important`],
         },
-        '&:active': {
-          backgroundColor: [`${theme.palette.primary.main} !important`],
-          border: [`3px solid ${theme.palette.primary.light} !important`],
-          color: [`${theme.palette.primary.contrastText} !important`],
-        }
       },
 
       '.nocode-sidebar-right .nocode-tree-item': {
@@ -112,10 +107,14 @@ const styles = makeStyles(theme => {
 
       '.nocode-tree-item-active': {
         backgroundColor: [`${theme.layout.accentColor} !important`],
+        border: [`3px solid ${theme.palette.primary.light} !important`],
       },
 
       '.nocode-tree-item-active .nocode-tree-text span' : {
-        color: [`${theme.palette.getContrastText(theme.layout.accentColor)} !important`],
+        color: theme.palette.getContrastText(theme.layout.accentColor),
+        '&:hover': {
+          color: theme.palette.getContrastText(theme.layout.accentColor),
+        },
       },
     },
     root: {
