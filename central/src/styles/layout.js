@@ -21,7 +21,7 @@ const styles = makeStyles(theme => {
       },
       // the logo image
       '.nocode-logo-image': {
-        height: '75%',
+        height: '70%',
         padding: '10px',
       },
       // the text in the logo
@@ -127,7 +127,9 @@ const styles = makeStyles(theme => {
       },
     },
     root: {
-      height: '100%',
+      minHeight: '100%',
+      display: 'flex',
+      flexDirection: 'column',
     },
     // Page Breakpoints
     largeScreen: {
@@ -188,8 +190,11 @@ const styles = makeStyles(theme => {
       width: '38px',
     },
     // Structure
+    docRoot: {
+      height: '100%',
+    },
     main: {
-      minHeight: `calc(100vw - 143px - ${theme.layout.topbarHeight}px - ${theme.layout.footerHeight}px)`,
+      flexGrow: 1,
       display: 'flex',
       flexDirection: 'row',
     },

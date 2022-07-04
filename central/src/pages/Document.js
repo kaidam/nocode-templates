@@ -14,7 +14,7 @@ const DocumentPage = ({
   const classes = useStyles()
 
   return (
-    <div className={ classes.root }>
+    <div className={ classes.docRoot }>
       <Hidden smDown implementation="css">
         <Suspense
           Component={ EditableDocumentToolbar }
