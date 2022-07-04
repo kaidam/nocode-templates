@@ -118,7 +118,9 @@ const styles = makeStyles(theme => {
       },
     },
     root: {
-      height: '100%',
+      minHeight: '100%',
+      display: 'flex',
+      flexDirection: 'column',
     },
     // Page Breakpoints
     largeScreen: {
@@ -177,8 +179,11 @@ const styles = makeStyles(theme => {
       width: '38px',
     },
     // Structure
+    docRoot: {
+      minHeight: '100%',
+    },
     main: {
-      minHeight: `calc(100% - ${theme.layout.topbarHeight}px - 200px)`,
+      flexGrow: 1,
       display: 'flex',
       flexDirection: 'row',
     },
