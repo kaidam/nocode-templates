@@ -1219,9 +1219,9 @@
     yargs "^15.0.1"
 
 "@nocode-works/template@^1.0.4":
-  version "1.0.82"
-  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.82.tgz#160e71bf47721bf91cfdb8f038e587c9c50a72d0"
-  integrity sha512-JOTF3yrFB2htki040H0BOanvmK25yGfZkUWK7dby1EGxDXwnPORHHk/CrgIfH71H92eKbH8cwuEtdwIu2KhoNg==
+  version "1.0.83"
+  resolved "https://registry.yarnpkg.com/@nocode-works/template/-/template-1.0.83.tgz#b84d17400548d1cd5e9a6fbcddccaa0ed2520559"
+  integrity sha512-sH+csIKgKbK9OqAdU4n6s3RoedPXLDKGq/IPlRbXr5Fg58l1+HJyJ7g5bXFAsG6gWp9NXz4epEb5XYPpvGuY3g==
   dependencies:
     "@hot-loader/react-dom" "^16.12.0"
     "@material-ui/core" "^4.9.9"
@@ -2800,9 +2800,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.4.172:
-  version "1.4.178"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.178.tgz#3dae6fda486007bb54bbfed420ebd40881a3de45"
-  integrity sha512-aWuhJXkwIdoQzGR8p2QvR3N0OzdUKZSP8+P/hzuMzNQIPZoEa8HiCGM75bQBHjyz+eKT5PB9dVCzkK/tyQ4B5Q==
+  version "1.4.179"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.179.tgz#450561ade3ca3497dfed65af412c672972b2dad5"
+  integrity sha512-1XeTb/U/8Xgh2YgPOqhakLYsvCcU4U7jUjTMbEnhIJoIWd/Qt3yC8y0cbG+fHzn4zUNF99Ey1xiPf20bwgLO3Q==
 
 elliptic@^6.5.3:
   version "6.5.4"
