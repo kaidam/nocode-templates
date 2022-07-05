@@ -6,12 +6,14 @@ export default {
     'color',
   ],
   sections: [
-    'home',
+    'topbar',
     'footer',
+    'sidebar',
+    'rightbar',
   ],
   initialResources: [{
     type: 'section',
-    name: 'home',
+    name: 'topbar',
     annotation: {
       sorting: {
         type: 'date',
@@ -19,7 +21,7 @@ export default {
       }
     },
     children: [{
-      name: 'CV',
+      name: 'Home',
       type: 'document',
       wordDocument: 'homepage.docx',
       annotation: {
@@ -39,6 +41,12 @@ export default {
       type: 'document',
       wordDocument: 'test.docx',
     }]
+  }, {
+    type: 'section',
+    name: 'sidebar',
+  }, {
+    type: 'section',
+    name: 'rightbar',
   }],
   tabs: [{
     id: 'main',
@@ -132,6 +140,15 @@ export default {
     schema: [
       [
         {
+          id: 'sidebarWidth',
+          title: 'Sidebar Width',
+          helperText: 'The pixel width of the side bars',
+          inputProps: {
+            type: 'number',
+          },
+          default: 320,
+        },
+        {
           id: 'topbarHeight',
           title: 'Topbar Height',
           helperText: 'The pixel height of the top bar',
@@ -140,6 +157,24 @@ export default {
           },
           default: 180,
         },
+      ],
+      [
+        {
+          id: 'leftNavigation',
+          title: 'Left Navigation',
+          helperText: 'Show a navigation bar on the left hand side.',
+          component: 'checkbox',
+          showTitle: false,
+          default: false,
+        },
+        {
+          id: 'rightNavigation',
+          title: 'Right Navigation',
+          helperText: 'Show a navigation bar on the right hand side.',
+          component: 'checkbox',
+          showTitle: false,
+          default: false,
+        }
       ],
       [
         {

@@ -87,10 +87,69 @@ const Layout = ({
           <Toolbar classes={{
             root: classes.headerToolbar,
           }}>
+            {
+              hasLeftNavigation && (
+                <Hidden mdUp implementation="css">
+                  <div className={ classes.appBarSmallMenu }>
+                    <NavDrawer
+                      getChildren={({
+                        closeDrawer,
+                      }) => {
+
+                        const onClick = ({
+                          isFolderToggle,
+                        }) => {
+                          if(isFolderToggle) return
+                          closeDrawer()
+                        }
+
+                        return (
+                          <div className={ classnames('nocode-sidebar', 'nocode-sidebar-combined') }>
+                            <Tree
+                              section="sidebar"
+                              type="drawer"
+                              isNavDrawer
+                              autoHeight={ false }
+                              onClick={ onClick }
+                            />
+                            <Tree
+                              section="rightbar"
+                              type="drawer"
+                              isNavDrawer
+                              autoHeight={ false }
+                              onClick={ onClick }
+                            />
+                          </div>
+                        )
+                      }}
+                    />
+                  </div>
+                </Hidden>
+              )
+            }
             <div className={ classes.appBarTitle }>
               <Logo
                 defaultLogo="/images/placeholder-logo.jpg"
               />
+              <Hidden smDown implementation={ hiddenMode }>
+                <NavBar
+                  section="topbar"
+                  withHome
+                  contrast
+                  align="right"
+                  float="left"
+                />
+              </Hidden>
+              <Hidden mdUp implementation={ hiddenMode }>
+                <NavBar
+                  small
+                  section="topbar"
+                  withHome
+                  contrast
+                  align="right"
+                  float="left"
+                />
+              </Hidden>
             </div>
             
             <Suspense
@@ -103,6 +162,18 @@ const Layout = ({
           </Toolbar>
         </AppBar>
         <div className={ classes.main }>
+          {
+            hasLeftNavigation && (
+              <Hidden smDown implementation="css">
+                <div className={ classnames('nocode-sidebar', 'nocode-sidebar-left', navbarClassname) }>
+                  <Tree
+                    section="sidebar"
+                    type="full"
+                  />
+                </div>
+              </Hidden>
+            )
+          }
           <div className={ classes.contentContainer }>
             <main className={ classes.content } ref={ contentRef }>
               <div className={ classes.contentChildrenContainer }>
@@ -110,6 +181,18 @@ const Layout = ({
               </div>
             </main>
           </div>
+          {
+            hasRightNavigation && (
+              <Hidden smDown implementation="css">
+                <div className={ classnames('nocode-sidebar', 'nocode-sidebar-right', navbarClassname) }>
+                  <Tree
+                    section="rightbar"
+                    type="full"
+                  />
+                </div>
+              </Hidden>
+            )
+          }
         </div>
         {
                 hasFooter && (
