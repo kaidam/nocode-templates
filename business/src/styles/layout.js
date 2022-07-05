@@ -106,10 +106,10 @@ const styles = makeStyles(theme => {
         color: [`${theme.palette.common.black} !important`],
         backgroundColor: [`${theme.palette.common.white} !important`],
         maxWidth: 'calc( 100% - 8px )',
-        borderRadius: '8px',
+        borderRadius: '6px',
         borderBottom: [`1px solid ${theme.palette.primary.light} !important`],
-        padding: '6px',
-        margin: '4px',
+        padding: '4px',
+        margin: '5px',
         '&:hover': {
           backgroundColor: [`${theme.palette.primary.main} !important`],
           color: [`${theme.palette.primary.contrastText} !important`],
@@ -121,7 +121,7 @@ const styles = makeStyles(theme => {
 
       '.nocode-tree-item-active': {
         backgroundColor: [`${theme.layout.accentColor} !important`],
-        borderBottom: [`3px solid ${theme.layout.accentColor} !important`],
+        borderBottom: [`1px solid ${theme.layout.accentColor} !important`],
       },
 
       '.nocode-tree-item-active .nocode-tree-text span': {
@@ -301,6 +301,7 @@ const styles = makeStyles(theme => {
     footerContainer: {
       display: 'flex',
       flexDirection: 'row',
+      flexWrap: 'wrap-reverse',
       alignItems: 'center',
       width: '100%',
       paddingLeft: theme.spacing(2),
@@ -322,6 +323,10 @@ const styles = makeStyles(theme => {
     },
 
     footerFiller: {
+      display: 'flex',
+      alignItems: 'flex-end',
+      justifyContent: 'flex-start',
+      flexDirection: 'column',
       flexGrow: 1,
     },
 
@@ -337,6 +342,8 @@ const styles = makeStyles(theme => {
 
     // Search widget
     searchHolder: {
+      justifyContent: 'flex-end',
+      maxWidth: '240px',
       padding: theme.spacing(1),
     },
 

@@ -133,9 +133,6 @@ const Layout = ({
               <Logo
                 defaultLogo="/images/placeholder-logo.jpg"
               />
-              <div className={ classes.appBarSearch }>
-                <Search />
-              </div>
             </div>
             <div className={ classes.rightMenu }>
                 <Hidden smDown implementation={ hiddenMode }>
@@ -213,12 +210,15 @@ const Layout = ({
                           <Logo
                             defaultLogo="/images/placeholder-logo.jpg"
                           />
-                          <div className={ classes.footerSocialLinks }>
+                            <div className={ classes.footerSocialLinks }>
                               <SocialLinks />
                             </div>
                             <Copyright />
                           </div>
                           <div className={ classes.footerFiller }>
+                            <div className={ classes.searchHolder }>
+                              <Search />
+                            </div>
                             <div className={ classnames('nocode-navbar', 'nocode-navbar-footer', classes.footerNavBar) }>
                               <Hidden smDown implementation="css">
                                 <NavBar
