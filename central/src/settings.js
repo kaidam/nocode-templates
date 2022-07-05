@@ -13,7 +13,7 @@ export default {
   ],
   initialResources: [{
     type: 'section',
-    name: 'footer',
+    name: 'topbar',
     annotation: {
       sorting: {
         type: 'date',
