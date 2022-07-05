@@ -196,6 +196,14 @@ export default {
       ],
       [
         {
+          id: 'featuredImage',
+          title: 'Featured Image',
+          helperText: 'Automatically include a relevant image above the Google document',
+          component: 'checkbox',
+          showTitle: false,
+          default: true,
+        },
+        {
           id: 'imageDropshadow',
           title: 'Image Drop Shadow',
           helperText: 'Apply a drop shadow and border to any images in a google document',
@@ -203,6 +211,8 @@ export default {
           showTitle: false,
           default: false,
         },
+      ],
+      [
         {
           id: 'autoLineHeight',
           title: 'Auto Line Height',
