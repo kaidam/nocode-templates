@@ -6,13 +6,14 @@ export default {
     'color',
   ],
   sections: [
+    'home',
     'footer',
     'sidebar',
     'rightbar',
   ],
   initialResources: [{
     type: 'section',
-    name: 'footer',
+    name: 'home',
     annotation: {
       sorting: {
         type: 'date',
