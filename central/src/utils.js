@@ -63,6 +63,7 @@ const autoAssignPages = async ({
       const hasForm = (item.annotation.form && item.annotation.form != 'drive.document') ? true : false
       return !hasImage || !hasForm
     })
+
   await Promise.map(allPagesToUpdate, async item => {
 
     const existingAnnotation = item.annotation || {}
@@ -73,9 +74,6 @@ const autoAssignPages = async ({
       const randomImage = await dispatch(unsplashActions.getRandomImage({
         query: searchQuery,
       }))
-      console.log('--------------------------------------------')
-      console.dir(`searching for unsplash item: ${searchQuery}`)
-      console.dir(randomImage)
       newAnnotation.image = randomImage
     }
 
@@ -109,6 +107,16 @@ const hooks = {
       getState,
     })
   },
+  resyncDrive: async ({
+    dispatch,
+    getState,
+    id,
+  }) => {
+    await autoAssignPages({
+      dispatch,
+      getState,
+    })
+  },
   hideContent: async ({
     dispatch,
     getState,
@@ -134,6 +142,7 @@ const hooks = {
   }) => {
     await dispatch(uiActions.cancelFormWindow())  
   },
+
 }
 
 export default {
