@@ -36,6 +36,14 @@ export default {
       annotation: {
         
       }
+    },
+    {
+      name: 'Contact',
+      type: 'document',
+      wordDocument: 'contact.docx',
+      annotation: {
+        
+      }
     }]
   },{
     type: 'section',
@@ -49,7 +57,7 @@ export default {
     children: [{
       name: 'My First Blog Post',
       type: 'document',
-      wordDocument: 'homepage.docx',
+      wordDocument: 'blog.docx',
       annotation: {
         initialBlogPost: true,
         form: 'drive.blogpost',
