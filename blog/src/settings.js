@@ -144,7 +144,7 @@ export default {
           helperText: 'Apply a drop shadow and border to any images in a google document',
           component: 'checkbox',
           showTitle: false,
-          default: true,
+          default: false,
         },
         {
           id: 'autoLineHeight',
