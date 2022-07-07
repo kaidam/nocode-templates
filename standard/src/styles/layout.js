@@ -100,6 +100,8 @@ const styles = makeStyles(theme => {
     },
 
     content: {
+      display: 'flex',
+      flexDirection: 'column',
       flexGrow: 1,
       overflowY: 'auto',
       background: 'rgba(0, 0, 0, 0.001)',
@@ -125,9 +127,9 @@ const styles = makeStyles(theme => {
     },
 
     contentChildren: {
+      flexGrow: 1,
       maxWidth: '816px',
       margin: '0px auto',
-      minHeight: `calc(100% - ${theme.layout.footerHeight}px - 1px)`,
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2),
       paddingRight: '96px',
@@ -144,10 +146,9 @@ const styles = makeStyles(theme => {
     },
 
     footer: {
+      flexGrow: 0,
       width: '100%',
       color: theme.palette.common.white,
-      minHeight: [`${theme.layout.footerHeight}px`, '!important'],
-      //height: [`${theme.layout.footerHeight}px`, '!important'],
       backgroundColor: theme.palette.primary.main,
     },
 
