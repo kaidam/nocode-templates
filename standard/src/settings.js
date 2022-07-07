@@ -3,8 +3,6 @@ export default {
   defaultLayout: 'documentation',
   initialOptions: [
     'color',
-    'logo',
-    'logo_text',
   ],
   sections: [
     'topbar',
@@ -24,7 +22,7 @@ export default {
     children: [{
       name: 'Home',
       type: 'document',
-      wordDocument: 'homepage.docx',
+      wordDocument: 'documentation.docx',
       annotation: {
         initialHomepage: true,
         layout_id: 'plain',
