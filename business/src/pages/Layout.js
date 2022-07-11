@@ -22,7 +22,6 @@ import Suspense from '@nocode-works/template/components/system/Suspense'
 import Logo from '@nocode-works/template/components/editable/Logo'
 import Copyright from '@nocode-works/template/components/editable/Copyright'
 import SocialLinks from '@nocode-works/template/components/editable/SocialLinks'
-import Search from '@nocode-works/template/components/editable/Search'
 import useHasFeature from '@nocode-works/template/components/hooks/useHasFeature'
 import useSocialLinks from '@nocode-works/template/components/hooks/useSocialLinks'
 import useStyles from '../styles/layout'
@@ -131,9 +130,17 @@ const Layout = ({
               )
             }
             <div className={ classes.appBarTitle }>
-              <Logo
-                defaultLogo="/images/placeholder-logo.jpg"
-              />
+              <Hidden xsDown implementation="css">
+                <Logo
+                  defaultLogo="/images/placeholder-logo.png"
+                />
+              </Hidden>
+              <Hidden smUp implementation="css">
+                <Logo
+                  defaultLogo="/images/placeholder-logo.png"
+                  hideText
+                />
+              </Hidden>
             </div>
             <div>
                 <Hidden smDown implementation={ hiddenMode }>
@@ -208,9 +215,17 @@ const Layout = ({
                       }}>
                         <div className={ classes.footerContainer }>
                           <div className={ classes.footerCopyright }>
-                            <Logo
-                              defaultLogo="/images/placeholder-logo.jpg"
-                            />
+                            <Hidden xsDown implementation="css">
+                              <Logo
+                                defaultLogo="/images/placeholder-logo.png"
+                              />
+                            </Hidden>
+                            <Hidden smUp implementation="css">
+                              <Logo
+                                defaultLogo="/images/placeholder-logo.png"
+                                hideText
+                              />
+                            </Hidden>
                             {
                               (showUI || socialLinks.length > 0) && (
                                 <div className={ classes.footerSocialLinks }>
@@ -221,9 +236,6 @@ const Layout = ({
                             <Copyright />
                           </div>
                           <div className={ classes.footerFiller }>
-                            <div className={ classes.searchHolder }>
-                              <Search />
-                            </div>
                             <div className={ classnames('nocode-navbar', 'nocode-navbar-footer', classes.footerNavBar) }>
                               <Hidden smDown implementation="css">
                                 <NavBar

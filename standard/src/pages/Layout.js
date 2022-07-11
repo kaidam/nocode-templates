@@ -125,7 +125,17 @@ const Layout = ({
               )
             }
             <div className={ classes.appBarTitle }>
-              <Logo />
+              <Hidden xsDown implementation="css">
+                <Logo
+                  defaultLogo="/images/placeholder-logo.png"
+                />
+              </Hidden>
+              <Hidden smUp implementation="css">
+                <Logo
+                  defaultLogo="/images/placeholder-logo.png"
+                  hideText
+                />
+              </Hidden>
             </div>
             <Hidden smDown implementation={ hiddenMode }>
               <NavBar

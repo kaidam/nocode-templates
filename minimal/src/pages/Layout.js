@@ -132,9 +132,17 @@ const Layout = ({
               )
             }
             <div className={ classes.appBarTitle }>
-              <Logo
-                defaultLogo="/images/placeholder-logo.jpg"
-              />
+              <Hidden xsDown implementation="css">
+                <Logo
+                  defaultLogo="/images/placeholder-logo.png"
+                />
+              </Hidden>
+              <Hidden smUp implementation="css">
+                <Logo
+                  defaultLogo="/images/placeholder-logo.png"
+                  hideText
+                />
+              </Hidden>
             </div>
              <div className={ classes.rightMenu }>
              <Hidden smDown implementation={ hiddenMode }>

@@ -90,9 +90,17 @@ const Layout = ({
             root: classes.headerToolbar,
           }}>
             <div className={ classes.appBarTitle }>
-              <Logo
-                defaultLogo="/images/placeholder-logo.jpg"
-              />
+              <Hidden xsDown implementation="css">
+                <Logo
+                  defaultLogo="/images/placeholder-logo.png"
+                />
+              </Hidden>
+              <Hidden smUp implementation="css">
+                <Logo
+                  defaultLogo="/images/placeholder-logo.png"
+                  hideText
+                />
+              </Hidden>
             </div>
             
             <Suspense

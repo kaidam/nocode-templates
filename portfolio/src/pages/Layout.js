@@ -129,7 +129,7 @@ const Layout = ({
             }
             <div className={ classes.appBarTitle }>
               <Logo
-                defaultLogo="/images/placeholder-logo.jpg"
+                defaultLogo="/images/placeholder-logo.png"
               />
               <Hidden smDown implementation={ hiddenMode }>
                 <NavBar
