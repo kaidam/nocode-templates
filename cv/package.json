@@ -1,6 +1,6 @@
 {
   "name": "nocode-template-cv",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "private": true,
   "description": "",
   "dependencies": {
@@ -19,7 +19,7 @@
     "description": "CV website",
     "settings": "src/settings.js",
     "screenshot": "src/screenshot.png",
-    "exampleUrl": "https://guide.nocode.works/"
+    "exampleUrl": "https://cv.examples.nocode.works/"
   },
   "scripts": {
     "template:build": "nocode-template build",

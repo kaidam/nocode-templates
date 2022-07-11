@@ -2,7 +2,6 @@ export default {
   websiteNameField: 'company_name',
   defaultLayout: 'documentation',
   initialOptions: [
-    'theme',
     'color',
   ],
   sections: [
@@ -49,25 +48,6 @@ export default {
       helperText: 'Enter the name of your project',
       default: '',
       groups: ['copyright'],
-    }, {
-      id: 'theme',
-      title: 'Theme',
-      helperText: 'Choose a theme for the website',
-      component: 'select',
-      default: 'General',
-      options: [{
-        title: 'General',
-        value: 'General',
-      }, {
-        title: 'Catering',
-        value: 'Catering',
-      }, {
-        title: 'Accountancy',
-        value: 'Accountancy',
-      }, {
-        title: 'Building',
-        value: 'Building',
-      }],
     }, {
       id: 'color',
       title: 'Color',

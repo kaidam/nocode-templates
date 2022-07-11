@@ -132,12 +132,12 @@ const Layout = ({
             <div className={ classes.appBarTitle }>
               <Hidden xsDown implementation="css">
                 <Logo
-                  defaultLogo="/images/placeholder-logo.png"
+                  defaultLogo="./images/placeholder-logo.png"
                 />
               </Hidden>
               <Hidden smUp implementation="css">
                 <Logo
-                  defaultLogo="/images/placeholder-logo.png"
+                  defaultLogo="./images/placeholder-logo.png"
                   hideText
                 />
               </Hidden>
@@ -217,12 +217,12 @@ const Layout = ({
                           <div className={ classes.footerCopyright }>
                             <Hidden xsDown implementation="css">
                               <Logo
-                                defaultLogo="/images/placeholder-logo.png"
+                                defaultLogo="./images/placeholder-logo.png"
                               />
                             </Hidden>
                             <Hidden smUp implementation="css">
                               <Logo
-                                defaultLogo="/images/placeholder-logo.png"
+                                defaultLogo="./images/placeholder-logo.png"
                                 hideText
                               />
                             </Hidden>

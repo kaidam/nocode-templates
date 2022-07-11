@@ -1,6 +1,6 @@
 {
   "name": "nocode-template-central",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "",
   "dependencies": {
@@ -19,7 +19,7 @@
     "description": "Central website",
     "settings": "src/settings.js",
     "screenshot": "src/screenshot.png",
-    "exampleUrl": "https://guide.nocode.works/"
+    "exampleUrl": "https://central.examples.nocode.works/"
   },
   "scripts": {
     "template:build": "nocode-template build",

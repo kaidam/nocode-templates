@@ -19,7 +19,7 @@
     "description": "Perfect for documentation or intranet websites",
     "settings": "src/settings.js",
     "screenshot": "src/screenshot.png",
-    "exampleUrl": "https://guide.nocode.works/"
+    "exampleUrl": "https://documentation.examples.nocode.works/"
   },
   "scripts": {
     "template:build": "nocode-template build",

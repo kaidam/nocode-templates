@@ -1,6 +1,6 @@
 {
   "name": "nocode-template-business",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "private": true,
   "description": "",
   "dependencies": {
@@ -19,7 +19,7 @@
     "description": "Business website",
     "settings": "src/settings.js",
     "screenshot": "src/screenshot.png",
-    "exampleUrl": "https://guide.nocode.works/"
+    "exampleUrl": "https://business.examples.nocode.works/"
   },
   "scripts": {
     "template:build": "nocode-template build",

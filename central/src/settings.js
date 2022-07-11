@@ -3,8 +3,6 @@ export default {
   defaultLayout: 'documentation',
   initialOptions: [
     'color',
-    'accent_color',
-    'background_color',
   ],
   sections: [
     'topbar',

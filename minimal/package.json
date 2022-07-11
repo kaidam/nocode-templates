@@ -1,6 +1,6 @@
 {
   "name": "nocode-template-minimal",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "description": "",
   "dependencies": {
@@ -19,7 +19,7 @@
     "description": "Minimalist website",
     "settings": "src/settings.js",
     "screenshot": "src/screenshot.png",
-    "exampleUrl": "https://guide.nocode.works/"
+    "exampleUrl": "https://minimal.examples.nocode.works/"
   },
   "scripts": {
     "template:build": "nocode-template build",
