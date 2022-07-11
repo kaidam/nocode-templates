@@ -23,5 +23,4 @@ update_template business
 update_template central
 update_template cv
 update_template minimal
-update_template portfolio
 update_template standard
