@@ -22,9 +22,18 @@ export default {
     children: [{
       name: 'Home',
       type: 'document',
-      wordDocument: 'documentation.docx',
+      wordDocument: 'documentation-home.docx',
       annotation: {
         initialHomepage: true,
+        layout_id: 'plain',
+      }
+    },
+    {
+      name: 'Contact',
+      type: 'document',
+      wordDocument: 'contact.docx',
+      annotation: {
+        initialHomepage: false,
         layout_id: 'plain',
       }
     }]
