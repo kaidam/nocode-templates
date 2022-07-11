@@ -14,7 +14,8 @@ function update_template() {
 
   local template_dir=$(realpath "$DIR/../$template")
   cd $template_dir
-  yarn template:unlink
+  rm -rf node_modules
+  yarn install
   yarn template:upgrade
 }
 
