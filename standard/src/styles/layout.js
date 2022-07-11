@@ -10,20 +10,25 @@ const styles = makeStyles(theme => {
         margin: '0px',
         border: 0,
       },
+      '.document-container':{
+        flexBasis: '100%',
+      }
     },
     root: {
-      height: '100%',
-      overflowX: 'hidden',
+      minHeight: '100%',
+      display: 'flex',
+      flexDirection: 'column',
     },
     appbar: {
       position: 'relative',
       zIndex: theme.zIndex.drawer + 1,
-      height: [`${theme.layout.topbarHeight}px`, '!important'],
+      minHeight: [`${theme.layout.topbarHeight}px`, '!important'],
       //backgroundColor: theme.palette.primary.main,
       backgroundColor: '#ffffff',
       boxShadow: 'none',
       borderBottom: 'solid 1px rgba(0, 0, 0, 0.12)',
       boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
+      flexGrow: 0,
     },
     headerToolbar: {
       paddingLeft: theme.spacing(1),
@@ -84,28 +89,29 @@ const styles = makeStyles(theme => {
     },
 
     main: {
-      height: `calc(100% - ${theme.layout.topbarHeight}px)`,
-      width: '100%',
-      bottom: 0,
-      left: 0,
+      flexGrow: 1,
       display: 'flex',
       flexDirection: 'row',
+      minHeight: `calc(100% - ${theme.layout.topbarHeight}px)`,
     },
 
     contentContainer: {
       flexGrow: 1,
-      height: '100%',
       display: 'flex',
       flexDirection: 'column',
     },
 
     content: {
       flexGrow: 1,
-      overflowY: 'auto',
+      display: 'flex',
+      flexDirection: 'column',
       background: 'rgba(0, 0, 0, 0.001)',
+      justifyContent: 'flex-start',
+      alignItems: 'stretch',
     },
 
     contentToolbar: {
+      flexGrow: 0,
       height: '100%',
       maxWidth: '1024px',
       margin: '0px auto',
@@ -117,6 +123,7 @@ const styles = makeStyles(theme => {
     },
 
     smallContentToolbar: {
+      flexGrow: 0,
       height: '100%',
       display: 'flex',
       flexDirection: 'row',
@@ -124,10 +131,16 @@ const styles = makeStyles(theme => {
       paddingLeft: theme.spacing(2),
     },
 
+    flexGrowZero: {
+      flexGrow: 0,
+    },
+
     contentChildren: {
-      maxWidth: '816px',
+      flexGrow: 1,
+      height: '100%',
+      width: '100%',
+      maxWidth: '832px',
       margin: '0px auto',
-      minHeight: `calc(100% - ${theme.layout.footerHeight}px - 1px)`,
       paddingTop: theme.spacing(2),
       paddingBottom: theme.spacing(2),
       paddingRight: '96px',
@@ -141,19 +154,18 @@ const styles = makeStyles(theme => {
         paddingRight: [['17px'], '!important'],
       },
       letterSpacing: '0px',
+      display: 'flex',
     },
 
     footer: {
+      flexGrow: 0,
       width: '100%',
       color: theme.palette.common.white,
-      minHeight: [`${theme.layout.footerHeight}px`, '!important'],
-      //height: [`${theme.layout.footerHeight}px`, '!important'],
       backgroundColor: theme.palette.primary.main,
     },
 
     footerToolbar: {
       padding: 0,
-      //height: '100%',
     },
 
     footerContainer: {
@@ -161,13 +173,9 @@ const styles = makeStyles(theme => {
       flexDirection: 'row',
       alignItems: 'center',
       width: '100%',
-      //height: '100%',
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
       paddingBottom: theme.spacing(1),
-      // paddingRight: theme.spacing(1),
-      
-      // paddingBottom: theme.spacing(2),
     },
 
     footerCopyright: {

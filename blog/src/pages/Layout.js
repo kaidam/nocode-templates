@@ -18,6 +18,7 @@ import Suspense from '@nocode-works/template/components/system/Suspense'
 import Copyright from '@nocode-works/template/components/editable/Copyright'
 import SocialLinks from '@nocode-works/template/components/editable/SocialLinks'
 import Logo from '@nocode-works/template/components/editable/Logo'
+import useSocialLinks from '@nocode-works/template/components/hooks/useSocialLinks'
 
 import useStyles from '../styles/layout'
 
@@ -34,6 +35,7 @@ const Layout = ({
   
   const settings = useSelector(settingsSelectors.settings)
   const route = useSelector(routerSelectors.route)
+  const socialLinks = useSocialLinks()
   const {
     annotation,
   } = useSelector(contentSelectors.document)
@@ -142,9 +144,6 @@ const Layout = ({
         material
         favicon={ useFavicon }
         titleField="blog_name"
-        head={(
-          <link rel="stylesheet" href="./css/index.css" />
-        )}
       >
         <AppBar 
           position="static" 
@@ -161,7 +160,9 @@ const Layout = ({
               <div className={ classes.toolbarMenu }>
                 <div className={ classes.toolbarMenuLeft }>
                   <div className={ classes.appBarTitle }>
-                    <Logo />
+                    <Logo
+                      defaultLogo="/images/placeholder-logo.jpg"
+                    />
                   </div>
                 </div>
                 <div className={ classes.toolbarMenuFiller }></div>
@@ -215,9 +216,13 @@ const Layout = ({
                       field="blog_name"
                     />
                   </div>
-                  <div className={ classes.footerSocialLinks }>
-                    <SocialLinks />
-                  </div>
+                  {
+                    (showUI || socialLinks.length > 0) && (
+                      <div className={ classes.footerSocialLinks }>
+                        <SocialLinks />
+                      </div>
+                    )
+                  }
                   <div className={ classes.footerFiller }>
                     
                   </div>

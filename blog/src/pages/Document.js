@@ -69,7 +69,7 @@ const DocumentPage = ({
   const isBlogPostsRoute = route.name == 'root' || route.name == 'tag'
 
   return (
-    <div className={ classes.root }>
+    <div className={ classes.docRoot }>
       {
         isBlogPostsRoute ? (
           <BlogPosts />

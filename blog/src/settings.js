@@ -1,5 +1,9 @@
 export default {
   websiteNameField: 'blog_name',
+  defaultLayout: 'title',
+  initialOptions: [
+    'color',
+  ],
   sections: [
     'topbar',
     'blogposts',
@@ -28,7 +32,15 @@ export default {
     children: [{
       name: 'About',
       type: 'document',
-      wordDocument: 'homepage.docx',
+      wordDocument: 'about.docx',
+      annotation: {
+        
+      }
+    },
+    {
+      name: 'Contact',
+      type: 'document',
+      wordDocument: 'contact.docx',
       annotation: {
         
       }
@@ -45,7 +57,7 @@ export default {
     children: [{
       name: 'My First Blog Post',
       type: 'document',
-      wordDocument: 'homepage.docx',
+      wordDocument: 'blog.docx',
       annotation: {
         initialBlogPost: true,
         form: 'drive.blogpost',
@@ -140,7 +152,7 @@ export default {
           helperText: 'Apply a drop shadow and border to any images in a google document',
           component: 'checkbox',
           showTitle: false,
-          default: true,
+          default: false,
         },
         {
           id: 'autoLineHeight',

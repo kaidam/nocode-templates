@@ -1,5 +1,9 @@
 export default {
   websiteNameField: 'company_name',
+  defaultLayout: 'documentation',
+  initialOptions: [
+    'color',
+  ],
   sections: [
     'topbar',
     'footer',
@@ -18,7 +22,7 @@ export default {
     children: [{
       name: 'Home',
       type: 'document',
-      wordDocument: 'homepage.docx',
+      wordDocument: 'documentation.docx',
       annotation: {
         initialHomepage: true,
         layout_id: 'plain',

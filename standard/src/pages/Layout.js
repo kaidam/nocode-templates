@@ -78,12 +78,9 @@ const Layout = ({
       <AppLayout
         material
         favicon={ useFavicon }
-        head={(
-          <link rel="stylesheet" href="./css/index.css" />
-        )}
       >
         <AppBar 
-          position="static" 
+          position="relative" 
           className={ classes.appbar }
         >
           <Toolbar classes={{
@@ -166,7 +163,7 @@ const Layout = ({
             )
           }
           <div className={ classes.contentContainer }>
-            <Hidden smDown implementation={ hiddenMode }>
+            <Hidden smDown implementation={ hiddenMode } className={ classes.flexGrowZero}>
               <Suspense
                 Component={ EditableDocumentToolbar }
                 props={{
@@ -174,7 +171,7 @@ const Layout = ({
                 }}
               />
             </Hidden>
-            <Hidden mdUp implementation={ hiddenMode }>
+            <Hidden mdUp implementation={ hiddenMode }  className={ classes.flexGrowZero}>
               <Suspense
                 Component={ EditableDocumentToolbar }
                 props={{
@@ -190,7 +187,6 @@ const Layout = ({
               {
                 hasFooter && (
                   <>
-                    <Divider />
                     <div className={ classes.footer }>
                       <Toolbar classes={{
                         root: classes.footerToolbar,

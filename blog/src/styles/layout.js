@@ -13,7 +13,8 @@ const styles = makeStyles(theme => {
     },
     root: {
       height: '100%',
-      overflowX: 'hidden',
+      display: 'flex',
+      flexDirection: 'column',
     },
     appbar: {
       position: 'relative',
@@ -115,11 +116,13 @@ const styles = makeStyles(theme => {
       }
     },
 
+    docRoot: {
+      height: '100%',
+    },
+
     main: {
       height: `calc(100% - ${theme.layout.topbarHeight}px)`,
       width: '100%',
-      bottom: 0,
-      left: 0,
       display: 'flex',
       flexDirection: 'row',
     },
@@ -136,19 +139,17 @@ const styles = makeStyles(theme => {
       overflowY: 'auto',
       background: 'rgba(0, 0, 0, 0.001)',
       display: 'flex',
-      minHeight: `calc(100% - ${theme.layout.topbarHeight}px)`,
       flexDirection: 'column',
       justifyContent: 'space-between',
     },
 
     footer: {
-      height: [`${theme.layout.footerHeight}px`, '!important'],
-      minHeight: [`${theme.layout.footerHeight}px`, '!important'],
       backgroundColor: '#fff',
       borderTop: '1px solid #ccc',
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
+      padding: theme.spacing(1),
     },
 
     footerContent: {
@@ -184,6 +185,9 @@ const styles = makeStyles(theme => {
       
     }) => ({
       marginLeft: theme.spacing(2),
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
     }),
 
     searchHolder: {
