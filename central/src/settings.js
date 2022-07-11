@@ -2,8 +2,9 @@ export default {
   websiteNameField: 'company_name',
   defaultLayout: 'documentation',
   initialOptions: [
-    'theme',
     'color',
+    'accent_color',
+    'background_color',
   ],
   sections: [
     'topbar',
@@ -23,9 +24,27 @@ export default {
     children: [{
       name: 'Home',
       type: 'document',
-      wordDocument: 'homepage.docx',
+      wordDocument: 'central-home.docx',
       annotation: {
         initialHomepage: true,
+        layout_id: 'plain',
+      }
+    },
+    {
+      name: 'About',
+      type: 'document',
+      wordDocument: 'central-about.docx',
+      annotation: {
+        initialHomepage: false,
+        layout_id: 'plain',
+      }
+    },
+    {
+      name: 'Contact',
+      type: 'document',
+      wordDocument: 'central-contact.docx',
+      annotation: {
+        initialHomepage: false,
         layout_id: 'plain',
       }
     }]
@@ -36,10 +55,6 @@ export default {
       name: 'Privacy Policy',
       type: 'document',
       wordDocument: 'privacypolicy.docx',
-    },{
-      name: 'Test',
-      type: 'document',
-      wordDocument: 'test.docx',
     }]
   }, {
     type: 'section',
@@ -57,25 +72,6 @@ export default {
       helperText: 'Enter the name of your project',
       default: '',
       groups: ['copyright'],
-    }, {
-      id: 'theme',
-      title: 'Theme',
-      helperText: 'Choose a theme for the website',
-      component: 'select',
-      default: 'General',
-      options: [{
-        title: 'General',
-        value: 'General',
-      }, {
-        title: 'Catering',
-        value: 'Catering',
-      }, {
-        title: 'Accountancy',
-        value: 'Accountancy',
-      }, {
-        title: 'Building',
-        value: 'Building',
-      }],
     }, {
       id: 'color',
       title: 'Color',
