@@ -143,7 +143,7 @@ const Layout = ({
                 withHome
                 contrast
                 align="right"
-                float="right"
+                float="left"
                 />
               </Hidden>
               <Hidden mdUp implementation={ hiddenMode }>
@@ -153,7 +153,7 @@ const Layout = ({
                   withHome
                   contrast
                   align="right"
-                  float="right"
+                  float="left"
                   />
               </Hidden>
             </div>

@@ -23,11 +23,23 @@ export default {
     children: [{
       name: 'Home',
       type: 'document',
-      wordDocument: 'homepage.docx',
+      wordDocument: 'business-home.docx',
       annotation: {
         initialHomepage: true,
         layout_id: 'plain',
       }
+    }, {
+      name: 'About',
+      type: 'document',
+      wordDocument: 'business-about.docx',
+    }, {
+      name: 'Services',
+      type: 'document',
+      wordDocument: 'business-services.docx',
+    }, {
+      name: 'Contact',
+      type: 'document',
+      wordDocument: 'contact.docx',
     }]
   }, {
     type: 'section',
@@ -36,10 +48,6 @@ export default {
       name: 'Privacy Policy',
       type: 'document',
       wordDocument: 'privacypolicy.docx',
-    },{
-      name: 'Test',
-      type: 'document',
-      wordDocument: 'test.docx',
     }]
   }, {
     type: 'section',
@@ -81,13 +89,13 @@ export default {
       title: 'Color',
       helperText: 'Choose your color',
       component: 'color',
-      default: {color: "#3f51b5"},
+      default: {color: "#003049"},
     }, {
       id: 'accent_color',
       title: 'Accent Color',
       helperText: 'Choose your accent color',
       component: 'color',
-      default: {color: "#ff0000"},
+      default: {color: "#f77f00"}
     }, {
       id: 'background_color',
       title: 'Background Color',

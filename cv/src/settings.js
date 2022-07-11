@@ -21,7 +21,7 @@ export default {
     children: [{
       name: 'CV',
       type: 'document',
-      wordDocument: 'homepage.docx',
+      wordDocument: 'cv-home.docx',
       annotation: {
         initialHomepage: true,
         layout_id: 'plain',
@@ -31,13 +31,13 @@ export default {
     type: 'section',
     name: 'footer',
     children: [{
+      name: 'Contact',
+      type: 'document',
+      wordDocument: 'contact.docx',
+    }, {
       name: 'Privacy Policy',
       type: 'document',
       wordDocument: 'privacypolicy.docx',
-    },{
-      name: 'Test',
-      type: 'document',
-      wordDocument: 'test.docx',
     }]
   }],
   tabs: [{
@@ -73,13 +73,13 @@ export default {
       title: 'Color',
       helperText: 'Choose your color',
       component: 'color',
-      default: {color: "#3f51b5"},
+      default: {color: "#003049"},
     }, {
       id: 'accent_color',
       title: 'Accent Color',
       helperText: 'Choose your accent color',
       component: 'color',
-      default: {color: "#ff0000"},
+      default: {color: "#f77f00"}
     }, {
       id: 'background_color',
       title: 'Background Color',

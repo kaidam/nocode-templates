@@ -81,13 +81,13 @@ export default {
       title: 'Color',
       helperText: 'Choose your color',
       component: 'color',
-      default: {color: "#3f51b5"},
+      default: {color: "#003049"},
     }, {
       id: 'accent_color',
       title: 'Accent Color',
       helperText: 'Choose your accent color',
       component: 'color',
-      default: {color: "#ff0000"},
+      default: {color: "#f77f00"}
     }, {
       id: 'background_color',
       title: 'Background Color',

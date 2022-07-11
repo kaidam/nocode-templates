@@ -79,7 +79,7 @@ export default {
       title: 'Color',
       helperText: 'Choose your color',
       component: 'color',
-      default: {color: "#3f51b5"},
+      default: {color: "#003049"},
     },
     {
       id: 'logo',

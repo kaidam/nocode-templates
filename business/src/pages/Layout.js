@@ -135,25 +135,25 @@ const Layout = ({
                 defaultLogo="/images/placeholder-logo.jpg"
               />
             </div>
-            <div className={ classes.rightMenu }>
+            <div>
                 <Hidden smDown implementation={ hiddenMode }>
                   <NavBar
-                  section="topbar"
-                  withHome
-                  contrast
-                  align="right"
-                  float="right"
-                  />
+                    section="topbar"
+                    withHome
+                    contrast
+                    align="right"
+                    float="left"
+                    />
                 </Hidden>
                 <Hidden mdUp implementation={ hiddenMode }>
-                    <NavBar
+                  <NavBar
                     small
                     section="topbar"
                     withHome
                     contrast
                     align="right"
-                    float="right"
-                    />
+                    float="left"
+                  />
                 </Hidden>
               </div>
             <Suspense
