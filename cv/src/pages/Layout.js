@@ -24,6 +24,7 @@ import Copyright from '@nocode-works/template/components/editable/Copyright'
 import SocialLinks from '@nocode-works/template/components/editable/SocialLinks'
 import Search from '@nocode-works/template/components/editable/Search'
 import useHasFeature from '@nocode-works/template/components/hooks/useHasFeature'
+import useSocialLinks from '@nocode-works/template/components/hooks/useSocialLinks'
 
 import useStyles from '../styles/layout'
 
@@ -40,6 +41,7 @@ const Layout = ({
   
   const settings = useSelector(settingsSelectors.settings)
   const route = useSelector(routerSelectors.route)
+  const socialLinks = useSocialLinks()
   
   const hasLeftNavigation = settings.leftNavigation
   const hasRightNavigation = settings.rightNavigation
@@ -142,9 +144,13 @@ const Layout = ({
                               </Hidden>
                             </div>
                           </div>
-                          <div className={ classes.footerSocialLinks }>
-                            <SocialLinks />
-                          </div>
+                          {
+                            (showUI || socialLinks.length > 0) && (
+                              <div className={ classes.footerSocialLinks }>
+                                <SocialLinks />
+                              </div>
+                            )
+                          }
                           <div className={ classes.footerCopyright }>
                             <Copyright />
                           </div>
