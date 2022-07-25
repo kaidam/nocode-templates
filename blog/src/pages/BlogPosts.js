@@ -29,7 +29,8 @@ const useStyles = makeStyles(theme => ({
   img: {
     flexGrow: 0,
     marginRight: theme.spacing(2),
-    width: '250px',
+    width: '150px',
+    minWidth: '150px',
     marginLeft: theme.spacing(2),
     '& img': {
       width: '100%',
